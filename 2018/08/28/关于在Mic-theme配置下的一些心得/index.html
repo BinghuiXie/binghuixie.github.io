@@ -133,13 +133,22 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >关于删除节点的幕后的事情</h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://i.imgur.com/OBxizjH.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >关于在Mic theme配置下的一些心得</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>&lt;!DOCTYPE HTML&gt;</p>
-<html><br><head><br>    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><br>    <title>无标题文档</title><br></head><br><br><body><br><div id="content"><br>    <h1>html</h1><br>    <h1>php</h1><br>    <h1>javascript</h1><br>    <h1>jquery</h1><br>    <h1>java</h1><br></div><br><br><script type="text/javascript"><br>    document.write(content.childNodes.length);<br>    function clearText() {<br>        var content=document.getElementById(“content”);<br>        // 在此完成该函数<br>        for(var i=0;i&lt;content.childNodes.length;i++){<br>            var childNode = content.childNodes[i];<br>            content.removeChild(childNode);<br>        }<br><br><br>    }<br></script><br><button onclick="clearText()">清除节点内容</button><br><blockquote>运行这个程序你会发现，第一次点击按钮的时候没有任何反应，第二次点击按钮的时候只剩下了php与jquery两个，再点击按钮<br>    php会被删除掉，再点击按钮才会把jQuery删除掉，这是为什么呢？<br><b>仔细观察程序以及了解删除的原理后，得到以下结论，文字比较难叙述，我会尽量往清楚去说明</b><br><br>因为我们使用的是chrome浏览器也就是常说的谷歌浏览器，与IE浏览器不同的是，谷歌，Firefox等浏览器不会忽略空白节点，也就是说会把空白节点当做子节点的一部分<br>，那什么是空白节点呢？我们知道，在HTML代码里在div标签下我们可以看见5个h1标签，也就是元素节点，这是我们可见的，所以我们下意识的就会认为只有5个节点，然而实际上<br>并不是这样，其中还有空白节点的存在，也就是回车，没错，就是你在写代码的时候按下的回车键，那我们来数一数有多少个回车键呢<br><img src="回车个数.jpg"><br>如图所示我们可以看出其实一共有6个空白节点，所以一共是有11个节点，而不是我们想象的5个。<br><b>那么问题来了</b><br>为什么会出现如此怪异的删除效果呢？<br><br>要知道一切现实出来的效果斗鱼我们的代码与变量的变化有关，只要分析清楚了变量的变化，那这个效果就不难理解了，我们来看源代码。<br><br>源代码的关键地方在<b>content.childNodes.length</b>里，我们如果对这条语句进行输出，即“document.write(content.childNodes.length)”会发现得到的结果是11，<br>如果我们形象的表示此时每个节点的排列的话，是这样子的<img src="节点的删除1.jpg" style="width: 300px;height: 350px">,开始循环时，i=0，条件满足，所以删掉第一个空白节点，<br>但此时两个地方发生变化，一个是HTML的标号由于前面的空白节点被删除所以由1变为0，同时length由11变为10，此时i++变为1，因为HTML的标号已经变为0，那么他下面的<br>第二个空白节点的标号就变为1，所以再次循环一次删除的是第二个空白节点而不是HTML，在视觉效果上就相当于没有删除。i++变为2，length变为9，因为删掉了第二个空白节点，所以php现在紧挨着HTML，标号为1（因为HTML的标号为0）<br>    此时i=2小于length=9，所以循环继续，此时删除的是标号为2的那个节点也就是php下面的节点—<b>第三个空白节点</b>同理删除后其后面的节点的标号向前进，在视觉效果上仍然没有删除任何东西，而此时length<br>再一次减小，变为8，i变为3，继续循环，javascript此时的标号变为2，第四个空白节点的标号变为3，所以把第四个空白节点删掉，i为4，length为8，此时iquery由于紧挨着javascript，<br>中间的空白节点已经删除，所以它的标号为3，它下面的第五个空白节点的标号为4，所以把第五个空白节点删掉，i=5，length=7，视觉上无变化，再进循环，java的标号已经变为4，<br>它下面的第六个空白节点标号为5，对应i=5，删除掉，此时i=6，length=7，此时后面的没有节点，所以全部是null了，就会退出循环，第一次的点击按钮实际上是删除了所有的空白节点。<br><br><b>第二次点击按钮</b><br>,此时的length已经变为5，因为只剩下了5个元素节点，也就是5个h1标签，标号是0到4，从i=0开始循环，第一次删除掉HTML，剩下4个节点的标号都因此减一<br>，同时length-1变为4，i变为1，再一次进行，删除掉标号由2变为1的javascript，留下了php哦，javascript后面的jquery和java的标号变为1和2，i变为2，length变为3，循环回来，删除掉标号为2<br>的节点即java，length变为2，i变为3，退出循环，所以第二次点击按钮后剩下的是php和jquery<br><b>第三次点击</b><br>,length已经变为2，i从0开始，第一次循环删除掉php，i变为1<br>，length变为1，jquery的标号变为0，不满足循环条件，退出for循环，第三次结束，剩下一个jquery。<br><b>第四次点击</b><br>删除掉jquery，皆大欢喜。<br>好啦，上面就是为什么我们的代码<br>会执行出这样的效果的解释，相信大家只要能看完都能看懂的啦。那么想要一次性的删除怎么做呢？很简单，从后往前循环就好啦。<br>代码改为：for(i=content.childNodes.length-1;i&gt;=0;i–)</blockquote><br></body><br></html>
+                <h1 id="关于在Mic-theme配置下的一些心得"><a href="#关于在Mic-theme配置下的一些心得" class="headerlink" title="关于在Mic theme配置下的一些心得"></a>关于在Mic theme配置下的一些心得</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本人是一个前端小白，最近才开始搭建自己的博客并且开始进行配置，也发布一些自己写的小文章，因为开始用到的主题是next，当然next的简洁大方是很受大部分大佬们所喜欢的，<br>但作为一个前端萌新，同时也是电影《指环王》的忠实爱好者，期待一个更加魔幻的主题来作为你自己博客的主界面，在我的不懈努力之下终于找到了Mic_theme这个主题，经过这几天的配置，<br>同时也踩过不少坑，博客已经初具形态，在日后的配置中，会经常更新这篇文章，加入一些自己喜欢的内容和效果。<br>一小点题外话，建议大家用一些专业的文本编辑器，例如我用的是MarkdownPad，或者用WebStorm什么的</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>言归正传,第一次写这篇文章，主要有以下几个内容</p>
+<ol>
+<li>更换背景</li>
+<li>更换intro部分介绍</li>
+<li>更换导航栏样式</li>
+<li>给每一篇文章添加缩略图</li>
+<li>自定义样式</li>
+<li>自定义html文件</li>
+</ol>
+<p>以下是详细讲解</p>
 
             </div>
 
@@ -202,8 +211,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2018/05/26/关于删除节点的幕后的事情/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/2018/05/26/关于删除节点的幕后的事情/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2018/08/28/关于在Mic-theme配置下的一些心得/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/08/28/关于在Mic-theme配置下的一些心得/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
