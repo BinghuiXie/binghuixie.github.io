@@ -1389,7 +1389,7 @@
 /* Main */
 
 	#main {
-		border-radius:5px;
+		border-radius:10px;
 		background-color: #ffffff;
 		position: relative;
 		margin: 0 auto;
@@ -1404,9 +1404,9 @@
 			margin: 0;
 		}
 
-			#main > *:first-child {
-				border-top: 0;
-			}
+		#main > *:first-child {
+			border-top: 0;
+		}
 
 		#main > footer {
 			text-align: center;
@@ -1784,33 +1784,33 @@
 					border-top: solid 2px #e2e2e2;
 				}
 
-					#footer > section:first-child {
-						border-top: 0;
-					}
+				#footer > section:first-child {
+					border-top: 0;
+				}
 
-					#footer > section.split > section {
+				#footer > section.split > section {
+					padding: 4rem 4rem 2rem 4rem ;
+				}
+
+					#footer > section.split > section:first-child {
 						padding: 4rem 4rem 2rem 4rem ;
 					}
 
-						#footer > section.split > section:first-child {
-							padding: 4rem 4rem 2rem 4rem ;
-						}
-
-						#footer > section.split > section:last-child {
-							padding: 4rem 4rem 2rem 4rem ;
-						}
-
-					#footer > section.split.contact > section {
-						padding: 4rem;
+					#footer > section.split > section:last-child {
+						padding: 4rem 4rem 2rem 4rem ;
 					}
 
-						#footer > section.split.contact > section:first-child {
-							padding: 4rem;
-						}
+				#footer > section.split.contact > section {
+					padding: 4rem;
+				}
 
-						#footer > section.split.contact > section:last-child {
-							padding: 4rem;
-						}
+				#footer > section.split.contact > section:first-child {
+					padding: 4rem;
+				}
+
+				#footer > section.split.contact > section:last-child {
+					padding: 4rem;
+				}
 
 				#footer form label,
 				#footer h3,
@@ -2208,27 +2208,30 @@
 /*---------mainfirst------------------*/
 /* Me */
 	#main{
-		margin-bottom: 0.5rem;	
+		margin-bottom: 0.5rem;
 	}
-	#main .header .h1 {
+	#main header .h1 {
 		color: #000;
 	}
 	#me{
 		margin-bottom: 2rem;
 	}
-		#me .pic {
-			border-bottom: 0px;
-			position: relative;
-			display: block;
-		}
+	#me header > .pic {
+		border-bottom: 0px;
+		/*position: relative;*/
+		display: block;
+	}
 
-			#me .pic:before {
-				content: '';
-				position: absolute;
-				background: url(../images/me.jpg);
-				width: 100%;
-				z-index: 1;
-			}
+	#me header > .pic:before {
+		content: '';
+		position: absolute;
+		background: url(../images/me.jpg) no-repeat center;
+		background-size: cover;
+		width: 100%;
+		right: 0;
+		top: 0;
+		z-index: 1;
+	}
 
 /* Desktop */
 
@@ -2307,11 +2310,11 @@
 
 			#me {
 				padding: 0;
-				margin-right: 3rem; 
+				margin-right: 3rem;
 				height: 20em;
 			}
 
-				#me .pic {
+				#me header .pic {
 					text-decoration: none;
 					display: block;
 					position: relative;
@@ -2319,48 +2322,12 @@
 					height: 100%;
 				}
 
-					#me .pic img {
-						position: relative;
-						display: block;
-						border-radius:5px;
-						height: 100%;
-					}
-
-					#me .pic .arrow {
-						display: block;
-						position: absolute;
-						right: 0;
-						top: 50%;
-						margin-top: -1.375em;
-						width: 2.75em;
-						height: 2.75em;
-						background: #000;
-						background: rgba(0, 0, 0, 0.75);
-						color: #ffffff;
-						text-align: center;
-						font-size: 1.5em;
-						z-index: 1;
-						-moz-transition: width .15s ease-in-out, padding-right .15s ease-in-out;
-						-webkit-transition: width .15s ease-in-out, padding-right .15s ease-in-out;
-						-ms-transition: width .15s ease-in-out, padding-right .15s ease-in-out;
-						transition: width .15s ease-in-out, padding-right .15s ease-in-out;
-					}
-
-						#me .pic .arrow:before {
-							position: relative;
-							padding-right: 0;
-							top: 0.125em;
-						}
-
-						#me .pic .arrow span {
-							display: block;
-							text-indent: -9999px;
-						}
-
-					#me .pic:hover .arrow {
-						width: 3em;
-					}
-
+				#me header > .pic img {
+					position: relative;
+					display: block;
+					border-radius:5px;
+					height: 100%;
+				}
 				#me header {
 					position: absolute;
 					left: 0;
@@ -2391,7 +2358,12 @@
 	}
 
 /* Mobile */
-
+	@media screen and (min-width: 736px){
+		#me header {
+			padding-right: 521.46px;
+			width: 100%;
+		}
+	}
 	@media screen and (max-width: 736px) {
 
 		/* Basic */
@@ -2446,21 +2418,21 @@
 
 		/* Me */
 
-			#me .pic {
+			#me header .pic {
 				width: 100%;
 				padding-bottom: 1rem;
 				
 			}
 
-				#me .pic img {
+				#me header .pic img {
 					display: block;
-					border-radius:5px;
+					border-radius:10px;
 					width: 100%;
 				}
 
-				#me .pic .arrow {
-					display: none;
-				}
+				/*#me .header .pic .arrow {*/
+					/*display: none;*/
+				/*}*/
 
 			#me header {
 				text-align: center;
