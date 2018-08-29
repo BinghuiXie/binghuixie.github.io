@@ -1362,6 +1362,14 @@
 						#nav ul.links li.active ul.submenu li a {
 							color: #000;
 						}
+						.submenu{
+							color: #000000;
+						}
+						@media screen and (max-width: 980px){
+							#nav ul.links li.active ul.submenu li a {
+								color: #000;
+							}
+						}
 
 						#nav ul.links li.active a:hover {
 							color: #1E90FF !important;
@@ -1864,7 +1872,7 @@
 	#copyright {
 		color: #ffffff;
 		position: relative;
-		color: rgba(255, 255, 255, 0.25);
+		color: rgba(255, 255, 255, 0.8);
 		cursor: default;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 0.8rem;
@@ -2065,6 +2073,9 @@
 	#navPanel .links li a
 	{
 		color: #fff;
+	}
+	#navPanel nav > .links .active > .submenu a{
+		color: black;
 	}
 }
 		@media screen and (min-width:1200px ){

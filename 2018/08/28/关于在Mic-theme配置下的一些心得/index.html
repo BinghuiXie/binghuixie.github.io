@@ -98,7 +98,7 @@
 	            <a href="#s1">categories</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="archive-link" href="/archives/2018/08/">August 2018</a></li><li><a class="archive-link" href="/archives/2018/05/">May 2018</a>
+	                        <a class="archive-link" href="/archives/2018/08/">August 2018</a>
 	                    </ul>
 	        </li>
 	        
@@ -156,7 +156,13 @@
 <p>然而我们刚配置好的博客打开来看文章背后是一片空白，就像这样子<br><img src="https://i.imgur.com/XEWVHa6.jpg" alt=""><br>那怎么样才能达到官网样例的效果呢？仔细阅读官网的readme.md文档，发现里面有这样一个参数：<code>thumbnail</code>，后面加的注释意为缩略图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: # 文章标题  </span><br><span class="line">    date: 2017/3/27 13:48:25  # 文章发表时间</span><br><span class="line">    tags:</span><br><span class="line">    - 标签1</span><br><span class="line">    - 标签2 (可选)</span><br><span class="line">    categories: Algorithm # 分类</span><br><span class="line">    thumbnail: https://xxxxxxxxxx.png # 略缩图</span><br></pre></td></tr></table></figure></p>
 <p>可能我们第一眼看上去并没有看懂这个缩略图的意思，但是通读整篇文档，最有可能的就是这个了，那么我们按照文档里面给出的格式进行配置，因为我这里用到的是MarkdownPad2，可以直击添加图片，但这里注意一点，利用MarkdownPad2上传的图片链接的格式是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https://xxxxxxxxxxxxx.png)</span><br></pre></td></tr></table></figure></p>
 <p>而文档中要求只需要https后面的东西，所以生成链接后直接拿出<a href="https://xxxxxxxxx.png部分，添加到文章头部的参数" target="_blank" rel="noopener">https://xxxxxxxxx.png部分，添加到文章头部的参数</a><code>thumbnail</code>后面，然后<strong>保存</strong>，执行hexo s，再次打开的效果就和例子里面的一样了φ(≧ω≦*)♪，OK大功告成!<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 关于在Mic theme配置下的一些心得</span><br><span class="line">date: 2018-08-28 15:21:07</span><br><span class="line">tags: Mic_theme hexo blog</span><br><span class="line">thumbnail: https://i.imgur.com/OBxizjH.jpg</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
-<p>最终效果如图<br><img src="https://i.imgur.com/Du5Aa7v.jpg" alt=""><br><a name="myAchor5"></a><br><a name="myAchor6"></a></p>
+<p>最终效果如图<br><img src="https://i.imgur.com/Du5Aa7v.jpg" alt=""><br><a name="myAchor5"></a></p>
+<h2 id="5-自定义样式"><a href="#5-自定义样式" class="headerlink" title="5.自定义样式"></a>5.自定义样式</h2><p>说起来自己的博客肯定希望有点自己的个性，所以免不了就会想着这里改动一下，那里改动一下，然而直接在主题配置文件里修改如果还达不到个人的口味，就会希望一些更直接的修改，所以在这里我介绍一下直接对css文件进行修改的方法，我自己也在这里面改了不少了<br>首先：主css文件在themes\hexo-theme-Mic_Theme\source\css下的mic_main.css文件中，打开来一看，有4000多行，那跑不了了，就是它了，我们只需要找到对应的选择器，即可在里面进行修改，同时该css文件中也加入了响应式的写法，同样可以自己修改，下面是我自己修改的几个例子：</p>
+<p><strong>1.导航栏样式的修改</strong><br>在mic_main.css文件1382行左右，可以看到这样一段代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-width: 980px) &#123;</span><br><span class="line">	#nav &#123;</span><br><span class="line">		display: none;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>也就是说在屏幕宽度小于等于980px的时候，默认的导航栏样式消失，至于消失的导航栏去了哪，可以在博客界面右上角看到多了一个<code>menu</code>按钮，点开来看导航都在里面，同时在mic_main.css文2012行有如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-width: 980px) &#123;</span><br><span class="line">	#navPanelToggle &#123;</span><br><span class="line">		display: block;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>意思很简单，就是显示那个<code>menu</code>按钮，这里面我们可以修改一下边界的宽度，因为现在主流的四种设备即为大屏，中屏，小屏，超小屏，其分类的边界为1200px,992px,768px,即1200px以上是大屏，也就是我们电脑或者显示器的屏幕，992px~1200px为中屏，一般是桌面显示器，768px~992px是小屏幕，一般是平板等，再往下小于768px的就是移动端也就是我们的手机了(以上数据来自于bootstrap的媒体查询宽度)，所以如果你觉得980px别扭的话，可以修改为其他值。<br>点开<code>menu</code>菜单，除了几个链接，就是白白的背景，我们可以为背景加上自己喜欢的图片，设置方法:<br>找到mic_main.css文件里面的id=#navPanel（可以在控制台里面直接找到），在其伪类before下添加背景图片的代码(mic_main.css下2053行上下),下面是我修改后的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#navPanel:before&#123;</span><br><span class="line">	content: &quot;&quot;;</span><br><span class="line">	background: url(../images/me2.jpg) center no-repeat;</span><br><span class="line">	position: absolute;</span><br><span class="line">	width: 100%;</span><br><span class="line">	height: 100%;</span><br><span class="line">	background-size: cover;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	top: 0;</span><br><span class="line">	left: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再次打开观察效果<br><img src="https://i.imgur.com/zsK4dst.jpg" alt=""></p>
+<p>酷的一批啊，哈哈<br>（<strong>ps</strong>:原来的文字是黑色的，大家可以自行修改，为了对比明显，我将其改为了白色）<br><a name="myAchor6"></a></p>
 
             </div>
 
@@ -248,10 +254,10 @@ $('.btn_click_load').click(function() {
         </div>
         <!-- Copyright 版权 start -->
                 <div id="copyright">
-            <ul>
-                <li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
-                <li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
-            </ul>
+            <!--<ul>-->
+                <!--<li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>-->
+                <!--<li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>-->
+            <!--</ul>-->
             
             	<span id="busuanzi_container_site_pv">2018总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 			
