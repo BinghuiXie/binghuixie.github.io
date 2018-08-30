@@ -12,6 +12,7 @@
     <meta name="baidu-site-verification" content="cwuaQdioe5" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="../../../../source/plugins/prettify/prettify.css">
     <link rel="stylesheet" href="/css/dropdownMenu.css" />
     <meta name="keywords" content="html css" />
     
@@ -63,6 +64,13 @@
     <script src="/js/skel.min.js"></script>
     <script src="/js/util.js"></script>
     <script src="/js/main.js"></script>
+    <script src="../../../../source/plugins/prettify/prettify.js"></script>
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+            prettyPrint();
+        })
+    </script>
 	
 </head>
     
@@ -145,8 +153,74 @@
 <li>支持其他浏览器            针对其他浏览器直接添加事件onmousewheel即可</li>
 </ol>
 <p>还有一点两类浏览器不同的地方在于：<br>Firefox浏览器在判断鼠标滚轮滚动的方向时与其他浏览器方向相反，其余四类浏览器使用event对象里面的wheelDelta事件来进行对鼠标滚动的判断。它的取值有两个，分别是+120和-120，+120表示滚轮向上滚动，-120表示滚轮向下滚动<br>在Firefox中，使用event对象那个里面的detail事件来判断滚轮滚动的方向，同样取值有两个，分别为+3和-3，与另外四类浏览器不同的是，向上滚的时候detail的值是-3，向下滚是+3</p>
-<p>下面请看代码实例–通过滚动鼠标滚轮，可以使输入框内的数字变大变小，同时可以在控制台内输出不同浏览器里面两种事件wheelDelta和detail的值，读者可以亲自验证后加深理解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;01 鼠标滚轮事件&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body&#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; value=&quot;1&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = function (ev) &#123;</span><br><span class="line">        /*根据浏览器的不同赋不同的值*/</span><br><span class="line">        var mouseWheel = navigator.userAgent.indexOf(&apos;Firefox&apos;) &gt;= 0 ? &apos;DOMMouseScroll&apos;: &apos;mouseWheel&apos;;</span><br><span class="line"></span><br><span class="line">        var numVal = document.querySelector(&quot;input&quot;).value;</span><br><span class="line">        /*打印当前输入框内的value值*/</span><br><span class="line">        console.log(numVal);</span><br><span class="line"></span><br><span class="line">        if (document.addEventListener)&#123;</span><br><span class="line">            /*火狐浏览器*/</span><br><span class="line">            /*使用addEventListener监听DOMMouseScroll事件*/</span><br><span class="line">            document.addEventListener(&apos;DOMMouseScroll&apos;,function (e) &#123;</span><br><span class="line">                e = e || window.event;</span><br><span class="line">                if (e.detail &gt; 0)&#123;</span><br><span class="line">                    /*向下滚*/</span><br><span class="line">                    console.log(e.detail);</span><br><span class="line">                    numVal--;</span><br><span class="line">                    document.querySelector(&quot;input&quot;).value = numVal;</span><br><span class="line">                &#125;else if (e.detail &lt; 0)&#123;</span><br><span class="line">                    /*向上滚*/</span><br><span class="line">                    console.log(e.detail);</span><br><span class="line">                    numVal++;</span><br><span class="line">                    document.querySelector(&quot;input&quot;).value = numVal;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,false);</span><br><span class="line">            /*其他浏览器*/</span><br><span class="line">            /*onmousewheel  直接绑定鼠标滚轮滚动事件*/</span><br><span class="line">            window.onmousewheel = function (e) &#123;</span><br><span class="line">                if (e.wheelDelta)&#123;</span><br><span class="line">                    if (e.wheelDelta &gt; 0)&#123;</span><br><span class="line">                        console.log(e.wheelDelta);</span><br><span class="line">                        // console.log(&quot;上&quot;);</span><br><span class="line">                        numVal++;</span><br><span class="line">                        // console.log(numVal);</span><br><span class="line">                        document.querySelector(&quot;input&quot;).value = numVal;</span><br><span class="line">                    &#125;else if (e.wheelDelta &lt; 0)&#123;</span><br><span class="line">                        console.log(e.wheelDelta);</span><br><span class="line">                        // console.log(&quot;下&quot;);</span><br><span class="line">                        numVal--;</span><br><span class="line">                        // console.log(numVal);</span><br><span class="line">                        document.querySelector(&quot;input&quot;).value = numVal;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>下面请看代码实例–通过滚动鼠标滚轮，可以使输入框内的数字变大变小，同时可以在控制台内输出不同浏览器里面两种事件wheelDelta和detail的值，读者可以亲自验证后加深理解</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;01 鼠标滚轮事件&lt;/title&gt;
+    &lt;style&gt;
+        body{
+            margin: 0;
+            padding: 0;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;input type=&quot;text&quot; value=&quot;1&quot;&gt;
+&lt;script&gt;
+    window.onload = function (ev) {
+        /*根据浏览器的不同赋不同的值*/
+        var mouseWheel = navigator.userAgent.indexOf(&#39;Firefox&#39;) &gt;= 0 ? &#39;DOMMouseScroll&#39;: &#39;mouseWheel&#39;;
 
+        var numVal = document.querySelector(&quot;input&quot;).value;
+        /*打印当前输入框内的value值*/
+        console.log(numVal);
+
+        if (document.addEventListener){
+            /*火狐浏览器*/
+            /*使用addEventListener监听DOMMouseScroll事件*/
+            document.addEventListener(&#39;DOMMouseScroll&#39;,function (e) {
+                e = e || window.event;
+                if (e.detail &gt; 0){
+                    /*向下滚*/
+                    console.log(e.detail);
+                    numVal--;
+                    document.querySelector(&quot;input&quot;).value = numVal;
+                }else if (e.detail &lt; 0){
+                    /*向上滚*/
+                    console.log(e.detail);
+                    numVal++;
+                    document.querySelector(&quot;input&quot;).value = numVal;
+                }
+            },false);
+            /*其他浏览器*/
+            /*onmousewheel  直接绑定鼠标滚轮滚动事件*/
+            window.onmousewheel = function (e) {
+                if (e.wheelDelta){
+                    if (e.wheelDelta &gt; 0){
+                        console.log(e.wheelDelta);
+                        // console.log(&quot;上&quot;);
+                        numVal++;
+                        // console.log(numVal);
+                        document.querySelector(&quot;input&quot;).value = numVal;
+                    }else if (e.wheelDelta &lt; 0){
+                        console.log(e.wheelDelta);
+                        // console.log(&quot;下&quot;);
+                        numVal--;
+                        // console.log(numVal);
+                        document.querySelector(&quot;input&quot;).value = numVal;
+                    }
+                }
+            }
+        }
+
+
+    }
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
             </div>
 
             <!-- Post Comments -->

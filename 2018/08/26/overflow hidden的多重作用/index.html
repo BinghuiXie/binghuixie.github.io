@@ -12,6 +12,7 @@
     <meta name="baidu-site-verification" content="cwuaQdioe5" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="../../../../source/plugins/prettify/prettify.css">
     <link rel="stylesheet" href="/css/dropdownMenu.css" />
     <meta name="keywords" content="html css" />
     
@@ -63,6 +64,13 @@
     <script src="/js/skel.min.js"></script>
     <script src="/js/util.js"></script>
     <script src="/js/main.js"></script>
+    <script src="../../../../source/plugins/prettify/prettify.js"></script>
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+            prettyPrint();
+        })
+    </script>
 	
 </head>
     
@@ -139,15 +147,150 @@
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h1 id="overflow-hidden的多重作用"><a href="#overflow-hidden的多重作用" class="headerlink" title="overflow:hidden的多重作用"></a>overflow:hidden的多重作用</h1><h2 id="1-第一个当然就是最常见也最常用的溢出隐藏啦"><a href="#1-第一个当然就是最常见也最常用的溢出隐藏啦" class="headerlink" title="1.第一个当然就是最常见也最常用的溢出隐藏啦"></a>1.第一个当然就是最常见也最常用的溢出隐藏啦</h2><p>OK，首先是没有加overflow:hidden时的效果<br><img src="https://i.imgur.com/ofF2njL.png" alt=""><br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;镂空测试&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body&#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .parentBox&#123;</span><br><span class="line">            width: 200px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            background-color: yellow;</span><br><span class="line">        &#125;</span><br><span class="line">        .childBox&#123;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 300px;</span><br><span class="line">            background-color: #2b542c;</span><br><span class="line">            z-index: 99;</span><br><span class="line">            margin-left: 15px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;parentBox&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;childBox&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>这个效果的形成非常好理解，我们直接看加入overflow:hidden之后的效果<br><img src="https://i.imgur.com/zmphP17.png" alt=""><br>部分代码如下（其余部分不变）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.parentBox&#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background-color: yellow;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以看出子元素超出父元素的部分隐藏掉了，这里要注意一点：<strong>overflow:hidden一定是设置在父容器上面才能让子容器隐藏！</strong></p>
-<h2 id="2-第二个可能不太常用，那就是清除浮动"><a href="#2-第二个可能不太常用，那就是清除浮动" class="headerlink" title="2.第二个可能不太常用，那就是清除浮动"></a>2.第二个可能不太常用，那就是清除浮动</h2><p>在css常见的一种高度设置就是用子容器来撑开父容器的高度，这样不用给父容器设置高度，只需要依靠子容器自己的内容，边距等撑开高度，然而，当我们这个子容器设置了浮动属性后，效果就是下面这个样子：<br><img src="https://i.imgur.com/TZAQy4X.png" alt=""><br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;镂空测试&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body&#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .parentBox&#123;</span><br><span class="line">            padding: 25px;</span><br><span class="line">            width: 200px;</span><br><span class="line">            background-color: yellow;</span><br><span class="line">        &#125;</span><br><span class="line">        .childBox&#123;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 300px;</span><br><span class="line">            background-color: #2b542c;</span><br><span class="line">            margin-left: 15px;</span><br><span class="line">            float: left;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;parentBox&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;childBox&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>为什么会有这个样子，为什么子容器没有撑开父容器的高度？原因在这里：子容器设置float属性后（这里是float:left），脱离了原本的文档流，可以这么理解，在设置float属性前，子容器与它的父容器是出于同一个平面上的，我们暂且把这个平面叫做文档流，这样因为在同一平面，所以子容器有什么变化都会影响到父容器，所以给子容器设置高度能撑开父容器，而设置了float属性后，子容器脱离原本的文档流，从浏览器里面可以看到子容器是在父容器上面，用“平面”来解释就是子容器到了一个比父容器高那么一点的另一个平面上（实际上并不存在，类比去理解），那么在这个平面上子容器不管进行什么动作都不会影响父容器，也自然不会撑开父容器的高度了（在本例中与float属性有同样效果的还有position:absolute，也就是绝对定位和position:fixed固定定位，他们也会让元素脱离当前的文档流）<br>然而在给父容器设置了overflow:hidden后，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.parentBox&#123;</span><br><span class="line">    padding: 25px;</span><br><span class="line">    width: 200px;</span><br><span class="line">    background-color: yellow;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://i.imgur.com/eacSRR4.png" alt=""><br><strong>注意子元素此时是设置的float属性，如果设置了上文说到的position两个属性，那么overflow:hidden不会有效果</strong></p>
-<h2 id="3-第三个作用与第二个差不多，也是消除浮动的影响，通过overflow-hidden来实现自适应布局"><a href="#3-第三个作用与第二个差不多，也是消除浮动的影响，通过overflow-hidden来实现自适应布局" class="headerlink" title="3.第三个作用与第二个差不多，也是消除浮动的影响，通过overflow:hidden来实现自适应布局"></a>3.第三个作用与第二个差不多，也是消除浮动的影响，通过overflow:hidden来实现自适应布局</h2><p>直接代码+效果说话<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;镂空测试&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body&#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .contentBox1&#123;</span><br><span class="line">            width: 200px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            background-color: yellow;</span><br><span class="line">            float: left;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;contentBox1&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;contentBox2&quot;&gt;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span><br><span class="line">    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://i.imgur.com/qVrALp7.png" alt=""><br>为什么会有这样的效果？因为float的初衷就是也只是实现文字环绕效果，只不过后来人们用它来布局，慢慢的就舍弃了它的本质了<br>然后我们给第二个div加上overflow:hidden属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.contentBox2&#123;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>现在的效果：<br><img src="https://i.imgur.com/Xl6ZPPu.png" alt=""><br>可以看到的是，文字全被“挤到”了右侧，就想是两个div之间插入了一堵无形的墙把两个div给隔开了（<strong>这样的结构满足了流式布局的要求，可以作为左侧固定，右侧自适应的一个模板，即两栏自适应</strong>）<br>关于overflow:hidden为什么能清除浮动，我会在另一篇博文中详细解释</p>
+                <h1 id="overflow-hidden的多重作用"><a href="#overflow-hidden的多重作用" class="headerlink" title="overflow:hidden的多重作用"></a>overflow:hidden的多重作用</h1><h2 id="1-第一个当然就是最常见也最常用的溢出隐藏啦"><a href="#1-第一个当然就是最常见也最常用的溢出隐藏啦" class="headerlink" title="1.第一个当然就是最常见也最常用的溢出隐藏啦"></a>1.第一个当然就是最常见也最常用的溢出隐藏啦</h2><p>OK，首先是没有加overflow:hidden时的效果<br><img src="https://i.imgur.com/ofF2njL.png" alt=""><br>代码如下：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;镂空测试&lt;/title&gt;
+    &lt;style&gt;
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .parentBox{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+        .childBox{
+            width: 100px;
+            height: 300px;
+            background-color: #2b542c;
+            z-index: 99;
+            margin-left: 15px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;parentBox&quot;&gt;
+    &lt;div class=&quot;childBox&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>这个效果的形成非常好理解，我们直接看加入overflow:hidden之后的效果<br><img src="https://i.imgur.com/zmphP17.png" alt=""><br>部分代码如下（其余部分不变）：</p>
+<pre><code>.parentBox{
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    overflow: hidden;
+}
+</code></pre><p>可以看出子元素超出父元素的部分隐藏掉了，这里要注意一点：<strong>overflow:hidden一定是设置在父容器上面才能让子容器隐藏！</strong></p>
+<h2 id="2-第二个可能不太常用，那就是清除浮动"><a href="#2-第二个可能不太常用，那就是清除浮动" class="headerlink" title="2.第二个可能不太常用，那就是清除浮动"></a>2.第二个可能不太常用，那就是清除浮动</h2><p>在css常见的一种高度设置就是用子容器来撑开父容器的高度，这样不用给父容器设置高度，只需要依靠子容器自己的内容，边距等撑开高度，然而，当我们这个子容器设置了浮动属性后，效果就是下面这个样子：<br><img src="https://i.imgur.com/TZAQy4X.png" alt=""><br>代码如下：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;镂空测试&lt;/title&gt;
+    &lt;style&gt;
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .parentBox{
+            padding: 25px;
+            width: 200px;
+            background-color: yellow;
+        }
+        .childBox{
+            width: 100px;
+            height: 300px;
+            background-color: #2b542c;
+            margin-left: 15px;
+            float: left;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;parentBox&quot;&gt;
+    &lt;div class=&quot;childBox&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>为什么会有这个样子，为什么子容器没有撑开父容器的高度？原因在这里：子容器设置float属性后（这里是float:left），脱离了原本的文档流，可以这么理解，在设置float属性前，子容器与它的父容器是出于同一个平面上的，我们暂且把这个平面叫做文档流，这样因为在同一平面，所以子容器有什么变化都会影响到父容器，所以给子容器设置高度能撑开父容器，而设置了float属性后，子容器脱离原本的文档流，从浏览器里面可以看到子容器是在父容器上面，用“平面”来解释就是子容器到了一个比父容器高那么一点的另一个平面上（实际上并不存在，类比去理解），那么在这个平面上子容器不管进行什么动作都不会影响父容器，也自然不会撑开父容器的高度了（在本例中与float属性有同样效果的还有position:absolute，也就是绝对定位和position:fixed固定定位，他们也会让元素脱离当前的文档流）<br>然而在给父容器设置了overflow:hidden后，</p>
+<pre><code>.parentBox{
+    padding: 25px;
+    width: 200px;
+    background-color: yellow;
+    overflow: hidden;
+}
+</code></pre><p><img src="https://i.imgur.com/eacSRR4.png" alt=""><br><strong>注意子元素此时是设置的float属性，如果设置了上文说到的position两个属性，那么overflow:hidden不会有效果</strong></p>
+<h2 id="3-第三个作用与第二个差不多，也是消除浮动的影响，通过overflow-hidden来实现自适应布局"><a href="#3-第三个作用与第二个差不多，也是消除浮动的影响，通过overflow-hidden来实现自适应布局" class="headerlink" title="3.第三个作用与第二个差不多，也是消除浮动的影响，通过overflow:hidden来实现自适应布局"></a>3.第三个作用与第二个差不多，也是消除浮动的影响，通过overflow:hidden来实现自适应布局</h2><p>直接代码+效果说话</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;镂空测试&lt;/title&gt;
+    &lt;style&gt;
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .contentBox1{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            float: left;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;contentBox1&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;contentBox2&quot;&gt;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src="https://i.imgur.com/qVrALp7.png" alt=""><br>为什么会有这样的效果？因为float的初衷就是也只是实现文字环绕效果，只不过后来人们用它来布局，慢慢的就舍弃了它的本质了<br>然后我们给第二个div加上overflow:hidden属性</p>
+<pre><code>.contentBox2{
+    overflow: hidden;
+}
+</code></pre><p>现在的效果：<br><img src="https://i.imgur.com/Xl6ZPPu.png" alt=""><br>可以看到的是，文字全被“挤到”了右侧，就想是两个div之间插入了一堵无形的墙把两个div给隔开了（<strong>这样的结构满足了流式布局的要求，可以作为左侧固定，右侧自适应的一个模板，即两栏自适应</strong>）<br>关于overflow:hidden为什么能清除浮动，我会在另一篇博文中详细解释</p>
 
             </div>
 
