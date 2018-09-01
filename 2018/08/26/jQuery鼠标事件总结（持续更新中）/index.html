@@ -145,74 +145,8 @@
 <li>支持其他浏览器            针对其他浏览器直接添加事件onmousewheel即可</li>
 </ol>
 <p>还有一点两类浏览器不同的地方在于：<br>Firefox浏览器在判断鼠标滚轮滚动的方向时与其他浏览器方向相反，其余四类浏览器使用event对象里面的wheelDelta事件来进行对鼠标滚动的判断。它的取值有两个，分别是+120和-120，+120表示滚轮向上滚动，-120表示滚轮向下滚动<br>在Firefox中，使用event对象那个里面的detail事件来判断滚轮滚动的方向，同样取值有两个，分别为+3和-3，与另外四类浏览器不同的是，向上滚的时候detail的值是-3，向下滚是+3</p>
-<p>下面请看代码实例–通过滚动鼠标滚轮，可以使输入框内的数字变大变小，同时可以在控制台内输出不同浏览器里面两种事件wheelDelta和detail的值，读者可以亲自验证后加深理解</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;01 鼠标滚轮事件&lt;/title&gt;
-    &lt;style&gt;
-        body{
-            margin: 0;
-            padding: 0;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;input type=&quot;text&quot; value=&quot;1&quot;&gt;
-&lt;script&gt;
-    window.onload = function (ev) {
-        /*根据浏览器的不同赋不同的值*/
-        var mouseWheel = navigator.userAgent.indexOf(&#39;Firefox&#39;) &gt;= 0 ? &#39;DOMMouseScroll&#39;: &#39;mouseWheel&#39;;
+<p>下面请看代码实例–通过滚动鼠标滚轮，可以使输入框内的数字变大变小，同时可以在控制台内输出不同浏览器里面两种事件wheelDelta和detail的值，读者可以亲自验证后加深理解<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>01 鼠标滚轮事件<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        body&#123;</span></span><br><span class="line"><span class="undefined">            margin: 0;</span></span><br><span class="line"><span class="undefined">            padding: 0;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">/*根据浏览器的不同赋不同的值*/</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> mouseWheel = navigator.userAgent.indexOf(<span class="string">'Firefox'</span>) &gt;= <span class="number">0</span> ? <span class="string">'DOMMouseScroll'</span>: <span class="string">'mouseWheel'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> numVal = <span class="built_in">document</span>.querySelector(<span class="string">"input"</span>).value;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">/*打印当前输入框内的value值*/</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(numVal);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="built_in">document</span>.addEventListener)&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">/*火狐浏览器*/</span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">/*使用addEventListener监听DOMMouseScroll事件*/</span></span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.addEventListener(<span class="string">'DOMMouseScroll'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                e = e || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">if</span> (e.detail &gt; <span class="number">0</span>)&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">/*向下滚*/</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(e.detail);</span></span><br><span class="line"><span class="undefined">                    numVal--;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.querySelector(<span class="string">"input"</span>).value = numVal;</span></span><br><span class="line"><span class="actionscript">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (e.detail &lt; <span class="number">0</span>)&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">/*向上滚*/</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(e.detail);</span></span><br><span class="line"><span class="undefined">                    numVal++;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.querySelector(<span class="string">"input"</span>).value = numVal;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="actionscript">            &#125;,<span class="literal">false</span>);</span></span><br><span class="line"><span class="actionscript">            <span class="comment">/*其他浏览器*/</span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">/*onmousewheel  直接绑定鼠标滚轮滚动事件*/</span></span></span><br><span class="line"><span class="javascript">            <span class="built_in">window</span>.onmousewheel = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">if</span> (e.wheelDelta)&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">if</span> (e.wheelDelta &gt; <span class="number">0</span>)&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(e.wheelDelta);</span></span><br><span class="line"><span class="actionscript">                        <span class="comment">// console.log("上");</span></span></span><br><span class="line"><span class="undefined">                        numVal++;</span></span><br><span class="line"><span class="actionscript">                        <span class="comment">// console.log(numVal);</span></span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.querySelector(<span class="string">"input"</span>).value = numVal;</span></span><br><span class="line"><span class="actionscript">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (e.wheelDelta &lt; <span class="number">0</span>)&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(e.wheelDelta);</span></span><br><span class="line"><span class="actionscript">                        <span class="comment">// console.log("下");</span></span></span><br><span class="line"><span class="undefined">                        numVal--;</span></span><br><span class="line"><span class="actionscript">                        <span class="comment">// console.log(numVal);</span></span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.querySelector(<span class="string">"input"</span>).value = numVal;</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 
-        var numVal = document.querySelector(&quot;input&quot;).value;
-        /*打印当前输入框内的value值*/
-        console.log(numVal);
-
-        if (document.addEventListener){
-            /*火狐浏览器*/
-            /*使用addEventListener监听DOMMouseScroll事件*/
-            document.addEventListener(&#39;DOMMouseScroll&#39;,function (e) {
-                e = e || window.event;
-                if (e.detail &gt; 0){
-                    /*向下滚*/
-                    console.log(e.detail);
-                    numVal--;
-                    document.querySelector(&quot;input&quot;).value = numVal;
-                }else if (e.detail &lt; 0){
-                    /*向上滚*/
-                    console.log(e.detail);
-                    numVal++;
-                    document.querySelector(&quot;input&quot;).value = numVal;
-                }
-            },false);
-            /*其他浏览器*/
-            /*onmousewheel  直接绑定鼠标滚轮滚动事件*/
-            window.onmousewheel = function (e) {
-                if (e.wheelDelta){
-                    if (e.wheelDelta &gt; 0){
-                        console.log(e.wheelDelta);
-                        // console.log(&quot;上&quot;);
-                        numVal++;
-                        // console.log(numVal);
-                        document.querySelector(&quot;input&quot;).value = numVal;
-                    }else if (e.wheelDelta &lt; 0){
-                        console.log(e.wheelDelta);
-                        // console.log(&quot;下&quot;);
-                        numVal--;
-                        // console.log(numVal);
-                        document.querySelector(&quot;input&quot;).value = numVal;
-                    }
-                }
-            }
-        }
-
-
-    }
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
             </div>
 
             <!-- Post Comments -->

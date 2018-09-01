@@ -143,179 +143,26 @@
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>言归正传,第一次写这篇文章，主要有以下几个内容<br>1.<a href="#myAchor1">更换背景</a><br>2.<a href="#myAchor2">更换intro部分介绍</a><br>3.<a href="#myAchor3">更换导航栏样式</a><br>4.<a href="#myAchor4">给每一篇文章添加缩略图</a><br>5.<a href="#myAchor5">自定义样式</a><br>6.<a href="#myAchor6">自定义html文件</a></p>
 <p><strong>以下是详细讲解</strong></p>
 <p><a name="myAchor1"></a></p>
-<h2 id="1-更换背景"><a href="#1-更换背景" class="headerlink" title="1.更换背景"></a>1.更换背景</h2><p>更换背景就是说更换在文章“下面”fixed的图片，初期下载下来Mic_theme的时候背景图片是这个<br><img src="https://i.imgur.com/jHI1qWE.jpg" alt=""><br>我们在从<strong>github</strong>里面<strong>clone</strong>下来的 <strong>hexo-theme-Mic_theme-&gt;readme.md</strong>里面可以看到这样的说法</p>
-<pre><code>3.主页背景图片：默认链接是在主站以下目录的 &quot;img/bg.jpg&quot; 就代表&quot;miccall.tech/img/bg.jpg&quot; 暂不支持外链
-    **backgroundpic :** &quot;img/bg.jpg&quot;
-</code></pre><p>在对应的主题配置文件(Mic_theme里面的主题配置文件)_config.yml可以看到如下的参数配置（我是用webstorm打开的）<br><img src="https://i.imgur.com/gfBDbSO.jpg" alt=""><br>其中backgroundpic的值是背景图片的链接，图片名是bg.jpg<br>所以在更换背景时，只需要更改链接就可以了，只需要注意一点，图片必须在themes\hexo-theme-Mic_Theme\source\img目录下才可以直接根据图片名添加，否则没有效果<br>ps:<br>获取图片链接的代码在:themes\hexo-theme-Mic_Theme\source\img\head.ejs里面，代码如下</p>
-<pre><code>body:before {
-          content: &#39; &#39;;
-          position: fixed;
-          top: 0;
-          background: url(&#39;&lt;%- config.root %&gt;&lt;%- theme.head.backgroundpic%&gt;&#39;) center 0 no-repeat;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          background-size: cover; 
-        }
-</code></pre><p><a name="myAchor2"></a></p>
-<h2 id="2-更换intro部分介绍"><a href="#2-更换intro部分介绍" class="headerlink" title="2.更换intro部分介绍"></a>2.更换intro部分介绍</h2><p>首先，默认的intro介绍是这样子的<br><img src="https://i.imgur.com/fl90gO5.jpg" alt=""><br>我们想要改成自己的介绍，需要在themes\hexo-theme-Mic_Theme里面的<code>_config.yml</code>主题配置文件里面进行设置，直接在文件里面修改对应的值即可，这个是我自己修改后的介绍</p>
-<pre><code>Intro:
-    name: 不会拉小提琴的左脚&lt;sub&gt;的博客&lt;/sub&gt;
-    slogan: &quot;Welcome to my blog page&quot;
-    HeadButton: home page
-
-</code></pre><p>在_config.yml文件中配置的时候，可以直接通过html的标签来实现文字的一些效果，比如我用到了<code>sub</code>标签，实现了下角标的效果<br><img src="https://i.imgur.com/gkDcmbc.jpg" alt=""><br>同样，如果有小伙伴好奇这个THIS IS是怎么出现的，可以在themes\hexo-theme-Mic_Theme\layout_partial下面的intro.ejs文件里面找到对应的html代码，并可以做出相应的修改</p>
-<pre><code>&lt;div id=&quot;intro&quot;&gt;
-    &lt;h1&gt;You are at&lt;br /&gt;
-                &lt;%- theme.Intro.name %&gt; &lt;/h1&gt;
-    &lt;p&gt; &lt;%- theme.Intro.slogan %&gt;
-    &lt;/p&gt;
-    &lt;ul class=&quot;actions&quot;&gt;
-        &lt;li&gt;&lt;a href=&quot;#header&quot; class=&quot;button icon solo fa-arrow-down scrolly&quot;&gt;Continue&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/div&gt;
-</code></pre><p>同时对应的css代码全部在themes\hexo-theme-Mic_Theme\source\css下面的mic_main.css中，对应的设置介绍部分的代码93~319行，这里只贴出部分代码以作示例</p>
-<pre><code>#intro h1 {
-            margin-top: 6rem;
-            letter-spacing:8px;
-            font-size: 4rem;
-            line-height: 4rem;
-            user-select: none;
-        }
-
-        #intro p {
-            font-size: 3rem;
-            font-style: italic;
-            margin-top: -0.25rem;
-            text-align: center;
-            user-select: none;
-        }
-@media screen and (max-width: 500px) {
-
-            #intro {
-                padding: 3rem 2rem 1rem 2rem ;
-                min-height: 80vh;
-            }
-
-                #intro h1 {
-                    font-size: 5rem;
-                    line-height: 1.1;
-                    margin-bottom: 7rem;
-                }
-
-                #intro p {
-                    font-size: 1rem;
-                    margin-top: 0rem;
-                }
-
-                #intro .actions {
-                    display: none;
-                }
-
-        }
-</code></pre><p><a name="myAchor3"></a></p>
-<h2 id="3-更换导航栏样式"><a href="#3-更换导航栏样式" class="headerlink" title="3.更换导航栏样式"></a>3.更换导航栏样式</h2><p>默认的导航栏样式如下：<br><img src="https://i.imgur.com/QsnyvXb.jpg" alt=""><br>如图所示，大致可分为两个部分，左边是个人信息等的导航(当然不止这些，可以自行设置),右边是设置导航栏的图片，默认有github和500px,下面我们来自己进行一下配置<br>首先，我们来看官方的readme.md文档:</p>
-<pre><code>    Home_name: 主页 # 主页名字
-    is_use_categories : true # 是否启用分类
-    categories_name: 分类 # 分类名字
-    is_use_archives : false # 是否启用归档
-    archives_name: 归档 # 归档名字
-    icon: # 导航栏上的图标
-        github:
-            use: true # 是否启用
-            link: https://github.com/miccall # 点击地址
-        Twitter:
-            use: false
-            link:
-        Facebook:
-            use: false
-            link:
-        Instagram:
-            use: false
-            link:
-    pages:
-    # 自定义连接页
-    # link 的参数为相对路径，对应 hexo 目录下的 source 件夹内的相应文件夹
-        简历:
-            link: &quot;/about/&quot;
-        团队 :
-            link: &quot;/group/&quot;
-        图库 :
-            link: &quot;/gallery/&quot;
-        标签:
-            link: &quot;/tag/&quot;
-        #自定义标签名
-        #   link：“路径”
-
-    MainFirst: # 导航栏下面的主页
-        name: Miccall Metro # 大标题名字
-        description: Welcome to my Blog   # 第二标签 描述
-        pic_url: /img/me.jpg # 图片地址
-        goto_ulr: &quot;&quot; # 点击跳转
-
-    Gallery: # 图库页
-        title: Mr.metro
-        description: Just another fine responsive
-</code></pre><p>首先，左侧第一个内容<strong>主页</strong>在Home_name一栏进行设置，名字可以自定义，如改成Home Page<br>第二个分类，是否启用分类is_use_categories默认设置为true，即启用分类，可以修改为false或者删除<br>第三个归档。默认设置为false，同样可以修改参数的值来达到其他的效果，例如，设置为true后默认按时间分类<br>icon设置了右侧的图标样式，图标均取自于<a href="http://fontawesome.dashgame.com/" target="_blank" rel="noopener">fontawesome</a>可以自定义，注意github里面的link要改成自己的github地址<br>MainFisrt定义了位于导航栏下方的自我介绍的内容以及自己的图片，如果不想要，可以在themes\hexo-theme-Mic_Theme\layout_partial里面的mainfirst.ejs文件中设置display:none令其隐藏，具体代码如下:</p>
-<pre><code>&lt;div id=&quot;main&quot; style=&quot;display: none&quot;&gt;
-    &lt;!-- Main first s--&gt;
-    &lt;article id=&quot;me&quot; class=&quot;panel&quot;&gt;
-        &lt;header style=&quot;color: #000000;&quot;&gt;
-            &lt;h1&gt;&lt;%- theme.MainFirst.name  %&gt;&lt;/h1&gt;
-            &lt;p&gt;&lt;%- theme.MainFirst.description  %&gt;&lt;/p&gt;
-            &lt;a href=&quot;&lt;%- theme.MainFirst.goto_ulr  %&gt;&quot; class=&quot;jumplink pic&quot;&gt;
-                &lt;img src=&quot;&lt;%- theme.MainFirst.pic_url  %&gt;&quot; alt=&quot;&quot; /&gt;
-            &lt;/a&gt;
-        &lt;/header&gt;
-    &lt;/article&gt;
-    &lt;!-- Main first e--&gt;
-&lt;/div&gt;
-</code></pre><p><a name="myAchor4"></a></p>
+<h2 id="1-更换背景"><a href="#1-更换背景" class="headerlink" title="1.更换背景"></a>1.更换背景</h2><p>更换背景就是说更换在文章“下面”fixed的图片，初期下载下来Mic_theme的时候背景图片是这个<br><img src="https://i.imgur.com/jHI1qWE.jpg" alt=""><br>我们在从<strong>github</strong>里面<strong>clone</strong>下来的 <strong>hexo-theme-Mic_theme-&gt;readme.md</strong>里面可以看到这样的说法<br><figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span>.主页背景图片：默认链接是在主站以下目录的 <span class="string">"img/bg.jpg"</span> 就代表<span class="string">"miccall.tech/img/bg.jpg"</span> 暂不支持外链</span><br><span class="line">    **<span class="keyword">backgroundpic </span>:** <span class="string">"img/bg.jpg"</span></span><br></pre></td></tr></table></figure></p>
+<p>在对应的主题配置文件(Mic_theme里面的主题配置文件)_config.yml可以看到如下的参数配置（我是用webstorm打开的）<br><img src="https://i.imgur.com/gfBDbSO.jpg" alt=""><br>其中backgroundpic的值是背景图片的链接，图片名是bg.jpg<br>所以在更换背景时，只需要更改链接就可以了，只需要注意一点，图片必须在themes\hexo-theme-Mic_Theme\source\img目录下才可以直接根据图片名添加，否则没有效果<br>ps:<br>获取图片链接的代码在:themes\hexo-theme-Mic_Theme\source\img\head.ejs里面，代码如下<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">          <span class="attribute">content</span>: <span class="string">' '</span>;</span><br><span class="line">          <span class="attribute">position</span>: fixed;</span><br><span class="line">          <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">          <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">'&lt;%- config.root %&gt;&lt;%- theme.head.backgroundpic%&gt;'</span>) center <span class="number">0</span> no-repeat;</span><br><span class="line">          <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">          <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">          <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">          <span class="attribute">background-size</span>: cover; </span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p><a name="myAchor2"></a></p>
+<h2 id="2-更换intro部分介绍"><a href="#2-更换intro部分介绍" class="headerlink" title="2.更换intro部分介绍"></a>2.更换intro部分介绍</h2><p>首先，默认的intro介绍是这样子的<br><img src="https://i.imgur.com/fl90gO5.jpg" alt=""><br>我们想要改成自己的介绍，需要在themes\hexo-theme-Mic_Theme里面的<code>_config.yml</code>主题配置文件里面进行设置，直接在文件里面修改对应的值即可，这个是我自己修改后的介绍<br><figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">Intro:</span></span><br><span class="line"><span class="symbol">    name:</span> 不会拉小提琴的左脚<span class="params">&lt;sub&gt;</span>的博客<span class="params">&lt;/sub&gt;</span></span><br><span class="line"><span class="symbol">    slogan:</span> <span class="string">"Welcome to my blog page"</span></span><br><span class="line"><span class="symbol">    HeadButton:</span> home page</span><br></pre></td></tr></table></figure></p>
+<p>在_config.yml文件中配置的时候，可以直接通过html的标签来实现文字的一些效果，比如我用到了<code>sub</code>标签，实现了下角标的效果<br><img src="https://i.imgur.com/gkDcmbc.jpg" alt=""><br>同样，如果有小伙伴好奇这个THIS IS是怎么出现的，可以在themes\hexo-theme-Mic_Theme\layout_partial下面的intro.ejs文件里面找到对应的html代码，并可以做出相应的修改<br><figure class="highlight erb"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"intro"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>You are at<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> theme.Intro.name </span><span class="xml"><span class="tag">%&gt;</span> <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span> <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> theme.Intro.slogan </span><span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"actions"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#header"</span> <span class="attr">class</span>=<span class="string">"button icon solo fa-arrow-down scrolly"</span>&gt;</span>Continue<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>同时对应的css代码全部在themes\hexo-theme-Mic_Theme\source\css下面的mic_main.css中，对应的设置介绍部分的代码93~319行，这里只贴出部分代码以作示例<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#intro</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">truetruetrue<span class="attribute">margin-top</span>: <span class="number">6rem</span>;</span><br><span class="line">truetruetrue<span class="attribute">letter-spacing</span>:<span class="number">8px</span>;</span><br><span class="line">truetruetrue<span class="attribute">font-size</span>: <span class="number">4rem</span>;</span><br><span class="line">truetruetrue<span class="attribute">line-height</span>: <span class="number">4rem</span>;</span><br><span class="line">truetruetrue<span class="attribute">user-select</span>: none;</span><br><span class="line">truetrue&#125;</span><br><span class="line"></span><br><span class="line">truetrue<span class="selector-id">#intro</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">truetruetrue<span class="attribute">font-size</span>: <span class="number">3rem</span>;</span><br><span class="line">truetruetrue<span class="attribute">font-style</span>: italic;</span><br><span class="line">truetruetrue<span class="attribute">margin-top</span>: -<span class="number">0.25rem</span>;</span><br><span class="line">truetruetrue<span class="attribute">text-align</span>: center;</span><br><span class="line">truetruetrue<span class="attribute">user-select</span>: none;</span><br><span class="line">truetrue&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">500px</span>) &#123;</span><br><span class="line"></span><br><span class="line">truetruetrue<span class="selector-id">#intro</span> &#123;</span><br><span class="line">truetruetruetrue<span class="attribute">padding</span>: <span class="number">3rem</span> <span class="number">2rem</span> <span class="number">1rem</span> <span class="number">2rem</span> ;</span><br><span class="line">truetruetruetrue<span class="attribute">min-height</span>: <span class="number">80vh</span>;</span><br><span class="line">truetruetrue&#125;</span><br><span class="line"></span><br><span class="line">truetruetruetrue<span class="selector-id">#intro</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">truetruetruetruetrue<span class="attribute">font-size</span>: <span class="number">5rem</span>;</span><br><span class="line">truetruetruetruetrue<span class="attribute">line-height</span>: <span class="number">1.1</span>;</span><br><span class="line">truetruetruetruetrue<span class="attribute">margin-bottom</span>: <span class="number">7rem</span>;</span><br><span class="line">truetruetruetrue&#125;</span><br><span class="line"></span><br><span class="line">truetruetruetrue<span class="selector-id">#intro</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">truetruetruetruetrue<span class="attribute">font-size</span>: <span class="number">1rem</span>;</span><br><span class="line">truetruetruetruetrue<span class="attribute">margin-top</span>: <span class="number">0rem</span>;</span><br><span class="line">truetruetruetrue&#125;</span><br><span class="line"></span><br><span class="line">truetruetruetrue<span class="selector-id">#intro</span> <span class="selector-class">.actions</span> &#123;</span><br><span class="line">truetruetruetruetrue<span class="attribute">display</span>: none;</span><br><span class="line">truetruetruetrue&#125;</span><br><span class="line"></span><br><span class="line">truetrue&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a name="myAchor3"></a></p>
+<h2 id="3-更换导航栏样式"><a href="#3-更换导航栏样式" class="headerlink" title="3.更换导航栏样式"></a>3.更换导航栏样式</h2><p>默认的导航栏样式如下：<br><img src="https://i.imgur.com/QsnyvXb.jpg" alt=""><br>如图所示，大致可分为两个部分，左边是个人信息等的导航(当然不止这些，可以自行设置),右边是设置导航栏的图片，默认有github和500px,下面我们来自己进行一下配置<br>首先，我们来看官方的readme.md文档:<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">Home_name:</span> <span class="string">主页</span> <span class="comment"># 主页名字</span></span><br><span class="line"><span class="string">is_use_categories</span> <span class="string">:</span> <span class="literal">true</span> <span class="comment"># 是否启用分类</span></span><br><span class="line"><span class="attr">categories_name:</span> <span class="string">分类</span> <span class="comment"># 分类名字</span></span><br><span class="line"><span class="string">is_use_archives</span> <span class="string">:</span> <span class="literal">false</span> <span class="comment"># 是否启用归档</span></span><br><span class="line"><span class="attr">archives_name:</span> <span class="string">归档</span> <span class="comment"># 归档名字</span></span><br><span class="line"><span class="attr">icon:</span> <span class="comment"># 导航栏上的图标</span></span><br><span class="line"><span class="attr">    github:</span></span><br><span class="line"><span class="attr">        use:</span> <span class="literal">true</span> <span class="comment"># 是否启用</span></span><br><span class="line"><span class="attr">        link:</span> <span class="attr">https://github.com/miccall</span> <span class="comment"># 点击地址</span></span><br><span class="line"><span class="attr">    Twitter:</span></span><br><span class="line"><span class="attr">        use:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        link:</span></span><br><span class="line"><span class="attr">    Facebook:</span></span><br><span class="line"><span class="attr">        use:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        link:</span></span><br><span class="line"><span class="attr">    Instagram:</span></span><br><span class="line"><span class="attr">        use:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        link:</span></span><br><span class="line"><span class="attr">pages:</span></span><br><span class="line"><span class="comment"># 自定义连接页</span></span><br><span class="line"><span class="comment"># link 的参数为相对路径，对应 hexo 目录下的 source 件夹内的相应文件夹</span></span><br><span class="line">    <span class="string">简历:</span></span><br><span class="line"><span class="attr">        link:</span> <span class="string">"/about/"</span></span><br><span class="line">    <span class="string">团队</span> <span class="string">:</span></span><br><span class="line"><span class="attr">        link:</span> <span class="string">"/group/"</span></span><br><span class="line">    <span class="string">图库</span> <span class="string">:</span></span><br><span class="line"><span class="attr">        link:</span> <span class="string">"/gallery/"</span></span><br><span class="line">    <span class="string">标签:</span></span><br><span class="line"><span class="attr">        link:</span> <span class="string">"/tag/"</span></span><br><span class="line">    <span class="comment">#自定义标签名</span></span><br><span class="line">    <span class="comment">#   link：“路径”</span></span><br><span class="line"></span><br><span class="line"><span class="attr">MainFirst:</span> <span class="comment"># 导航栏下面的主页</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Miccall</span> <span class="string">Metro</span> <span class="comment"># 大标题名字</span></span><br><span class="line"><span class="attr">    description:</span> <span class="string">Welcome</span> <span class="string">to</span> <span class="string">my</span> <span class="string">Blog</span>   <span class="comment"># 第二标签 描述</span></span><br><span class="line"><span class="attr">    pic_url:</span> <span class="string">/img/me.jpg</span> <span class="comment"># 图片地址</span></span><br><span class="line"><span class="attr">    goto_ulr:</span> <span class="string">""</span> <span class="comment"># 点击跳转</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Gallery:</span> <span class="comment"># 图库页</span></span><br><span class="line"><span class="attr">    title:</span> <span class="string">Mr.metro</span></span><br><span class="line"><span class="attr">    description:</span> <span class="string">Just</span> <span class="string">another</span> <span class="string">fine</span> <span class="string">responsive</span></span><br></pre></td></tr></table></figure></p>
+<p>首先，左侧第一个内容<strong>主页</strong>在Home_name一栏进行设置，名字可以自定义，如改成Home Page<br>第二个分类，是否启用分类is_use_categories默认设置为true，即启用分类，可以修改为false或者删除<br>第三个归档。默认设置为false，同样可以修改参数的值来达到其他的效果，例如，设置为true后默认按时间分类<br>icon设置了右侧的图标样式，图标均取自于<a href="http://fontawesome.dashgame.com/" target="_blank" rel="noopener">fontawesome</a>可以自定义，注意github里面的link要改成自己的github地址<br>MainFisrt定义了位于导航栏下方的自我介绍的内容以及自己的图片，如果不想要，可以在themes\hexo-theme-Mic_Theme\layout_partial里面的mainfirst.ejs文件中设置display:none令其隐藏，具体代码如下:<br><figure class="highlight erb"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"display: none"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- Main first s--&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">article</span> <span class="attr">id</span>=<span class="string">"me"</span> <span class="attr">class</span>=<span class="string">"panel"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">header</span> <span class="attr">style</span>=<span class="string">"color: #000000;"</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> theme.MainFirst.name  </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> theme.MainFirst.description  </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%-</span></span></span><span class="ruby"> theme.MainFirst.goto_ulr  </span><span class="xml"><span class="tag"><span class="string">%&gt;"</span> <span class="attr">class</span>=<span class="string">"jumplink pic"</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"&lt;%-</span></span></span><span class="ruby"> theme.MainFirst.pic_url  </span><span class="xml"><span class="tag"><span class="string">%&gt;"</span> <span class="attr">alt</span>=<span class="string">""</span> /&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- Main first e--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p><a name="myAchor4"></a></p>
 <h2 id="4-给每一篇文章添加缩略图"><a href="#4-给每一篇文章添加缩略图" class="headerlink" title="4.给每一篇文章添加缩略图"></a>4.给每一篇文章添加缩略图</h2><p><strong>昨天本来已经写完这部分了，结果没有保存。。。只好重新开始o(╯□╰)o</strong><br>我们在官网给出的样例中可以看到里面的每一篇文章都有一个背景，逼格瞬间上去了有木有啊~（附样例）<br><img src="https://i.imgur.com/weqvxMT.jpg" alt=""></p>
-<p>然而我们刚配置好的博客打开来看文章背后是一片空白，就像这样子<br><img src="https://i.imgur.com/XEWVHa6.jpg" alt=""><br>那怎么样才能达到官网样例的效果呢？仔细阅读官网的readme.md文档，发现里面有这样一个参数：<code>thumbnail</code>，后面加的注释意为缩略图</p>
-<pre><code>title: # 文章标题  
-    date: 2017/3/27 13:48:25  # 文章发表时间
-    tags:
-    - 标签1
-    - 标签2 (可选)
-    categories: Algorithm # 分类
-    thumbnail: https://xxxxxxxxxx.png # 略缩图
-</code></pre><p>可能我们第一眼看上去并没有看懂这个缩略图的意思，但是通读整篇文档，最有可能的就是这个了，那么我们按照文档里面给出的格式进行配置，因为我这里用到的是MarkdownPad2，可以直击添加图片，但这里注意一点，利用MarkdownPad2上传的图片链接的格式是</p>
-<pre><code>![](https://xxxxxxxxxxxxx.png)
-</code></pre><p>而文档中要求只需要https后面的东西，所以生成链接后直接拿出<a href="https://xxxxxxxxx.png部分，添加到文章头部的参数" target="_blank" rel="noopener">https://xxxxxxxxx.png部分，添加到文章头部的参数</a><code>thumbnail</code>后面，然后<strong>保存</strong>，执行hexo s，再次打开的效果就和例子里面的一样了φ(≧ω≦*)♪，OK大功告成!</p>
-<pre><code>---
-title: 关于在Mic theme配置下的一些心得
-date: 2018-08-28 15:21:07
-tags: Mic_theme hexo blog
-thumbnail: https://i.imgur.com/OBxizjH.jpg
----
-</code></pre><p>最终效果如图<br><img src="https://i.imgur.com/Du5Aa7v.jpg" alt=""><br><a name="myAchor5"></a></p>
+<p>然而我们刚配置好的博客打开来看文章背后是一片空白，就像这样子<br><img src="https://i.imgur.com/XEWVHa6.jpg" alt=""><br>那怎么样才能达到官网样例的效果呢？仔细阅读官网的readme.md文档，发现里面有这样一个参数：<code>thumbnail</code>，后面加的注释意为缩略图<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="comment"># 文章标题  </span></span><br><span class="line"><span class="attr">    date:</span> <span class="number">2017</span><span class="string">/3/27</span> <span class="number">13</span><span class="string">:48:25</span>  <span class="comment"># 文章发表时间</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">标签1</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">标签2</span> <span class="string">(可选)</span></span><br><span class="line"><span class="attr">    categories:</span> <span class="string">Algorithm</span> <span class="comment"># 分类</span></span><br><span class="line"><span class="attr">    thumbnail:</span> <span class="attr">https://xxxxxxxxxx.png</span> <span class="comment"># 略缩图</span></span><br></pre></td></tr></table></figure></p>
+<p>可能我们第一眼看上去并没有看懂这个缩略图的意思，但是通读整篇文档，最有可能的就是这个了，那么我们按照文档里面给出的格式进行配置，因为我这里用到的是MarkdownPad2，可以直击添加图片，但这里注意一点，利用MarkdownPad2上传的图片链接的格式是<br><figure class="highlight less"><table><tr><td class="code"><pre><span class="line">!<span class="selector-attr">[]</span>(<span class="attribute">https</span>:<span class="comment">//xxxxxxxxxxxxx.png)</span></span><br></pre></td></tr></table></figure></p>
+<p>而文档中要求只需要https后面的东西，所以生成链接后直接拿出<a href="https://xxxxxxxxx.png部分，添加到文章头部的参数" target="_blank" rel="noopener">https://xxxxxxxxx.png部分，添加到文章头部的参数</a><code>thumbnail</code>后面，然后<strong>保存</strong>，执行hexo s，再次打开的效果就和例子里面的一样了φ(≧ω≦*)♪，OK大功告成!<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">关于在Mic</span> <span class="string">theme配置下的一些心得</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="bullet">-08</span><span class="bullet">-28</span> <span class="number">15</span><span class="string">:21:07</span></span><br><span class="line"><span class="attr">tags:</span> <span class="string">Mic_theme</span> <span class="string">hexo</span> <span class="string">blog</span></span><br><span class="line"><span class="attr">thumbnail:</span> <span class="attr">https://i.imgur.com/OBxizjH.jpg</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure></p>
+<p>最终效果如图<br><img src="https://i.imgur.com/Du5Aa7v.jpg" alt=""><br><a name="myAchor5"></a></p>
 <h2 id="5-自定义样式"><a href="#5-自定义样式" class="headerlink" title="5.自定义样式"></a>5.自定义样式</h2><p>说起来自己的博客肯定希望有点自己的个性，所以免不了就会想着这里改动一下，那里改动一下，然而直接在主题配置文件里修改如果还达不到个人的口味，就会希望一些更直接的修改，所以在这里我介绍一下直接对css文件进行修改的方法，我自己也在这里面改了不少了<br>首先：主css文件在themes\hexo-theme-Mic_Theme\source\css下的mic_main.css文件中，打开来一看，有4000多行，那跑不了了，就是它了，我们只需要找到对应的选择器，即可在里面进行修改，同时该css文件中也加入了响应式的写法，同样可以自己修改，下面是我自己修改的几个例子：</p>
-<p><strong>1.导航栏样式的修改</strong><br>在mic_main.css文件1382行左右，可以看到这样一段代码</p>
-<pre><code>@media screen and (max-width: 980px) {
-    #nav {
-        display: none;
-    }
-}
-</code></pre><p>也就是说在屏幕宽度小于等于980px的时候，默认的导航栏样式消失，至于消失的导航栏去了哪，可以在博客界面右上角看到多了一个<code>menu</code>按钮，点开来看导航都在里面，同时在mic_main.css文2012行有如下代码</p>
-<pre><code>@media screen and (max-width: 980px) {
-    #navPanelToggle {
-        display: block;
-    }
-}
-</code></pre><p>意思很简单，就是显示那个<code>menu</code>按钮，这里面我们可以修改一下边界的宽度，因为现在主流的四种设备即为大屏，中屏，小屏，超小屏，其分类的边界为1200px,992px,768px,即1200px以上是大屏，也就是我们电脑或者显示器的屏幕，992px~1200px为中屏，一般是桌面显示器，768px~992px是小屏幕，一般是平板等，再往下小于768px的就是移动端也就是我们的手机了(以上数据来自于bootstrap的媒体查询宽度)，所以如果你觉得980px别扭的话，可以修改为其他值。<br>点开<code>menu</code>菜单，除了几个链接，就是白白的背景，我们可以为背景加上自己喜欢的图片，设置方法:<br>找到mic_main.css文件里面的id=#navPanel（可以在控制台里面直接找到），在其伪类before下添加背景图片的代码(mic_main.css下2053行上下),下面是我修改后的代码</p>
-<pre><code>#navPanel:before{
-    content: &quot;&quot;;
-    background: url(../images/me2.jpg) center no-repeat;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-}
-</code></pre><p>再次打开观察效果<br><img src="https://i.imgur.com/zsK4dst.jpg" alt=""></p>
+<p><strong>1.导航栏样式的修改</strong><br>在mic_main.css文件1382行左右，可以看到这样一段代码<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">980px</span>) &#123;</span><br><span class="line">true<span class="selector-id">#nav</span> &#123;</span><br><span class="line">truetrue<span class="attribute">display</span>: none;</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>也就是说在屏幕宽度小于等于980px的时候，默认的导航栏样式消失，至于消失的导航栏去了哪，可以在博客界面右上角看到多了一个<code>menu</code>按钮，点开来看导航都在里面，同时在mic_main.css文2012行有如下代码<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">980px</span>) &#123;</span><br><span class="line">true<span class="selector-id">#navPanelToggle</span> &#123;</span><br><span class="line">truetrue<span class="attribute">display</span>: block;</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>意思很简单，就是显示那个<code>menu</code>按钮，这里面我们可以修改一下边界的宽度，因为现在主流的四种设备即为大屏，中屏，小屏，超小屏，其分类的边界为1200px,992px,768px,即1200px以上是大屏，也就是我们电脑或者显示器的屏幕，992px~1200px为中屏，一般是桌面显示器，768px~992px是小屏幕，一般是平板等，再往下小于768px的就是移动端也就是我们的手机了(以上数据来自于bootstrap的媒体查询宽度)，所以如果你觉得980px别扭的话，可以修改为其他值。<br>点开<code>menu</code>菜单，除了几个链接，就是白白的背景，我们可以为背景加上自己喜欢的图片，设置方法:<br>找到mic_main.css文件里面的id=#navPanel（可以在控制台里面直接找到），在其伪类before下添加背景图片的代码(mic_main.css下2053行上下),下面是我修改后的代码<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#navPanel</span><span class="selector-pseudo">:before</span>&#123;</span><br><span class="line">true<span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">true<span class="attribute">background</span>: <span class="built_in">url</span>(../images/me2.jpg) center no-repeat;</span><br><span class="line">true<span class="attribute">position</span>: absolute;</span><br><span class="line">true<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">true<span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">true<span class="attribute">background-size</span>: cover;</span><br><span class="line">true<span class="attribute">overflow</span>: hidden;</span><br><span class="line">true<span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">true<span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再次打开观察效果<br><img src="https://i.imgur.com/zsK4dst.jpg" alt=""></p>
 <p>酷的一批啊，哈哈<br>（<strong>ps</strong>:原来的文字是黑色的，大家可以自行修改，为了对比明显，我将其改为了白色）<br><a name="myAchor6"></a></p>
 
             </div>
