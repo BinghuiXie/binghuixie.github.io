@@ -958,24 +958,24 @@ left: 100%;
 &lt;/html&gt;
 </code></pre><p>对应不同屏幕尺寸显示的效果如图:<br>大屏：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/22%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%A4%A7%E5%B1%8F%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>中屏：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/23%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E4%B8%AD%E5%B1%8F%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>小屏：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/24%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%B0%8F%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>超小屏：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/25%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E8%B6%85%E5%B0%8F%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>同时贴出相关<i>.hidden-xx</i>类代码以供理解</p>
 <pre><code>@media (max-width: 767px) {
-.hidden-xs {
-display: none !important;
-}
+    .hidden-xs {
+    display: none !important;
+    }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-.hidden-sm {
-display: none !important;
-}
+    .hidden-sm {
+    display: none !important;
+    }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-.hidden-md {
-display: none !important;
-}
+    .hidden-md {
+    display: none !important;
+    }
 }
 @media (min-width: 1200px) {
-.hidden-lg {
-display: none !important;
-}
+    .hidden-lg {
+    display: none !important;
+    }
 }
 </code></pre><p><a name="link9"></a></p>
 <h2 id="9-bootstrap导航条"><a href="#9-bootstrap导航条" class="headerlink" title="9.bootstrap导航条"></a>9.bootstrap导航条</h2><p>从这里开始，包括下面的内容，基本上就是介绍bootstrap的一些常用组件，首先来看bootstrap的导航条<br>使用bootstrap提供的导航栏的时候，可以直接使用HTML5<i>nav</i>标签，当然也可以使用<i>div</i>标签，bootstrap官方文档中提示我们使用<i>div</i>标签的时候，需要加上<i>role=”navigation”</i>属性，role属性的作用是为了能使盲人用户知道当前浏览的是什么界面，然而在国内由于这方面还未普及，所以我们也可以不需要<i>role=”navigation”</i>属性，直接使用<i>div</i>标签即可，但为了更加明确，建议使用<i>nav</i>标签。<br>这里我们通过bootstrap给出的样例代码来进行一步步的解释</p>
