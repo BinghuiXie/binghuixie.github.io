@@ -64,7 +64,7 @@
     <script src="/js/util.js"></script>
     <script src="/js/main.js"></script>
 	
-</head>
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>
     
 		
 <!-- Layouts -->
@@ -978,7 +978,7 @@ left: 100%;
     }
 }
 </code></pre><p><a name="link9"></a></p>
-<h2 id="9-bootstrap导航条"><a href="#9-bootstrap导航条" class="headerlink" title="9.bootstrap导航条"></a>9.bootstrap导航条</h2><p>从这里开始，包括下面的内容，基本上就是介绍bootstrap的一些常用组件，首先来看bootstrap的导航条<br>使用bootstrap提供的导航栏的时候，可以直接使用HTML5<i>nav</i>标签，当然也可以使用<i>div</i>标签，bootstrap官方文档中提示我们使用<i>div</i>标签的时候，需要加上<i>role=”navigation”</i>属性，role属性的作用是为了能使盲人用户知道当前浏览的是什么界面，然而在国内由于这方面还未普及，所以我们也可以不需要<i>role=”navigation”</i>属性，直接使用<i>div</i>标签即可，但为了更加明确，建议使用<i>nav</i>标签。<br>这里我们通过bootstrap给出的样例代码来进行一步步的解释</p>
+<h2 id="9-bootstrap导航条"><a href="#9-bootstrap导航条" class="headerlink" title="9.bootstrap导航条"></a>9.bootstrap导航条</h2><p>从这里开始，包括下面的内容，基本上就是介绍bootstrap的一些常用组件，首先来看bootstrap的导航条。<br>从bootstrap中拿到它的导航条运用到我们自己设计的网页中，往往导航条的样式并不是bootstrap给出的默认的样式，所以我们需要去读懂导航条部分的代码以便我们能更准确的进行修改以达到我们期望的效果。<br>使用bootstrap提供的导航栏的时候，可以直接使用HTML5<i>nav</i>标签，当然也可以使用<i>div</i>标签，bootstrap官方文档中提示我们使用<i>div</i>标签的时候，需要加上<i>role=”navigation”</i>属性，role属性的作用是为了能使盲人用户知道当前浏览的是什么界面，然而在国内由于这方面还未普及，所以我们也可以不需要<i>role=”navigation”</i>属性，直接使用<i>div</i>标签即可，但为了更加明确，建议使用<i>nav</i>标签。<br>这里我们通过bootstrap给出的样例代码来进行一步步的解释</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;zh-CN&quot;&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -992,29 +992,46 @@ left: 100%;
 &lt;![endif]--&gt;
 &lt;/head&gt;
 &lt;body&gt;
+&lt;!--导航条     默认样式的导航条     navbar-default --&gt;
 &lt;nav class=&quot;navbar navbar-default&quot;&gt;
     &lt;!--响应式容器--&gt;
     &lt;div class=&quot;container&quot;&gt;
+        &lt;!--商标logo 与 切换按钮 只会在移动端显示(媒体查询) --&gt;
         &lt;!-- Brand and toggle get grouped for better mobile display --&gt;
         &lt;div class=&quot;navbar-header&quot;&gt;
-            &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#bs-example-navbar-collapse-1&quot;&gt;
+            &lt;!--切换按钮--&gt;
+            &lt;!--
+                 data-toggle=&quot;collapse&quot;     声明折叠组件
+                 data-target=&quot;#bs-example-navbar-collapse-1&quot;    控制id=&quot;bs-example-navbar-collapse-&quot;的元素
+
+                 屏幕阅读器      辅助性的阅读设备（例如盲人用户）
+                 aria-expanded=&quot;false&quot;
+                 aria-      都是给屏幕阅读器使用的
+                 &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;     也和屏幕阅读器有关系
+                 sr-only    &lt;==&gt;    screen read only    服务盲人用户阅读
+                 role   同样是给屏幕阅读器使用的    用来表明当前元素的功能，作用是什么
+
+            --&gt;
+            &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#bs-example-navbar-collapse-1&quot; aria-expanded=&quot;false&quot;&gt;
                 &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
                 &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
                 &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
                 &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
             &lt;/button&gt;
-            &lt;!--商标区域--&gt;
+            &lt;!--商标logo区域--&gt;
             &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Brand&lt;/a&gt;
         &lt;/div&gt;
+        &lt;!-- 切换按钮控制要切换的内容 --&gt;
         &lt;!-- Collect the nav links, forms, and other content for toggling --&gt;
         &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;bs-example-navbar-collapse-1&quot;&gt;
             &lt;ul class=&quot;nav navbar-nav&quot;&gt;
                 &lt;!--active  当前选中--&gt;
-                &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Link &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
                 &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
                 &lt;!--下拉菜单--&gt;
                 &lt;li class=&quot;dropdown&quot;&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;Dropdown &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+                    &lt;!--data-toggle=&quot;dropdown声明了一个下拉组件  a下面的ul就是被控制的元素（控制其显示与隐藏）--&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Dropdown &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;
                     &lt;ul class=&quot;dropdown-menu&quot;&gt;
                         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
                         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
@@ -1035,7 +1052,7 @@ left: 100%;
             &lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
                 &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
                 &lt;li class=&quot;dropdown&quot;&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;Dropdown &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Dropdown &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;
                     &lt;ul class=&quot;dropdown-menu&quot;&gt;
                         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
                         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
@@ -1052,7 +1069,7 @@ left: 100%;
 &lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>导航条的样子是这样的<br><img src="" alt=""><br>首先，<i>nav</i>标签作为最上一级父容器，内包含<i>.navbar</i>，<i>.navbar-default</i>两个类，下面是这两个类的代码:</p>
+</code></pre><p>导航条的样子是这样的<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/26%20%E5%AF%BC%E8%88%AA%E6%9D%A1%E6%A0%B7%E5%AD%90.jpg?raw=true" alt=""><br>首先，<i>nav</i>标签作为最上一级父容器，内包含<i>.navbar</i>，<i>.navbar-default</i>两个类，下面是这两个类的代码:</p>
 <hr>
 <pre><code>.navbar {
 position: relative;
@@ -1064,17 +1081,162 @@ border: 1px solid transparent;
 background-color: #f8f8f8;
 border-color: #e7e7e7;
 }
-</code></pre><p>可以看出只是很简单的设置了位置属性，高度，背景颜色等，其中<i>.navbar-default</i>表示默认样式的导航条。<br>上面我们说过，实现响应式必有要有<i>.container</i>类，所以在<i>nav</i>下面的<i>div</i>调用了<i>.container</i>类让我们知道这是一个响应式的导航条，但是响应式的具体效果在哪，我们还要往下看。<br><i>.container</i>类下面包含两个子容器<i>div</i>，第一个div生声明了导航栏左边的<i>Brand</i>以及一个响应式的声明，我们改变窗口宽度，会发现缩小到超小屏幕范围后，导航条会消失不见，取而代之的是左上角的<i>menu</i>按钮，点开来看，我们会发现这个正是隐藏的导航条，为什么这样？我们看到第一个div里有<i>navbar-header</i>这个类，我们查看bootstrap关于此类的源代码:</p>
+</code></pre><p>可以看出只是很简单的设置了位置属性，高度，背景颜色等，其中<i>.navbar-default</i>表示<strong>默认样式</strong>的导航条。<br>上面我们说过，实现响应式必有要有<i>.container</i>类，所以在<i>nav</i>下面的<i>div</i>调用了<i>.container</i>类让我们知道这是一个响应式的导航条，但是响应式的具体效果在哪，我们还要往下看。<br><i>.container</i>类下面包含两个子容器<i>div</i>，第一个div生声明了导航栏左边的<i>Brand</i>以及一个响应式的声明，我们改变窗口宽度，会发现缩小到超小屏幕范围后，导航条会消失不见，取而代之的是左上角的<i>menu</i>按钮，点开来看，我们会发现这个正是隐藏的导航条，为什么这样？我们看到第一个div里有<i>navbar-header</i>这个类，我们查看bootstrap关于此类的源代码:</p>
 <pre><code>@media (min-width: 768px) {
   .navbar-header {
     float: left;
   }
 }
-</code></pre><p>可以看出，对小屏及以上的设备，会给当行调添加<i>float:left</i>的效果，也就是说会完整的显示出来。<br>下面的<i>button</i>里面有两个属性需要我们注意一下，即<i>data-toggle</i>与<i>data-target</i>属性。<br><i>data-toggle=”collapse”</i>声明了这是一个”collapse”即折叠组件（折叠组件下面会有）<i>data-target=”#bs-example-navbar-collapse-1”</i>则是指明了该折叠组件控制的元素，我们往下看，会在第二个div里面看到<i>id=”bs-example-navbar-collapse-1</i>，也就是说，上面的button是来控制我们下面这个第二个div的。<br>有的小伙伴可能注意到，在我们第一个<i>div</i>下面有这么一句话</p>
+</code></pre><p>可以看出，对小屏及以上的设备，会给当行调添加<i>float:left</i>的效果，也就是说会完整的显示出来。那对于小屏以下的设备也就是移动端设备就会隐藏，取而代之的是那个菜单栏的按钮。<br>下面的<i>button</i>里面有两个属性需要我们注意一下，即<i>data-toggle</i>与<i>data-target</i>属性。<br><i>data-toggle=”collapse”</i>声明了这是一个”collapse”即折叠组件（折叠组件下面会有）<i>data-target=”#bs-example-navbar-collapse-1”</i>则是指明了该折叠组件控制的元素，我们往下看，会在第二个div里面看到<i>id=”bs-example-navbar-collapse-1</i>，也就是说，上面的button是来控制我们下面这个第二个div的。<br>有的小伙伴可能注意到，在我们第一个<i>div</i>下面有这么一句话</p>
 <pre><code>&lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
-</code></pre><p>但是在浏览器里面却找不到这句话在哪里。<br>不用担心，这个<i>.sr-only</i>类<br><a name="link10"></a></p>
-<h2 id="10-bootstrap的collapse-折叠-组件"><a href="#10-bootstrap的collapse-折叠-组件" class="headerlink" title="10.bootstrap的collapse(折叠)组件"></a>10.bootstrap的collapse(折叠)组件</h2><p><a name="link11"></a></p>
-<h2 id="11-bootstrap轮播图-Carousel"><a href="#11-bootstrap轮播图-Carousel" class="headerlink" title="11.bootstrap轮播图(Carousel)"></a>11.bootstrap轮播图(Carousel)</h2><p><a name="link12"></a></p>
+</code></pre><p>但是在浏览器里面却找不到这句话在哪里。<br>不用担心，这个<i>.sr-only</i>类是为了给盲人阅读该网页提供的，我们不需要去关注这个，类似这个的还有以<i>.aria-xxx</i>开头以及声明了<i>role</i>属性的均属于这种情况，我们不需要去关注，遇到的话可以直接删除以稍微的减少一下代码量（在代码注释中已经有详细的解释）。<br>后面<i>button</i>区域里面定义了屏幕阅读器（没有什么作用）和移动端导航栏隐藏后显示的切换按钮</p>
+<pre><code>&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+</code></pre><p>可以看出按钮是由三个<i>span</i>画出来的，bootstrap.css里面对<i>.icon-bar</i>的样式定义如下<strong>(注意display:block)</strong>：</p>
+<pre><code>.navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+</code></pre><p>下面的代码与上面的较为类似就不再详述，可以自行去读一读代码并自己去理解。<br>到这里戒指bootstrap的组件就先告一段落，因为bootstrap组件太多，所以只能选择一两个进行详细的解释，其余的我会后期慢慢补充，或者有兴趣的可以自己去<strong><a href="http://www.bootcss.com/" target="_blank" rel="noopener">bootstrap官网</a></strong>去看文档。<br><a name="link10"></a></p>
+<h2 id="10-bootstrap的collapse-折叠-组件"><a href="#10-bootstrap的collapse-折叠-组件" class="headerlink" title="10.bootstrap的collapse(折叠)组件"></a>10.bootstrap的collapse(折叠)组件</h2><p>下面我们来介绍bootstrap的一些JavaScript组件，首先是collapse（折叠）组件。<br>collapse插件作用：类似下拉菜单，点击显示，失焦的时候隐藏，可以节省空间的同时起到一定的美观效果<br>下面可以看几个类似的效果：<br><img src="" alt=""><br><img src="" alt=""><br><img src="" alt=""><br>(更多的实例请到bootstrap官方文档中去寻找或者在自己浏览网页的过程中可以注意观察一下)<br>实例代码如下：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable = 0&quot;&gt;
+    &lt;title&gt;09 bootstrap中的collapse插件&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css&quot;&gt;
+    &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;../lib/html5shiv-master/dist/html5shiv.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;../lib/Respond-master/dest/respond.min.js&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!--需求：   一个按钮（或者说某一个元素）能控制某一块区域的显示和隐藏--&gt;
+&lt;!--
+    data-toggle=&quot;collapse（组件）&quot;    声明折叠组件
+    data-target=&quot;选择器&quot;      设置需要控制的目标元素     通过选择器
+    对于a标签来说，需要控制的目标元素可以直接写在href属性中     即href=&quot;选择器&quot;
+--&gt;
+&lt;button data-toggle=&quot;collapse&quot; data-target=&quot;#target&quot;&gt;按钮&lt;/button&gt;
+&lt;a href=&quot;#target&quot; data-toggle=&quot;collapse&quot;&gt;链接&lt;/a&gt;
+&lt;div class=&quot;btn btn-info&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#target&quot;&gt;div按钮&lt;/div&gt;
+&lt;!--需要控制的区域--&gt;
+&lt;div id=&quot;target&quot; class=&quot;target&quot;&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+    &lt;p&gt;内容&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;../lib/jQuery library/jquery-3.3.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>首先我们定义了三个模块，分别是一个<i>button</i>，一个链接<i>a</i>和一个<i>div</i>，三块控制区域都声明了collapse组件即代码中的<i>data-toggle=”collapse”</i>，随后<i>data-target=”#target”</i>声明了需要去控制的内容也就是下面<i>id=”target”</i>的<i>div</i>，其中，<i>a</i>标签通过<strong>href=”#target”</strong>同样可以实现对目标元素的控制，也就是说有两种方法可以实现拥有对目标<i>div</i>显示与隐藏的控制权，即<i>data-target=””</i>与<i>a</i>标签中的<i>href</i>属性。下面的div即使我们要去控制的元素，也就是说上面三块都可以控制该div的显示与隐藏。<br>总结一下：简单的利用一个折叠组件仅需要以下几个步骤：<br><strong>(1)声明一个折叠组件——data-toggle=”collapse”</strong><br><strong>(2)声明要控制的目标元素——data-target=””或者href=””</strong><br>（代码可以自行复制并运行查看效果，注意需要更改bootstrap相关文件的路径）<br><a name="link11"></a></p>
+<h2 id="11-bootstrap轮播图-Carousel"><a href="#11-bootstrap轮播图-Carousel" class="headerlink" title="11.bootstrap轮播图(Carousel)"></a>11.bootstrap轮播图(Carousel)</h2><p>轮播图是在PC端和移动端都很常见的一个效果，bootstrap为我们提供了一个简单易使用的(Carousel)轮播插件，这样我们就不需要去费力的写原生的轮播图代码了，但是我们还是需要去大概的了解一下bootstrap给出的轮播图代码结构，这样也方便我们以后自己进行去编写。<br>下面是官方文档给出的bootstrap轮播图插件样例</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable = 0&quot;&gt;
+    &lt;title&gt;10 bootstrap中的轮播图 carousel&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;../lib/bootstrap-3.3.7-dist/css/bootstrap.css&quot;&gt;
+    &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;../lib/html5shiv-master/dist/html5shiv.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;../lib/Respond-master/dest/respond.min.js&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+&lt;body&gt;
+&lt;!--carousel                    这是轮播图模块--&gt;
+&lt;!--slide                       是否有切换时的平移动画--&gt;
+&lt;!--data-ride=&quot;carousel&quot;        声明是一个轮播图组件--&gt;
+&lt;div id=&quot;carousel-example-generic&quot; class=&quot;carousel slide&quot; data-ride=&quot;carousel&quot;&gt;
+    &lt;!--指示器  ---  点盒子--&gt;
+    &lt;!-- Indicators --&gt;
+    &lt;ol class=&quot;carousel-indicators&quot;&gt;
+        &lt;!--
+            data-target=&quot;#carousel-example-generic&quot;         需要控制的id为carousel-example-generic的轮播图
+            data-slide-to=&quot;0&quot;                               控制轮播图中索引为0的图片
+            active                                          当前对应索引的点（被选中的图片对应的点）
+         --&gt;
+        &lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;
+        &lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;1&quot;&gt;&lt;/li&gt;
+        &lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;2&quot;&gt;&lt;/li&gt;
+        &lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;3&quot;&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;!--图片盒子        滑动容器--&gt;
+    &lt;!-- Wrapper for slides --&gt;
+    &lt;div class=&quot;carousel-inner&quot;&gt;
+        &lt;!--图片      当前默认显示的图片--&gt;
+        &lt;div class=&quot;item active&quot;&gt;
+            &lt;img src=&quot;../images/轮播图3.jpg&quot;/&gt;
+            &lt;!--图片中的文字说明部分--&gt;
+            &lt;div class=&quot;carousel-caption&quot;&gt;
+                ...
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;img src=&quot;../images/轮播图7.jpg&quot;/&gt;
+            &lt;div class=&quot;carousel-caption&quot;&gt;
+                ...
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;img src=&quot;../images/轮播图8.jpg&quot;/&gt;
+            &lt;div class=&quot;carousel-caption&quot;&gt;
+                ...
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;img src=&quot;../images/轮播图9.jpg&quot;/&gt;
+            &lt;div class=&quot;carousel-caption&quot;&gt;
+                ...
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;!--控制轮播图平移的方向键--&gt;
+    &lt;!--
+        左边的是上一张         data-slide=&quot;prev&quot;       left
+        右边的是下一张         data-slide=&quot;next&quot;       right
+    --&gt;
+    &lt;!-- Controls --&gt;
+    &lt;a class=&quot;left carousel-control&quot; href=&quot;#carousel-example-generic&quot; data-slide=&quot;prev&quot;&gt;
+        &lt;!--bootstrap向左边的图标--&gt;
+        &lt;span class=&quot;glyphicon glyphicon-chevron-left&quot;&gt;&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a class=&quot;right carousel-control&quot; href=&quot;#carousel-example-generic&quot; data-slide=&quot;next&quot;&gt;
+        &lt;!--bootstrap向右边的图标--&gt;
+        &lt;span class=&quot;glyphicon glyphicon-chevron-right&quot;&gt;&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+&lt;script src=&quot;../lib/jQuery library/jquery-3.3.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><a name="link12"></a></p>
 <h2 id="12-bootstrap中的Affix-吸顶-组件"><a href="#12-bootstrap中的Affix-吸顶-组件" class="headerlink" title="12.bootstrap中的Affix(吸顶)组件"></a>12.bootstrap中的Affix(吸顶)组件</h2><p><a name="link13"></a></p>
 <h2 id="13-总结-bootstrap常用类"><a href="#13-总结-bootstrap常用类" class="headerlink" title="13.总结:bootstrap常用类"></a>13.总结:bootstrap常用类</h2>
             </div>
