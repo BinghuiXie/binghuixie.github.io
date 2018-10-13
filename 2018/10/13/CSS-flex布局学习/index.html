@@ -134,50 +134,15 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://i.imgur.com/7Fo3dY7.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >关于删除节点幕后的事情</h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >CSS flex布局学习</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇文章原来是自己写的第一篇博文，因为格式太难看于是在这里进行了一次重新的修改与发布，至于内容，emmmmmm，有兴趣就看看当做了解就好</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>当时刚学到js，当看到删除节点这节的时候，自己写了一个程序来测试，点击清除节点按钮却发现了出人意料的结果，经过长时间的思考最终参透了其中的奥秘，于是发布上来，下面是代码:</p>
-<pre><code>&lt;!DOCTYPE HTML&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
-    &lt;title&gt;无标题文档&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;div id=&quot;content&quot;&gt;
-    &lt;h1&gt;html&lt;/h1&gt;
-    &lt;h1&gt;php&lt;/h1&gt;
-    &lt;h1&gt;javascript&lt;/h1&gt;
-    &lt;h1&gt;jquery&lt;/h1&gt;
-    &lt;h1&gt;java&lt;/h1&gt;
-&lt;/div&gt;
-
-&lt;script type=&quot;text/javascript&quot;&gt;
-    document.write(content.childNodes.length);
-    function clearText() {
-        var content=document.getElementById(&quot;content&quot;);
-        // 在此完成该函数
-        for(var i=0;i&lt;content.childNodes.length;i++){
-            var childNode = content.childNodes[i];
-            content.removeChild(childNode);
-        }
-    }
-&lt;/script&gt;
-&lt;button onclick=&quot;clearText()&quot;&gt;清除节点内容&lt;/button&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-</code></pre><p>运行这个程序会发现，第一次点击按钮的时候没有任何反应，第二次点击按钮的时候只剩下了php与jquery两个，再点击按钮<br>php会被删除掉，再点击按钮才会把jQuery删除掉，这是为什么呢？经过仔细观察程序以及了解删除的原理后，得到以下结论，文字比较难叙述，我会尽量往清楚去说明。<br>因为我们使用的是chrome浏览器也就是常说的谷歌浏览器，与IE浏览器不同的是，谷歌，Firefox等浏览器不会忽略空白节点，也就是说会把空白节点当做子节点的一部分，那什么是空白节点呢？我们知道，在HTML代码里在div标签下我们可以看见5个h1标签，也就是元素节点，这是我们可见的，所以我们下意识的就会认为只有5个节点，然而实际上并不是这样，其中还有空白节点的存在，也就是回车，没错，就是你在写代码的时候按下的回车键，那我们来数一数有多少个回车键呢？<br><img src="https://i.imgur.com/4ZFssPK.jpg" alt=""><br>如图所示我们可以看出其实一共有6个空白节点，所以一共是有11个节点，而不是我们想象的5个。<strong>那么问题来了</strong>为什么会出现如此怪异的删除效果呢<br>要知道一切现实出来的效果斗鱼我们的代码与变量的变化有关，只要分析清楚了变量的变化，那这个效果就不难理解了，我们来看源代码。<br>源代码的关键地方在<strong>content.childNodes.length</strong>，我们如果对这条语句进行输出，即“document.write(content.childNodes.length)”会发现得到的结果是11，如果我们形象的表示此时每个节点的排列的话，是这样子的<br><img src="https://i.imgur.com/jULUAZq.jpg" alt=""><br>开始循环时，i=0，条件满足，所以删掉第一个空白节点，但此时两个地方发生变化，一个是HTML的标号由于前面的空白节点被删除所以由1变为0，同时length由11变为10，此时i++变为1，因为HTML的标号已经变为0，那么他下面的第二个空白节点的标号就变为1，所以再次循环一次删除的是第二个空白节点而不是HTML，在视觉效果上就相当于没有删除。i++变为2，length变为9，因为删掉了第二个空白节点，所以php现在紧挨着HTML，标号为1（因为HTML的标号为0）此时i=2小于length=9，所以循环继续，此时删除的是标号为2的那个节点也就是php下面的节点—第三个空白节点同理删除后其后面的节点的标号向前进，在视觉效果上仍然没有删除任何东西，而此时length再一次减小，变为8，i变为3，继续循环，javascript此时的标号变为2，第四个空白节点的标号变为3，所以把第四个空白节点删掉，i为4，length为8，此时iquery由于紧挨着javascript，中间的空白节点已经删除，所以它的标号为3，它下面的第五个空白节点的标号为4，所以把第五个空白节点删掉，i=5，length=7，视觉上无变化，再进循环，java的标号已经变为4，它下面的第六个空白节点标号为5，对应i=5，删除掉，此时i=6，length=7，此时后面的没有节点，所以全部是null了，就会退出循环，第一次的点击按钮实际上是删除了所有的空白节点。</p>
-<h2 id="第二次点击按钮"><a href="#第二次点击按钮" class="headerlink" title="第二次点击按钮"></a><strong>第二次点击按钮</strong></h2><p>此时的length已经变为5，因为只剩下了5个元素节点，也就是5个h1标签，标号是0到4，从i=0开始循环，第一次删除掉HTML，剩下4个节点的标号都因此减一，同时length-1变为4，i变为1，再一次进行，删除掉标号由2变为1的javascript，留下了php，javascript后面的jquery和java的标号变为1和2，i变为2，length变为3，循环回来，删除掉标号为2的节点即java，length变为2，i变为3，退出循环，所以第二次点击按钮后剩下的是php和jquery</p>
-<h2 id="第三次点击"><a href="#第三次点击" class="headerlink" title="第三次点击"></a><strong>第三次点击</strong></h2><p>length已经变为2，i从0开始，第一次循环删除掉php，i变为1，length变为1，jquery的标号变为0，不满足循环条件，退出for循环，第三次结束，剩下一个jquery。</p>
-<h2 id="第四次点击"><a href="#第四次点击" class="headerlink" title="第四次点击"></a><strong>第四次点击</strong></h2><p>删除掉jquery，皆大欢喜。<br>好啦，上面就是为什么我们的代码<br>会执行出这样的效果的解释，相信大家只要能看完都能看懂的啦。那么想要一次性的删除怎么做呢？很简单，从后往前循环就好啦。<br>代码改为：</p>
-<pre><code>for(i=content.childNodes.length-1;i&gt;=0;i--)
-</code></pre>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>flex的出现使css的布局大大简化，例如两栏自适应等常见CSS布局通过使用flex布局能非常方便的达到，然而在网上常见的flex布局的教程中，许多属性的深层意思都没有提及，例如<i>flex-grow</i>与<i>flex-shrink</i>属性，正好这段时间我也开始在学flex布局，而且我这个人一向的习惯就是新学的东西一定要有笔记，以前用那些办公软件记笔记，结果有一次都丢了，自那以后搭建起了博客，一些笔记就都放在了博客上面，所以今天传上来这个flex布局的笔记，希望大家看过后能有所收货。<br>ps：以下所有内容是我在看完<strong><a href="https://www.runoob.com/w3cnote/flex-grammar.html" target="_blank" rel="noopener">菜鸟教程</a></strong>以及<strong><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">阮一峰老师的博客</a></strong>后所写，链接给大家。</p>
+<p>#目录#<br>1.<a href="#link1">什么是flex布局</a><br>2.<a href="#link2">flex布局中一些相关的概念</a><br>3.<a href="#link3">指定flex布局</a><br>4.<a href="#link4">容器属性：flex-direction</a><br>5.<a href="#link5">容器属性：flex-wrap</a><br>6.<a href="#link6">容器属性：flex-flow</a><br>7.<a href="#link7">容器属性：justify-content</a><br>8.<a href="#link8">容器属性：align-items</a><br>9.<a href="#link9">容器属性：align-content</a><br>10.<a href="#link10">项目属性：order</a><br>11.<a href="#link10">项目属性：flex-grow</a><br>12.<a href="#link10">项目属性：flex-shrink</a><br>13.<a href="#link10">项目属性：flex-basis</a><br>14.<a href="#link10">项目属性：flex</a><br>15.<a href="#link10">项目属性：align-self</a><br>内容比较多，我自己一次也写不完，慢慢来吧~</p>
+<h2 id="1-什么是flex布局"><a href="#1-什么是flex布局" class="headerlink" title="1.什么是flex布局"></a>1.什么是flex布局</h2><p>我们都知道，CSS布局是一个难点，先不说flex，常见的CSS布局比如说有两栏自适应，两翼齐飞布局什么的，其实说白了只要涉及到元素的位置的安排，都算是布局，那在flex之前我们常用的手段有float，position，table等，但是这些属性本身不是为布局而生的，就比如说float，它本质就是实现一个文字环绕效果，但是用这些属性吧，你要是理解的不够深入，还会出现各种各样的坑，比如说一会脱离文档流啦（float，position的absolute和fixed），position的定位原点什么的，会导致网页布局乱七八糟。<br>那么flex布局，flex是flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。目前，flex布局已经得到所有浏览器的支持，这意味着，现在可以放心的使用这项技术<br><img src="https://i.imgur.com/fCVIH8a.jpg" alt=""></p>
+<h2 id="2-flex布局中一些相关的概念"><a href="#2-flex布局中一些相关的概念" class="headerlink" title="2.flex布局中一些相关的概念"></a>2.flex布局中一些相关的概念</h2><h2 id="3-指定flex布局"><a href="#3-指定flex布局" class="headerlink" title="3.指定flex布局"></a>3.指定flex布局</h2><h2 id="4-容器属性：flex-direction"><a href="#4-容器属性：flex-direction" class="headerlink" title="4.容器属性：flex-direction"></a>4.容器属性：flex-direction</h2><h2 id="5-容器属性：flex-wrap"><a href="#5-容器属性：flex-wrap" class="headerlink" title="5.容器属性：flex-wrap"></a>5.容器属性：flex-wrap</h2><h2 id="6-容器属性：flex-flow"><a href="#6-容器属性：flex-flow" class="headerlink" title="6.容器属性：flex-flow"></a>6.容器属性：flex-flow</h2><h2 id="7-容器属性：justify-content"><a href="#7-容器属性：justify-content" class="headerlink" title="7.容器属性：justify-content"></a>7.容器属性：justify-content</h2><h2 id="8-容器属性：align-items"><a href="#8-容器属性：align-items" class="headerlink" title="8.容器属性：align-items"></a>8.容器属性：align-items</h2><h2 id="9-容器属性：align-content"><a href="#9-容器属性：align-content" class="headerlink" title="9.容器属性：align-content"></a>9.容器属性：align-content</h2><h2 id="10-项目属性：order"><a href="#10-项目属性：order" class="headerlink" title="10.项目属性：order"></a>10.项目属性：order</h2><h2 id="11-项目属性：flex-grow"><a href="#11-项目属性：flex-grow" class="headerlink" title="11.项目属性：flex-grow"></a>11.项目属性：flex-grow</h2><h2 id="12-项目属性：flex-shrink"><a href="#12-项目属性：flex-shrink" class="headerlink" title="12.项目属性：flex-shrink"></a>12.项目属性：flex-shrink</h2><h2 id="13-项目属性：flex-basis"><a href="#13-项目属性：flex-basis" class="headerlink" title="13.项目属性：flex-basis"></a>13.项目属性：flex-basis</h2><h2 id="14-项目属性：flex"><a href="#14-项目属性：flex" class="headerlink" title="14.项目属性：flex"></a>14.项目属性：flex</h2><h2 id="15-项目属性：align-self"><a href="#15-项目属性：align-self" class="headerlink" title="15.项目属性：align-self"></a>15.项目属性：align-self</h2>
             </div>
 
             <!-- Post Comments -->
@@ -239,8 +204,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2018/08/29/关于删除节点幕后的事情/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/2018/08/29/关于删除节点幕后的事情/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2018/10/13/CSS-flex布局学习/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/10/13/CSS-flex布局学习/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
