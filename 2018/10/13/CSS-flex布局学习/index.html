@@ -167,11 +167,77 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-</code></pre><p>我们现在给标号为1的项目加上属性<i>flex-grow:1</i>，先看看是什么效果<br><img src="https://i.imgur.com/4ny8LPl.jpg" alt=""><br>可以看出，标号为1的项目占满了剩下的所有宽度，把其余几个项目都挤到了右边<br><a name="link12"></a></p>
-<h2 id="12-项目属性：flex-shrink"><a href="#12-项目属性：flex-shrink" class="headerlink" title="12.项目属性：flex-shrink"></a>12.项目属性：flex-shrink</h2><p><a name="link13"></a></p>
+</code></pre><p>我们现在给标号为1的项目加上属性<i>flex-grow:1</i>，先看看是什么效果<br><img src="https://i.imgur.com/4ny8LPl.jpg" alt=""><br>可以看出，标号为1的项目占满了剩下的所有宽度，把其余几个项目都挤到了右边<br>再来看几个例子<br><strong>①</strong>给标号为1的项目设置<i>flex-grow:1</i>，给标号为2的项目设置<i>flex-grow:2</i><br><img src="https://i.imgur.com/mLLDYt3.jpg" alt=""><br>可以看出，2项目的宽度<strong>接近</strong>1项目宽度的两倍，父元素排列方向上的宽度被占满<br><strong>②</strong>给5个项目的<i>flex-grow</i>属性分别设置为1到5</p>
+<pre><code>    .items1{
+        flex-grow: 1;
+    }
+    .items2{
+        flex-grow: 2;
+    }
+    .items3{
+        flex-grow: 3;
+    }
+    .items4{
+        flex-grow: 4;
+    }
+    .items5{
+        flex-grow: 5;
+    }
+</code></pre><p><img src="https://i.imgur.com/QUdy4RC.jpg" alt=""><br>可以看出，5个项目的宽度相对于第一个项目的宽度依次扩大了其序号所对应的倍数<br>上面两个例子对应的所有项目的<i>flex-grow</i>属性之和都大于1，我们来看一个不大于1的例子<br><strong>③</strong>所有项目的<i>flex-grow</i>属性对应的值之和小于1</p>
+<pre><code>    .items1{
+        flex-grow: 0.1;
+    }
+    .items2{
+        flex-grow: .1;
+    }
+    .items3{
+        flex-grow: .05;
+    }
+    .items4{
+        flex-grow: .2;
+    }
+    .items5{
+        flex-grow: .15;
+    }
+</code></pre><p><img src="https://i.imgur.com/m8xDqUV.jpg" alt=""><br>可以看出，扩大后他们并没有占满父元素所有的剩余空间</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从上面的例子中，我们可以看出，<i>flex-grow</i>属性之和大于1和小于1显示的效果是不一样的，那么我们分开来讨论一下他的计算方式<br><strong>Ⅰ.</strong>当<i>flex-grow</i>属性之和大于1时，五个项目的宽度都是40px，那么剩余空间为1000-5*40 = 800px。<br>五个项目的<i>flex-grow</i>属性为1,2,3,4,5，合起来是<i>sum</i> = 15，所以5个项目分配到的多余的空间为</p>
+<ul>
+<li>800 * 1 / 15 = 53.3333333px</li>
+<li>800 * 2 / 15 = 106.66666667px</li>
+<li>800 * 3 / 15 = 160px</li>
+<li>800 * 4 / 15 = 213.333333px</li>
+<li>800 * 5 / 15 = 266.666667px</li>
+</ul>
+<p><strong>那么这5个项目最终扩张以后的宽度为93.33333333px，146.6666667px，200px，253.333333px，306.6666667px（在40px的基础上加上扩展的宽度）</strong><br>看一下项目的宽度<br><img src="https://i.imgur.com/9zCf1ii.jpg" alt=""><br><img src="https://i.imgur.com/GFW0f7v.jpg" alt=""><br><img src="https://i.imgur.com/TrrMk84.jpg" alt=""><br><img src="https://i.imgur.com/LDZfJdn.jpg" alt=""><br><img src="https://i.imgur.com/MQdICKO.jpg" alt=""><br>和我们计算的所差无几，说明这样算是正确的<br><strong>我们还可以发现一点，<i>flex-grow</i>属性值为2的项目最终的宽度并不是<i>flex-grow</i>属性值为1的项目的最终宽度的2倍，而是扩展的（变化的）宽度为2倍！！！！！！</strong><br><strong>Ⅱ.</strong>当<i>flex-grow</i>属性之和小于1时，五个项目的宽度都是40px，同样剩余空间为1000-5*40 = 800px。<br>五个项目的<i>flex-grow</i>属性值为0.1，0.05,0.2，0.15,0.3，合起来是<i>sum</i> = 0.8 &lt; 1。同样，剩余800px的空间<br>当所有元素的<i>flex-grow</i>属性之和小于1的时候，上面式子中的<i>sum</i>将会使用 1 来参与计算，而不论它们的和是多少，也就是说，这个 0.8 没有什么作用，此时的<i>sum</i>默认按照 1 来计算。<br>那么五个项目扩展的宽度为</p>
+<ul>
+<li>800 * 0.1 / 1 = 80px</li>
+<li>800 * 0.05 / 1 = 40px</li>
+<li>800 * 0.2 / 1 = 160px</li>
+<li>800 * 0.15 / 1 = 120px</li>
+<li>800 * 0.3 / 1 = 240px</li>
+</ul>
+<p>所以最终 5 个项目的宽度分别为 120px，80px，200px，160px，280px<br>可以发现，800px - 80px - 40px - 160px - 120px - 240px = 160px，也就是说，还剩下160px的宽度没有被占满<br>同样我们可以在浏览器里面查看各个项目的宽度<br><img src="https://i.imgur.com/NoyJvDd.jpg" alt=""><br><img src="https://i.imgur.com/o8HL4Xo.jpg" alt=""><br><img src="https://i.imgur.com/pkhTsCk.jpg" alt=""><br><img src="https://i.imgur.com/XvxyJ55.jpg" alt=""><br><img src="https://i.imgur.com/JcAvuxU.jpg" alt=""><br>与我们计算的一毛一样，完美~<br><a name="link12"></a></p>
+<h2 id="12-项目属性：flex-shrink"><a href="#12-项目属性：flex-shrink" class="headerlink" title="12.项目属性：flex-shrink"></a>12.项目属性：flex-shrink</h2><p>上面的<i>flex-grow</i>属性会在父元素有多余的空间的使用通过子元素的扩张来占满这些剩余空间，那么同样就会有在父容器空间不够时将子元素收缩以来适应父元素的空间的属性了，也就是<i>flex-shrink</i>属性<br><i>flex-shrink</i>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。<br>那么就像上面<i>flex-grow</i>属性一样，<i>flex-shrink</i>属性也有自己的计算方式，以此来计算子元素该如何收缩。<br>同样，我们先来看<i>flex-grow</i>属性值适合大于1的情况<br><strong>①</strong><i>flex-grow</i>属性值之和大于1<br>我们设父容器的宽度为1000px，5个项目的宽度均为300px，这样多出来的宽度就是300 <em> 5 - 1000 = 500px,5个项目<i>flex-shrink</i>属性的值依次为1,2,3,4,5。<br>那么这多出的500px将会由5个项目分别收缩一定的比例来消化。<br>项目收缩的计算公式：超出的总宽度 </em> 收缩因子 / 收缩权重 <em> 项目宽度<br>收缩因子即为<i>flex-shrink</i>属性的值<br>收缩权重的计算公式：项目宽度 </em> 对应的收缩因子<br>所以本例中的权重为：300 <em> 1 + 300 </em> 2 + 300 <em> 3 + 300 </em> 4 + 300 * 5 = 4500px<br>所以我们计算每个项目的收缩量如下：</p>
+<ul>
+<li>500 <em> 1 / 4500 </em> 300 = 33.3333333px</li>
+<li>500 <em> 2 / 4500 </em> 300 = 66.6666667px</li>
+<li>500 <em> 3 / 4500 </em> 300 = 100px</li>
+<li>500 <em> 4 / 4500 </em> 300 = 133.333333px</li>
+<li>500 <em> 5 / 4500 </em> 300 = 166.666667px</li>
+</ul>
+<p>收缩后每个项目的宽度为 266.66667px，233.33333px，200px，166.666667px，133.333333px<br>我们看一下浏览器显示的宽度以验证我们的结果<br><img src="https://i.imgur.com/Mcovpx5.jpg" alt=""><br><img src="https://i.imgur.com/wK0eZxg.jpg" alt=""><br><img src="https://i.imgur.com/57XIhcI.jpg" alt=""><br><img src="https://i.imgur.com/VmAHZSd.jpg" alt=""><br><img src="https://i.imgur.com/dfs3EF7.jpg" alt=""><br><strong>②</strong><i>flex-grow</i>属性值之和小于1<br>当<i>flex-grow</i>属性值之和小于1时，并不会完美的收缩到正好占满所有的空间而没有溢出，就像<i>flex-grow</i>属性的所有值之和小于1一样，也会按照和<i>sum</i>为1来进行收缩<br>现在设<i>flex-grow</i>属性值分别为0.05,0.1,0.15,0.2,0.25,<br>权重为：300 <em> (0.05 + 0.1 + 0.15 + 0.2 + 0.25) = 225px<br>那么 5 个项目收缩的总和是(0.05 + 0.1 + 0.15 + 0.2 + 0.25) </em> 500px 也就是375px，也就是说，最终收缩完，项目综合还是会超出父容器125px的宽度<br>每个项目收缩的空间为</p>
+<ul>
+<li>300 <em> 0.05 </em> 375 / 225 = 25px</li>
+<li>300 <em> 0.1 </em> 375 / 225 = 50px</li>
+<li>300 <em> 0.15 </em> 375 / 225 = 75px </li>
+<li>300 <em> 0.2 </em> 375 / 225 = 100px</li>
+<li>300 <em> 0.25 </em> 375 / 225 = 125px</li>
+</ul>
+<p>所以收缩后的每个项目的宽度为 275px，250px，225px，200px，175px<br>收缩后的宽度之和为：275 + 250 + 225 + 200 + 175 = 1125px，正好多出125px。<br>浏览器里面显示如下：<br><img src="https://i.imgur.com/Yy4b3c0.jpg" alt=""><br><img src="https://i.imgur.com/bTEP3t9.jpg" alt=""><br><img src="https://i.imgur.com/csxVTK4.jpg" alt=""><br><img src="https://i.imgur.com/B2dWCxi.jpg" alt=""><br><img src="https://i.imgur.com/Ofi329B.jpg" alt=""><br>可以看出，最终所有项目的和的宽度还是超过父元素的宽度的<br><a name="link13"></a></p>
 <h2 id="13-项目属性：flex-basis"><a href="#13-项目属性：flex-basis" class="headerlink" title="13.项目属性：flex-basis"></a>13.项目属性：flex-basis</h2><p><a name="link14"></a></p>
 <h2 id="14-项目属性：flex"><a href="#14-项目属性：flex" class="headerlink" title="14.项目属性：flex"></a>14.项目属性：flex</h2><p><a name="link15"></a></p>
-<h2 id="15-项目属性：align-self"><a href="#15-项目属性：align-self" class="headerlink" title="15.项目属性：align-self"></a>15.项目属性：align-self</h2>
+<h2 id="15-项目属性：align-self"><a href="#15-项目属性：align-self" class="headerlink" title="15.项目属性：align-self"></a>15.项目属性：align-self</h2><p><i>align-self</i>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<i>align-items</i>属性。默认值为<i>auto</i>，表示继承父元素的<i>align-items</i>属性，如果没有父元素，则等同于<i>stretch</i><br><i>align-self</i>属性的取值有<i>auto</i>，<i>flex-start</i>，<i>flex-end</i>，<i>center</i>，<i>baseline</i>，<i>stretch</i>，每一个值的意思就是上面所说到的意思<br>我们可以通过看一个例子演示来形象的理解该属性的效果<br><img src="https://i.imgur.com/TAhGoN7.jpg" alt=""><br>其中，在父容器中设置了<i>justify-content:center</i>与<i>align-items:center</i>使所有项目居中显示，然后给第二个项目设置了<i>align-self:flex-start</i>使其从顶端开始排列，给第三个项目设置了<i>align-self:flex-end</i>使其从底端开始排列，同时覆盖了原来的<i>align-items</i>的效果。</p>
+
             </div>
 
             <!-- Post Comments -->
