@@ -234,8 +234,42 @@
 <li>300 <em> 0.25 </em> 375 / 225 = 125px</li>
 </ul>
 <p>所以收缩后的每个项目的宽度为 275px，250px，225px，200px，175px<br>收缩后的宽度之和为：275 + 250 + 225 + 200 + 175 = 1125px，正好多出125px。<br>浏览器里面显示如下：<br><img src="https://i.imgur.com/Yy4b3c0.jpg" alt=""><br><img src="https://i.imgur.com/bTEP3t9.jpg" alt=""><br><img src="https://i.imgur.com/csxVTK4.jpg" alt=""><br><img src="https://i.imgur.com/B2dWCxi.jpg" alt=""><br><img src="https://i.imgur.com/Ofi329B.jpg" alt=""><br>可以看出，最终所有项目的和的宽度还是超过父元素的宽度的<br><a name="link13"></a></p>
-<h2 id="13-项目属性：flex-basis"><a href="#13-项目属性：flex-basis" class="headerlink" title="13.项目属性：flex-basis"></a>13.项目属性：flex-basis</h2><p><a name="link14"></a></p>
-<h2 id="14-项目属性：flex"><a href="#14-项目属性：flex" class="headerlink" title="14.项目属性：flex"></a>14.项目属性：flex</h2><p><a name="link15"></a></p>
+<h2 id="13-项目属性：flex-basis"><a href="#13-项目属性：flex-basis" class="headerlink" title="13.项目属性：flex-basis"></a>13.项目属性：flex-basis</h2><p><i>flex-basis</i>属性用于设置或检索弹性盒伸缩基准值。<br>什么意思，就是说<i>flex-basis</i>属性用于设置项目的基准宽度（width），与<i>width</i>属性有异曲同工之妙，但是与<i>width</i>属性又有很大不同。<br>我们都知道，如果没有给一个容器设置宽度的话，那么容器的宽度就是内容（content）的宽度，而<i>flex-basis</i>属性设置后的宽度会覆盖<i>width</i>属性所设置的宽度，也就是说，三者的优先级是这样的</p>
+<blockquote>
+<p><strong>content &lt; width &lt; flex-basis</strong></p>
+</blockquote>
+<p>总的来说就是</p>
+<ul>
+<li>如果没有设置<i>flex-basis</i>属性，那么<i>flex-basis</i>的大小就是项目的<i>width</i>属性大小</li>
+</ul>
+<ul>
+<li>如果没有设置<i>width</i>属性，那么<i>flex-basis</i>的大小就是项目的内容（content）宽度大小</li>
+</ul>
+<p>下面我们来看一些生动的例子<br>我们将容器的宽度设置为1000px，为了方便查看我们令其局中显示(margin: 0 auto;)</p>
+<pre><code>    .wrapper{
+        width: 1000px;
+        border: 1px solid #000;
+        box-sizing: border-box;
+        margin: 0 auto;
+        background-color: #CCCCCC;
+        height: 400px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+</code></pre><p>给容器下面的每一个项目都设置宽度(width)为100px，<i>flex-basis</i>的值为150px，然后查看浏览器<br><img src="https://i.imgur.com/uTSg2ha.jpg" alt=""><br>宽度为150px，<strong>①说明<i>flex-basis</i>属性会覆盖<i>width</i>属性的取值</strong><br><i>flex-basis</i>属性也会被<i>max-width</i>属性与<i>min-width</i>属性所限制，我们看例子</p>
+<pre><code>    .items{
+        width: 100px;
+        flex-basis: 150px;
+        /*flex-grow: 1;*/
+        min-width: 250px;
+        height: 250px;
+        background-color: #00A000;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+    }
+</code></pre><p>在上面的代码中，设置了项目的<i>flex-basis</i>属性值为150px，然而设置了<i>min-width</i>属性的值为250px，也就是说，如果<i>min-width</i>属性占了上风，四个项目会正好填满父容器，那是不是这样子呢？<br><img src="https://i.imgur.com/foJTT0N.jpg" alt=""><br>很明显，这次是<i>min-width</i>属性占了上风，那么同样，我们在设置了<i>max-width</i>属性后，同样会限制<i>flex-basis</i>属性，如果<i>flex-basis</i>属性的值超过了设定的<i>max-width</i>属性的之后，那么最终显示的会使<i>max-width</i>属性所设定的值。<br>那么当我们设置的所有项目的<i>flex-basis</i>属性值之和大于父容器的宽度后，那么此时起作用的将会是<i>flex-shrink</i>属性了，同样，当项目<i>flex-basis</i>属性值之和达不到父容器的宽度时，我们也可以使用<i>flex-grow</i>属性使其扩展到占满父元素，有关这两个属性已经在上面有详解，这里就不再细说了。<br><a name="link14"></a></p>
+<h2 id="14-项目属性：flex"><a href="#14-项目属性：flex" class="headerlink" title="14.项目属性：flex"></a>14.项目属性：flex</h2><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。<br>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br><i>flex</i>属性因为是三种属性的简写，而<i>flex-grow</i>与<i>flex-shrink</i>是起完全相反的作用的两个属性，所以当然要分情况讨论当这两个属性在不同的项目与容器宽度之比下起到的作用，举个栗子<br>如果父容器的宽度小于项目宽度（此时的宽度使用到的flex-basis属性设置的）之和，那么<i>flex-shrink</i>属性就会起作用，具体计算方式见上<br>如果父容器的宽度大于项目宽度（此时的宽度使用到的flex-basis属性设置的）之和，那么<i>flex-grow</i>属性就会起作用，具体计算方式见上<br><a name="link15"></a></p>
 <h2 id="15-项目属性：align-self"><a href="#15-项目属性：align-self" class="headerlink" title="15.项目属性：align-self"></a>15.项目属性：align-self</h2><p><i>align-self</i>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<i>align-items</i>属性。默认值为<i>auto</i>，表示继承父元素的<i>align-items</i>属性，如果没有父元素，则等同于<i>stretch</i><br><i>align-self</i>属性的取值有<i>auto</i>，<i>flex-start</i>，<i>flex-end</i>，<i>center</i>，<i>baseline</i>，<i>stretch</i>，每一个值的意思就是上面所说到的意思<br>我们可以通过看一个例子演示来形象的理解该属性的效果<br><img src="https://i.imgur.com/TAhGoN7.jpg" alt=""><br>其中，在父容器中设置了<i>justify-content:center</i>与<i>align-items:center</i>使所有项目居中显示，然后给第二个项目设置了<i>align-self:flex-start</i>使其从顶端开始排列，给第三个项目设置了<i>align-self:flex-end</i>使其从底端开始排列，同时覆盖了原来的<i>align-items</i>的效果。</p>
 
             </div>

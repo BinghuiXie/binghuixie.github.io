@@ -134,12 +134,26 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >css position属性几个参数详解</h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://i.imgur.com/xCJtO3a.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >CSS布局--float篇</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>CSS中的难点之一就是CSS布局了，常见的CSS布局有几种，无非就是通过<i>float</i>属性，<i>display:inline-block</i>属性，<i>position</i>属性，<i>flex</i>布局以及通过<i>table</i>元素来进行布局等，这其中，<i>table</i>布局相对较为古老，而且有许多问题，比如说我们通过<i>table</i>元素的布局是在<i>html</i>中进行的，相对来说与CSS关系不大，这样读起来很让人抓狂。<i>float</i>浮动布局和<i>position</i>属性的布局又存在很多问题，如果对属性的理解不够深入，在使用这些属性进行布局的时候就会经常出现一些莫名其妙的效果让人云里雾里。至于<i>flex</i>布局，是近几年新出的一个CSS布局的方法，相对来说简单易行一些，当然对我们前端开发者来讲，起码的几种CSS布局都最好要掌握一些，所以这篇博文主要讲一下<i>float</i>这个属性，即如何用<i>float</i>来对网页内的元素进行布局，其余的<i>position</i>属性以及<i>flex</i>属性，在我的另外两篇博文中会有详细介绍。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>1.<a href="#link1">一个概念</a><br>2.<a href="#link2">什么是CSS布局</a><br>3.<a href="#link3">用float实现一些简单的布局</a><br>4.<a href="#link4">出bug了…</a><br>5.<a href="#link5">float的前生</a><br>6.<a href="#link6">float的特点</a><br>7.<a href="#link7">揭开float的真面目</a><br>8.<a href="#link8">遏制浮动–清除浮动</a><br>9.<a href="#link9">浮动实现CSS常见布局01</a><br>10.<a href="#link10">浮动实现CSS常见布局02</a><br>11.<a href="#link11">浮动实现CSS常见布局03</a><br>本篇博客是看过了许多大牛们的博客之后自己总结出来的，为了深入理解<i>float</i>自己也写了不少demo，所有的代码都可以在我的<i>github</i>上找到，下面附上我的<i>github</i>地址以及一些大牛们对<i>float</i>的回答<br>(1)<a href="https://www.zhangxinxu.com/wordpress/2010/01/css-float%E6%B5%AE%E5%8A%A8%E7%9A%84%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6%E3%80%81%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%8B%93%E5%B1%95%E4%B8%80/" target="_blank" rel="noopener">张鑫旭 CSS float浮动的深入研究、详解及拓展(一)</a><br>(2)<a href="https://www.zhangxinxu.com/wordpress/2010/01/css-float%E6%B5%AE%E5%8A%A8%E7%9A%84%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6%E3%80%81%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%8B%93%E5%B1%95%E4%BA%8C/" target="_blank" rel="noopener">张鑫旭 CSS float浮动的深入研究、详解及拓展(二)</a><br>(3)我的github地址</p>
+<p><a name="link1"></a></p>
+<h2 id="1-一个概念"><a href="#1-一个概念" class="headerlink" title="1.一个概念"></a>1.一个概念</h2><p><strong>在正式说<i>float</i>属性之前，我们先来看一个概念，理解了这个概念以后，对后文的<i>float</i>属性的理解也会有所帮助。</strong></p>
+<h2 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h2><p>什么是文档流？<br><a name="link2"></a></p>
+<h2 id="2-什么是CSS布局"><a href="#2-什么是CSS布局" class="headerlink" title="2.什么是CSS布局"></a>2.什么是CSS布局</h2><p><a name="link3"></a></p>
+<h2 id="3-用float实现一些简单的布局"><a href="#3-用float实现一些简单的布局" class="headerlink" title="3.用float实现一些简单的布局"></a>3.用float实现一些简单的布局</h2><p><a name="link4"></a></p>
+<h2 id="4-出bug了…"><a href="#4-出bug了…" class="headerlink" title="4.出bug了…"></a>4.出bug了…</h2><p><a name="link5"></a></p>
+<h2 id="5-float的前生"><a href="#5-float的前生" class="headerlink" title="5.float的前生"></a>5.float的前生</h2><p><a name="link6"></a></p>
+<h2 id="5-float的特点"><a href="#5-float的特点" class="headerlink" title="5.float的特点"></a>5.float的特点</h2><p><a name="link7"></a></p>
+<h2 id="6-揭开float的真面目"><a href="#6-揭开float的真面目" class="headerlink" title="6.揭开float的真面目"></a>6.揭开float的真面目</h2><p><a name="link8"></a></p>
+<h2 id="7-遏制浮动–清除浮动"><a href="#7-遏制浮动–清除浮动" class="headerlink" title="7.遏制浮动–清除浮动"></a>7.遏制浮动–清除浮动</h2><p><a name="link9"></a></p>
+<h2 id="8-浮动实现CSS常见布局01"><a href="#8-浮动实现CSS常见布局01" class="headerlink" title="8.浮动实现CSS常见布局01"></a>8.浮动实现CSS常见布局01</h2><p><a name="link10"></a></p>
+<h2 id="9-浮动实现CSS常见布局02"><a href="#9-浮动实现CSS常见布局02" class="headerlink" title="9.浮动实现CSS常见布局02"></a>9.浮动实现CSS常见布局02</h2><p><a name="link11"></a></p>
+<h2 id="10-浮动实现CSS常见布局03"><a href="#10-浮动实现CSS常见布局03" class="headerlink" title="10.浮动实现CSS常见布局03"></a>10.浮动实现CSS常见布局03</h2>
             </div>
 
             <!-- Post Comments -->
@@ -201,8 +215,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2018/08/29/css-position属性几个参数详解/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/2018/08/29/css-position属性几个参数详解/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2018/10/27/CSS布局-float篇/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/10/27/CSS布局-float篇/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
