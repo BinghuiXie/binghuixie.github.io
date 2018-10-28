@@ -4,11 +4,17 @@
     <title><![CDATA[CSS布局--position篇]]></title>
     <url>%2F2018%2F10%2F27%2FCSS%E5%B8%83%E5%B1%80-position%E7%AF%87%2F</url>
     <content type="text"></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[CSS布局--display:inline-block篇]]></title>
     <url>%2F2018%2F10%2F27%2FCSS%E5%B8%83%E5%B1%80-display-inline-block%E7%AF%87%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言最近因为要讲一些CSS布局的课，所以专门讲CSS的几种布局方法总结整理出来写到了博客上，本篇文章是CSS布局(一)–display:inline-block篇，后面还有CSS布局–float篇，CSS布局–position篇以及CSS布局–flex篇，至于table布局，主要是自己用的也不多，就不在这里班门弄斧了。 目录1.块级元素和行内元素2.CSS display属性3.display:inline-block布局4.幽灵空白节点5.总结 块级元素和内联元素因为display”inline-block涉及到了inline和block，那么块级元素和内联元素我们就不得不来说一下了。我们先说，常见的块级元素有div，li，table，p，ul，ol等，常见的内联元素有span，em，i，我们先从一个例子入手，看一下两种元素的区别html代码: &lt;div class=&quot;parent&quot;&gt; &lt;div&gt;常见块级元素--div&lt;/div&gt; &lt;p&gt;常见块级元素--p&lt;/p&gt; &lt;h1&gt;常见块级元素--h1(h1~h6)&lt;/h1&gt; &lt;ul&gt; &lt;li style=&quot;width: 150px;height: 150px&quot;&gt;块级元素可以设置宽高 &lt;br&gt;width:150px height:150px&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class=&quot;parent&quot;&gt; &lt;a href=&quot;&quot;&gt;常见的内联元素--a&lt;/a&gt; &lt;span&gt;常见的内联元素--span&lt;/span&gt; &lt;em&gt;常见的内联元素--em&lt;/em&gt; &lt;i style=&quot;width: 200px;height: 250px&quot;&gt;内联元素不可以设置宽高 width: 200px;height: 250px&lt;/i&gt; &lt;/div&gt; css代码： .parent{ width: 100%; height: 400px; border: 2px solid #000; box-sizing: border-box; margin: 15px 0; } .parent:nth-of-type(1) div{ background-color: #856404; margin-left: 15px; margin-bottom: 15px; margin-right: 15px; margin-top: 15px; padding-left: 15px; padding-bottom: 15px; padding-right: 15px; padding-top: 15px; } .parent:nth-of-type(1) p{ background-color: #00A000; } .parent:nth-of-type(1) h1{ background-color: #c10802; } .parent:nth-of-type(1) li{ background-color: #3b5998; } .parent:nth-of-type(2) a{ background-color: #856404; } .parent:nth-of-type(2) span{ background-color: #00A000; margin-left: 15px; margin-bottom: 15px; margin-right: 15px; margin-top: 15px; padding-left: 15px; padding-bottom: 15px; padding-right: 15px; padding-top: 15px; } .parent:nth-of-type(2) em{ background-color: #c10802; } .parent:nth-of-type(2) i{ background-color: #3b5998; } 效果图如下：块级元素：行内元素我们可以看出，块级元素默认会占满父元素的宽度（在本例中因为设置了父元素的宽度为100%也就是浏览器的宽度，所以子元素会占满浏览器一整行的宽度），而且与内容的宽度无关，也就是说，就算块级元素内容的宽度不足浏览器一整行的宽度，块级元素仍然会占满浏览器一整行的宽度，除此之外，我们看到块级元素还可以设置宽度和高度，此时内容如果在容器宽度内一行放不下的时候会换行，我们还可以看到对行内元素设置margin和padding，四个方向left，eight，bottom，top都会起作用。内联元素，从例子中我们可以看出，内联元素的宽度是内容的宽度，而且不会默认占满父容器的一整行，而且当给内联元素设置宽度个高度时不会有效果，还有我们可以发现，给内联元素设置边距margin和padding的时候，对于margin，只有margin-left和margin-right起到了作用，而margin-top和margin-bottom没有起到作用，padding在四个方向均有效果。所以总结一下块级元素和内联元素的区别 块级元素会独占一行，在内容不满父元素宽度的情况下，块级元素的宽度默认会是父级元素的宽度 内联元素默认情况下的宽度就是内容的宽度，每一个内联元素会首先在一行内排列，直到内容的宽度超过父容器的宽度时才会换行 块级元素可以设置宽高 内联元素不可以设置宽高 块级元素的margin和padding在四个方向上都会起作用 内联元素的margin在上下两个方向无效，padding在四个方向上都会起作用（IE,Chrome，Firefox下均成立）CSS display属性 display:inline-block布局 幽灵空白节点 总结]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[CSS布局--float篇]]></title>
