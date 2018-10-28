@@ -227,10 +227,14 @@
 ## display:inline-block布局 ##
 上面说道，设置了&lt;i&gt;display:inline-block&lt;/i&gt;以后的元素会同时具有块级元素和内联元素的性质，那么我们先来看看设置了&lt;i&gt;display:inline-block&lt;/i&gt;后会有哪些变化吧：
 html代码
+
 </code></pre><p><div><br>    <ul><br>        <li></li><br>        <li></li><br>        <li></li><br>        <li></li><br>    </ul><br></div></p>
-<pre><code>css代码
+<pre><code>
+css代码
+
 </code></pre><p>div{<br>    width: 1200px;<br>    border: 1px solid #000;<br>    background-color: #f0f0ff;<br>    height: 300px;<br>    margin: 0 auto;<br>}<br>ul,li{<br>    /<em>清除圆点样式</em>/<br>    list-style: none;<br>}<br>li{<br>    width: 240px;<br>    height: 240px;<br>    background-color: #00A000;<br>    display: inline-block;<br>    padding: 15px;<br>}</p>
-<pre><code>最终效果：
+<pre><code>
+最终效果：
 ![](https://i.imgur.com/kyulalT.jpg)
 通过这张图片，我们可以总结以下几点关于设置了&lt;i&gt;display:inline-block&lt;/i&gt;后的元素的特性：
 1. 在不超过父元素宽度的前提下，所有元素会排列在一行 
@@ -248,22 +252,30 @@ html代码
 既然知道了空白符是如何出现的，那么我们也就有了消除空白符的方法，我在这里介绍4种，感兴趣的朋友可以了解一下
 ### 1.闭合标签与开启标签放在同一行 ###
 既然我们说道空白符是由于换行引起的，那么我们自然就会想到，**不换行**，不久解决了吗？例如下面这样子
+
 </code></pre><p><ul><br>    <li><br>        <p>…</p><br>    </li><li><br>        <p>…</p><br>    </li><br></ul></p>
-<pre><code>将开始标签与关闭标签放在同一行，那么这样子，空白符就不见了
+<pre><code>
+将开始标签与关闭标签放在同一行，那么这样子，空白符就不见了
 ![](https://i.imgur.com/wPrn2xg.jpg)
 但是这样写，无疑会使代码的可读性很不好，所以尽管可以，但是我们不推荐使用，尤其是在开发项目的时候。
 ### 2.letter-spacing ###
 前面我们说到，这个“空格”其实是一个空白符，本质上也是一个字符，只不过我们看不见而已，那么既然是字符，当然就可以用处理字符的方法来对其进行修整了，所以我们用到了&lt;i&gt;letter-spacing&lt;/i&gt;属性，通过为&lt;i&gt;letter-spacing&lt;/i&gt;属性设置负值，使文字水平方向重叠，自然就可以消除空白符了。
+
 </code></pre><p>ul{<br>    letter-spacing:-5px;<br>}</p>
-<pre><code>我们为父容器设置&lt;i&gt;letter-spacing&lt;/i&gt;值为 -5 &lt;i&gt;px&lt;/i&gt;（空白符的宽度为 5 &lt;i&gt;px&lt;/i&gt;），达到了预期的效果。
+<pre><code>
+我们为父容器设置&lt;i&gt;letter-spacing&lt;/i&gt;值为 -5 &lt;i&gt;px&lt;/i&gt;（空白符的宽度为 5 &lt;i&gt;px&lt;/i&gt;），达到了预期的效果。
 ![](https://i.imgur.com/JMXEOyW.jpg)
 ### 3.font-size:0 ###
 同样，针对字符，我们也可以通过设置字体大小来将其消除
+
 </code></pre><p>ul{<br>    font-size: 0;<br>}</p>
-<pre><code>效果与&lt;i&gt;letter-spacing&lt;/i&gt;属性设置为-5&lt;i&gt;px&lt;/i&gt;一样
+<pre><code>
+效果与&lt;i&gt;letter-spacing&lt;/i&gt;属性设置为-5&lt;i&gt;px&lt;/i&gt;一样
 ### 4.margin-right ###
 因为每一个&lt;i&gt;li&lt;/i&gt;的右边都存在一个空白符，所以我们也可以通过设置右外边距为负值来达到消除空白符的效果
-</code></pre><p>li{<br>    /<em>通过外右边距 去掉空白符的方法</em>/<br>    margin-right: -5px;<br>}<br><code>`</code><br>效果与上面的方法一样，就不再放图片了。<br><a name="link5"></a></p>
+
+</code></pre><p>li{<br>    /<em>通过外右边距 去掉空白符的方法</em>/<br>    margin-right: -5px;<br>}<br><code>`</code></p>
+<p>效果与上面的方法一样，就不再放图片了。<br><a name="link5"></a></p>
 <h2 id="莫名其妙的错位"><a href="#莫名其妙的错位" class="headerlink" title="莫名其妙的错位"></a>莫名其妙的错位</h2><p>当我们给每一个<i>li</i>里面都加了文字以后，结果却出现了错位？？？？<br>我们先来看一下出现问题时候的样子<br><img src="https://i.imgur.com/RkEXNmU.jpg" alt=""><br>出现问题的原因是：此时的<i>li</i>默认垂直对齐方式是<i>vertical-align:baseline</i>。<br>什么？不明白什么意思？请看我的另一篇文章：<strong>关于css baseline的那些事</strong><br><a name="link6"></a></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文旨在说明一下<i>display:inline-block</i>在布局中的使用，实际上，<i>display:inline-block</i>还有许多幕后的内容没有说到，有关<i>display:inline-block</i>的其他内容，我会以后慢慢更，只希望大家在看完这篇文章后对使用<i>display:inline-block</i>用来布局有所了解即可，and本文若有错误观点，欢迎指正~</p>
 
