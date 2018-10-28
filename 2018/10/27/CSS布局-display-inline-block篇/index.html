@@ -218,15 +218,16 @@
 </code></pre>这样设置以后，原本为内联元素的<i>span</i>就拥有了块级元素的特性。<br>同样，我们也可以通过<i>display:inline</i>将块级元素转化为行内元素，比如说<pre><code>div{
  display:inline;
 }
-</code></pre>这样设置以后<i>div</i>就变为了一个内联元素，拥有内联元素的特性。<br>既然<i>display:block</i>属性可以将内联元素变块级元素，那么是不是<i>display:block</i>就与块级元素等价了呢？<br>其实并不是的，我们常见的几个块级元素比如<i>li</i>，<i>table</i>都是块级元素，但是我们查看这几个元素对应的源码会发现：<pre><code>li{
- display:list-item;
+</code></pre>这样设置以后<i>div</i>就变为了一个内联元素，拥有内联元素的特性。<br>既然<i>display:block</i>属性可以将内联元素变块级元素，那么是不是<i>display:block</i>就与块级元素等价了呢？<br>其实并不是的，我们常见的几个块级元素比如<i>li</i>，<i>table</i>都是块级元素，但是我们查看这几个元素对应的源码会发现:</li>
+</ol>
+<pre><code>li{
+    display:list-item;
 }
 </code></pre><pre><code>table{
- display:table;
+    display:table;
 }
-</code></pre></li>
-</ol>
-<p>也就是说，“块级元素”与display为block的元素并不是一个概念，当然，其他常见的块级元素比如<i>div</i>，<i>p</i>等，都会有一个<i>display:block</i>添加在其样式中，在实际的开发中，我们常用的就是<i>display:block</i>，偶尔也会使用<i>display:table</i>，至于<i>display:list-item</i>，因为我们都知道<i>li</i>标签下会有一个圆点样式，当然我们也可以加一句<i>list-style”none”</i>用来去除圆点样式，只不过这样会有一点代码冗杂的问题，不如直接使用<i>display:block</i>简单。<br><i>display:inline-block</i>属性，单单从字面意思上就可以看出，使用<i>display:inline-block</i>声明过后的元素，即会具有块级元素的性质，也会具有内联元素的性质，可以说是将二者的优点结合了一下，在下面一节详细讲一下<i>display:inline-block</i>属性。<br><a name="link3"></a></p>
+</code></pre><p>也就是说，“块级元素”与display为block的元素并不是一个概念，当然，其他常见的块级元素比如<i>div</i>，<i>p</i>等，都会有一个<i>display:block</i>添加在其样式中，在实际的开发中，我们常用的就是<i>display:block</i>，偶尔也会使用<i>display:table</i>，至于<i>display:list-item</i>，因为我们都知道<i>li</i>标签下会有一个圆点样式，当然我们也可以加一句<i>list-style”none”</i>用来去除圆点样式，只不过这样会有一点代码冗杂的问题，不如直接使用<i>display:block</i>简单。<br><i>display:inline-block</i>属性，单单从字面意思上就可以看出，使用<i>display:inline-block</i>声明过后的元素，即会具有块级元素的性质，也会具有内联元素的性质，可以说是将二者的优点结合了一下，在下面一节详细讲一下<i>display:inline-block</i>属性。</p>
+<p><a name="link3"></a></p>
 <h2 id="display-inline-block布局"><a href="#display-inline-block布局" class="headerlink" title="display:inline-block布局"></a>display:inline-block布局</h2><p>上面说道，设置了<i>display:inline-block</i>以后的元素会同时具有块级元素和内联元素的性质，那么我们先来看看设置了<i>display:inline-block</i>后会有哪些变化吧：<br>html代码</p>
 <pre><code>&lt;div&gt;
     &lt;ul&gt;
