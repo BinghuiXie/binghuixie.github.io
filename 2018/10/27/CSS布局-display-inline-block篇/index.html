@@ -140,7 +140,7 @@
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
                 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近因为要讲一些CSS布局的课，所以专门讲CSS的几种布局方法总结整理出来写到了博客上，本篇文章是CSS布局(一)–display:inline-block篇，后面还有CSS布局–float篇，CSS布局–position篇以及CSS布局–flex篇，至于<i>table</i>布局，主要是自己用的也不多，就不在这里班门弄斧了。</p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>1.<a href="#link1">块级元素和行内元素</a><br>2.<a href="#link2">CSS display属性</a><br>3.<a href="#link3">display:inline-block布局</a><br>4.<a href="#link4">幽灵空白节点</a><br>5.<a href="#link5">总结</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>1.<a href="#link1">块级元素和行内元素</a><br>2.<a href="#link2">CSS display属性</a><br>3.<a href="#link3">display:inline-block布局</a><br>4.<a href="#link4">幽灵空白节点</a><br>5.<a href="#link5">莫名其妙的错位</a><br>6.<a href="#link6">总结</a></p>
 <p><a name="link1"></a></p>
 <h2 id="块级元素和内联元素"><a href="#块级元素和内联元素" class="headerlink" title="块级元素和内联元素"></a>块级元素和内联元素</h2><p>因为<i>display”inline-block</i>涉及到了<i>inline</i>和<i>block</i>，那么块级元素和内联元素我们就不得不来说一下了。<br>我们先说，常见的块级元素有<i>div</i>，<i>li</i>，<i>table</i>，<i>p</i>，<i>ul</i>，<i>ol</i>等，常见的内联元素有<i>span</i>，<i>em</i>，<i>i</i>，我们先从一个例子入手，看一下两种元素的区别<br>html代码:</p>
 <pre><code>&lt;div class=&quot;parent&quot;&gt;
@@ -205,19 +205,68 @@
     .parent:nth-of-type(2) i{
         background-color: #3b5998;
     }
-</code></pre><p>效果图如下：<br>块级元素：<br><img src="https://i.imgur.com/oVjzZEk.jpg" alt=""><br>行内元素<br><img src="https://i.imgur.com/B2nvR6k.jpg" alt=""><br>我们可以看出，块级元素默认会占满父元素的宽度（在本例中因为设置了父元素的宽度为100%也就是浏览器的宽度，所以子元素会占满浏览器一整行的宽度），而且<strong>与内容的宽度无关</strong>，也就是说，就算块级元素内容的宽度不足浏览器一整行的宽度，块级元素仍然会占满浏览器一整行的宽度，除此之外，我们看到块级元素还可以设置宽度和高度，此时内容如果在容器宽度内一行放不下的时候会换行，我们还可以看到对行内元素设置<i>margin</i>和<i>padding</i>，四个方向<i>left</i>，<i>eight</i>，<i>bottom</i>，<i>top</i>都会起作用。<br>内联元素，从例子中我们可以看出，内联元素的宽度是<strong>内容的宽度</strong>，而且不会默认占满父容器的一整行，而且当给内联元素设置宽度个高度时不会有效果，还有我们可以发现，给内联元素设置边距<i>margin</i>和<i>padding</i>的时候，对于<i>margin</i>，只有<i>margin-left</i>和<i>margin-right</i>起到了作用，而<i>margin-top</i>和<i>margin-bottom</i>没有起到作用，<i>padding</i>在四个方向均有效果。<br>所以总结一下块级元素和内联元素的区别</p>
+</code></pre><p>效果图如下：<br><strong>块级元素：</strong><br><img src="https://i.imgur.com/oVjzZEk.jpg" alt=""><br><strong>行内元素</strong><br><img src="https://i.imgur.com/B2nvR6k.jpg" alt=""><br>我们可以看出，块级元素默认会占满父元素的宽度（在本例中因为设置了父元素的宽度为100%也就是浏览器的宽度，所以子元素会占满浏览器一整行的宽度），而且<strong>与内容的宽度无关</strong>，也就是说，就算块级元素内容的宽度不足浏览器一整行的宽度，块级元素仍然会占满浏览器一整行的宽度，除此之外，我们看到块级元素还可以设置宽度和高度，此时内容如果在容器宽度内一行放不下的时候会换行，我们还可以看到对行内元素设置<i>margin</i>和<i>padding</i>，四个方向<i>left</i>，<i>eight</i>，<i>bottom</i>，<i>top</i>都会起作用。<br>内联元素，从例子中我们可以看出，内联元素的宽度是<strong>内容的宽度</strong>，而且不会默认占满父容器的一整行，而且当给内联元素设置宽度个高度时不会有效果，还有我们可以发现，给内联元素设置边距<i>margin</i>和<i>padding</i>的时候，对于<i>margin</i>，只有<i>margin-left</i>和<i>margin-right</i>起到了作用，而<i>margin-top</i>和<i>margin-bottom</i>没有起到作用，<i>padding</i>在四个方向均有效果。<br>所以总结一下块级元素和内联元素的区别</p>
 <ol>
 <li>块级元素会独占一行，在内容不满父元素宽度的情况下，块级元素的宽度默认会是父级元素的宽度</li>
 <li>内联元素默认情况下的宽度就是内容的宽度，每一个内联元素会首先在一行内排列，直到内容的宽度超过父容器的宽度时才会换行</li>
 <li>块级元素可以设置宽高</li>
 <li>内联元素不可以设置宽高</li>
 <li>块级元素的<i>margin</i>和<i>padding</i>在四个方向上都会起作用</li>
-<li>内联元素的<i>margin</i>在上下两个方向无效，<i>padding</i>在四个方向上都会起作用（IE,Chrome，Firefox下均成立）<br><a name="link2"></a><h2 id="CSS-display属性"><a href="#CSS-display属性" class="headerlink" title="CSS display属性"></a>CSS display属性</h2></li>
+<li>内联元素的<i>margin</i>在上下两个方向无效，<i>padding</i>在四个方向上都会起作用（IE,Chrome，Firefox下均成立）<br><a name="link2"></a><h2 id="CSS-display属性"><a href="#CSS-display属性" class="headerlink" title="CSS display属性"></a>CSS display属性</h2>上文中我们总结了行内元素和内联元素的区别，这节我们在写一下内联元素与块级元素之间的转换，通过<i>display</i>的几个属性。<br><i>display</i>属性我们常用的几个值有<i>display:inline</i>，<i>display:block</i>与<i>display:inline-block</i>。<br>我们在一般情况下可以通过<i>display:block</i>将内联元素变为块级元素，比如说:<pre><code>span{
+ display:block;
+}
+</code></pre>这样设置以后，原本为内联元素的<i>span</i>就拥有了块级元素的特性。<br>同样，我们也可以通过<i>display:inline</i>将块级元素转化为行内元素，比如说<pre><code>div{
+ display:inline;
+}
+</code></pre>这样设置以后<i>div</i>就变为了一个内联元素，拥有内联元素的特性。<br>既然<i>display:block</i>属性可以将内联元素变块级元素，那么是不是<i>display:block</i>就与块级元素等价了呢？<br>其实并不是的，我们常见的几个块级元素比如<i>li</i>，<i>table</i>都是块级元素，但是我们查看这几个元素对应的源码会发现：<br><code>`</code><br>li{<br> display:list-item;<br>}</li>
 </ol>
-<p><a name="link3"></a></p>
-<h2 id="display-inline-block布局"><a href="#display-inline-block布局" class="headerlink" title="display:inline-block布局"></a>display:inline-block布局</h2><p><a name="link4"></a></p>
-<h2 id="幽灵空白节点"><a href="#幽灵空白节点" class="headerlink" title="幽灵空白节点"></a>幽灵空白节点</h2><p><a name="link5"></a></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+<p>table{<br>    display:table;<br>}</p>
+<pre><code>也就是说，“块级元素”与display为block的元素并不是一个概念，当然，其他常见的块级元素比如&lt;i&gt;div&lt;/i&gt;，&lt;i&gt;p&lt;/i&gt;等，都会有一个&lt;i&gt;display:block&lt;/i&gt;添加在其样式中，在实际的开发中，我们常用的就是&lt;i&gt;display:block&lt;/i&gt;，偶尔也会使用&lt;i&gt;display:table&lt;/i&gt;，至于&lt;i&gt;display:list-item&lt;/i&gt;，因为我们都知道&lt;i&gt;li&lt;/i&gt;标签下会有一个圆点样式，当然我们也可以加一句&lt;i&gt;list-style&quot;none&quot;&lt;/i&gt;用来去除圆点样式，只不过这样会有一点代码冗杂的问题，不如直接使用&lt;i&gt;display:block&lt;/i&gt;简单。
+&lt;i&gt;display:inline-block&lt;/i&gt;属性，单单从字面意思上就可以看出，使用&lt;i&gt;display:inline-block&lt;/i&gt;声明过后的元素，即会具有块级元素的性质，也会具有内联元素的性质，可以说是将二者的优点结合了一下，在下面一节详细讲一下&lt;i&gt;display:inline-block&lt;/i&gt;属性。
+&lt;a name=&quot;link3&quot;&gt;&lt;/a&gt;
+## display:inline-block布局 ##
+上面说道，设置了&lt;i&gt;display:inline-block&lt;/i&gt;以后的元素会同时具有块级元素和内联元素的性质，那么我们先来看看设置了&lt;i&gt;display:inline-block&lt;/i&gt;后会有哪些变化吧：
+html代码
+</code></pre><p><div><br>    <ul><br>        <li></li><br>        <li></li><br>        <li></li><br>        <li></li><br>    </ul><br></div></p>
+<pre><code>css代码
+</code></pre><p>div{<br>    width: 1200px;<br>    border: 1px solid #000;<br>    background-color: #f0f0ff;<br>    height: 300px;<br>    margin: 0 auto;<br>}<br>ul,li{<br>    /<em>清除圆点样式</em>/<br>    list-style: none;<br>}<br>li{<br>    width: 240px;<br>    height: 240px;<br>    background-color: #00A000;<br>    display: inline-block;<br>    padding: 15px;<br>}</p>
+<pre><code>最终效果：
+![](https://i.imgur.com/kyulalT.jpg)
+通过这张图片，我们可以总结以下几点关于设置了&lt;i&gt;display:inline-block&lt;/i&gt;后的元素的特性：
+1. 在不超过父元素宽度的前提下，所有元素会排列在一行 
+2. 可以设置宽高
+3. &lt;i&gt;margin&lt;/i&gt;和&lt;i&gt;padding&lt;/i&gt;的四个方向都会起作用
+4. 黑白通吃，可以在其内部放块级元素（block），也可以将其放在内联元素（inline）下面
+**这里提出一个问题：有没有想过为什么这样设置就可以是元素既有块级元素的特性，也有行内元素的特性？**
+关于这个问题的解答，在我的另外一篇文章中，我会有写，不过希望大家能先思考一下。
+&lt;a name=&quot;link4&quot;&gt;&lt;/a&gt;
+## 幽灵空白节点 ##
+现在看起来，设置了&lt;i&gt;display:inline-block&lt;/i&gt;以后，元素具有了块级元素和内联元素的优点，那这样设置会不会有什么潜在的bug呢？
+细心地小伙伴可能已经发现了一个问题：就是我们上一张图片显示的每一个设置了&lt;i&gt;display:inline-block&lt;/i&gt;的&lt;i&gt;li&lt;/i&gt;之间，都会有一个“空格”，这个空格为什么会出现？它的存在有什么不好的效果吗？我们一一来看。
+“空格”出现的原因：
+仔细看代码会发现，每写完一个&lt;i&gt;li&lt;/i&gt;，会加一个回车，正是这个回车，这个回车在渲染的时候会被渲染为一个空白符（如果有多个回车则会被合并为一个空白符），那么这个空白符就是导致&lt;i&gt;li&lt;/i&gt;元素之间“空格”的“元凶”。
+既然知道了空白符是如何出现的，那么我们也就有了消除空白符的方法，我在这里介绍4种，感兴趣的朋友可以了解一下
+### 1.闭合标签与开启标签放在同一行 ###
+既然我们说道空白符是由于换行引起的，那么我们自然就会想到，**不换行**，不久解决了吗？例如下面这样子
+</code></pre><p><ul><br>    <li><br>        <p>…</p><br>    </li><li><br>        <p>…</p><br>    </li><br></ul></p>
+<pre><code>将开始标签与关闭标签放在同一行，那么这样子，空白符就不见了
+![](https://i.imgur.com/wPrn2xg.jpg)
+但是这样写，无疑会使代码的可读性很不好，所以尽管可以，但是我们不推荐使用，尤其是在开发项目的时候。
+### 2.letter-spacing ###
+前面我们说到，这个“空格”其实是一个空白符，本质上也是一个字符，只不过我们看不见而已，那么既然是字符，当然就可以用处理字符的方法来对其进行修整了，所以我们用到了&lt;i&gt;letter-spacing&lt;/i&gt;属性，通过为&lt;i&gt;letter-spacing&lt;/i&gt;属性设置负值，使文字水平方向重叠，自然就可以消除空白符了。
+</code></pre><p>ul{<br>    letter-spacing:-5px;<br>}</p>
+<pre><code>我们为父容器设置&lt;i&gt;letter-spacing&lt;/i&gt;值为 -5 &lt;i&gt;px&lt;/i&gt;（空白符的宽度为 5 &lt;i&gt;px&lt;/i&gt;），达到了预期的效果。
+![](https://i.imgur.com/JMXEOyW.jpg)
+### 3.font-size:0 ###
+同样，针对字符，我们也可以通过设置字体大小来将其消除
+</code></pre><p>ul{<br>    font-size: 0;<br>}</p>
+<pre><code>效果与&lt;i&gt;letter-spacing&lt;/i&gt;属性设置为-5&lt;i&gt;px&lt;/i&gt;一样
+### 4.margin-right ###
+因为每一个&lt;i&gt;li&lt;/i&gt;的右边都存在一个空白符，所以我们也可以通过设置右外边距为负值来达到消除空白符的效果
+</code></pre><p>li{<br>    /<em>通过外右边距 去掉空白符的方法</em>/<br>    margin-right: -5px;<br>}<br><code>`</code><br>效果与上面的方法一样，就不再放图片了。<br><a name="link5"></a></p>
+<h2 id="莫名其妙的错位"><a href="#莫名其妙的错位" class="headerlink" title="莫名其妙的错位"></a>莫名其妙的错位</h2><p>当我们给每一个<i>li</i>里面都加了文字以后，结果却出现了错位？？？？<br>我们先来看一下出现问题时候的样子<br><img src="https://i.imgur.com/RkEXNmU.jpg" alt=""><br>出现问题的原因是：此时的<i>li</i>默认垂直对齐方式是<i>vertical-align:baseline</i>。<br>什么？不明白什么意思？请看我的另一篇文章：<strong>关于css baseline的那些事</strong><br><a name="link6"></a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文旨在说明一下<i>display:inline-block</i>在布局中的使用，实际上，<i>display:inline-block</i>还有许多幕后的内容没有说到，有关<i>display:inline-block</i>的其他内容，我会以后慢慢更，只希望大家在看完这篇文章后对使用<i>display:inline-block</i>用来布局有所了解即可，and本文若有错误观点，欢迎指正~</p>
+
             </div>
 
             <!-- Post Comments -->
