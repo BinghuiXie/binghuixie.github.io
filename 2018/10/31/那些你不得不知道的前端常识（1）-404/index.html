@@ -134,12 +134,33 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/10/31/%E9%82%A3%E4%BA%9B%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%AF%86%EF%BC%881%EF%BC%89-404/01.gif?raw=true);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
                 <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >那些你不得不知道的前端常识（1）--404</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><img src="https://i.imgur.com/rS9kuDz.jpg" alt=""><br>今天我们来说一下 404 这个家伙<br><img src="https://i.imgur.com/6R1MY5e.jpg" alt=""><br>相信只要上过网的人，都见过类似的界面，当熟悉的404一次次的映入我们的眼帘，我们的第一反应或许是把这个界面关掉，而不会去了解一下为什么会导致404，毕竟，知道原因以后，就算是用来<strong>装13</strong>，也是不错的选择啊<br>ps：叶子超帅，不接受反驳！（小声）</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="404出现的原因"><a href="#404出现的原因" class="headerlink" title="404出现的原因"></a>404出现的原因</h2><p>当访问一个网页跳出404页面时，往往意味着我们访问的<i>URL</i>出了问题，问题的原因可能有以下几种</p>
+<ol>
+<li><strong>1.原始的<i>URL</i>已经失效，可能是网站的管理员修改了<i>URL</i></strong></li>
+<li><strong>2.网页中的一些文件更改了路径（改变了位置）或者改了名称也会导致<i>URL</i>失效</strong></li>
+<li><strong>3.输入了错误的地址，找不到对应的文件，自然会404</strong></li>
+</ol>
+<h2 id="什么是URL"><a href="#什么是URL" class="headerlink" title="什么是URL"></a>什么是URL</h2><p>上文中我们提到的几种原因中，都离不开<i>URL</i>，那么什么是<i>URL</i>？<br><i>URL</i>是<code>Uniform Resource Locator</code>的缩写，翻译过来就是<strong>统一资源定位符</strong>，互联网上的每一个文件（图片啊，视频啊等等）都会有一个唯一的<i>URL</i>，那显然，我们只要知道了该文件所对应的<i>URL</i>，就可以在互联网上找到这个对应的文件了。这就像在一个小区里，每一户人家都对应了唯一的一个地址（xxx栋x单元xx楼xx户），只要有了地址，我们就可以正确的找到我们的目标。<br>那么可想而知，当指向这个文件的<i>URL</i>除了问题，你还能找到这个文件或者说这个网站吗？可想而知，是不能的，那么在这种情况下，就会出现 404 的情况了。</p>
+<h2 id="对URL清楚的认识"><a href="#对URL清楚的认识" class="headerlink" title="对URL清楚的认识"></a>对URL清楚的认识</h2><p>经过上面的解释，我们对<i>URL</i>也会有一个大概的认识了，但是，我们不推荐“只知其表，不知其理”这种做法，所以还需要进一步深挖一下<i>URL</i>。<br><img src="https://i.imgur.com/rOthjxx.jpg" alt=""><br>高能预警！！最无聊的部分来啦<br>细看上面这张图，我们可以看到几个熟悉的字眼:<i>http</i>，<i>www</i>，甚至有的小伙伴对<i>html</i>也不眼生。其实这个普通的链接，就是一个<i>URL</i>，那么它大概可以分为以下几个部分：</p>
+<ol>
+<li><strong>1.protocol（协议）</strong>：协议定义因特网服务的类型，也就是前面的<i>http</i>，现在最常见的还有<i>https</i>，也就是<i>http</i>协议，<i>https</i>协议</li>
+<li><strong> 2.hostname（主机名）</strong>：定义域主机，我们只需要知道，<i>http</i>的默认主机是<i>www</i>就可以了</li>
+<li><strong>3.domain（域名）</strong>：定义因特网域名（取个名字），比如说我们常见的<strong>baidu.com</strong>，上面的<strong>runoob.com</strong>，这就是域名</li>
+<li><strong>4.port（端口号）</strong>：定义主机端口号（http的默认端口号是 80 ），范围是0 ~ 65535（emmmmm，可以简单的理解为，门牌号…）</li>
+<li><strong>5.path（路径）：</strong>定义服务器上的路径（图片中的<i>/html</i>，说明<i>html-tutorial.html</i>这个文件是在<i>/html</i>文件夹下面）（如果省略，则文档必须位于网站的根目录中）</li>
+<li><strong>6.filename（文件名称）</strong>：定义文档/资源的名称，比如说上图中的<strong>html-tutorial.html</strong>，告诉我们这是一个<i>html</i>文件，<i>html</i>是文件后缀，告诉文件类型的，比如说图片常见的就是<i>jpg</i>，<i>png</i>，<i>gif</i></li>
+</ol>
+<p>以上的结构加起来，就大概组成了一个<i>URL</i>，也就是 —- 网址链接（大白话）<br>最终，我们得到通式（高数既视感…）：<strong>protocol://host.domain:port/path/filename</strong></p>
+<h2 id="404-再走一波"><a href="#404-再走一波" class="headerlink" title="404 再走一波"></a>404 再走一波</h2><p>高能预警2.0，无聊.jpg</p>
+<p>当我们在网址输入框中写入一个链接，按下回车的时候，我们（用户）发起了一个<strong>请求</strong>，服务器在接收到请求后，会返回一个表示该请求的状态的数字代码，叫做http状态码（或者说http响应码），一共有几十种响应码，每一种都有它特定的含义，<i>404</i> 也是http响应码家族中的一员，它代表的意思是<strong>服务器无法根据客户端的请求找到资源（网页）</strong>，简单的来说，就是找不到，这就是 <i>404</i> 的含义</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>毕竟涉及到<i>URL</i>，http响应码，甚至还牵扯到协议的东西，不可能在一篇文章中写明白，只能写一个大概，为了写的清楚易懂，有很多定义性的东西并没有放上来，所以也不排除文章中有描述不准确的地方，如说想深入了解，可以移步度娘，她啥都知道<br><img src="https://i.imgur.com/9e8OBv3.jpg" alt=""></p>
+
             </div>
 
             <!-- Post Comments -->
