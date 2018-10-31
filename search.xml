@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[那些你不得不知道的前端常识（1）--404]]></title>
+    <url>%2F2018%2F10%2F31%2F%E9%82%A3%E4%BA%9B%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%AF%86%EF%BC%881%EF%BC%89-404%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>那些你不得不知道的前端常识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[番外篇--浏览器页面渲染机制]]></title>
     <url>%2F2018%2F10%2F31%2F%E7%95%AA%E5%A4%96%E7%AF%87-%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[前言打开一个网页，等待它跳出我们所期待看到的页面，这已经是几乎所有人生活中的常态，当然也包括我，但是在接触前端之前，我不知道也不会去想到这个从输入一个网址到弹出界面的过程是什么样子的，如果那时有人这么问我（如果有人这么无聊的话ヾ(｡ꏿ﹏ꏿ)ﾉﾞ），什么是浏览器页面渲染机制？后来在学习前端的过程中，慢慢的接触了一些这方面的东西。也就有了这篇文章，作为一个理（工）科男，这里就不废话了，直接开始正文内容吧。 正文]]></content>
   </entry>
   <entry>
     <title><![CDATA[CSS布局--position篇]]></title>
