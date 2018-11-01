@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/10/27/CSS%E5%B8%83%E5%B1%80-float%E7%AF%87/</loc>
+    <lastmod>2018-11-01T10:13:12.721Z</lastmod>
+    <data>
+        <display>
+        <title>CSS布局--float篇</title>
+        <pubTime>2018-10-27T12:34:19.000Z</pubTime>
+        
+        <tag>CSS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/10/31/%E9%82%A3%E4%BA%9B%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%AF%86%EF%BC%881%EF%BC%89-404/</loc>
     <lastmod>2018-10-31T02:15:30.564Z</lastmod>
     <data>
@@ -28,23 +45,6 @@
         <title>番外篇--浏览器页面渲染机制</title>
         <pubTime>2018-10-31T00:04:37.000Z</pubTime>
         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/10/27/CSS%E5%B8%83%E5%B1%80-float%E7%AF%87/</loc>
-    <lastmod>2018-10-29T12:44:42.148Z</lastmod>
-    <data>
-        <display>
-        <title>CSS布局--float篇</title>
-        <pubTime>2018-10-27T12:34:19.000Z</pubTime>
-        
-        <tag>CSS</tag>
-         
          
            
         </display>
