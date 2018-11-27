@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/img/favicon.ico"/>
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	
+			    <title>
+    不会拉小提琴的左脚
+    </title>
+    <meta charset="utf-8" />
+    <meta name="baidu-site-verification" content="cwuaQdioe5" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="html css" />
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+             content: ' ';
+             position: fixed;
+             top: 0;
+             background: url('/img/bg.jpg') center 0 no-repeat;
+             right: 0;
+             bottom: 0;
+             left: 0;
+             background-size: cover;
+         }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">home page</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">home page</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <!-- archives  归档   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">categories</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="archive-link" href="/archives/2018/11/">November 2018</a></li><li><a class="archive-link" href="/archives/2018/10/">October 2018</a></li><li><a class="archive-link" href="/archives/2018/08/">August 2018</a>
+	                    </ul>
+	        </li>
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/gallery/" title="images">
+		                images
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/tag/" title="tages">
+		                tages
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/BinghuiXie/binghuixie.github.io.git" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://i.imgur.com/8qiP2L0.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >相对路径和绝对路径</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一直以来，写代码的时候碰到路径的问题都是靠编译器来提示，瞎猫碰死耗子，没报错就行，直到现在才最终下决心整理一下关于相对路径和绝对路径的知识，当然关于这个网上也有很多其他大牛们的解答，我只是觉得自己写的可以让自己加深理解，所以才会去写这个文章</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>在我进行前端开发的过程中，经常性的会在某一个文件里面去引入另一个文件，这个时候就需要一些路径的知识了，当然我使用的是webstorm，它可以直接帮我生成文件的路径，很方便，但是作为一个知识点的补充，还是去了解了一下。</p>
+<h2 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h2><p>先来说一下相对路径，绝对路径放到后面再说<br>先来看一张图片<br><img src="https://i.imgur.com/abujki3.jpg" alt=""><br>这个是我新建的一些乱七八糟的文件夹和文件，用于做这次的说明，为了看的清楚一点，我把这个画成一个树形结构<br><img src="https://i.imgur.com/zzEQU9p.jpg" alt=""><br>其中标为红色的是待会会用到的，我们来做下面几个简单的操作</p>
+<ol>
+<li>1.在 <strong>index.css</strong> 文件里面通过<i>background-image</i>属性引入 <i>指环王1.jpg</i></li>
+<li>2.在 <strong>相对路径与绝对路径.html</strong> 中引入 <i>指环王1.jpg</i></li>
+<li>3.在 <strong>相对路径与绝对路径.html</strong> 中引入 icon文件夹下的 <i>thubnail.jpg</i></li>
+<li>4.在 <strong>相对路径与绝对路径.html</strong> 中引入 <i>index.css</i>文件</li>
+</ol>
+<p>相对路径，就是自己目前的位置相对于目标文件的位置之间的一个关系（联系），通过这个联系我们能把两个文件关联起来，那么关键就是怎么去找这个联系，对于初学者，这个需要慢慢来<br>例如：我们进行第四条，引入一个<i>index.css</i>文件，先来分析一下：目标文件是<i>index.css</i>，要把它引入<strong>相对路径与绝对路径.html</strong>文件中，那么我们先看一下文件的结构，发现<i>index.css</i>在与<strong>相对路径与绝对路径.html</strong>文件同级的 <i>style</i>文件夹下，所以我们要先找到 <i>style</i> 文件夹，在找到下面的<i>index.css</i>就可以了<br><img src="https://i.imgur.com/GJiNbvA.jpg" alt=""><br>按照我们找的顺序，写出相对路径：</p>
+<ol>
+<li>1.找到同一级的style文件夹：<strong>style/</strong></li>
+<li>2.找到style文件夹下的index.css：<strong>style/index.css</strong></li>
+</ol>
+<p>这就是最终的相对路径，现在我们把它引入<i>html</i>文件中即可</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style/index.css&quot;&gt;
+</code></pre><p>上面这个例子只是最简单的说了一下相对路径怎么写，再来看一个复杂一点的：<br>在 <strong>相对路径与绝对路径.html</strong> 中引入 icon文件夹下的 <i>thubnail.jpg</i><br>还是一步一步来，因为<i>icon</i>文件夹下的<i>thubnail.jpg</i>在与<strong>相对路径与绝对路径.html</strong>同级的<i>images</i>文件夹下，所以先找到<i>images</i>文件夹，再找到<i>icon</i>文件夹，最后找到<i>thubnail.jpg</i>，然后写出相对路径</p>
+<ol>
+<li>1.找到<i>images</i>文件夹: <strong>images/</strong></li>
+<li>2.找到<i>icon</i>文件夹: <strong>images/icon/</strong></li>
+<li>3.找到<i>thubnail.jpg</i>: <strong>images/icon/thubnail.jpg</strong></li>
+</ol>
+<p>最后通过<i>img</i>标签把我们找到的图片放到<i>html</i>文件下:</p>
+<pre><code>&lt;img src=&quot;images/logo/thubnail.jpg&quot;/&gt;
+</code></pre><p>难度逐渐上升：<br>在 <strong>相对路径与绝对路径.html</strong> 中引入 <i>指环王1.jpg</i><br>我们看到，这个<i>指环王1.jpg</i>（目标文件）在第二周授课文件夹下的<i>images</i>文件夹下，第二周授课文件夹又和相对路径与绝对路径文件夹是同级的，然后起始文件（<strong>相对路径与绝对路径.html</strong>）在它下面，所以我们就要先找到<strong>相对路径与绝对路径.html</strong>的父文件夹也就是相对路径与绝对路径这个文件夹，再找到同级的第二周授课文件夹，在向下去找直到找到目标文件</p>
+<ol>
+<li>1.找到父文件夹（相对路径与绝对路径）：<strong>../</strong></li>
+<li>2.找到与父文件夹同级的文件夹：<strong>../第二周授课</strong></li>
+<li>3.找到下面的<i>images</i>文件夹：<strong>../第二周授课/images</strong></li>
+<li>4.找到目标文件：<strong>../第二周授课/images/指环王1.jpg</strong></li>
+</ol>
+<p>最后放入<i>html</i>文件中</p>
+<pre><code>&lt;img src=&quot;../第二周授课/images/指环王1.jpg&quot;/&gt;
+</code></pre><p>这里面出现了一个新的东西“../”，他的意思是<strong>“上一级目录”</strong>，也就是在例子中，../就代表了<strong>相对路径与绝对路径</strong>这个文件夹<br>关于这个上一级目录，再来看一个例子：<br>在 <strong>index.css</strong> 文件里面通过<i>background-image</i>属性引入 <i>指环王1.jpg</i><br>我们观察最上面的那个树形的结构图，可以很清楚的看到，<i>index.css</i>要向上找两次，找到<strong>相对路径与绝对路径</strong>这个文件夹，再去找到同级的<strong>第二次授课</strong>文件夹，在向下就可以找到目标图片了，所以：</p>
+<ol>
+<li>1.找到上一级文件夹style: <i>../</i></li>
+<li>2.再找上一文件夹“相对路径与绝对路径”：<i>../../</i></li>
+<li>3.找到同级文件夹“第二周授课”：<i>../../第二周授课</i></li>
+<li>4.向下找到子文件夹<i>images</i>：<i>../../第二周授课/images</i></li>
+<li>5.找到目标图片：<i>../../第二周授课/images/指环王1.jpg</i></li>
+</ol>
+<p>所以最终的路径就是：<i>../../第二周授课/images/指环王1.jpg</i>，我们用<i>background-image</i>属性引入：</p>
+<pre><code>background: url(../../第二周授课/images/指环王1.jpg);
+</code></pre><p>到这里差不多对相对路径应该就会认识到蛮多的了，关于相对路径，还有几个符号也要注意一下<br><strong>-&gt;</strong>“./” 代表当前目录，我们上面第二个例子原来是这样的<i>images/icon/thubnail.jpg</i>，其实他也可以写成<i>./images/icon/thubnail.jpg</i>这样，二者效果完全一样</p>
+<h2 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h2><p>绝对路径很好理解，它是指目录下的绝对位置，直接到达目标位置，通常是从盘符开始的路径。比如说：”C:\blog\source_posts\相对路径和绝对路径\thubnail.jpg”这个就是绝对路径，超链接下的文件位置也属于绝对路径：<a href="http://www.e3i5.net/img/photo.jpg" target="_blank" rel="noopener">http://www.e3i5.net/img/photo.jpg</a> 。<br>一般来说我们都用的是相对路径来引入一些资源什么的，因为使用绝对路径会有一定的风险：</p>
+<blockquote>
+<p>有时候编好的页面，在自己的计算机上浏览一切正常，但是上传到Web服务器上浏览就很有可能不会显示图片了。因为静态HTML页面需要上传到网站，而在网站的应用中，通常我们使用”/“来表示根目录，/img/icon.jpg就表示photo.jpg文件在这个网站的根目录上的img目录里。但是要知道，这里所指的根目录并不是你的网站的根目录，而是你的网站所在的Web服务器的根目录。因为上传到Web服务器上时，可能整个网站并没有放在Web服务器的D盘， 有可能是F盘或H盘。即使放在Web服务器的D盘里，Web服务器的E盘里也不一定会存在“D:/wamp/www/img”这个目录，因此在浏览网页时是不会显示图片的。</p>
+</blockquote>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/11/27/相对路径和绝对路径/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/11/27/相对路径和绝对路径/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <!--<ul>-->
+                <!--<li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>-->
+                <!--<li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>-->
+            <!--</ul>-->
+            
+            	<span id="busuanzi_container_site_pv">2018总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
