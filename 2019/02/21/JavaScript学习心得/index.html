@@ -139,8 +139,8 @@
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这段时间一直在看JavaScript的闭包，原型，原型链这些问题，结果越看越多，一个接着一个，一大堆东西进到了脑子里，为了不让自己忘记，所以写这篇文章来整理一下，包括JavaScript的<strong>原型（prototype）</strong>，<strong>原型链（Prototype Chain）</strong>，<strong>词法作用域（静态作用域（lexical context））</strong>，<strong>执行环境</strong>(<strong>执行上下文</strong>(<strong>execution context</strong>))，<strong>变量对象(variable object)</strong>，<strong>活动对象（Active Object）</strong>，<strong>作用域链（scope chain）</strong>，<strong>闭包（Closure）</strong>，<i>this</i>这些。这些东西看似独立，实际上都是一环扣一环，理解了一个才能辅助理解下一个，都看得差不多了，闭包也不再是什么问题了。</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>1.<a href="#link1">JavaScript的原型</a><br>2.<a href="">JavaScript的原型链</a><br>3.<a href="#link2">JavaScript的词法作用域(静态作用域)</a><br>4.<a href="#link3">JavaScript的执行环境</a><br>5.<a href="#link4">JavaScript的变量对象与活动对象</a><br>6.<a href="#link5">JavaScript的作用域链</a><br>7.<a href="#link6">JavaScript的this指针</a><br>8.<a href="#link7">JavaScript的闭包</a></p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>超长文预警！！！！！<br>这段时间一直在看JavaScript的闭包，原型，原型链这些问题，结果越看越多，一个接着一个，一大堆东西进到了脑子里，为了不让自己忘记，所以写这篇文章来整理一下，包括JavaScript的<strong>原型（prototype）</strong>，<strong>原型链（Prototype Chain）</strong>，<strong>词法作用域（静态作用域（lexical context））</strong>，<strong>执行环境</strong>(<strong>执行上下文</strong>(<strong>execution context</strong>))，<strong>变量对象(variable object)</strong>，<strong>活动对象（Active Object）</strong>，<strong>作用域链（scope chain）</strong>，<strong>闭包（Closure）</strong>，<i>this</i>这些。这些东西看似独立，实际上都是一环扣一环，理解了一个才能辅助理解下一个，都看得差不多了，闭包也不再是什么问题了。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>1.<a href="#link1">JavaScript的原型</a><br>2.<a href="#link2">JavaScript的原型链</a><br>3.<a href="#link3">JavaScript的词法作用域(静态作用域)</a><br>4.<a href="#link4">JavaScript的执行上下文栈</a><br>5.<a href="#link5">JavaScript的变量对象与活动对象</a><br>6.<a href="#link6">JavaScript的作用域链</a><br>7.<a href="#link7">JavaScript的this指针</a><br>8.<a href="#link8">JavaScript的闭包</a></p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><a name="link1"></a></p>
 <h3 id="JavaScript的原型"><a href="#JavaScript的原型" class="headerlink" title="JavaScript的原型"></a>JavaScript的原型</h3><p>在JavaScript中，每一个函数都有一个属性叫做<i>prototype</i>属性，<i>JavaScript</i>高级程序设计是这么样去解释该属性的。</p>
 <blockquote>
@@ -303,11 +303,311 @@ global_context_02(); // global
 </li>
 </ul>
 <p><a name="link4"></a></p>
-<h3 id="JavaScript的执行环境-执行上下文"><a href="#JavaScript的执行环境-执行上下文" class="headerlink" title="JavaScript的执行环境(执行上下文)"></a>JavaScript的执行环境(执行上下文)</h3><p><a name="link5"></a></p>
-<h3 id="JavaScript的变量对象与活动对象"><a href="#JavaScript的变量对象与活动对象" class="headerlink" title="JavaScript的变量对象与活动对象"></a>JavaScript的变量对象与活动对象</h3><p><a name="link6"></a></p>
-<h3 id="JavaScript的作用域链"><a href="#JavaScript的作用域链" class="headerlink" title="JavaScript的作用域链"></a>JavaScript的作用域链</h3><p><a name="link7"></a></p>
+<h3 id="JavaScript的执行上下文栈"><a href="#JavaScript的执行上下文栈" class="headerlink" title="JavaScript的执行上下文栈"></a>JavaScript的执行上下文栈</h3><p>执行环境(execution context)（执行上下文）是JavaScript中最为重要的一个概念，通过深入理解执行环境，就会理解为什么一些函数和变量在他们声明之前就能使用以及他们的值到底是怎么被定义的。</p>
+<h4 id="什么是执行环境？"><a href="#什么是执行环境？" class="headerlink" title="什么是执行环境？"></a>什么是执行环境？</h4><p>当<strong>执行</strong>一段代码的时候，JavaScript解释器会去做一个工作，即创建一个执行环境，每一个执行环境中包含了三个重要的属性：变量对象（Variable object，VO），作用域链（Scope Chain）和<i>this</i>(下面几节会有)。在一段程序中，我们可能写了很多个函数，因此也会创建很多个执行环境，如此多的执行环境的管理需要通过<strong>执行上下文栈（Execution Context Stack）</strong>。</p>
+<h4 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h4><ul>
+<li>众所周知，JavaScript是单线程语言，这就意味着每次JavaScript解释器只能处理一件事情，当它在处理当前这件事情的时候，其他的事情就会被放在执行上下文栈中等候。具体的出栈入栈顺序如下：当浏览器加载<i>script</i>的时候，首先就会遇到全局代码，于是创建一个全局执行环境压入栈中，这个全局执行环境也会<strong>始终在栈的最底部</strong>，只有当整个程序结束的时候才会弹出。在你的全局代码中你调用了一个函数，也就是执行该函数，此时创建一个新的执行环境并将其压入栈中，如果在这个函数中调用了另一个函数，同样会创建一个新的执行环境并将其放到栈中…浏览器会始终去执行栈顶的执行环境，执行完当前环境后将其弹出栈，再去执行下一个执行环境，直到回到全局执行环境，用一张图表示的更为清晰<br><img src="https://i.imgur.com/6j0Q00s.jpg" alt=""></li>
+<li>到目前为止，我们知道了执行代码的时候会创建执行上下文并通过执行上下文栈来管理，在JavaScript解释器中，每次调用一个执行上下文（执行环境）时会分为两个步骤进行<ul>
+<li>1.进入执行环境（当调用函数的时候，但在其执行其中任何代码之前的时候进行这个步骤）<ul>
+<li>创建作用域链</li>
+<li>创建变量，函数和<i>arguments</i>属性</li>
+<li>决定<i>this</i>的指向</li>
+</ul>
+</li>
+<li>2.执行 <ul>
+<li>执行代码（为变量和函数分配值、引用并执行代码），执行过程中涉及到变量对象，活动对象，作用域链的变化，这就需要接着往下看了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a name="link5"></a></p>
+<h3 id="JavaScript的变量对象与活动对象"><a href="#JavaScript的变量对象与活动对象" class="headerlink" title="JavaScript的变量对象与活动对象"></a>JavaScript的变量对象与活动对象</h3><p>在一个程序中，我们定义函数和变量，加入逻辑，然后成功构建出一个完整的程序，那解释器是怎么找到我们定义的函数和变量呢，当我们去引用对象的时候又会发生什么呢？<br>其实，变量/函数是和执行环境密切相关的，而且执行环境应该知道那些变量和函数都储存在哪里和怎么去调用它们，就是通过变量对象将二者联系起来的。<br>变量对象是一个与执行环境相关的特殊的对象，其中储存了<strong>变量声明</strong>，<strong>函数声明</strong>，和<strong>函数形参</strong>，是执行环境中的一个重要的属性，但是我们编写的代码是无法访问到变量对象的，它纯粹是一个实现机制。因为有两种执行上下文（全局执行上下文和函数执行上下文），所以变量对象也有全局执行上下文的变量对象和函数执行上下文的变量对象。</p>
+<h4 id="全局执行上下文中的变量对象"><a href="#全局执行上下文中的变量对象" class="headerlink" title="全局执行上下文中的变量对象"></a>全局执行上下文中的变量对象</h4><p>首先了解一下什么是<strong>全局对象</strong>：<br>全局对象是在进入任何执行环境前就被创建的一个对象，全局对象中的属性可以在程序的任何位置去访问，只有当程序结束的时候，全局对象才会被销毁。全局对象不是任何对象的属性，所以它没有名称。当程序开始运行的时候，全局对象会由一些属性比如说<i>Math</i>，<i>String</i>，<i>Date</i>，<i>parseInt</i>等等，同时也会被能作为全局对象自身引用的其他对象进行初始化，比如说在客户端JavaScript中，就是<i>window</i>对象，而且<i>window</i>对象作为全局对象的引用也是指向全局对象的。说白了就是<i>window</i>对象就像是全局对象的一个分身，同时这个“分身”也存在于全局对象自身中，就像下面这个样子：</p>
+<pre><code>globalObject = {
+    Math: &lt;...&gt;,
+    String: &lt;...&gt;,
+    ...
+    ...
+    window: globalObject
+}
+</code></pre><p>在全局环境中定义一些函数，或者变量（只有<i>var</i>定义的变量，<i>let</i>和<i>const</i>定义的全局变量不会作为全局对象的属性出现），都会默认作为全局对象的属性或者方法，可以通过全局对象来访问到，比如说下面这个例子<br><img src="https://i.imgur.com/YxQ52m1.jpg" alt=""><br>初始化的全局对象会自带一些默认的属性和方法（上面举的例子），同时因为运行在浏览器端的JavaScript程序，所以<i>window</i>全局对象提供了与当前窗口、页面有关的诸多属性与方法。<br><img src="https://i.imgur.com/AXsmSZd.jpg" alt=""><br>当定义了一个变量<i>a</i>的时候，打开<i>window</i>对象就会发现定义的<i>a</i>已经在里面了<br><img src="https://i.imgur.com/9cTtcdF.jpg" alt=""><br>同样，也可以通过<i>window.a</i>去访问该变量，但是在访问全局定义的属性或者方法的时候一般会省略前缀也就是<i>window</i>，直接使用<i>a</i>即可调用该变量，这是因为前面也说过全局对象不能直接通过名称来访问，但是可以通过<strong>全局的</strong><i>this</i>访问到它，也可以通过对自身的递归引用，比如说通过<i>window</i>，所以，下面这些都是等价的：</p>
+<pre><code>String(10); // &lt;==&gt; global.String(10); 
+
+window.a = 10; // === global.window.a = 10 === global.a = 10    
+
+this.b = 5; // === global.b = 5  
+</code></pre><p>到这里说了好多关于全局对象的就是想说明：<strong>在全局上下文中，变量对象就是全局对象</strong>，<i>VO(global context) === globalObject</i>，说明这个的原因在于，之前说到我们编写的代码是没有能力访问到变量对象的，那在全局环境中，因为变量对象就是全局对象，所以当定义了一个变量后，就有能力<strong>间接的</strong>去通过全局对象的属性来引用这个变量：</p>
+<pre><code>var a = new String(&#39;test&#39;);
+
+alert(a); // 直接, 可以在变量对象中找到: &quot;test&quot;
+
+alert(window[&#39;a&#39;]); // 间接 通过全局对象 global === VO(全局环境下的变量对象): &quot;test&quot;
+alert(a === this.a); // true
+
+var aKey = &#39;a&#39;;
+alert(window[aKey]); // 间接, 通过另一个动态属性的名称来引用: &quot;test&quot;
+</code></pre><h4 id="函数上下文中的变量对象"><a href="#函数上下文中的变量对象" class="headerlink" title="函数上下文中的变量对象"></a>函数上下文中的变量对象</h4><p>在函数上下文中，变量对象是无法被直接访问到的，此时它变成了<strong>活动对象（Activation Object，AO）</strong>。也就是说：<br><strong>在函数上下文中，变量对象和活动对象是一个东西！！</strong><br><strong>在函数上下文中，变量对象和活动对象是一个东西！！</strong><br><strong>在函数上下文中，变量对象和活动对象是一个东西！！</strong></p>
+<pre><code>VO(function Context) === AO
+</code></pre><p>在执行上下文一节，提到了JavaScript解释器调用执行环境的时候分为两个步骤，第一步是进入执行上下文，在进入的同时，活动对象会被创建，这样就能访问到了。进入的同时，活动对象被值为<i>Arguments</i>对象的<i>arguments</i>属性所初始化</p>
+<pre><code>AO={
+arguments: &lt;Arguments Object&gt;
+}
+</code></pre><p>提一嘴<i>Arguments</i>对象：<i>Arguments</i>对象是活动对象的一个属性，里面有这些东西：</p>
+<ul>
+<li>1.真正调用该函数传过来的参数的值和其对应的下标（从左到右）</li>
+<li>2.callee： 函数的引用</li>
+<li><p>3.length: 实际传过来的参数的数量<br><i>Arguments</i>不是一个数组，是一个对象，但是可以通过下标去拿到传入参数的值，他也可以被转为数组，我们来看：<br><img src="https://i.imgur.com/j0SX0Cg.jpg" alt=""><br><i>foo()</i>函数有三个入参<i>a</i>，<i>b</i>，<i>c</i>，但是调用的时候真正传入的只有两个值，可以看到，打印出的<i>Arguments</i>对象中包含了两个入参的下标和对应的值以及函数的引用(callee)和实际入参的数量（是2不是3）<br><img src="https://i.imgur.com/CxPBy3n.jpg" alt=""><br>在这张图中，利用<i>typeof</i>运算符课可以清晰的看出<i>Arguments</i>是对象，也可以通过下标来获得入参的值，但它不是数组，没有<i>push</i>，<i>pop</i>等方法。<br>接下来看一段代码：</p>
+<pre><code>function foo(a, b, c) {
+  console.log(arguments.length); //2
+  console.log(arguments.callee === foo); // true
+  console.log(a === arguments[0]); //true
+  a = 30;
+  console.log(a); // 30
+  console.log(arguments[0]); // 30
+
+  console.log(arguments[2]); //undefined: 这里想输出参数c的值，但是因为没传，所以是undefined
+  c = 100;
+  console.log(arguments[2]);  //undefined
+  // 可以看出，arguments[2]和 c 二者之间没有任何关系
+  // (在比较老的Google版本里面有一个bug，arguments[2]和c仍然是有关系的)
+}
+foo(15, &#39;Tiki-Taka&#39;);
+</code></pre><p>对<i>Arguments</i>对象的介绍就大概到这里，前面说过，执行上下文时会有两个阶段，一个是进入执行上下文，一个是执行代码，那么每个阶段具体分析一下：</p>
+<h4 id="进入执行上下文"><a href="#进入执行上下文" class="headerlink" title="进入执行上下文"></a>进入执行上下文</h4><p>在进入执行上下文阶段，变量对象由下列属性构成：</p>
+</li>
+<li><ol>
+<li>函数的形参（如果是函数上下文）<ul>
+<li>对于实际传过来的参数，其名字和对应的值被创建</li>
+<li>对于没有被传参的形参，只会有其名字和其值为<i>undefined</i>被创建</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>函数声明<ul>
+<li>由名称和对应值组成的一个变量对象被创建</li>
+<li>如果变量对象中已经存在同名的属性，则将其替换</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>变量声明<ul>
+<li>一个变量名称和其值（undefined）组成变量对象的一个属性被创建</li>
+<li>如果该变量名称和之前声明的函数或者函数的形参的名称相同，则会忽略这个变量</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>看一个例子：</p>
+<pre><code>function foo (x, y) {
+    var z = 1;
+    function bar ();
+    var _x = function _bar () {};
+}
+foo(2);
+</code></pre><p>在进入执行上下文阶段，此时的活动对象是：</p>
+<pre><code>AO(foo) = {
+    arguments: {
+        0: 2,
+        callee: f foo() {}
+        length: 1
+    },
+    x: 2,
+    y: undefined,
+    z: undefined,
+    bar: &lt;reference to function declaration to &#39;bar&#39;&gt;
+    _x: undefined
+}
+</code></pre><p>这步以后，进入了执行代码阶段。</p>
+<h4 id="代码执行阶段"><a href="#代码执行阶段" class="headerlink" title="代码执行阶段"></a>代码执行阶段</h4><p>进入到代码执行阶段时，此时的活动对象中已经有了该执行上下文中的所有属性（当然他们有的值还是<i>undefined</i>）,在这个阶段，会顺序执行代码，同时根据变量的值修改属性的值，从上面那个例子来看，在执行代码阶段，此时的<i>AO</i>是这样的：</p>
+<pre><code>AO(foo) = {
+    arguments: {
+        0: 2,
+        callee: f foo() {}
+        length: 1
+    },
+    x: 2,
+    y: undefined,
+    z: 1,
+    bar: &lt;reference to function declaration to &#39;bar&#39;&gt;
+    _x: function _bar () {}
+}
+// 因为参数y根本没有进行传值，所以它的值还是undefined
+</code></pre><p>再看一个例子：</p>
+<pre><code>console.log(foo); // foo(){}
+
+var foo = 10;
+console.log(foo); // 10
+foo = 20;
+
+function foo(){}
+
+console.log(foo); // 20
+</code></pre><p>解释一下：进入执行上下文的时候，首先会处理函数声明，再处理变量声明，而且如果变量的声明与函数声明或函数形参同名的话，是不会去干扰原声明的：</p>
+<pre><code>1. AO = {}
+// 处理函数声明
+2. AO = {
+       foo: reference to FunctionDeclaration foo
+   }
+// 处理变量声明
+3. AO = {
+       foo: the value is not disturbed, still function
+   }
+</code></pre><p>然后在函数执行的时候，<i>foo</i>会被赋值为<i>10</i>和<i>20</i><br>最后再看一个例子：</p>
+<pre><code>if (true) {
+    var a = 1;
+} else {
+    var b = 1;
+}
+console.log(a); // 1
+console.log(b)l // undefined
+</code></pre><p>打印<i>b</i>为<i>undefined</i>是因为<i>a</i>，<i>b</i>都会在变量对象中，打印<i>b</i>的时候，引擎去变量对象中找<i>b</i>能找到，只不过因为<i>else</i>一块的代码始终没有执行，所以就没有为<i>b</i>赋值的一步，所以打印的是<i>undefined</i>。<br><a name="link6"></a></p>
+<h3 id="JavaScript的作用域链"><a href="#JavaScript的作用域链" class="headerlink" title="JavaScript的作用域链"></a>JavaScript的作用域链</h3><p>在变量对象一节中，我们已经知道了执行上下文中的数据（变量声明，函数声明，函数参数）都会作为变量对象的属性被储存起来，同样我们也知道在进入执行上下文的阶段时，变相对象刽被初始化，然后在代码执行阶段进行数据的更新（赋值什么的），这一节在变量对象的基础上，我们来好好说一下执行上下文的第二个属性：作用域链。<br>因为我们已经知道每一个执行环境都有一个对应的变量对象（对于全局对象来说就是他自己，对于函数上下文来说就是活动对象），作用域链其实就是所有内部执行环境的一个链表，它被用来做变量查找，先看一个例子：</p>
+<pre><code>var a = 1;
+function foo () {
+    var b = 2;
+    function bar () {
+        console.log(a + b);
+    }
+    return bar;
+}
+foo()(); // 3
+</code></pre><p>在这个例子中，<i>bar</i>的作用域链包括<i>AO(bar),AO(foo),VO(global context)</i>。<br>当然，这只是作用域链的简单理解，深入理解作用域链，先从它的定义开始</p>
+<blockquote>
+<p>作用域链是一条变量对象的链，它和执行上下文有关，用于在处理标识符时候进行变量查询。</p>
+</blockquote>
+<p>对于函数上下文来说，作用域链会在函数被调用的时候被创建，其由活动对象和函数内部的<i>[[Scope]]</i>属性组成<br>比如说上例中的执行上下文，它所包含一下内容：</p>
+<pre><code>executionContext = {
+    VO: {...} // 或者是AO
+    this: &lt;...&gt;
+    ScopeChain: {
+        ...
+    }
+}
+</code></pre><p>上面的<i>ScopeChain</i>包含了以下内容：</p>
+<pre><code>ScopeChain = AO + [[Scope]]
+</code></pre><p>下面将要介绍的 AO+[[Scope]]以及标识符的处理方式，都和函数的生命周期有关。</p>
+<h4 id="函数生命周期"><a href="#函数生命周期" class="headerlink" title="函数生命周期"></a>函数生命周期</h4><p>函数声明周期被定义为两个阶段：创建阶段和激活阶段</p>
+<h4 id="创建阶段"><a href="#创建阶段" class="headerlink" title="创建阶段"></a>创建阶段</h4><p>我们知道，函数声明会在进入执行环境阶段被放到变量(活动)对象中，我们来看一个在全局环境中定义的函数和变量的例子：</p>
+<pre><code>var a = 1;
+function foo () {
+    var b = 2;
+    console.log(a + b);
+}
+foo(); // 3
+</code></pre><p>打印出的结果是我们所预料到的<i>3</i>，但是这个<i>3</i>的背后其实还有很多门道：<br>我们知道变量<i>b</i>是在<i>foo</i>函数的活动对象中，而变量<i>a</i>因为不在函数<i>foo</i>的上下文中，而在全局的上下文中，所以<i>a</i>在全局的变量对象中，不在函数<i>foo</i>的活动对象中，也就是说<i>foo</i>的变量对象中目前只有一个变量声明就是<i>b</i>，那<i>foo</i>函数是如何访问到<i>a</i>变量的呢？一个比较合理的假设是函数应该有权限能访问到更高一层的变量对象。实际上就是这个样子的，就是通过函数的内部属性<i>[[Scope]]</i>来实现的这一机制的。</p>
+<blockquote>
+<p>[[Scope]]是一个储存了所有上层变量对象的分层链，它存在于当前执行环境中，并在函数创建的时候，保存在函数中</p>
+</blockquote>
+<p>这里要注意的一点是：<i>[[Scope]]</i>属性是在函数创建的时候就被保存到函数当中的，是静态的，并且一经保存后再也不变，也就是说就算一个函数永远没有被调用到，<i>[[Scope]]</i>属性也是会存在于函数中的，同样也要注意的是。<i>[[Scope]]</i>和作用域链<i>Scope Chain</i>的区别是前者是函数的属性，后者是上下文的属性，在上面那个例子中，函数<i>foo</i>的<i>[[Scope]]</i>属性是下面这样的：</p>
+<pre><code>foo.[[Scope]] = {
+    globalContext.VO// === global Object
+}
+</code></pre><p>在这之后调用函数，就会进入到函数的上下文，此时就会创建活动对象并会确定<i>Scope Chain</i>和<i>this</i>的值。下面来详细看一下：</p>
+<h4 id="函数调用（激活）"><a href="#函数调用（激活）" class="headerlink" title="函数调用（激活）"></a>函数调用（激活）</h4><p>之前说了，进入执行上下文后，作用域链会变成下面这个样子：</p>
+<pre><code>Scope(Scope Chain) = AO/VO + [[Scope]]
+</code></pre><p>因为<i>[[Scope]]</i>储存了上层的所有变量对象，我们可以把它当做一个数组来理解更方便，然后创建作用域链的时候，新加进来的本上下文的AO/VO会作为作用域链这个数组的第一个元素：</p>
+<pre><code>// 可以把[[Scope]]看做一个数组，此时只有一个元素
+foo.[[Scope]] = [VO(globalContext)]
+
+// 进入执行上下文后，Scope(Scope Chain)会当前VO/AO作为第一个元素放到数组里去
+Scope = [AO(foo,functionContext), VO(globalContext)]
+</code></pre><p>这一个特性对于标识符的处理是非常重要的：</p>
+<blockquote>
+<p>标识符处理其实就是决定变量（或者是函数声明）是属于作用域链中的哪一个变量对象的过程</p>
+</blockquote>
+<p>标识符处理过程包括了对应变量名的属性查询，比如：在作用域链中会进行一系列的变量对象的搜索，从作用域链的最底层环境一直到最上层的执行环境。<br>因此，查询变量的时候会从最底层的变量对象开始查，查不到就会向上一层继续查，直到查到全局执行上下文。如果有两个名字相同的变量存在于不同的上下文中，则底层的会被优先找到<br>看一个例子：</p>
+<pre><code>var a = 1;
+function foo () {
+    var b = 2;
+    function bar () {
+        var c = 3;
+        console.log(a + b + c);
+    }
+    bar();
+}
+foo(); // 6
+</code></pre><p>我们来分析一下，首先遇到全局代码，会创建一个全局上下文：</p>
+<pre><code>globalContext = {
+    x: 10
+    foo: &lt;reference to function&gt;
+}
+</code></pre><p>然后创建<i>foo</i>函数的时候，该函数的<i>[[Scope]]</i>属性是：</p>
+<pre><code>foo.[[Scope]] = {
+    globalContext.VO
+}
+</code></pre><p>然后调用<i>foo</i>函数，进入函数执行上下文，此时对应的执行环境栈、<i>foo</i>函数的上下文和其作用域链分别是</p>
+<pre><code>// Execution Context Stack
+ExecutionContextStack = [
+    fooContext
+    globalContext
+]
+
+// function execution context
+fooContext = {
+    AO = {
+        b: undefined,
+        bar: &lt;reference to function&gt;,
+    }
+    ScopeChain: &lt;...&gt;
+    this: &lt;...&gt;
+}
+
+// foo 上下文的作用域链是：
+ScopeChain = [
+    fooContext.AO,
+    globalContext.VO
+]
+</code></pre><p>然后创建<i>bar</i>函数，其<i>[[Scope]]</i>属性为：</p>
+<pre><code>bar.[[Scope]] = {
+    fooContext.AO,
+    globalContext.VO
+}
+</code></pre><p>然后调用<i>bar</i>函数，此时的执行上下文栈、<i>bar</i>函数上下文和其作用域链分别是：</p>
+<pre><code>// Execution Context Stack
+ExecutionContextStack = [
+    barContext
+    fooContext
+    globalContext
+] 
+
+// &lt;i&gt;bar&lt;/i&gt;函数上下文
+barContext = {
+    AO = {
+        c: undefined
+    },
+    ScopeChain: &lt;...&gt;
+    this: &lt;...&gt;
+}
+
+// 作用域链
+barContext.Scope(Scope Chain) = [
+    barContext.AO
+    fooContext.AO,
+    globalContext.VO
+]
+</code></pre><p>执行各个上下文中的代码阶段，为变量赋值什么的就不说了，这里着重说一下查找过程：</p>
+<ul>
+<li><ol>
+<li>首先从<i>barContext.AO</i>中查找三个变量的值，只找到了<i>c</i></li>
+</ol>
+</li>
+<li><ol start="2">
+<li>其次从<i>fooContext.AO</i>中查找剩余两个变量的值，找到了<i>b</i></li>
+</ol>
+</li>
+<li><ol start="3">
+<li>最后从<i>globalContext.VO</i>中查找最后一个变量的值，找到了<i>a</i></li>
+</ol>
+</li>
+</ul>
+<p><a name="link7"></a></p>
 <h3 id="JavaScript的this指针"><a href="#JavaScript的this指针" class="headerlink" title="JavaScript的this指针"></a>JavaScript的this指针</h3><p><a name="link8"></a></p>
-<h3 id="JavaScript的闭包"><a href="#JavaScript的闭包" class="headerlink" title="JavaScript的闭包"></a>JavaScript的闭包</h3>
+<h3 id="JavaScript的闭包"><a href="#JavaScript的闭包" class="headerlink" title="JavaScript的闭包"></a>JavaScript的闭包</h3><p>在ECMAScript中，闭包是和函数的<i>[[Scope]]</i>属性有直接的关系的，从上面的作用域链一节已经知道，<i>[[Scope]]</i>属性在函数创建的时候就被保存到函数中，一直到这个函数对象被销毁才会消失，实际上，闭包就是一个函数代码和其<i>[[Scope]]</i>属性的结合 </p>
+
             </div>
 
             <!-- Post Comments -->
