@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/img/favicon.ico"/>
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	
+			    <title>
+    不会拉小提琴的左脚
+    </title>
+    <meta charset="utf-8" />
+    <meta name="baidu-site-verification" content="cwuaQdioe5" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="html css" />
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+             content: ' ';
+             position: fixed;
+             top: 0;
+             background: url('/img/bg.jpg') center 0 no-repeat;
+             right: 0;
+             bottom: 0;
+             left: 0;
+             background-size: cover;
+         }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">home page</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">home page</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <!-- archives  归档   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">categories</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="archive-link" href="/archives/2019/04/">April 2019</a></li><li><a class="archive-link" href="/archives/2019/02/">February 2019</a></li><li><a class="archive-link" href="/archives/2018/11/">November 2018</a></li><li><a class="archive-link" href="/archives/2018/10/">October 2018</a></li><li><a class="archive-link" href="/archives/2018/08/">August 2018</a>
+	                    </ul>
+	        </li>
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/gallery/" title="images">
+		                images
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/tag/" title="tages">
+		                tages
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/BinghuiXie/binghuixie.github.io.git" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://i.imgur.com/wPXDrVL.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >css世界的各种盒子</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h2 id="CSS盒子模型"><a href="#CSS盒子模型" class="headerlink" title="CSS盒子模型"></a>CSS盒子模型</h2><p>HTML所有的元素都可以看做一个一个的盒子，HTML标签的嵌套可以看做是一个一个盒子的嵌套，这些嵌套的盒子就是所谓的盒模型。</p>
+<h3 id="关于IE盒模型的说法"><a href="#关于IE盒模型的说法" class="headerlink" title="关于IE盒模型的说法"></a>关于IE盒模型的说法</h3><p>在前几年，前端开发人员比较头疼的一点就是多个浏览器直接差异的适配，尤其是IE浏览器，这是个让很多前端开发人员头疼的事情，IE浏览器在很多细节上都有自己独特的实现，在盒模型上也不例外，<strong>但是</strong>，现在IE浏览器已经被微软弃用了(万岁！)，所以这篇文章就不讨论IE浏览器的盒子模型了，而是去讨论一下主流的W3C标准的盒子模型。</p>
+<h3 id="W3C标准盒模型"><a href="#W3C标准盒模型" class="headerlink" title="W3C标准盒模型"></a>W3C标准盒模型</h3><p>这是一种W3C制定的标准的盒子模型，也是普遍能被开发者所接受的一种主流盒模型。在Chrome浏览器中，按一下F12打开控制台，会看到这么一个图<br><img src="https://i.imgur.com/lNwxZU4.jpg" alt=""><br>对于有经验的开发者来说，这张图早就已经看见了无数遍了，但是这里还要啰嗦一下，方便后文的展开：</p>
+<ul>
+<li><ol>
+<li>margin区域：外边距区域，透明部分</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>border局域：元素的边框</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>padding区域：元素的内边距，一般来说是透明的</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>content区域：内容区域</li>
+</ol>
+</li>
+</ul>
+<p>那么了解这些盒子有什么用处的？其中一个就是可以帮助我们更好的设置元素的宽高</p>
+<h3 id="元素宽高作用细节"><a href="#元素宽高作用细节" class="headerlink" title="元素宽高作用细节"></a>元素宽高作用细节</h3><p>以元素的宽度举例，<i>width</i>属性设置是作用在<strong>内在盒子</strong>上的，这个内在盒子（下面会有具体对内在盒子的说明），和上面说道的几个区域又密切相关，总体来说，它被分为四种盒子，即<strong>内容盒子(content box)</strong>，<strong>内边距盒子(padding box)</strong>，<strong>边框盒子(border box)</strong>，<strong>外边距盒子(margin box)</strong>，如果对这几个英文单词有点印象那你可能是想到了<i>box-sizing</i>的常用的几个取值<i>content-box</i>，<i>border-box</i>，同样有<i>padding-box</i>以及<i>margin-box</i>。<br>那么，<i>width</i>默认情况下是作用在了内容盒子也就是content box上面，此时对应的<i>box-sizing</i>的取值就是<i>content-box</i>，也是<i>box-sizing</i>的默认值，举例来说</p>
+<pre><code>div{
+    width: 100px;
+    height: 100px;
+    background-color: #FF0000;
+}
+</code></pre><p>这个红色的方块我就不截图了，主要来看此时的盒子情况<br><img src="https://i.imgur.com/fjtXzmV.jpg" alt=""><br>此时中间蓝色的区域也就是内容区域的宽高就是我们设置的<i>width</i>和<i>height</i>的值，默认情况下<i>div</i>的<i>padding</i>，<i>margin</i>，<i>border</i>都是0，也就是此时这个<i>div</i>总的宽度就是<i>width</i>设置的100px。此时盒子的大小就是内容区域的大小。<br>现在试着给盒子加上<i>padding</i>和<i>border</i></p>
+<pre><code>div{
+    width: 100px;
+    height: 100px;
+    background-color: #FF0000;
+    padding: 20px;
+    border: 20px solid;
+}
+</code></pre><p><img src="https://i.imgur.com/IH2GQCa.jpg" alt=""><br>可以看到现在这个<i>div</i>的宽高就是180px，也就是 <i>divWidth = border-left + padding-left + padding-right + border-right</i>（记得此时的<i>box-sizing</i>还是默认值<i>content-box</i>）,可以看到的是，<i>padding</i>和<i>border</i>的加入增大了元素的宽度和高度。<br>然后再添加一下<i>margin</i><br><img src="https://i.imgur.com/6iJ2ZMW.jpg" alt=""><br>可以看出，增加外边距没有改变这个<i>div</i>的大小，只是顶开了下面的元素。<br>综上，当<i>box-sizing</i>默认值是<i>content-box</i>的时候，给一个块级元素设置宽高，此时的<i>width</i>和<i>height</i>只是作用在内容区域，元素的<i>padding</i>和<i>border</i>还是会增加元素的大小，这么说吧，可以总结出这么一个公式：<br>元素的实际宽度 realWidth = padding + border + width(这里的<i>width</i>是我们设置的<i>width</i>属性的值)。</p>
+<h3 id="换一个box-sizing值再来看"><a href="#换一个box-sizing值再来看" class="headerlink" title="换一个box-sizing值再来看"></a>换一个box-sizing值再来看</h3><p>上面一直是在<i>box-sizing</i>默认值是<i>content-box</i>的时候得出的结论，前文说道<i>box-sizing</i>有四种取值，那么我们来看看在其他三种取值下会有一种什么样子的不同</p>
+<h3 id="margin-box和padding-box"><a href="#margin-box和padding-box" class="headerlink" title="margin-box和padding-box"></a>margin-box和padding-box</h3><p>把这两个属性放在一起写是因为目前的浏览器都不支持这两个属性（甚至我的webstorm都不认识margin-box，他只是存在于理论中的），设置了这两个属性实际的效果和默认值的效果是一样的，当然理论上不一样，但是我们总要基于实践嘛，浏览器不支持你分析的再好还不是没啥作用，所以就不详细讨论这两个值了。</p>
+<h3 id="border-box"><a href="#border-box" class="headerlink" title="border-box"></a>border-box</h3><p><i>border-box</i>需要拿来仔细说一说，前文写到在默认情况下<i>width</i>属性是直接作用在内容区域的，再给元素添加内边距和边框都会增加元素的大小。<br>那么当我们更改<i>box-sizing</i>属性的值为<i>border-box</i>，其实改变的就是<i>width</i>的作用的盒子，也就是说，应用了<i>border-box</i>以后，<i>width</i>是直接作用在了边框盒子上面，我们来看例子</p>
+<pre><code>div{
+    width: 100px;
+    height: 100px;
+    background-color: #FF0000;
+    padding: 20px;
+    border: 20px solid;
+}
+.content-box{
+    box-sizing: content-box;
+    margin-bottom: 20px;
+}
+.border-box{
+    box-sizing: border-box;
+}
+</code></pre><p>两个盒子，<i>width</i>值都设置了100px，不同的只是<i>box-sizing</i>的作用不同，那么显示的效果如下：<br><img src="https://i.imgur.com/76IawF5.jpg" alt=""><br>我们设置了<i>border-box</i>的那个盒子的宽度就是100px，而那个默认的盒子是180px也就是内边距 + 边框 + 内容区域。<br>看到这里应该能猜出来了，此时的元素的实际宽度就是我们设置的<i>width</i>宽度，也就是说此时：<br><i>realWidth === width = borderWidth + paddingWidth + contentWidth</i>，用一张图更好的说明一下：<br><img src="https://i.imgur.com/jWn0t7y.png" alt=""><br>这张图比较清晰的显示了当<i>box-sizing</i>属性的值为<i>border-box</i>的时候，宽度是作用在<i>border</i>上面的也就是<i>border + padding + content</i>，而当<i>box-sizing</i>属性的值为<i>content-box</i>的时候，<i>width</i>是作用在<i>content</i>两端的，所以最终显示的两个元素的大小不一样</p>
+<h2 id="其他的盒模型"><a href="#其他的盒模型" class="headerlink" title="其他的盒模型"></a>其他的盒模型</h2><h3 id="标记盒子"><a href="#标记盒子" class="headerlink" title="标记盒子"></a>标记盒子</h3><p>啥是标记盒子(marker box)？我们知道HTML的<i>ul</i>，<i>li</i>，<i>ol</i>默认都会在前面有一个圆点或者是标号，那这个圆点或者标号是哪里来的？这是因为<i>ul</i>，<i>li</i>，<i>ol</i>他们的<i>display</i>声明是<i>list-item</i>，这个<i>list-item</i>的设置会给元素提供一个额外的盒子去存放那个点或者标号，这个盒子就是标记盒子。</p>
+<h3 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display:inline-block"></a>display:inline-block</h3><p>我们知道，单纯的块级元素是一行一个块级元素，而且可以设置宽高，内联元素是排列在一行，不可以设置宽高，但是给一个元素设置了<i>display:inline-block</i>后，它既能在一行排列，也能设置宽高，为什么？？<br>这就涉及到了外在盒子和内在盒子，外在盒子负责元素是可以在一行显示还是换行显示，内在盒子负责宽高，内容显示什么的，又叫容器盒子，所以，设置了<i>display:inline-block</i>的元素就可以既在一行显示，又设置宽高了。</p>
+<h3 id="内联元素的盒模型"><a href="#内联元素的盒模型" class="headerlink" title="内联元素的盒模型"></a>内联元素的盒模型</h3><p>首先明确一点，内联元素指的是外在盒子是<i>inline</i>的盒子，它和<i>display:inline</i>的盒子是不一样的，而是范围更大。明确了这一点后，我们再来看内联的盒模型，从一段代码来进入对这些盒子的认识</p>
+<pre><code>&lt;p&gt;这是一行普通的文字，这里有一个 &lt;em&gt;em&lt;/em&gt;标签&lt;/p&gt;
+</code></pre><p>这一行代码里面有很多盒子，一一列举如下：</p>
+<ul>
+<li><strong>内容区域(content area)</strong>。内容区域是指一种围绕文字看不见的盒子，方便理解就可以认为是我们鼠标选中文字的时候，那个蓝色的背景所选中的地方<br>  <img src="https://i.imgur.com/JreA0Tq.jpg" alt=""><br>实际上，内容区域并没有明确的定义，所以将其理解为中文字符占据1em的高度的区域(em-box)也是可以的，内容区域的大小与<i>font-size</i>大小相关。</li>
+<li><strong>内联盒子(inline box)</strong>。内联盒子，其实就是元素的外在盒子，用来决定元素是内联还是块级元素，该盒子又可以分为“内联盒子”和“匿名内联盒子”，比如说这段代码：<pre><code>&lt;p&gt;
+  这是一行普通的文字，这里有一个 
+  &lt;em&gt;em&lt;/em&gt;
+  标签
+&lt;/p&gt;
+</code></pre>在这个里面，文字<i>em</i>是由标签<i>em</i>所包裹，则这盒子属于“内联盒子”，总的来说，如果一段文字被内联标签（比如<i>em</i>，<i>i</i>，<i>span</i>等）所包围，他就是一个内联盒子，如果一行文字没有被包裹，则属于匿名内联盒子，也就是上面代码中的 “这是一行普通的文字，这里有一个 ” 与 “标签” 这两段文字。有一点需要注意一下：并不是所有的匿名盒子都是匿名内联盒子，也会有匿名块级盒子，比如说下面这个例子：<pre><code>&lt;p&gt;
+  这是一行普通的文字，这里有一个 
+  &lt;div&gt;em&lt;/div&gt;
+  标签
+&lt;/p&gt;
+</code></pre>此时这两段光秃秃的文字就是被内联块级盒子所包裹了，具体区分的话就需要看前后的标签是内联还是块级，当然，显示的效果也是不一样的，第一段代码中的三段文字是在一行显示，这就是匿名内联盒子的特性，第二段代码是三段文字三行，这就是匿名块级盒子所包裹时显示的效果。</li>
+<li><strong>行框盒子(line box)</strong>。每一行就是一个行框盒子，每一个行框盒子是由一个个的内联盒子组成，如图下面实现所包围的部分<br><img src="https://i.imgur.com/8Kdei6y.jpg" alt=""></li>
+<li><strong>包含块(containing block)</strong>。这个盒子由一个个的行框盒子组成，包含块是这个元素最近的祖先块元素（如果这个元素的<i>position</i>属性是<i>static</i>或者<i>relative</i>）</li>
+</ul>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/04/15/css世界的各种盒子/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/04/15/css世界的各种盒子/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <!--<ul>-->
+                <!--<li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>-->
+                <!--<li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>-->
+            <!--</ul>-->
+            
+            	<span id="busuanzi_container_site_pv">2019总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
