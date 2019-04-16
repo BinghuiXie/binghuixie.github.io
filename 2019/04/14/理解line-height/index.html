@@ -140,14 +140,181 @@
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
                 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我得记下来，要不我就忘了。。。<br>本篇文章的内容参考自张鑫旭大神的《CSS世界》</p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>1.<a href="#link1">可替换元素和非可替换元素</a><br>2.<a href="#link2">非替换纯内联元素与line-height</a><br>3.<a href="#link3">行距和半行距</a><br>4.<a href="#link4">替换元素和块级元素与line-height</a><br>5.<a href="#link5">line-height与垂直居中</a><br>6.<a href="#link6">line-height的各类属性值</a><br>7.<a href="#link7">内联元素line-height的大值特性</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>1.<a href="#link1">可替换元素和非可替换元素</a><br>2.<a href="#link2">非替换纯内联元素与line-height</a><br>3.<a href="#link3">行距和半行距</a><br>4.<a href="#link4">替换元素和块级元素与line-height</a><br>5.<a href="#link5">line-height与垂直居中</a><br>6.<a href="#link6">line-height的各类属性值</a><br>7.<a href="#link7">总结</a></p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><a name="link1"></a></p>
 <h2 id="替换元素和非替换元素"><a href="#替换元素和非替换元素" class="headerlink" title="替换元素和非替换元素"></a>替换元素和非替换元素</h2><p>这个概念，取自<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">MDN</a></p>
 <blockquote>
 <p>可替换元素（replaced element）的展现效果不是由 CSS 来控制的。这些元素是一种外部对象，它们外观的渲染，是独立于 CSS 的。简单来说，它们的内容不受当前文档的样式的影响。CSS 可以影响可替换元素的位置，但不会影响到可替换元素自身的内容。某些可替换元素，例如 <iframe> 元素，可能具有自己的样式表，但它们不会继承父文档的样式。</iframe></p>
 </blockquote>
 <p>MDN上说的有一点抽象，用人话来说，可替换元素就是可以通过更改标签的属性值来更改呈现的内容的元素就叫做可替换元素，比如说<i>img</i>标签，当把<i>img</i>标签的<i>src</i>属性换掉以后，显示的图片也会变，这就是替换元素。<br>常见的替换元素有<i>img</i>，<i>object</i>，<i>video</i>，<i>iframe</i>，<i>textarea</i>，<i>input</i>等<br>所有的替换元素都是内联水平元素，也就是替换元素和替换元素，替换元素和文字都是可以在一行内显示的。<br>替换元素的特性之一就是尺寸由内部元素决定，且无论其 display 属性值是 inline 还是 block。这个特性很有意思，对于非替换元素，如果其 display 属性值为 block，则会具有流动性，宽度由外部尺寸决定，但是替换元素的宽度却不受 display 水平影响。<br><a name="link2"></a></p>
-<h2 id="非替换纯内联元素与line-height"><a href="#非替换纯内联元素与line-height" class="headerlink" title="非替换纯内联元素与line-height"></a>非替换纯内联元素与line-height</h2><p>对于非替换元素的纯内联元素(比如说 <i>span</i>)，它的可视高度完全由<i>line-height</i>决定，<br><a name="link3"></a><br><a name="link4"></a><br><a name="link5"></a><br><a name="link6"></a><br><a name="link7"></a></p>
+<h2 id="非替换纯内联元素与line-height"><a href="#非替换纯内联元素与line-height" class="headerlink" title="非替换纯内联元素与line-height"></a>非替换纯内联元素与line-height</h2><p>对于非替换元素的纯内联元素(比如说 <i>span</i>)，它的可视高度完全由<i>line-height</i>决定，<i>padding</i>，<i>border</i>等对可视高度是没有影响的。对于这种文本这样的纯内联元素，<i>line-height</i>就是高度计算的基石，也就是指定了行框盒子的基础高度<br><a name="link3"></a></p>
+<h2 id="行距和半行距"><a href="#行距和半行距" class="headerlink" title="行距和半行距"></a>行距和半行距</h2><p>对于块级元素和替换元素的<i>line-height</i>的讨论，先要从行距和半行距开始说起。<br>我们已经知道基线这个概念是字母x的下边沿所对的那条线，那么两条基线之间的距离就是行距。<br>有这么一个计算公式：<strong>行距 = 行高 - em-box</strong>，<strong>半行距 = 行距 / 2</strong><br>这里的<i>em-box</i>是一个盒子，看它的名字就可以知道，这个盒子是和单位<i>em</i>相关的，而我们又知道1em就是当前字体<i>font-size</i>的大小，也就是说，影响<i>em-box</i>大小的因素，只有一个<i>font-size</i>，所以有时为了理解的方便也可以吧上面的公式写为：<br><strong>行距 = 行高(line-height) - <i>font-size</i></strong><br>但是这个<i>em-box</i>是一个虚无缥缈的东西，我们看不见它，有的时候就会把它和其他的区域相混淆，我们尊崇眼见为实，我们相信眼睛看到的东西，但是很多时候，我们也会被肉眼所看到的东西所迷惑。很多人容易把文字图形区域看作是<i>em-box</i>的范围，但实际上这个是不对的，比如说，英文字母 p 或者 g ，它们的“尾巴”是在<i>em-box</i>之外的，对于一些汉字，很多字体图形高度实际上是小于<i>em-box</i>的高度的。<br>那我们怎么去找到这个<i>em-box</i>呢？因为只有找到它才能准确的去计算行距和半行距，这里需要利用一下内容区域，在<a href="http://binghuixie.cn/2019/04/15/css%E4%B8%96%E7%95%8C%E7%9A%84%E5%90%84%E7%A7%8D%E7%9B%92%E5%AD%90/" target="_blank" rel="noopener">之前一篇文章中</a>，提到内容区域可以看作为鼠标选中文字时显示的蓝色背景区域，但是内容区域是受到<i>font-size</i>和<i>font-family</i>双重影响的，<i>em-box</i>只是受<i>font-size</i>影响，那么只有在字体是宋体的时候，内容区域和<i>em-box</i>才是等同的，所以我们根据这个就可以看出来半行距了</p>
+<pre><code>.test{
+    font-family: 宋体;
+    font-size: 24px;
+    line-height: 36px;
+    background-color: yellow;
+    padding-left: 12px;
+}
+span{
+    background-color: #cccccc;
+}
+
+&lt;div class=&quot;test&quot;&gt;
+    &lt;span&gt;sphinx&lt;/span&gt;
+&lt;/div&gt;
+</code></pre><p><img src="https://i.imgur.com/aJKu15C.jpg" alt=""><br>这样的话，中间灰色区域就是内容区域同时也是<i>em-box</i>的区域，上下两个被红框框起来的地方就是半行距。<br>那么，理解了行距和半行距之后，我们来讨论一下，如何通过<i>line-height</i>来实现文字的排版？很多前端开发者都遇到过这样子的情况，两行文字之间具体太小了，希望调大一下，这是很显然我们会调大<i>line-height</i>的值来让两行文字的间距变大，但是具体作用细节呢？<br>比如说<i>line-height</i>的值为2，那么此时半行距的大小就是一半文字的大小，这样两行文字的两个半行距加起来（上面的文字的下半行距和下面文字的上半行距）就是一个文字的大小，这样两行文字之间相距的就是一个文字尺寸的大小，如果<i>line-height</i>是1，那么半行距就是0,，也就是两行文字会紧挨在一起</p>
+<pre><code>&lt;div style=&quot;background-color: #FFA500&quot;&gt;
+    &lt;div&gt;&lt;span style=&quot;line-height: 2;outline: 1px solid #000000&quot;&gt;一行文字&lt;/span&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;span style=&quot;line-height: 2;outline: 1px solid #000000&quot;&gt;一行文字&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;div style=&quot;background-color: #FFA500&quot;&gt;
+    &lt;div&gt;&lt;span style=&quot;line-height: 1;outline: 1px solid #000000&quot;&gt;一行文字&lt;/span&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;span style=&quot;line-height: 1;outline: 1px solid #000000&quot;&gt;一行文字&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>如图<br><img src="https://i.imgur.com/MzrZW2r.jpg" alt=""><br><a name="link4"></a></p>
+<h2 id="替换元素和块级元素与line-height"><a href="#替换元素和块级元素与line-height" class="headerlink" title="替换元素和块级元素与line-height"></a>替换元素和块级元素与line-height</h2><p>前面一小节说道了非替换纯内联元素与<i>line-height</i>之间的关系，这节总结一下替换元素和块级元素与<i>line-height</i>之间的关系</p>
+<h3 id="line-height与替换元素"><a href="#line-height与替换元素" class="headerlink" title="line-height与替换元素"></a>line-height与替换元素</h3><p>常见的替换元素比如说<i>img</i>，<i>input</i>，<i>textarea</i>等，我们又知道替换元素的特性之一就是尺寸由内部元素决定，且无论其 <i>display</i> 属性值是 <i>inline</i> 还是 <i>block</i>，也就是说，替换元素设置了<i>block</i>，并不会具有流动性去宽度填满父容器，而是内部元素有多大，显示出来就是多大，那么这里<i>line-height</i>是否可以影响<i>img</i>（替换元素）的高度吗？其实是不可以的</p>
+<pre><code>.box{
+    background-color: #FFA500;
+}
+
+&lt;div class=&quot;box&quot;&gt;
+    &lt;img src=&quot;...&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+</code></pre><p>根据上面这段代码，当给<i>img</i>增加<i>line-height</i>的时候，其父元素的黄色背景没有任何变化<br><img src="https://i.imgur.com/hgfaL0r.jpg" alt=""><br><img src="https://i.imgur.com/BpQmVfw.jpg" alt=""><br>当给父元素增加<i>line-height</i>的时候，可以看见的是父元素的黄色背景区域有变化，变化的原因如下：图片是一个内联元素，会构成一个行框盒子，在HTML5文档模式下面，每一个行框盒子前面都会有一个宽度为0的空白节点，实际上父元素背景区域的变化是因为<i>line-height</i>影响的这个空白节点的高度，而不是影响了<i>img</i>的高度，所以这也侧面说明了<i>line-height</i>对替换元素的高度是没有影响的，再强调一下，替换元素的尺寸是由其内部元素所决定的（默认情况下，如果不去设置宽高的话，这个默认尺寸为固有尺寸，也就是替换元素的“初始尺寸”），所以<i>line-height</i>不会影响其高度。<br>既然<i>line-height</i>不会影响替换元素的高度，那么当非替换内联元素与内联替换元素同时存在的时候，高度的表现又是怎么样的呢？<br>因为非替换元素和内联替换元素都属于内联元素，在一行的时候会构成一个行框盒子，此时的<i>line-height</i>是决定这个行框盒子的最小高度，因为替换元素的高度不受<i>line-height</i>所影响</p>
+<h3 id="line-height与块级元素"><a href="#line-height与块级元素" class="headerlink" title="line-height与块级元素"></a>line-height与块级元素</h3><p>对于块级元素，<i>line-height</i>是不会对其产生影响的，平常通过改变一个块级元素的<i>line-height</i>，块级元素高度的变化实际上是通过改变块级元素内部的内联元素的高度而实现的，来看下面这个例子：</p>
+<pre><code>&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+
+.box{
+    line-height: 250px;
+    background-color: #FFA500;
+}
+</code></pre><p>这个里面给一个空的块级元素设置了<i>line-height</i>为250px，同时加了一个背景色，但是浏览器上显示的却是一片空白，这说明<i>line-height</i>对块级元素的高度是没有影响的。</p>
+<pre><code>&lt;div class=&quot;box&quot;&gt;
+    &lt;span&gt;啦啦啦啦啦&lt;/span&gt;
+&lt;/div&gt;
+
+.box{
+    background-color: #FFA500;
+}
+.box span{
+    line-height: 2;
+}
+</code></pre><p>在块级元素内部嵌套一个内联元素，并给它设置<i>line-height</i>，浏览器的效果如下：<br><img src="https://i.imgur.com/2k1aOxX.jpg" alt=""><br>此时，内部的内联元素添加了<i>line-height</i>后，父容器的背景部分扩大了，结合上面的例子可以知道，此时是内联元素的高度被增加了，所以才会导致父元素也被撑开了。<br><a name="link5"></a></p>
+<h2 id="line-height与垂直居中"><a href="#line-height与垂直居中" class="headerlink" title="line-height与垂直居中"></a>line-height与垂直居中</h2><h3 id="单行文本垂直居中"><a href="#单行文本垂直居中" class="headerlink" title="单行文本垂直居中"></a>单行文本垂直居中</h3><p>一段文字没有在一个容器中垂直居中显示，怎么办？相信很多人都知道：把<i>line-height</i>和<i>height</i>设置成同样的大小就行，那么就要问，为什么这么做能实现垂直居中？<br>其实，上面的说法是有一些不严谨的，不是需要把<i>line-height</i>和<i>height</i>设置为一样大小，而是只需要设置<i>line-height</i>就可以了，来看下面的例子</p>
+<pre><code>&lt;div class=&quot;content&quot;&gt;
+    单行文字垂直居中(height: 36px; line-height: 36px;)
+&lt;/div&gt;
+
+&lt;div class=&quot;text&quot;&gt;
+    单行文字垂直居中(line-height: 36px;)
+&lt;/div&gt;
+
+.content{
+    outline: 1px solid #000000;
+    height: 36px;
+    line-height: 36px;
+}
+.text{
+    outline: 1px solid #000000;
+    line-height: 36px;
+}
+</code></pre><p><img src="https://i.imgur.com/rglSL8l.jpg" alt=""><br>可以看到，下面的一行文字，没有设置块级元素的高度，单独的设置了行高，文字仍然会垂直居中。<br>这个是因为，前面说到了半行距，因为行距在一段文字上下等分形成半行距，所以就会形成垂直的效果。还要注意一个细节，因为<i>font-family</i>的不同，不同的字体设置<i>line-height</i>的时候不会完美的达到垂直居中效果，一般来说宋体是会规规整整的垂直居中的，其他的一些字体比如说微软雅黑，会稍微向下偏移一些，但是因为一般情况下使用的字号比较小，所以偏移量不是特别大，肉眼看上去几乎就是垂直了，所以<i>line-height</i>实现单行文本垂直居中往往是“近似垂直居中”。</p>
+<h3 id="多行文本垂直居中"><a href="#多行文本垂直居中" class="headerlink" title="多行文本垂直居中"></a>多行文本垂直居中</h3><p>多行文本的垂直居中需要借用到另一个属性<i>vertical-align</i>的帮助：</p>
+<pre><code>&lt;div class=&quot;multiple&quot;&gt;
+    &lt;div class=&quot;item&quot;&gt;文字文字文字文字文字文字文字文字文字文字文字文字文字&lt;/div&gt;
+&lt;/div&gt;
+
+.multiple{
+    width: 200px;
+    background-color: #FFA500;
+    line-height: 120px;
+}
+.item{
+    display: inline-block;
+    line-height: 20px;
+    margin: 0 20px;
+    vertical-align: middle;
+}
+</code></pre><p><img src="https://i.imgur.com/OMMnTlP.jpg" alt=""><br>现在是多行文本垂直局中了，这段代码的含义如下：<br>首先给内部的<i>div</i>设置<i>display</i>属性值为<i>inline-block</i>的目的是让这个<i>div</i>变成一个外部盒子是内联盒子的元素，这样，因为外部盒子是内联盒子，于是就会产生一个行框盒子和宽度为0的空白节点（每一个行款盒子都会附带一个空白节点），这样父元素的120px的行高就能作用在这个空白节点上从而利用这个空白节点撑开父元素。<br>其次，因为内联元素默认是基线对齐的，所以此时设置<i>vertical-align</i>的值为<i>middle</i>就可以实现多行文本的垂直了。注意，其实这里的垂直也是“近似垂直”，这个“近似”是由<i>vertical-align</i>引起的，后面我会接着记一篇关于<i>vertical-align</i>的笔记来详细的说一下原因。<br><a name="link6"></a></p>
+<h2 id="line-height的各类属性值"><a href="#line-height的各类属性值" class="headerlink" title="line-height的各类属性值"></a>line-height的各类属性值</h2><p><i>line-height</i>有几种常用的取值</p>
+<ul>
+<li>normal<ul>
+<li>默认值，normal是一个变量，不同的字体(<i>font-family</i>)对应不同的<i>normal</i>值，只要字体相同，那么<i>normal</i>解析出来的<i>line-height</i>的值在不同浏览器下基本都是一样的。</li>
+</ul>
+</li>
+<li>数值<ul>
+<li>数字，比如<i>line-height: 1.5</i>，最终计算值就是当前元素的<i>font-size</i>与<i>line-height</i>的相乘，比如说<i>font-size</i>是14<i>px</i>，那么<i>line-height</i>就是 14 * 1.5 = 21px</li>
+</ul>
+</li>
+<li>百分比<ul>
+<li>百分比值，比如<i>line-height: 150%</i>，最终计算的值也是当前元素的字体大小与当前<i>line-height</i>相乘，也就是 14 * 150% = 21px</li>
+</ul>
+</li>
+<li>长度值<ul>
+<li>带有单位的值，比如说<i>line-height</i>是21<i>px</i>或者1.5<i>em</i>，<i>em</i>我们都知道是一个与字体大小相关的单位，比如说字体大小是14<i>px</i>，那么<i>line-height</i>就是 14 * 1.5 = 21px</li>
+</ul>
+</li>
+</ul>
+<p>那么都是字体的1.5倍，上面三个有什么区别呢？来看一段代码</p>
+<pre><code>&lt;div class=&quot;number&quot;&gt;
+    &lt;h1&gt;标题&lt;/h1&gt;
+    &lt;p&gt;文字&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;percent&quot;&gt;
+    &lt;h1&gt;标题&lt;/h1&gt;
+    &lt;p&gt;文字&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;length&quot;&gt;
+    &lt;h1&gt;标题&lt;/h1&gt;
+    &lt;p&gt;文字&lt;/p&gt;
+&lt;/div&gt;
+
+.number{
+    line-height: 1.5;
+}
+.percent{
+    line-height: 150%;
+}
+.length{
+    line-height: 1.5em;
+}
+</code></pre><p><img src="https://i.imgur.com/p8xk8cB.jpg" alt=""><br>可以看出，设定了<i>line-height</i>为数值的标题和文字排版很舒服，而设置了百分比和<i>em</i>的文字都挤在了一起，这是因为如果使用数字作为取值，那么子元素的<i>line-height</i>继承的值就是这个数字（例子中是1.5），另外两种继承的是父元素的<i>line-height</i>计算后的结果（例子中就是1.5 * 14px = 21px），而因为<i>h1</i>的字体大小是默认的两倍在这里就是28<i>px</i>，而继承的行高是21<i>px</i>，所以半行距即使-3.5<i>px</i>，所以文字会重叠在一起。<br>个人比较喜欢使用数值作为<i>line-height</i>的取值，这里只是稍作了解。<br><a name="link7"></a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>说了这么多，最后再看一个例子，以验证是否理解了<i>line-height</i></p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+        &lt;span&gt;文字文字文字文&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+        &lt;span&gt;文字文字文字文&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+.container{
+    display: flex;
+}
+.container &gt; div{
+    margin: 0 12px;
+    background-color: #FFA500;
+    width: 200px;
+}
+.box1{
+    line-height: 96px;
+}
+.box1 &gt; span{
+    line-height: 20px;
+}
+.box2{
+    line-height: 20px;
+}
+.box2 &gt; span{
+    line-height: 96px;
+}
+</code></pre><p>这两个<i>div</i>，<i>.box1</i>和<i>.box2</i>的高度分别是多少？想一下再看下面的答案</p>
+<p>答案：都是96px<br>眼见为实<br><img src="https://i.imgur.com/5fVL3cS.jpg" alt=""><br>为什么？我们在最后分析一遍，先看<i>.box1</i>这个盒子，它是父容器设置了96px的<i>line-height</i>，子元素内联元素<i>span</i>设置了20px的<i>line-height</i>，之前的一篇文章<a href="http://binghuixie.cn/2019/04/15/css%E4%B8%96%E7%95%8C%E7%9A%84%E5%90%84%E7%A7%8D%E7%9B%92%E5%AD%90/" target="_blank" rel="noopener">之前的一篇文章</a>有说到，内联元素会有一个行框盒子，而每一个行框盒子都会在其前面有一个空白节点，这个节点的宽度为0，就像是一个 0 宽度的字符，此时父元素的<i>line-height</i>正是作用在了这个空白节点上，使得父元素的高度被撑开，子元素虽然说设置了<i>line-height</i>为20px，但是远小于96px，所以不会对父元素的高度产生影响。<br>同理，第二个<i>.box2</i>这个盒子，我们知道给块级元素设置<i>line-height</i>是没有用的，高度的变化全是靠着<i>line-height</i>影响其内联的子元素的行高，从而影响父元素的高度，那么这里面，父元素只是设置了20px的行高，如果子元素不设置96px的话，那无疑就是20px的高度了，但是子元素，这个非替换内联元素设置了96px的行高，就会把父元素的高度撑开为96px，这也就是为什么第二个盒子的高度也是96px的原因。<br>总结一下，就是父元素的高度最终都是由<i>line-height</i>大的那个值决定的。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>加油！</p>
 
             </div>
 
