@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/img/favicon.ico"/>
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	
+			    <title>
+    不会拉小提琴的左脚
+    </title>
+    <meta charset="utf-8" />
+    <meta name="baidu-site-verification" content="cwuaQdioe5" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="html css" />
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+             content: ' ';
+             position: fixed;
+             top: 0;
+             background: url('/img/bg.jpg') center 0 no-repeat;
+             right: 0;
+             bottom: 0;
+             left: 0;
+             background-size: cover;
+         }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">home page</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">home page</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <!-- archives  归档   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">categories</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="archive-link" href="/archives/2019/04/">April 2019</a></li><li><a class="archive-link" href="/archives/2019/02/">February 2019</a></li><li><a class="archive-link" href="/archives/2018/11/">November 2018</a></li><li><a class="archive-link" href="/archives/2018/10/">October 2018</a></li><li><a class="archive-link" href="/archives/2018/08/">August 2018</a>
+	                    </ul>
+	        </li>
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/gallery/" title="images">
+		                images
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/tag/" title="tages">
+		                tages
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/BinghuiXie/binghuixie.github.io.git" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://i.imgur.com/Haa5T21.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >vertical-align深入理解</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <p><i>vertical-align</i>这个属性算是比较常用的一个，一般来说常用的就是把它的值取为<i>middle</i>，但是就像<i>float</i>那样，不去深入理解一个属性就去大量的使用很容易出现莫名其妙的“问题”，所以还是有必要对其进行深究的。<br>首先提出一个问题，看一下这段代码：</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;span&gt;文字&lt;/span&gt;
+&lt;/div&gt;
+
+.container{
+    margin-top: 100px;
+    line-height: 32px;
+    background-color: #FFA500;
+}
+.container &gt; span{
+    font-size: 24px;
+    }
+</code></pre><p><i>container</i>容器的高度是多少？答案可能出乎大多数人的意料，我在Chrome和Opera里面查看元素的高度是35px，FireFox是34.5px，反正都不是32px，这个就是因为<i>vertical-align</i>作用的结果。</p>
+<h3 id="vertical-align作用前提"><a href="#vertical-align作用前提" class="headerlink" title="vertical-align作用前提"></a>vertical-align作用前提</h3><p>深入<i>vertical-align</i>第一步先从它的作用范围看起，并不是所有的元素设置了<i>vertical-align</i>都会起作用的，而是只有<strong>内联元素</strong>和<strong><i>display</i>值为<i>table-cell</i>的元素</strong>，也就是说，<i>vertical-align</i>只能作用在外部盒子为<i>inline</i>的元素和<i>display</i>值为<i>table-cell</i>的元素上，也就是<i>inline</i>,<i>inline-block</i>,<i>inline-table</i>，和<i>table-cell</i>的元素上。<br>除此之外，因为<i>float</i>和绝对定位会使元素块状化，所以在浮动元素和绝对定位元素上使用<i>vertical-align</i>也是毫无效果的。</p>
+<h3 id="vertical-align和line-height之间的关系"><a href="#vertical-align和line-height之间的关系" class="headerlink" title="vertical-align和line-height之间的关系"></a>vertical-align和line-height之间的关系</h3><p>前面那个行高与最终高度不相同的例子，在这节就可以解释了。<br>为了解释清楚这个点，我们需要脑补一些东西进去，一个是空白节点，前面的文章说过每一个内联元素都会产生一个行框盒子，而每一个行框盒子前面都会有一个空白节点，它的宽度是 0 ，但是它影响却是不小，这里我们把一个小写字母 x 放到<i>span</i>前面作为空白节点的形象化代表，同时为了方便理解，在<i>span</i>内部的文字后面也加一个小写字母 x 。也就是下面这个样子</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    x&lt;span&gt;文字x&lt;/span&gt;
+&lt;/div&gt;
+</code></pre><p>OK。现在分析一下，充当空白节点的形象化代表的 x 的字体大小是默认的字体大小，也就是14px，而<i>span</i>里面的 x 的字体大小时24px。<br>字体越大，对应的基线(baseline)就会往下移，这样的话，前面 x 和后面 x 的基线实际上不是在一个位置的，而是后面字体较大的那部分对应的基线靠下一点，然而，因为文字默认都是<strong>基线对齐</strong>，所以此时基线不在一条水平线上的情况是不允许的，所以此时文字会上下平移以使基线对齐。由于受到<i>line-height</i>是32px的影响，前面代表空白节点的字符 x 和后面的<i>span</i>的高度都是32px，此时平移了以后，就会在下面多出一块，这样就导致了最终的高度不是32px而是比32px大的原因了。<br>用一张图来解释：(忽略中间那个加载。。。)<br><img src="https://i.imgur.com/FXRI6kN.jpg" alt=""><br>那么，知道了为什么实际高度大于所给高度，就可以针对去解决了，实际上还是这个空白节点影响的，所以第一种解决办法是可以直接父元素加一个<i>font-size: 24px</i>，让空白节点和后面<i>span</i>里面的字号一样大小。第二种办法：因为文字默认是基线对齐，才会出现字号不一样的时候基线平移，所以可以通过<i>vertical-align</i>改一下对齐方式，比如说<i>top</i>或者<i>bottom</i>就行了。（给子元素<i>span</i>加<i>vertical-align</i>）。</p>
+<h3 id="图片底部间隙问题"><a href="#图片底部间隙问题" class="headerlink" title="图片底部间隙问题"></a>图片底部间隙问题</h3><p>知道了字号以及对齐方式导致的高度问题的原理以及解决办法，再来看一个更常见一些的一个问题：</p>
+<pre><code>&lt;div class=&quot;box&quot;&gt;
+    &lt;img src=&quot;https://biaoqingba.cn/wp-content/uploads/2018/03/9ab1c5b036bac03-240x180.gif&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+
+.box{
+    outline: 1px solid #000000;
+    text-align: center;
+    background-color: #FFA500;
+}
+</code></pre><p>浏览器看到的效果如下：<br><img src="https://i.imgur.com/tdANDVR.jpg" alt=""><br>图片下边沿和父元素下边线之间有一点距离，为什么？<br>导致这个现象的就是这三个玩意：空白节点，<i>line-height</i>还有<i>vertical-align</i>。<br>还是把空白节点看车一个 x ，这样的话就相当于图片前面多了一个字符，因为字符是默认以基线对齐，而替换元素默认是下边沿对齐，也就是图片的下边沿和 x 的基线是对齐的，但是从上面那个例子可以看出， x 的基线下面是还有一段高度的（x基线往下产生的行高，或者说半行距），正是这段高度撑开了父容器，使得图片和容器底部岔开了一小点距离。<br><img src="https://i.imgur.com/DkJicDb.jpg" alt=""><br>有图看的更明白系列~~~<br>知道了原理，再消除就简单了。</p>
+<ol>
+<li>1、我们知道内联元素前面才会存在空白节点，所以第一个方法就是把图片元素块状化也就是加一个<i>display:block</i>。</li>
+<li>2、从上图中可以看出，顶开父容器的那一小段距离其实是半行距使然，既然是半行距的锅，就是说明<i>line-height</i>比<i>font-size</i>大，所以只需要给<i>line-height</i>设置一个足够小的值，比如说 0 ，就可以了（在父容器上面设置）。</li>
+<li>3、间隙产生的一个原因就是基线对齐，所以只需要更改<i>vertical-align</i>的值即可，<i>middle</i>，<i>top</i>，<i>bottom</i>都是可以的。<h3 id="vertical-align导致margin失效"><a href="#vertical-align导致margin失效" class="headerlink" title="vertical-align导致margin失效"></a>vertical-align导致margin失效</h3><i>margin</i>在一定情景下是会失效的，<i>vertical-align</i>的默认值<i>baseline</i>就会导致<i>margin</i>取负值的时候“失效”，来看下面这个例子：</li>
+</ol>
+<pre><code>&lt;div class=&quot;box&quot;&gt;
+    &lt;img src=&quot;puui.qpic.cn/qqvideo_ori/0/a0774w0rp4u_496_280/0&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+
+.box &gt; img{
+    height: 96px;
+    margin-top: -200px;
+}
+</code></pre><p>给<i>img</i>设置了负的上外边距为200px，远超图片自身的高度，理论上来说，设置上外边距负值元素会向上平移，而因为负边距的绝对值大于自身高度，应该是平移出去父元素才对，但是实际效果是这样子的：<br><img src="https://i.imgur.com/yaGXaHV.jpg" alt=""><br>而且，就算给<i>margin-top</i>设置成-9999px，图片也不会向上平移，而是fsadfsdafjskdjf还是这个样子的，就好像<i>margin-top</i>“失效了”。其原理是这样子的：<br>图片的前面有一个空白节点，而在CSS世界中，非主动触发位移的内联元素是不可能跑到计算容器之外的，导致图片被空白节点的<i>vertical-align:baseline</i>给限制死了，我们用一个字符 x 代替空白节点，看的清楚一点<br><img src="https://i.imgur.com/Z4ZVE6B.jpg" alt=""><br>因为字符 x 下边缘和图片下边缘是对齐的，而且字符 x 因为是非主动定位，它是不可能超出父容器的范围的，所以既然 x 的位置没办法变化，那图片的下边缘是和 x 的下边沿（基线对齐的），所以再怎么给图片设置负的上外边距都不可能使图片平移出父容器，看起来就像是<i>margin</i>失效了！</p>
+<h3 id="inline-block和baseline"><a href="#inline-block和baseline" class="headerlink" title="inline-block和baseline"></a>inline-block和baseline</h3><p><i>vertical-align</i>属性的默认值是<i>baseline</i>，对于字符来说就是小写字母 x 的下边缘，对于图片等替换元素来说就是替换元素的下边缘，但是如果是<i>inline-block</i>元素，就复杂的多了，具体有两种方式：</p>
+<ol>
+<li>1、如果一个<i>inline-block</i>元素的元素不是内联元素(里面没有内联元素)，或者这个<i>inline-block</i>元素的<i>overflow</i>属性不是<i>visible</i>，那这个<i>inline-block</i>元素的基线就是它的<i>margin</i>的底边缘。</li>
+<li>2、如果不满足是上面的条件，也就是元素下面有内联元素或者<i>overflow</i>属性是<i>visible</i>，那么基线就是<i>inline-block</i>元素里面最后一行内联元素的基线。</li>
+</ol>
+<p>辅助一个例子来理解：</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;span class=&quot;inline-block-element&quot;&gt;这个inline-block元素里面有文字也就是内联元素，它的基线就是最后一行内联元素的基线。x&lt;/span&gt;
+    &lt;span class=&quot;inline-block-element&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+.inline-block-element{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #4D77C6;
+}
+</code></pre><p>两个<i>span</i>，第一个<i>span</i>里面有内联元素，第二个没有，根据规则，有内联元素的<i>inline-block</i>元素的基线是其最后一行内联元素的下边缘，没有内联元素的<i>inline-block</i>元素的基线是其<i>magin</i>下边缘，如果没有<i>magin</i>，基线位置就是边框最下缘，如果没有边框就是<i>padding</i>最下边，以此类推。。。所以最终的效果就是：<br><img src="https://i.imgur.com/EcZRWRh.jpg" alt=""><br>这样就不难理解为什么是这样子对齐了。</p>
+<h3 id="番外篇：背景小图标和文字对齐问题"><a href="#番外篇：背景小图标和文字对齐问题" class="headerlink" title="番外篇：背景小图标和文字对齐问题"></a>番外篇：背景小图标和文字对齐问题</h3><p>一个小的背景图标，后面跟上一个描述性的文字，是前端开发中经常会碰到的，而这个图标和文字居中对齐，就是这种应用中一个比较头疼的问题，这里用之前写的<i>line-height</i>辅助其他属性来解决一下。<br>思路：一个放置图标的<i>inline-block</i>元素，它的基线取决于内部是否有内联元素和<i>overflow</i>属性的取值，那么如果这个放置图标的<i>inline-block</i>元素的基线和文字的基线对齐，同时二者的高度由一致，那么就会自动的形成垂直居中效果。<br>根据这个思路，有三个要点需要注意：</p>
+<ol>
+<li>(1) 图标高度和行高都是相等的(因为字符占据的高度实际上是由<i>line-height</i>决定的)</li>
+<li>(2) 图标标签里面永远有一个字符。这个字符的作用是为了保持基线的位置，不是为了显示，所以可以利用伪元素<i>before</i>或者<i>after</i>生成一个空格字符</li>
+<li>(3) 图标元素不使用<i>overflow: hidden</i>，这样也是为了保证基线不是元素下边缘。</li>
+</ol>
+<p>所以解决办法如下：</p>
+<pre><code>.box {
+    /*保证行高是20px，这样子元素字符就会继承这20px*/
+    line-height: 20px;
+}
+.icon {
+    display: inline-block;
+    width:20px; 
+    /*图标高度和字符高度相同*/
+    height:20px;
+    white-space: nowrap;
+}
+.icon:before {
+    /* 生成一个空格字符保证基线的统一 */
+    content:&#39;\3000&#39;;
+}
+.icon-delete {
+    background: url(./delete2.png) no-repeat center;
+}
+.large {
+    font-size: 20px;
+}
+
+&lt;div class=&quot;box&quot;&gt;
+    &lt;h4&gt;1. 标签里面有“删除”文本&lt;/h4&gt;
+    &lt;p&gt;&lt;i class=&quot;icon icon-delete&quot;&gt;&lt;/i&gt;随便什么文字&lt;/p&gt;
+    &lt;h4&gt;2. 字号变大&lt;/h4&gt;
+    &lt;p class=&quot;large&quot;&gt;
+        &lt;i class=&quot;icon icon-delete&quot;&gt;&lt;/i&gt;删除
+    &lt;/p&gt;
+    &lt;p class=&quot;large&quot;&gt;
+        &lt;i class=&quot;icon icon-delete&quot;&gt;&lt;/i&gt;随便什么文字
+    &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总之，对于内联元素，一定要考虑到空白节点和<i>vertical-align</i>默认以基线对齐的影响。<br>最后实现一个水平垂直居中弹框</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;dialog&quot;&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            内容
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+.container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    text-align: center;
+    font-size: 0;
+}
+.container:after{
+    content: &#39;&#39;;
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.dialog{
+    display: inline-block;
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 300px;
+    height: 200px;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 14px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+</code></pre><p>效果如图：<br><img src="https://i.imgur.com/TyPbjwC.jpg" alt=""><br>解释如下：<br><i>container</i>容器固定定位，格式化高度占满全屏，<i>text-align: center;</i>可以让<i>inline-block</i>元素居中显示，设置字体大小为 0 ，这样的话用来代替空白节点的字符 x 的中心位置就是<i>container</i>容器的上边缘（字体大小为 0 时，基线和中线就会重合，而中线位置就是 x 的中心位置）。理解<i>after</i>伪元素就是一个空白节点，此时这个节点宽度为0，高度为100%，给这个伪元素设置了<i>vertical-align: middle;</i>，此时伪元素的中线和 x   的中线对齐。如果中心点位置不动，这个伪元素应该会有一半的位置在<i>container</i>容器外面，但是在CSS中是默认左上方排列对齐的，所以，伪元素和原本在容器上边缘的 x 的中心点就一起向下移动了半个容器的高度，也就是此时 x 的中心点就在<i>container</i>容器的中线处。<br>弹框元素<i>dialog</i>也设置了<i>vertical-align: middle;</i>，此时就会和 x 的中心点对齐，所以就实现了垂直居中的效果。</p>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/04/17/vertical-align深入理解/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/04/17/vertical-align深入理解/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <!--<ul>-->
+                <!--<li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>-->
+                <!--<li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>-->
+            <!--</ul>-->
+            
+            	<span id="busuanzi_container_site_pv">2019总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
