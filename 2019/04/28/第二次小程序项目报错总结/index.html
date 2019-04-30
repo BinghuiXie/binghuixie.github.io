@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/img/favicon.ico"/>
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	
+			    <title>
+    不会拉小提琴的左脚
+    </title>
+    <meta charset="utf-8" />
+    <meta name="baidu-site-verification" content="cwuaQdioe5" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="html css" />
+    
+    	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+             content: ' ';
+             position: fixed;
+             top: 0;
+             background: url('/img/bg.jpg') center 0 no-repeat;
+             right: 0;
+             bottom: 0;
+             left: 0;
+             background-size: cover;
+         }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">home page</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">home page</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <!-- archives  归档   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">categories</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="archive-link" href="/archives/2019/04/">April 2019</a></li><li><a class="archive-link" href="/archives/2019/02/">February 2019</a></li><li><a class="archive-link" href="/archives/2018/11/">November 2018</a></li><li><a class="archive-link" href="/archives/2018/10/">October 2018</a></li><li><a class="archive-link" href="/archives/2018/08/">August 2018</a>
+	                    </ul>
+	        </li>
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/gallery/" title="images">
+		                images
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/tag/" title="tages">
+		                tages
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/BinghuiXie/binghuixie.github.io.git" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://i.imgur.com/u65Gj3w.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >第二次小程序项目报错总结</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第一次写小程序的项目的时候没有总结报错，这次第二次写的时候遇到了一些已经遇到过的报错然而还是花了很长时间才解决，所以还是想着留一个地方记录下来吧。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="1-Maximum-call-stack-size-exceeded"><a href="#1-Maximum-call-stack-size-exceeded" class="headerlink" title="1.Maximum call stack size exceeded;"></a>1.Maximum call stack size exceeded;</h2><p>我在父组件里面调用了一个子组件，子组件里面有一个轮播图，是借助了小程序的<i>swiper</i>组件实现的，大致的代码如下：<br>父组件：<br><img src="https://i.imgur.com/DN6uTD6.jpg" alt=""><br>子组件：<br><img src="https://i.imgur.com/8vkY8oV.jpg" alt=""><br>然后就给我报了这个错：<br><img src="https://i.imgur.com/QP89bIx.jpg" alt=""><br>我在网上搜了很多，大多都是递归调用组件而导致的错误，说白了就是<strong>组件名字的重复</strong>。<br>在我的代码中，利用到了i&gt;swiper组件，而子组件的<i>name</i>是叫做<i>Swiper</i>，正式由于这个原因所以会报错，我把子组件名字改成<i>SwiperComponent</i>就没问题了</p>
+<h2 id="2-axios异步获取数据用来渲染页面"><a href="#2-axios异步获取数据用来渲染页面" class="headerlink" title="2.axios异步获取数据用来渲染页面"></a>2.axios异步获取数据用来渲染页面</h2><p><i>axios</i>获取数据是异步的，这就意味着用<i>axios</i>发出请求去拿数据渲染页面的时候，数据可能还没有拿到，所以页面渲染不出来就会报错。针对这样子有一种解决办法就是借助<i>state</i>和<i>computed</i>属性。<br>当利用<i>axios</i>发出请求后，直接派发<i>action</i>，然后触发<i>mutations</i>，同时传入获取到的数据作为入参，修改<i>state</i>里面对应的数据</p>
+<pre><code>// component.vue
+&lt;template&gt;&lt;/template&gt;
+
+&lt;script&gt;
+    import axios from &#39;axios&#39;
+    export default {
+        name: &quot;ComponentName&quot;,
+        data () {
+            return {
+                item: []
+            }
+        }
+        beforeMount () {
+            axios.get(&#39;url&#39;)
+                .then(res =&gt; {
+                    this.item = res.data;
+                    // 直接触发 dispatch，获取到的数据作为入参传过去
+                    this.$store.commit(&#39;functionName&#39;, this.item)
+            })
+        }
+    }
+&lt;/script&gt;
+
+&lt;style&gt;&lt;/style&gt;
+
+// store/state.js
+export defult{
+    dataArray: []
+}
+
+// store/mutations.js
+export default {
+    // 参数 state 接受 state里面的所有数据， data 是传过来的数据
+    functionName (state, data) {
+        // 修改 state 里面的数据
+        state.dataArray = data;
+    }
+}
+
+// 在需要用到该数据的组件里使用
+&lt;template&gt;&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        name: &quot;...&quot;,
+        data () {
+            return {
+                ...
+            }
+        }
+        computed: {
+            data () {
+                return this.$store.state.dataArray
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre><p>经过这样子操作一下，异步获取的数据会被存放到<i>state</i>里面，而另一个组件在使用<i>state</i>里面的这个数据的时候，如果这个数据还没有获取到，那就是空，页面上没有什么要显示的东西，当数据拿到以后，<i>state</i>里面的数据也会更新，因为另一个组件是在<i>computed</i>属性里面使用的这个数据，所以当这个数据变化的时候，页面就hi更新，这样就解决了数据获取不到，使用的时候是<i>undefined</i>报错的事情了。</p>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/04/28/第二次小程序项目报错总结/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/04/28/第二次小程序项目报错总结/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <!--<ul>-->
+                <!--<li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>-->
+                <!--<li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>-->
+            <!--</ul>-->
+            
+            	<span id="busuanzi_container_site_pv">2019总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
