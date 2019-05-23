@@ -2,25 +2,21 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>CSS布局--position篇 - 不会拉小提琴的左脚</title>
+<title>CSS几种常见的居中方法以及他们的优缺点 - 不会拉小提琴的左脚</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="前言此篇文章为自己总结的CSS布局之三–position定位布局，主要用到position的三个取值：relative，absolute，fixed，我也是查了好多资料以后才下决心写这篇文章的，而且因为position定位涉及到的东西太多，所以不可能全部写到，只是写一些定位，布局，一些例子，如有错误，还请大手子指正">
-<meta name="keywords" content="CSS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CSS布局--position篇">
-<meta property="og:url" content="http://yoursite.com/2018/10/27/CSS布局-position篇/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="CSS几种常见的居中方法以及他们的优缺点">
+<meta property="og:url" content="http://yoursite.com/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/index.html">
 <meta property="og:site_name" content="不会拉小提琴的左脚">
-<meta property="og:description" content="前言此篇文章为自己总结的CSS布局之三–position定位布局，主要用到position的三个取值：relative，absolute，fixed，我也是查了好多资料以后才下决心写这篇文章的，而且因为position定位涉及到的东西太多，所以不可能全部写到，只是写一些定位，布局，一些例子，如有错误，还请大手子指正">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.imgur.com/rQgjwwM.jpg">
-<meta property="og:updated_time" content="2019-05-02T13:18:10.747Z">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-05-03T06:51:33.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS布局--position篇">
-<meta name="twitter:description" content="前言此篇文章为自己总结的CSS布局之三–position定位布局，主要用到position的三个取值：relative，absolute，fixed，我也是查了好多资料以后才下决心写这篇文章的，而且因为position定位涉及到的东西太多，所以不可能全部写到，只是写一些定位，布局，一些例子，如有错误，还请大手子指正">
-<meta name="twitter:image" content="https://i.imgur.com/rQgjwwM.jpg">
+<meta name="twitter:title" content="CSS几种常见的居中方法以及他们的优缺点">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
 
@@ -95,7 +91,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="CSS布局--position篇" height="28">
+                <img src="/images/logo.svg" alt="CSS几种常见的居中方法以及他们的优缺点" height="28">
             
             </a>
         </div>
@@ -147,23 +143,17 @@
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="https://i.imgur.com/rQgjwwM.jpg" alt="CSS布局--position篇">
-        </span>
-    </div>
-    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-10-27T14:45:17.000Z">2018-10-27</time>
+                <time class="level-item has-text-grey" datetime="2019-05-03T06:51:33.000Z">2019-05-03</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 794 words)
+                    a few seconds read (About 0 words)
                 </span>
                 
                 
@@ -172,77 +162,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                CSS布局--position篇
+                CSS几种常见的居中方法以及他们的优缺点
             
         </h1>
         <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>此篇文章为自己总结的CSS布局之三–<i>position</i>定位布局，主要用到<i>position</i>的三个取值：<i>relative</i>，<i>absolute</i>，<i>fixed</i>，我也是查了好多资料以后才下决心写这篇文章的，而且因为<i>position</i>定位涉及到的东西太多，所以不可能全部写到，只是写一些定位，布局，一些例子，如有错误，还请大手子指正<br><a id="more"></a></p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#link1">1.定位的目的与意义</a><br><a href="#link2">2.定位的类型</a><br><a href="#link3">3.包含块的概念</a><br><a href="#link4">4.偏移属性</a><br><a href="#link5">5.宽度和高度</a><br><a href="#link6">6.绝对定位</a><br><a href="#link7">7.z-index</a><br><a href="#link8">8.固定定位</a><br><a href="#link9">9.小结</a></p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><a name="link1"></a></p>
-<h2 id="1-定位的目的与意义"><a href="#1-定位的目的与意义" class="headerlink" title="1.定位的目的与意义"></a>1.定位的目的与意义</h2><p>定位的原理其实蛮简单的，在上一次已经有说过<i>float</i>了，那么脱离文档流这个概念也不会陌生了，这样也会对这次定位的理解有帮助。利用定位，可以准确地定义元素框相对于<strong>其正常位置</strong>应该出现在哪里，或者<strong>相对于父元素</strong>，<strong>另一个元素</strong>甚至<strong>浏览器窗口</strong>本身。通过对定位的使用，我们可以实现一些细小的定位布局，相对在把握大方向的<i>flex</i>布局与<i>float</i>布局，显得更为灵活，当然，想流畅的使用定位来布局，就需要深入的对这些属性有一个理解，这也是这篇文章的目的，带着大家初步的认识一下定位的各个属性以及它们的特点。<br><a name="link2"></a></p>
-<h2 id="2-定位的类型"><a href="#2-定位的类型" class="headerlink" title="2.定位的类型"></a>2.定位的类型</h2><p>通过使用<i>position</i>属性，可以选择 4 种常见的，不同类型的定位</p>
-<table>
-<thead>
-<tr>
-<th>取值</th>
-<th style="text-align:center">是否默认值</th>
-<th style="text-align:left">应用范围</th>
-<th style="text-align:left">继承性</th>
-<th style="text-align:left">计算值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>static</td>
-<td style="text-align:center">是</td>
-<td style="text-align:left">所有元素</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">根据实际情况而定</td>
-</tr>
-<tr>
-<td>relative</td>
-<td style="text-align:center">否</td>
-<td style="text-align:left">所有元素</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">根据实际情况而定</td>
-</tr>
-<tr>
-<td>absolute</td>
-<td style="text-align:center">否</td>
-<td style="text-align:left">所有元素</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">根据实际情况而定</td>
-</tr>
-<tr>
-<td>fixed</td>
-<td style="text-align:center">否</td>
-<td style="text-align:left">所有元素</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">根据实际情况而定</td>
-</tr>
-</tbody>
-</table>
-<p>先来看一下四个取值的含义</p>
-<blockquote>
-<p>static<br>元素框正常生成。块级元素生成一个矩形框，作为文档流的一部分，行内元素则会创建一个或多个行框，置于其父元素中。（默认值）<br>relative<br>元素框偏移某个距离。元素仍保持其未定位前的形状，它原本所占的空间仍保留。<br>absolute<br>元素框从文档流完全删除，并相对于其包含块定位。包含块可能是文档中的另一个元素或者是初始包含块。元素原先在正常文档流中所占的空间会关闭，就好像元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。<br>fixed<br>元素框的表现类似于将 position 设置为 absolute，不过其包含块是视窗本身。</p>
-</blockquote>
-<p><a name="link3"></a></p>
-<h2 id="3-包含块的概念"><a href="#3-包含块的概念" class="headerlink" title="3.包含块的概念"></a>3.包含块的概念</h2><p><a name="link4"></a></p>
-<h2 id="4-偏移属性"><a href="#4-偏移属性" class="headerlink" title="4.偏移属性"></a>4.偏移属性</h2><p><a name="link5"></a></p>
-<h2 id="5-宽度和高度"><a href="#5-宽度和高度" class="headerlink" title="5.宽度和高度"></a>5.宽度和高度</h2><p><a name="link6"></a></p>
-<h2 id="6-绝对定位"><a href="#6-绝对定位" class="headerlink" title="6.绝对定位"></a>6.绝对定位</h2><p><a name="link7"></a></p>
-<h2 id="7-z-index"><a href="#7-z-index" class="headerlink" title="7.z-index"></a>7.z-index</h2><p><a name="link8"></a></p>
-<h2 id="8-固定定位"><a href="#8-固定定位" class="headerlink" title="8.固定定位"></a>8.固定定位</h2><p><a name="link9"></a></p>
-<h2 id="9-小结"><a href="#9-小结" class="headerlink" title="9.小结"></a>9.小结</h2>
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/CSS/">CSS</a>
-                </div>
-            </div>
+            
         </div>
         
         
@@ -291,17 +215,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/10/31/番外篇-浏览器页面渲染机制/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">番外篇--浏览器页面渲染机制</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/10/27/CSS布局-display-inline-block篇/">
-                <span class="level-item">CSS布局--display:inline-block篇</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/28/第二次小程序项目报错总结/">
+                <span class="level-item">第二次小程序项目报错总结</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -1008,7 +925,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="CSS布局--position篇" height="28">
+                    <img src="/images/logo.svg" alt="CSS几种常见的居中方法以及他们的优缺点" height="28">
                 
                 </a>
                 <p class="is-size-7">

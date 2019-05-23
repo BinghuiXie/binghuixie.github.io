@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CSS几种常见的居中方法以及他们的优缺点]]></title>
+    <url>%2F2019%2F05%2F03%2FCSS%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E4%BB%96%E4%BB%AC%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[第二次小程序项目报错总结]]></title>
     <url>%2F2019%2F04%2F28%2F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E6%8A%A5%E9%94%99%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[前言第一次写小程序的项目的时候没有总结报错，这次第二次写的时候遇到了一些已经遇到过的报错然而还是花了很长时间才解决，所以还是想着留一个地方记录下来吧。 正文1.Maximum call stack size exceeded;我在父组件里面调用了一个子组件，子组件里面有一个轮播图，是借助了小程序的swiper组件实现的，大致的代码如下：父组件：子组件：然后就给我报了这个错：我在网上搜了很多，大多都是递归调用组件而导致的错误，说白了就是组件名字的重复。在我的代码中，利用到了i&gt;swiper组件，而子组件的name是叫做Swiper，正式由于这个原因所以会报错，我把子组件名字改成SwiperComponent就没问题了 2.axios异步获取数据用来渲染页面axios获取数据是异步的，这就意味着用axios发出请求去拿数据渲染页面的时候，数据可能还没有拿到，所以页面渲染不出来就会报错。针对这样子有一种解决办法就是借助state和computed属性。当利用axios发出请求后，直接派发action，然后触发mutations，同时传入获取到的数据作为入参，修改state里面对应的数据 // component.vue &lt;template&gt;&lt;/template&gt; &lt;script&gt; import axios from &#39;axios&#39; export default { name: &quot;ComponentName&quot;, data () { return { item: [] } } beforeMount () { axios.get(&#39;url&#39;) .then(res =&gt; { this.item = res.data; // 直接触发 dispatch，获取到的数据作为入参传过去 this.$store.commit(&#39;functionName&#39;, this.item) }) } } &lt;/script&gt; &lt;style&gt;&lt;/style&gt; // store/state.js export defult{ dataArray: [] } // store/mutations.js export default { // 参数 state 接受 state里面的所有数据， data 是传过来的数据 functionName (state, data) { // 修改 state 里面的数据 state.dataArray = data; } } // 在需要用到该数据的组件里使用 &lt;template&gt;&lt;/template&gt; &lt;script&gt; export default { name: &quot;...&quot;, data () { return { ... } } computed: { data () { return this.$store.state.dataArray } } } &lt;/script&gt; 经过这样子操作一下，异步获取的数据会被存放到state里面，而另一个组件在使用state里面的这个数据的时候，如果这个数据还没有获取到，那就是空，页面上没有什么要显示的东西，当数据拿到以后，state里面的数据也会更新，因为另一个组件是在computed属性里面使用的这个数据，所以当这个数据变化的时候，页面就hi更新，这样就解决了数据获取不到，使用的时候是undefined报错的事情了。]]></content>
