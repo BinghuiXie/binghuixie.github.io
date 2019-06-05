@@ -16,7 +16,7 @@
 <meta property="og:description" content="vertical-align这个属性算是比较常用的一个，一般来说常用的就是把它的值取为middle，但是就像float那样，不去深入理解一个属性就去大量的使用很容易出现莫名其妙的“问题”，所以还是有必要对其进行深究的。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.imgur.com/Haa5T21.jpg">
-<meta property="og:updated_time" content="2019-05-02T13:17:38.077Z">
+<meta property="og:updated_time" content="2019-06-05T10:46:14.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vertical-align深入理解">
 <meta name="twitter:description" content="vertical-align这个属性算是比较常用的一个，一般来说常用的就是把它的值取为middle，但是就像float那样，不去深入理解一个属性就去大量的使用很容易出现莫名其妙的“问题”，所以还是有必要对其进行深究的。">
@@ -163,7 +163,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    21 minutes read (About 3196 words)
+                    21 minutes read (About 3195 words)
                 </span>
                 
                 
@@ -220,7 +220,7 @@
     height: 96px;
     margin-top: -200px;
 }
-</code></pre><p>给<i>img</i>设置了负的上外边距为200px，远超图片自身的高度，理论上来说，设置上外边距负值元素会向上平移，而因为负边距的绝对值大于自身高度，应该是平移出去父元素才对，但是实际效果是这样子的：<br><img src="https://i.imgur.com/yaGXaHV.jpg" alt=""><br>而且，就算给<i>margin-top</i>设置成-9999px，图片也不会向上平移，而是fsadfsdafjskdjf还是这个样子的，就好像<i>margin-top</i>“失效了”。其原理是这样子的：<br>图片的前面有一个空白节点，而在CSS世界中，非主动触发位移的内联元素是不可能跑到计算容器之外的，导致图片被空白节点的<i>vertical-align:baseline</i>给限制死了，我们用一个字符 x 代替空白节点，看的清楚一点<br><img src="https://i.imgur.com/Z4ZVE6B.jpg" alt=""><br>因为字符 x 下边缘和图片下边缘是对齐的，而且字符 x 因为是非主动定位，它是不可能超出父容器的范围的，所以既然 x 的位置没办法变化，那图片的下边缘是和 x 的下边沿（基线对齐的），所以再怎么给图片设置负的上外边距都不可能使图片平移出父容器，看起来就像是<i>margin</i>失效了！</p>
+</code></pre><p>给<i>img</i>设置了负的上外边距为200px，远超图片自身的高度，理论上来说，设置上外边距负值元素会向上平移，而因为负边距的绝对值大于自身高度，应该是平移出去父元素才对，但是实际效果是这样子的：<br><img src="https://i.imgur.com/yaGXaHV.jpg" alt=""><br>而且，就算给<i>margin-top</i>设置成-9999px，图片也不会向上平移，而是还是这个样子的，就好像<i>margin-top</i>“失效了”。其原理是这样子的：<br>图片的前面有一个空白节点，而在CSS世界中，非主动触发位移的内联元素是不可能跑到计算容器之外的，导致图片被空白节点的<i>vertical-align:baseline</i>给限制死了，我们用一个字符 x 代替空白节点，看的清楚一点<br><img src="https://i.imgur.com/Z4ZVE6B.jpg" alt=""><br>因为字符 x 下边缘和图片下边缘是对齐的，而且字符 x 因为是非主动定位，它是不可能超出父容器的范围的，所以既然 x 的位置没办法变化，那图片的下边缘是和 x 的下边沿（基线对齐的），所以再怎么给图片设置负的上外边距都不可能使图片平移出父容器，看起来就像是<i>margin</i>失效了！</p>
 <h3 id="inline-block和baseline"><a href="#inline-block和baseline" class="headerlink" title="inline-block和baseline"></a>inline-block和baseline</h3><p><i>vertical-align</i>属性的默认值是<i>baseline</i>，对于字符来说就是小写字母 x 的下边缘，对于图片等替换元素来说就是替换元素的下边缘，但是如果是<i>inline-block</i>元素，就复杂的多了，具体有两种方式：</p>
 <ol>
 <li>1、如果一个<i>inline-block</i>元素的元素不是内联元素(里面没有内联元素)，或者这个<i>inline-block</i>元素的<i>overflow</i>属性不是<i>visible</i>，那这个<i>inline-block</i>元素的基线就是它的<i>margin</i>的底边缘。</li>
