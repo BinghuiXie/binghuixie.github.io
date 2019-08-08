@@ -2,23 +2,24 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>番外篇--浏览器页面渲染机制 - 不会拉小提琴的左脚</title>
+<title>html css 使用小技巧（持续更新中） - 不会拉小提琴的左脚</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="前言打开一个网页，等待它跳出我们所期待看到的页面，这已经是几乎所有人生活中的常态，当然也包括我，但是在接触前端之前，我不知道也不会去想到这个从输入一个网址到弹出界面的过程是什么样子的，如果那时有人这么问我（如果有人这么无聊的话ヾ(｡ꏿ﹏ꏿ)ﾉﾞ），什么是浏览器页面渲染机制？后来在学习前端的过程中，慢慢的接触了一些这方面的东西。也就有了这篇文章，作为一个理（工）科男，这里就不废话了，直接开始正文内容">
+    <meta name="description" content="前言在实际项目的开发中，很多开发者下意识的会把js作为开发大头，css，html仅仅是辅助工具，但是css和html用好了也能在一定的程度上缩减js的代码，下面总结的所有使用的技巧都是我在实际项目开发过程中遇到过的一些比较绕的问题，一开始是想用js来解决，但是后面想到了用css解决的办法，觉得还有点用处，即在这里分享，知道的大佬们看看就行，别喷（怂）。">
+<meta name="keywords" content="html css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="番外篇--浏览器页面渲染机制">
-<meta property="og:url" content="http://yoursite.com/2018/10/31/番外篇-浏览器页面渲染机制/index.html">
+<meta property="og:title" content="html css 使用小技巧（持续更新中）">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/html-css-使用小技巧（持续更新中）/index.html">
 <meta property="og:site_name" content="不会拉小提琴的左脚">
-<meta property="og:description" content="前言打开一个网页，等待它跳出我们所期待看到的页面，这已经是几乎所有人生活中的常态，当然也包括我，但是在接触前端之前，我不知道也不会去想到这个从输入一个网址到弹出界面的过程是什么样子的，如果那时有人这么问我（如果有人这么无聊的话ヾ(｡ꏿ﹏ꏿ)ﾉﾞ），什么是浏览器页面渲染机制？后来在学习前端的过程中，慢慢的接触了一些这方面的东西。也就有了这篇文章，作为一个理（工）科男，这里就不废话了，直接开始正文内容">
+<meta property="og:description" content="前言在实际项目的开发中，很多开发者下意识的会把js作为开发大头，css，html仅仅是辅助工具，但是css和html用好了也能在一定的程度上缩减js的代码，下面总结的所有使用的技巧都是我在实际项目开发过程中遇到过的一些比较绕的问题，一开始是想用js来解决，但是后面想到了用css解决的办法，觉得还有点用处，即在这里分享，知道的大佬们看看就行，别喷（怂）。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-06T08:50:26.475Z">
+<meta property="og:updated_time" content="2019-08-08T03:17:27.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="番外篇--浏览器页面渲染机制">
-<meta name="twitter:description" content="前言打开一个网页，等待它跳出我们所期待看到的页面，这已经是几乎所有人生活中的常态，当然也包括我，但是在接触前端之前，我不知道也不会去想到这个从输入一个网址到弹出界面的过程是什么样子的，如果那时有人这么问我（如果有人这么无聊的话ヾ(｡ꏿ﹏ꏿ)ﾉﾞ），什么是浏览器页面渲染机制？后来在学习前端的过程中，慢慢的接触了一些这方面的东西。也就有了这篇文章，作为一个理（工）科男，这里就不废话了，直接开始正文内容">
+<meta name="twitter:title" content="html css 使用小技巧（持续更新中）">
+<meta name="twitter:description" content="前言在实际项目的开发中，很多开发者下意识的会把js作为开发大头，css，html仅仅是辅助工具，但是css和html用好了也能在一定的程度上缩减js的代码，下面总结的所有使用的技巧都是我在实际项目开发过程中遇到过的一些比较绕的问题，一开始是想用js来解决，但是后面想到了用css解决的办法，觉得还有点用处，即在这里分享，知道的大佬们看看就行，别喷（怂）。">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -94,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="番外篇--浏览器页面渲染机制" height="28">
+                <img src="/images/logo.svg" alt="html css 使用小技巧（持续更新中）" height="28">
             
             </a>
         </div>
@@ -150,13 +151,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-10-31T00:04:37.000Z">2018-10-31</time>
+                <time class="level-item has-text-grey" datetime="2019-08-07T10:29:04.000Z">2019-08-07</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 209 words)
+                    6 minutes read (About 944 words)
                 </span>
                 
                 
@@ -165,12 +166,28 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                番外篇--浏览器页面渲染机制
+                html css 使用小技巧（持续更新中）
             
         </h1>
         <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>打开一个网页，等待它跳出我们所期待看到的页面，这已经是几乎所有人生活中的常态，当然也包括我，但是在接触前端之前，我不知道也不会去想到这个从输入一个网址到弹出界面的过程是什么样子的，如果那时有人这么问我（如果有人这么无聊的话ヾ(｡ꏿ﹏ꏿ)ﾉﾞ），什么是浏览器页面渲染机制？<br><img src="https://i.imgur.com/5pZXPVk.jpg" alt=""><br>后来在学习前端的过程中，慢慢的接触了一些这方面的东西。也就有了这篇文章，作为一个理（工）科男，这里就不废话了，直接开始正文内容吧。<br><a id="more"></a></p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在实际项目的开发中，很多开发者下意识的会把js作为开发大头，css，html仅仅是辅助工具，但是css和html用好了也能在一定的程度上缩减js的代码，下面总结的所有使用的技巧都是我在实际项目开发过程中遇到过的一些比较绕的问题，一开始是想用js来解决，但是后面想到了用css解决的办法，觉得还有点用处，即在这里分享，知道的大佬们看看就行，别喷（怂）。<br><a id="more"></a></p>
+<p><style><br>    img {<br>        width: 600px;<br>        display: block;<br>        margin: 0 auto;<br>    }<br></style></p>
+<h2 id="input与label实现充满父容器宽度可点击多选单选框"><a href="#input与label实现充满父容器宽度可点击多选单选框" class="headerlink" title="input与label实现充满父容器宽度可点击多选单选框"></a>input与label实现充满父容器宽度可点击多选单选框</h2><p>最近在做一个在线练习的平台，包括编程题的练习和选择题的练习，用到的技术栈是<i>React</i>+<i>Next.js</i>，其中要实现的一个功能是选择题（包括单选和多选）选中的时候加一个背景颜色，就是下面这种效果：<br><img src="https://i.imgur.com/kKqB5cH.png"><br><img src="https://i.imgur.com/L0mTM5W.png"><br>最开始我的解决办法是设定一个<i>isClciked</i>变量，然后通过它的值<i>true</i>或者是<i>false</i>来给被点击的元素添加一个<i>active</i>类，通过这个类来改变被点击元素的背景颜色，然后再次点击的时候再去掉这个类，但是这样做有几个问题：</p>
+<ol>
+<li>就我目前来看，单独的一个点击变量应该是只适用于单选，如果是多选的话一个变量显然是不行的</li>
+<li>因为我用的是<i>React</i>，给元素添加类势必要操作DOM，但既然<i>React</i>是数据驱动的框架，所以我还是不太想操作DOM</li>
+</ol>
+<p>后面针对单选题的话我又想到一种解决办法：因为我的四个选项是遍历出来的，每一个都有一个<i>index</i>，然后我在<i>state</i>里面设置了一个<i>currentIndex</i>变量，然后点击一个框的时候通过<i>setState</i>把<i>currentIndex</i>改成点击的<i>index</i>，这样我在再循环出来的每一个DOM结构上面都添加一个判断：当<i>currentIndex === index</i>的时候改变其样式。<br>但是这种解决办法我只是解决了单选，多选还是没办法。<br>这里面一个问题就是因为我想实现一个框内任意地方都可以点击，从而在点击的时候改变样式，而不是像单纯的input单选和多选框那种只能点击那个圆圈或者方框选中，所以我想到了<i>label</i>标签，于是有了下面这种最终的实现办法，先把代码贴出来：<br><img src="https://i.imgur.com/8FkGDXd.png"><br><img src="https://i.imgur.com/bh8iWhy.png"><br>我是这样子实现的：因为<i>label</i>的<i>for</i>属性（在React里面是<i>htmlFor</i>）可以扩大input的点击区域，所以由<i>label</i>来做这一个占满父容器宽度的选择框，父容器的大小完全有<i>label</i>撑开，同时给input设置一个<i>position: absolute; opacity: 0</i>这样不影响<i>label</i>的布局同时还看不到，然后因为我的数据里面是<i>type</i>为 1 代表单选，2 代表多选，所以通过<i>type={type === 1 ? ‘radio’ : ‘checkbox’}</i>来设置input的类型，然后通过input的<i>:checked</i>伪类来使input被选中的时候改变<i>label</i>的背景色，注意这里面<i>label</i>要放在input后面，这样兄弟选择器才可以选到被点击的input的兄弟<i>label</i>元素。<br>这样子的话单选多选就都实现了，而且没有用到js，总的来说还是对这个方法蛮满意的。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/html-css/">html css</a>
+                </div>
+            </div>
         </div>
         
         
@@ -219,17 +236,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/10/31/那些你不得不知道的前端常识（1）-404/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">那些你不得不知道的前端常识（1）--404</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/10/27/CSS布局-position篇/">
-                <span class="level-item">CSS布局--position篇</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/05/部署vue项目到服务器上/">
+                <span class="level-item">部署vue项目到服务器上</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -1022,7 +1032,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="番外篇--浏览器页面渲染机制" height="28">
+                    <img src="/images/logo.svg" alt="html css 使用小技巧（持续更新中）" height="28">
                 
                 </a>
                 <p class="is-size-7">

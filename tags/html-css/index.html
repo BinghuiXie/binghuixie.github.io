@@ -2,23 +2,19 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>番外篇--浏览器页面渲染机制 - 不会拉小提琴的左脚</title>
+<title>Tag: html css - 不会拉小提琴的左脚</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="前言打开一个网页，等待它跳出我们所期待看到的页面，这已经是几乎所有人生活中的常态，当然也包括我，但是在接触前端之前，我不知道也不会去想到这个从输入一个网址到弹出界面的过程是什么样子的，如果那时有人这么问我（如果有人这么无聊的话ヾ(｡ꏿ﹏ꏿ)ﾉﾞ），什么是浏览器页面渲染机制？后来在学习前端的过程中，慢慢的接触了一些这方面的东西。也就有了这篇文章，作为一个理（工）科男，这里就不废话了，直接开始正文内容">
-<meta property="og:type" content="article">
-<meta property="og:title" content="番外篇--浏览器页面渲染机制">
-<meta property="og:url" content="http://yoursite.com/2018/10/31/番外篇-浏览器页面渲染机制/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="不会拉小提琴的左脚">
+<meta property="og:url" content="http://yoursite.com/tags/html-css/index.html">
 <meta property="og:site_name" content="不会拉小提琴的左脚">
-<meta property="og:description" content="前言打开一个网页，等待它跳出我们所期待看到的页面，这已经是几乎所有人生活中的常态，当然也包括我，但是在接触前端之前，我不知道也不会去想到这个从输入一个网址到弹出界面的过程是什么样子的，如果那时有人这么问我（如果有人这么无聊的话ヾ(｡ꏿ﹏ꏿ)ﾉﾞ），什么是浏览器页面渲染机制？后来在学习前端的过程中，慢慢的接触了一些这方面的东西。也就有了这篇文章，作为一个理（工）科男，这里就不废话了，直接开始正文内容">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-06T08:50:26.475Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="番外篇--浏览器页面渲染机制">
-<meta name="twitter:description" content="前言打开一个网页，等待它跳出我们所期待看到的页面，这已经是几乎所有人生活中的常态，当然也包括我，但是在接触前端之前，我不知道也不会去想到这个从输入一个网址到弹出界面的过程是什么样子的，如果那时有人这么问我（如果有人这么无聊的话ヾ(｡ꏿ﹏ꏿ)ﾉﾞ），什么是浏览器页面渲染机制？后来在学习前端的过程中，慢慢的接触了一些这方面的东西。也就有了这篇文章，作为一个理（工）科男，这里就不废话了，直接开始正文内容">
+<meta name="twitter:title" content="不会拉小提琴的左脚">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -94,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="番外篇--浏览器页面渲染机制" height="28">
+                <img src="/images/logo.svg" alt="不会拉小提琴的左脚" height="28">
             
             </a>
         </div>
@@ -145,18 +141,29 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">html css</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-10-31T00:04:37.000Z">2018-10-31</time>
+                <time class="level-item has-text-grey" datetime="2019-08-07T10:29:04.000Z">2019-08-07</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 209 words)
+                    6 minutes read (About 944 words)
                 </span>
                 
                 
@@ -165,14 +172,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                番外篇--浏览器页面渲染机制
+                <a class="has-link-black-ter" href="/2019/08/07/html-css-使用小技巧（持续更新中）/">html css 使用小技巧（持续更新中）</a>
             
         </h1>
         <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>打开一个网页，等待它跳出我们所期待看到的页面，这已经是几乎所有人生活中的常态，当然也包括我，但是在接触前端之前，我不知道也不会去想到这个从输入一个网址到弹出界面的过程是什么样子的，如果那时有人这么问我（如果有人这么无聊的话ヾ(｡ꏿ﹏ꏿ)ﾉﾞ），什么是浏览器页面渲染机制？<br><img src="https://i.imgur.com/5pZXPVk.jpg" alt=""><br>后来在学习前端的过程中，慢慢的接触了一些这方面的东西。也就有了这篇文章，作为一个理（工）科男，这里就不废话了，直接开始正文内容吧。<br><a id="more"></a></p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在实际项目的开发中，很多开发者下意识的会把js作为开发大头，css，html仅仅是辅助工具，但是css和html用好了也能在一定的程度上缩减js的代码，下面总结的所有使用的技巧都是我在实际项目开发过程中遇到过的一些比较绕的问题，一开始是想用js来解决，但是后面想到了用css解决的办法，觉得还有点用处，即在这里分享，知道的大佬们看看就行，别喷（怂）。<br></p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/08/07/html-css-使用小技巧（持续更新中）/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -180,62 +194,9 @@
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/10/31/那些你不得不知道的前端常识（1）-404/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">那些你不得不知道的前端常识（1）--404</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/10/27/CSS布局-position篇/">
-                <span class="level-item">CSS布局--position篇</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
 </div>
@@ -1022,7 +983,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="番外篇--浏览器页面渲染机制" height="28">
+                    <img src="/images/logo.svg" alt="不会拉小提琴的左脚" height="28">
                 
                 </a>
                 <p class="is-size-7">
