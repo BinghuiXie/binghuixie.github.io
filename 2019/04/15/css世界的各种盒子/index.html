@@ -1,176 +1,137 @@
 <!DOCTYPE html>
-<html  lang="zh">
-<head>
-    <meta charset="utf-8">
-<title>css世界的各种盒子 - 不会拉小提琴的左脚</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  Css世界的各种盒子 |   Lemon </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
 
 
-
-    <meta name="description" content="CSS盒子模型HTML所有的元素都可以看做一个一个的盒子，HTML标签的嵌套可以看做是一个一个盒子的嵌套，这些嵌套的盒子就是所谓的盒模型。">
-<meta name="keywords" content="CSS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="css世界的各种盒子">
-<meta property="og:url" content="http://yoursite.com/2019/04/15/css世界的各种盒子/index.html">
-<meta property="og:site_name" content="不会拉小提琴的左脚">
-<meta property="og:description" content="CSS盒子模型HTML所有的元素都可以看做一个一个的盒子，HTML标签的嵌套可以看做是一个一个盒子的嵌套，这些嵌套的盒子就是所谓的盒模型。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-06T08:50:55.827Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css世界的各种盒子">
-<meta name="twitter:description" content="CSS盒子模型HTML所有的元素都可以看做一个一个的盒子，HTML标签的嵌套可以看做是一个一个盒子的嵌套，这些嵌套的盒子就是所谓的盒模型。">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
-
-
-
-
-
-
-
-<link rel="icon" href="/images/favicon.svg">
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
+  <link rel="stylesheet" href="/nayo.min.css"> 
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>  
+  <body>   
     
-    
-    
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-    
+      <header class="header-wrapper">
 
-    
-    
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-    
-
-    
-    
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-
-    
-    
-    
-    
-
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-<link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-    
-    
-    
-
-    
-    
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.svg" alt="css世界的各种盒子" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">Home</a>
-                
-                <a class="navbar-item"
-                href="/archives">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories">Categories</a>
-                
-                <a class="navbar-item"
-                href="/tags">Tags</a>
-                
-                <a class="navbar-item"
-                href="/about">About</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                
-                <a class="navbar-item search" title="Search" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+  <nav class="inner">
+    <div class="title">
+      <a href="/">
+        <img class="logo" src="/images/logo.png">
+      </a>
     </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-content article ">
+
+    <ul class="menu">
+      
+      
+      <li class="item">
+        <a class="link" id="menu-home" href="/">
+          <i class="iconfont icon-home">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-archives" href="/archives">
+          <i class="iconfont icon-archives">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-tags" href="/tags">
+          <i class="iconfont icon-tags">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-about" href="/about">
+          <i class="iconfont icon-about">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-search">
+          <i class="iconfont icon-search">
+        </i></a>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-15T07:42:47.000Z">2019-04-15</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    18 minutes read (About 2755 words)
-                </span>
-                
-                
-            </div>
-        </div>
+
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                css世界的各种盒子
-            
-        </h1>
-        <div class="content">
-            <h2 id="CSS盒子模型"><a href="#CSS盒子模型" class="headerlink" title="CSS盒子模型"></a>CSS盒子模型</h2><p>HTML所有的元素都可以看做一个一个的盒子，HTML标签的嵌套可以看做是一个一个盒子的嵌套，这些嵌套的盒子就是所谓的盒模型。<br><a id="more"></a></p>
+      
+    </li></ul>
+  </nav>
+</header>
+
+<header class="mobile-header-wrapper">
+  <i id="mobile-toggle" class="iconfont icon-menu mobile-toggle"></i>
+</header>   
+
+      <div class="container">       
+          
+          
+            <div class="container-inner">  
+          
+
+          <article class="post slideDownMin">
+  
+	
+<div class="header">
+		<p class="title">	
+			css世界的各种盒子
+		</p>
+		<div class="info">	
+			<time>
+				Apr 15, 2019
+			</time>
+
+			
+			
+				<i class="iconfont icon-words"></i>
+				<span class="words">4015
+				</span>
+			
+		</div>
+</div> 
+	
+
+    <script type="text/x-mathjax-config">
+        var post = document.getElementsByClassName("post")[0];  
+        MathJax.Hub.Config({
+            showProcessingMessages: false,
+            messageStyle: "none",    
+            tex2jax: {
+                inlineMath:  [ ["$", "$"] , ["\\(","\\)"]],
+                displayMath: [ ["$$","$$"] , ["\\[","\\]"]],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+            },
+            "HTML-CSS": {            
+                showMathMenu: false
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,post]);
+    </script>
+    <style>.MathJax{outline:0;}</style>
+
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.2/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+ 
+
+	  <div class="typo post-content ">
+
+		
+
+			
+					<h2 id="CSS盒子模型"><a href="#CSS盒子模型" class="headerlink" title="CSS盒子模型"></a>CSS盒子模型</h2><p>HTML所有的元素都可以看做一个一个的盒子，HTML标签的嵌套可以看做是一个一个盒子的嵌套，这些嵌套的盒子就是所谓的盒模型。<br><a id="more"></a></p>
 <h3 id="关于IE盒模型的说法"><a href="#关于IE盒模型的说法" class="headerlink" title="关于IE盒模型的说法"></a>关于IE盒模型的说法</h3><p>在前几年，前端开发人员比较头疼的一点就是多个浏览器直接差异的适配，尤其是IE浏览器，这是个让很多前端开发人员头疼的事情，IE浏览器在很多细节上都有自己独特的实现，在盒模型上也不例外，<strong>但是</strong>，现在IE浏览器已经被微软弃用了(万岁！)，所以这篇文章就不讨论IE浏览器的盒子模型了，而是去讨论一下主流的W3C标准的盒子模型。</p>
 <h3 id="W3C标准盒模型"><a href="#W3C标准盒模型" class="headerlink" title="W3C标准盒模型"></a>W3C标准盒模型</h3><p>这是一种W3C制定的标准的盒子模型，也是普遍能被开发者所接受的一种主流盒模型。在Chrome浏览器中，按一下F12打开控制台，会看到这么一个图<br><img src="https://i.imgur.com/lNwxZU4.jpg" alt=""><br>对于有经验的开发者来说，这张图早就已经看见了无数遍了，但是这里还要啰嗦一下，方便后文的展开：</p>
 <ul>
@@ -224,14 +185,14 @@
 .border-box{
     box-sizing: border-box;
 }
-</code></pre><p>两个盒子，<i>width</i>值都设置了100px，不同的只是<i>box-sizing</i>的作用不同，那么显示的效果如下：<br><img src="https://i.imgur.com/76IawF5.jpg" alt=""><br>我们设置了<i>border-box</i>的那个盒子的宽度就是100px，而那个默认的盒子是180px也就是内边距 + 边框 + 内容区域。<br>看到这里应该能猜出来了，此时的元素的实际宽度就是我们设置的<i>width</i>宽度，也就是说此时：<br><i>realWidth === width = borderWidth + paddingWidth + contentWidth</i>，用一张图更好的说明一下：<br><img src="https://i.imgur.com/jWn0t7y.png" alt=""><br>这张图比较清晰的显示了当<i>box-sizing</i>属性的值为<i>border-box</i>的时候，宽度是作用在<i>border</i>上面的也就是<i>border + padding + content</i>，而当<i>box-sizing</i>属性的值为<i>content-box</i>的时候，<i>width</i>是作用在<i>content</i>两端的，所以最终显示的两个元素的大小不一样</p>
+</code></pre><p>两个盒子，<i>width</i>值都设置了100px，不同的只是<i>box-sizing</i>的作用不同，那么显示的效果如下：<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/76IawF5.jpg" class="lazyload"><br>我们设置了<i>border-box</i>的那个盒子的宽度就是100px，而那个默认的盒子是180px也就是内边距 + 边框 + 内容区域。<br>看到这里应该能猜出来了，此时的元素的实际宽度就是我们设置的<i>width</i>宽度，也就是说此时：<br><i>realWidth === width = borderWidth + paddingWidth + contentWidth</i>，用一张图更好的说明一下：<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/jWn0t7y.png" class="lazyload"><br>这张图比较清晰的显示了当<i>box-sizing</i>属性的值为<i>border-box</i>的时候，宽度是作用在<i>border</i>上面的也就是<i>border + padding + content</i>，而当<i>box-sizing</i>属性的值为<i>content-box</i>的时候，<i>width</i>是作用在<i>content</i>两端的，所以最终显示的两个元素的大小不一样</p>
 <h2 id="其他的盒模型"><a href="#其他的盒模型" class="headerlink" title="其他的盒模型"></a>其他的盒模型</h2><h3 id="标记盒子"><a href="#标记盒子" class="headerlink" title="标记盒子"></a>标记盒子</h3><p>啥是标记盒子(marker box)？我们知道HTML的<i>ul</i>，<i>li</i>，<i>ol</i>默认都会在前面有一个圆点或者是标号，那这个圆点或者标号是哪里来的？这是因为<i>ul</i>，<i>li</i>，<i>ol</i>他们的<i>display</i>声明是<i>list-item</i>，这个<i>list-item</i>的设置会给元素提供一个额外的盒子去存放那个点或者标号，这个盒子就是标记盒子。</p>
 <h3 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display:inline-block"></a>display:inline-block</h3><p>我们知道，单纯的块级元素是一行一个块级元素，而且可以设置宽高，内联元素是排列在一行，不可以设置宽高，但是给一个元素设置了<i>display:inline-block</i>后，它既能在一行排列，也能设置宽高，为什么？？<br>这就涉及到了外在盒子和内在盒子，外在盒子负责元素是可以在一行显示还是换行显示，内在盒子负责宽高，内容显示什么的，又叫容器盒子，所以，设置了<i>display:inline-block</i>的元素就可以既在一行显示，又设置宽高了。</p>
 <h3 id="内联元素的盒模型"><a href="#内联元素的盒模型" class="headerlink" title="内联元素的盒模型"></a>内联元素的盒模型</h3><p>首先明确一点，内联元素指的是外在盒子是<i>inline</i>的盒子，它和<i>display:inline</i>的盒子是不一样的，而是范围更大。明确了这一点后，我们再来看内联的盒模型，从一段代码来进入对这些盒子的认识</p>
 <pre><code>&lt;p&gt;这是一行普通的文字，这里有一个 &lt;em&gt;em&lt;/em&gt;标签&lt;/p&gt;
 </code></pre><p>这一行代码里面有很多盒子，一一列举如下：</p>
 <ul>
-<li><strong>内容区域(content area)</strong>。内容区域是指一种围绕文字看不见的盒子，方便理解就可以认为是我们鼠标选中文字的时候，那个蓝色的背景所选中的地方<br>  <img src="https://i.imgur.com/JreA0Tq.jpg" alt=""><br>实际上，内容区域并没有明确的定义，所以将其理解为中文字符占据1em的高度的区域(em-box)也是可以的，内容区域的大小与<i>font-size</i>大小相关。</li>
+<li><strong>内容区域(content area)</strong>。内容区域是指一种围绕文字看不见的盒子，方便理解就可以认为是我们鼠标选中文字的时候，那个蓝色的背景所选中的地方<br>  <img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/JreA0Tq.jpg" class="lazyload"><br>实际上，内容区域并没有明确的定义，所以将其理解为中文字符占据1em的高度的区域(em-box)也是可以的，内容区域的大小与<i>font-size</i>大小相关。</li>
 <li><strong>内联盒子(inline box)</strong>。内联盒子，其实就是元素的外在盒子，用来决定元素是内联还是块级元素，该盒子又可以分为“内联盒子”和“匿名内联盒子”，比如说这段代码：<pre><code>&lt;p&gt;
   这是一行普通的文字，这里有一个 
   &lt;em&gt;em&lt;/em&gt;
@@ -243,1028 +204,170 @@
   标签
 &lt;/p&gt;
 </code></pre>此时这两段光秃秃的文字就是被内联块级盒子所包裹了，具体区分的话就需要看前后的标签是内联还是块级，当然，显示的效果也是不一样的，第一段代码中的三段文字是在一行显示，这就是匿名内联盒子的特性，第二段代码是三段文字三行，这就是匿名块级盒子所包裹时显示的效果。</li>
-<li><strong>行框盒子(line box)</strong>。每一行就是一个行框盒子，每一个行框盒子是由一个个的内联盒子组成，如图下面实现所包围的部分<br><img src="https://i.imgur.com/8Kdei6y.jpg" alt=""> </li>
+<li><strong>行框盒子(line box)</strong>。每一行就是一个行框盒子，每一个行框盒子是由一个个的内联盒子组成，如图下面实现所包围的部分<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/8Kdei6y.jpg" class="lazyload"> </li>
 <li><strong>包含块(containing block)</strong>。这个盒子由一个个的行框盒子组成，包含块是这个元素最近的祖先块元素（如果这个元素的<i>position</i>属性是<i>static</i>或者<i>relative</i>）</li>
 </ul>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>以上就是暂时总结的CSS世界各种盒子，除了这些盒子以外，还有很多种盒子，等我看完，再回来补充~</p>
+  	
+					
+	  </div>     
+	  
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/CSS/">CSS</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
+	<div class="bottom">
+  <div class="other">
+    <div class="meta">
+      
+
+      
+      <i class="iconfont icon-tag"></i>
+      <a class="tag-link" href="/tags/CSS/">CSS</a>
+      
     </div>
-</div>
 
+    <div class="operate">
+      
+      <span class="text">Share</span>
+      <ul class="share">
+	   
+</ul>	
 
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+      
     </div>
-</div>
+  </div>
 
 
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
+  
+  <nav class="nav">
+    <div class="link">
+      
+      <a href="/2019/04/14/理解line-height/" class="link-wrap">
+        <strong class="caption">older</strong>
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/17/vertical-align深入理解/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">vertical-align深入理解</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/14/理解line-height/">
-                <span class="level-item">理解line-height</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
+        <span class="title">
+          理解line-height
+        </span>
+      </a>
+      
     </div>
-</div>
-
-
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
-    
+    <div class="link">
+      
+      <a href="/2019/04/17/vertical-align深入理解/" class="link-wrap">
+        <strong class="caption">newer</strong>
         
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    
-                        <figure class="image is-128x128 has-mb-6" style="display: flex;align-items: center;justify-content: center;overflow: hidden;margin: 0 auto;width: 155px">
-                            <style>
-                                .img-is-rounded:hover{
-                                    animation: imgBounce .5s ease-in-out;
-                                    cursor: pointer;
-                                }
-                                @keyframes imgBounce {
-                                    0%{transform: scale(1, 1)}
-                                    50%{transform: scale(1.2, 0.8)}
-                                    100%{transform: scale(1, 1)}
-                                }
-                            </style>
-                            <img class="is-rounded img-is-rounded" style="border-radius: 50%;max-width: 80%;" src="/./images/avatar.jpg" alt="不会拉小提琴的左脚">
-                        </figure>
-                    
-                    
-                    <p class="is-size-4 is-block">
-                        不会拉小提琴的左脚
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        前端打字员
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>南京</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Posts
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        21
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Categories
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        0
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Tags
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        11
-                    </p>
-                </div>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/BinghuiXie" target="_blank">
-                Follow</a>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Github" href="http://i.shangc.net/article/20190114/94e666609ffb0263c5e69db8d5282082.jpg">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Twitter" href="https://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
-        </div>
-        
+        <span class="title">
+          vertical-align深入理解
+        </span>
+      </a>
+      
     </div>
-</div>
+  </nav>
+  
+</div> 
+	
+<div class="comment">
+
     
-        
-    
-        
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
-        </div>
+
+    <div id="comment">
     </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <style>
-            .card-content > a{
-                display: block;
-                font-size: 16px !important;
-            }
-        </style>
-        <h3 class="menu-label">
-            Tag Cloud
-        </h3>
-        <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Mic-theme-hexo-blog/" style="font-size: 10px;">Mic_theme hexo blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/html-css/" style="font-size: 10px;">html css</a> <a href="/tags/jQuery-mouse/" style="font-size: 10px;">jQuery mouse</a> <a href="/tags/mpvue，-小程序/" style="font-size: 10px;">mpvue， 小程序</a> <a href="/tags/server，-node/" style="font-size: 10px;">server， node</a> <a href="/tags/那些你不得不知道的前端常识/" style="font-size: 10px;">那些你不得不知道的前端常识</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
-    </div>
-</div>
 
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html css 使用小技巧（持续更新中）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-07T10:29:04.000Z">2019-08-07</time></div>
-                    <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="has-link-black-ter is-size-6">html css 使用小技巧（持续更新中）</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/05/部署vue项目到服务器上/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="部署vue项目到服务器上">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-05T14:25:07.000Z">2019-08-05</time></div>
-                    <a href="/2019/08/05/部署vue项目到服务器上/" class="has-link-black-ter is-size-6">部署vue项目到服务器上</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/06/第一次面试总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第一次面试总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T05:21:12.000Z">2019-06-06</time></div>
-                    <a href="/2019/06/06/第一次面试总结/" class="has-link-black-ter is-size-6">第一次面试总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CSS几种常见的居中方法以及他们的优缺点">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T06:51:33.000Z">2019-05-03</time></div>
-                    <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="has-link-black-ter is-size-6">CSS几种常见的居中方法以及他们的优缺点</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/28/第二次小程序项目报错总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第二次小程序项目报错总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T12:32:51.000Z">2019-04-28</time></div>
-                    <a href="/2019/04/28/第二次小程序项目报错总结/" class="has-link-black-ter is-size-6">第二次小程序项目报错总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/CSS/">
-                        <span class="tag">CSS</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JavaScript/">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Mic-theme-hexo-blog/">
-                        <span class="tag">Mic_theme hexo blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/bootstrap/">
-                        <span class="tag">bootstrap</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css/">
-                        <span class="tag">css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/html-css/">
-                        <span class="tag">html css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery-mouse/">
-                        <span class="tag">jQuery mouse</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mpvue，-小程序/">
-                        <span class="tag">mpvue， 小程序</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/server，-node/">
-                        <span class="tag">server， node</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/那些你不得不知道的前端常识/">
-                        <span class="tag">那些你不得不知道的前端常识</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/面试/">
-                        <span class="tag">面试</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
-        </div>
-    
-</div>
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
 
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html css 使用小技巧（持续更新中）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-07T10:29:04.000Z">2019-08-07</time></div>
-                    <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="has-link-black-ter is-size-6">html css 使用小技巧（持续更新中）</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/05/部署vue项目到服务器上/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="部署vue项目到服务器上">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-05T14:25:07.000Z">2019-08-05</time></div>
-                    <a href="/2019/08/05/部署vue项目到服务器上/" class="has-link-black-ter is-size-6">部署vue项目到服务器上</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/06/第一次面试总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第一次面试总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T05:21:12.000Z">2019-06-06</time></div>
-                    <a href="/2019/06/06/第一次面试总结/" class="has-link-black-ter is-size-6">第一次面试总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CSS几种常见的居中方法以及他们的优缺点">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T06:51:33.000Z">2019-05-03</time></div>
-                    <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="has-link-black-ter is-size-6">CSS几种常见的居中方法以及他们的优缺点</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/28/第二次小程序项目报错总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第二次小程序项目报错总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T12:32:51.000Z">2019-04-28</time></div>
-                    <a href="/2019/04/28/第二次小程序项目报错总结/" class="has-link-black-ter is-size-6">第二次小程序项目报错总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/CSS/">
-                        <span class="tag">CSS</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JavaScript/">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Mic-theme-hexo-blog/">
-                        <span class="tag">Mic_theme hexo blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/bootstrap/">
-                        <span class="tag">bootstrap</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css/">
-                        <span class="tag">css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/html-css/">
-                        <span class="tag">html css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery-mouse/">
-                        <span class="tag">jQuery mouse</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mpvue，-小程序/">
-                        <span class="tag">mpvue， 小程序</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/server，-node/">
-                        <span class="tag">server， node</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/那些你不得不知道的前端常识/">
-                        <span class="tag">那些你不得不知道的前端常识</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/面试/">
-                        <span class="tag">面试</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/logo.svg" alt="css世界的各种盒子" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2019 不会拉小提琴的左脚&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/BinghuiXie/binghuixie.github.io.git">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
-        </div>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-Hans");</script>
-
-
-    
-    
-    
-    <script src="/js/animation.js"></script>
-    
-
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-    <script src="/js/gallery.js" defer></script>
-    
-
-    
-    
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
+    <script>
+        new Valine({
+            el: '#comment',
+            notify: false,
+            verify: false,
+            app_id: 'cFM0eCo0CQ9xmBXmHi1eltol-gzGzoHsz',
+            app_key: 'oh9tizsnvV2vNvWgqEvoNtQO',
+            path: window.location.pathname,
+            avatar: 'mm',
+            guest_info: ['nick', 'mail']
         });
-    });
-</script>
+    </script>
+    
+</div>	
+</article>
 
+          </div> 
+      </div>            
+    
+        <i id="toTop" class="iconfont icon-backtotop"></i>
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-    
-    
-
-<a id="back-to-top" title="Back to Top" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-    <script src="/js/clipboard.js" defer></script>
-    
-
-    
-    
-    
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
+  
+    <div class="none" id="search">
+    <div class="header">
+        <input type="text" placeholder="Typing Something here." id="search-input" class="input">
+        
+        <i id="search-cancel" class="iconfont icon-cancel"></i>
     </div>
+
+    <div id="search-result" class="result"></div>
 </div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">  
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">Home
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">Archives
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">Tags
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">About
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
+            
+         
+      
+</div>
+        
     
-</body>
+
+
+
+     
+    
+
+
+<footer class="footer">
+	<div class="inner">
+		<div class="copyright">
+			&copy;
+			
+			2019
+			不会拉小提琴的左脚
+
+			<br>
+			By <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>
+		</div>
+	</div>
+</footer>   
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
 </html>

@@ -1,176 +1,137 @@
 <!DOCTYPE html>
-<html  lang="zh">
-<head>
-    <meta charset="utf-8">
-<title>bootstrap学习笔记 - 不会拉小提琴的左脚</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  Bootstrap学习笔记 |   Lemon </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
 
 
-
-    <meta name="description" content="前言前几天为了写一个响应式开发的项目，于是学习了bootstrap这个框架，个人认为，bootstrap最强大的地方就在于它的布局，也就是栅格系统，所以在这里也贴出自己学习bootstrap时整理的笔记，着重会讲到bootstrap的栅格系统以及自己踩过的坑等等。注意，复制本文的代码并使用时，里面库的引入需要将路径改为自己的bootstrap路径">
-<meta name="keywords" content="bootstrap">
-<meta property="og:type" content="article">
-<meta property="og:title" content="bootstrap学习笔记">
-<meta property="og:url" content="http://yoursite.com/2018/08/29/bootstrap学习笔记/index.html">
-<meta property="og:site_name" content="不会拉小提琴的左脚">
-<meta property="og:description" content="前言前几天为了写一个响应式开发的项目，于是学习了bootstrap这个框架，个人认为，bootstrap最强大的地方就在于它的布局，也就是栅格系统，所以在这里也贴出自己学习bootstrap时整理的笔记，着重会讲到bootstrap的栅格系统以及自己踩过的坑等等。注意，复制本文的代码并使用时，里面库的引入需要将路径改为自己的bootstrap路径">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-06T08:51:14.174Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bootstrap学习笔记">
-<meta name="twitter:description" content="前言前几天为了写一个响应式开发的项目，于是学习了bootstrap这个框架，个人认为，bootstrap最强大的地方就在于它的布局，也就是栅格系统，所以在这里也贴出自己学习bootstrap时整理的笔记，着重会讲到bootstrap的栅格系统以及自己踩过的坑等等。注意，复制本文的代码并使用时，里面库的引入需要将路径改为自己的bootstrap路径">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
-
-
-
-
-
-
-
-<link rel="icon" href="/images/favicon.svg">
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
+  <link rel="stylesheet" href="/nayo.min.css"> 
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>  
+  <body>   
     
-    
-    
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-    
+      <header class="header-wrapper">
 
-    
-    
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-    
-
-    
-    
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-
-    
-    
-    
-    
-
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-<link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-    
-    
-    
-
-    
-    
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.svg" alt="bootstrap学习笔记" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">Home</a>
-                
-                <a class="navbar-item"
-                href="/archives">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories">Categories</a>
-                
-                <a class="navbar-item"
-                href="/tags">Tags</a>
-                
-                <a class="navbar-item"
-                href="/about">About</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                
-                <a class="navbar-item search" title="Search" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+  <nav class="inner">
+    <div class="title">
+      <a href="/">
+        <img class="logo" src="/images/logo.png">
+      </a>
     </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-content article ">
+
+    <ul class="menu">
+      
+      
+      <li class="item">
+        <a class="link" id="menu-home" href="/">
+          <i class="iconfont icon-home">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-archives" href="/archives">
+          <i class="iconfont icon-archives">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-tags" href="/tags">
+          <i class="iconfont icon-tags">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-about" href="/about">
+          <i class="iconfont icon-about">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-search">
+          <i class="iconfont icon-search">
+        </i></a>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-08-29T07:27:28.000Z">2018-08-29</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    an hour read (About 10541 words)
-                </span>
-                
-                
-            </div>
-        </div>
+
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                bootstrap学习笔记
-            
-        </h1>
-        <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前几天为了写一个响应式开发的项目，于是学习了bootstrap这个框架，个人认为，bootstrap最强大的地方就在于它的布局，也就是栅格系统，所以在这里也贴出自己学习bootstrap时整理的笔记，着重会讲到bootstrap的栅格系统以及自己踩过的坑等等。<br>注意，复制本文的代码并使用时，里面库的引入需要将路径改为自己的bootstrap路径<br><a id="more"></a></p>
+      
+    </li></ul>
+  </nav>
+</header>
+
+<header class="mobile-header-wrapper">
+  <i id="mobile-toggle" class="iconfont icon-menu mobile-toggle"></i>
+</header>   
+
+      <div class="container">       
+          
+          
+            <div class="container-inner">  
+          
+
+          <article class="post slideDownMin">
+  
+	
+<div class="header">
+		<p class="title">	
+			bootstrap学习笔记
+		</p>
+		<div class="info">	
+			<time>
+				Aug 29, 2018
+			</time>
+
+			
+			
+				<i class="iconfont icon-words"></i>
+				<span class="words">39811
+				</span>
+			
+		</div>
+</div> 
+	
+
+    <script type="text/x-mathjax-config">
+        var post = document.getElementsByClassName("post")[0];  
+        MathJax.Hub.Config({
+            showProcessingMessages: false,
+            messageStyle: "none",    
+            tex2jax: {
+                inlineMath:  [ ["$", "$"] , ["\\(","\\)"]],
+                displayMath: [ ["$$","$$"] , ["\\[","\\]"]],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+            },
+            "HTML-CSS": {            
+                showMathMenu: false
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,post]);
+    </script>
+    <style>.MathJax{outline:0;}</style>
+
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.2/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+ 
+
+	  <div class="typo post-content ">
+
+		
+
+			
+					<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前几天为了写一个响应式开发的项目，于是学习了bootstrap这个框架，个人认为，bootstrap最强大的地方就在于它的布局，也就是栅格系统，所以在这里也贴出自己学习bootstrap时整理的笔记，着重会讲到bootstrap的栅格系统以及自己踩过的坑等等。<br>注意，复制本文的代码并使用时，里面库的引入需要将路径改为自己的bootstrap路径<br><a id="more"></a></p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="将要叙述的东西罗列了一下，大概有下面几点"><a href="#将要叙述的东西罗列了一下，大概有下面几点" class="headerlink" title="将要叙述的东西罗列了一下，大概有下面几点"></a>将要叙述的东西罗列了一下，大概有下面几点</h2><p>1.<a href="#link1">什么是响应式布局</a><br>2.<a href="#link2">媒体查询</a><br>3.<a href="#link3">bootstrap的下载与使用</a><br>4.<a href="#link4">bootstrap基本模板</a><br>5.<a href="#link5">bootstrap中container类–第1个类</a><br>6.<a href="#link6">bootstrap中container-fluid类–第2个类</a><br>7.<a href="#link7">bootstrap的栅格系统</a><br>8.<a href="#link8">bootstrap响应式工具(响应式工具类)</a><br>9.<a href="#link9">bootstrap导航条</a><br>10.<a href="#link10">bootstrap的collapse(折叠)组件</a><br>11.<a href="#link11">bootstrap轮播图</a><br>12.<a href="#link12">bootstrap中的Affix(吸顶)组件</a><br>13.<a href="#link13">总结：bootstrap常用类</a><br>ps:上面只是介绍了bootstrap中很少的一部分，更多有关bootstrap内容请移步<strong><a href="https://v3.bootcss.com/" target="_blank" rel="noopener">bootstrap官方中文文档</a></strong><br><a name="link1"></a></p>
 <h2 id="1-什么是响应式布局"><a href="#1-什么是响应式布局" class="headerlink" title="1.什么是响应式布局"></a>1.什么是响应式布局</h2><p>前面提到过，用到bootstrap的目的是用来做一个响应式的项目。那么，什么是响应式开发呢？<br><strong>百度百科给出的响应式布局的概念如下</strong>：</p>
 <blockquote>
@@ -517,15 +478,15 @@ width: 1170px;
 &lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p><strong>注意默认情况下container类是没有高度的，所以必须为其设置高度或者利用子元素将其高度撑开才能使其可见</strong><br>下面是在不同屏幕宽度下显示的效果<br>首先是大屏设备下(1200px以上)，背景颜色为紫色<br><img src="https://raw.githubusercontent.com/BinghuiXie/binghuixie.github.io/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/05%20container%E7%B1%BB%E5%9C%A8%E5%A4%A7%E5%B1%8F%E6%98%BE%E7%A4%BA%E7%9A%84%E6%95%88%E6%9E%9C.jpg" alt=""><br>中屏设备的显示效果（992px~1200px）：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/06%20container%E7%B1%BB%E5%9C%A8%E4%B8%AD%E5%B1%8F%E8%AE%BE%E5%A4%87%E6%98%BE%E7%A4%BA%E7%9A%84%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>小屏设备显示的效果（768px~992px）：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/07%20container%E7%B1%BB%E5%9C%A8%E5%B0%8F%E5%B1%8F%E8%AE%BE%E5%A4%87%E6%98%BE%E7%A4%BA%E7%9A%84%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>然后是移动端设备（超小屏）的显示效果:<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/08%20container%E7%B1%BB%E5%9C%A8%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%AE%BE%E5%A4%87%E6%98%BE%E7%A4%BA%E7%9A%84%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>最后我们再来看一下container类自带的左右15px的内边距<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/09%20container%E7%B1%BB%E8%87%AA%E5%B8%A6%E5%86%85%E8%BE%B9%E8%B7%9D.jpg?raw=true" alt=""><br><a name="link6"></a></p>
-<h2 id="6-bootstrap中container-fluid类–第2个类"><a href="#6-bootstrap中container-fluid类–第2个类" class="headerlink" title="6.bootstrap中container-fluid类–第2个类"></a>6.bootstrap中container-fluid类–第2个类</h2><p><i>fluid</i>意思是液体的，流动的，那么在bootstrap里面。如果说<i>container</i>是一个响应式容器的话，那么<i>container-fluid</i>是一个流式容器(ps:流式布局也是移动端常用的一种适配方式，这里不做解释)。它与container类的直观区别可以从下图看出：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/10%20container%E7%B1%BB%E4%B8%8Econtainer-fluid%E7%B1%BB%E7%9B%B4%E8%A7%82%E7%9A%84%E5%8C%BA%E5%88%AB.jpg?raw=true" alt=""><br>可以看出container容器是居中显示的，而container-fluid容器是布满了屏幕的宽度，我们再来看container-fluid的代码：</p>
+</code></pre><p><strong>注意默认情况下container类是没有高度的，所以必须为其设置高度或者利用子元素将其高度撑开才能使其可见</strong><br>下面是在不同屏幕宽度下显示的效果<br>首先是大屏设备下(1200px以上)，背景颜色为紫色<br><img src="https://raw.githubusercontent.com/BinghuiXie/binghuixie.github.io/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/05%20container%E7%B1%BB%E5%9C%A8%E5%A4%A7%E5%B1%8F%E6%98%BE%E7%A4%BA%E7%9A%84%E6%95%88%E6%9E%9C.jpg" alt=""><br>中屏设备的显示效果（992px~1200px）：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/06%20container%E7%B1%BB%E5%9C%A8%E4%B8%AD%E5%B1%8F%E8%AE%BE%E5%A4%87%E6%98%BE%E7%A4%BA%E7%9A%84%E6%95%88%E6%9E%9C.jpg?raw=true" class="lazyload"><br>小屏设备显示的效果（768px~992px）：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/07%20container%E7%B1%BB%E5%9C%A8%E5%B0%8F%E5%B1%8F%E8%AE%BE%E5%A4%87%E6%98%BE%E7%A4%BA%E7%9A%84%E6%95%88%E6%9E%9C.jpg?raw=true" class="lazyload"><br>然后是移动端设备（超小屏）的显示效果:<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/08%20container%E7%B1%BB%E5%9C%A8%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%AE%BE%E5%A4%87%E6%98%BE%E7%A4%BA%E7%9A%84%E6%95%88%E6%9E%9C.jpg?raw=true" class="lazyload"><br>最后我们再来看一下container类自带的左右15px的内边距<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/09%20container%E7%B1%BB%E8%87%AA%E5%B8%A6%E5%86%85%E8%BE%B9%E8%B7%9D.jpg?raw=true" class="lazyload"><br><a name="link6"></a></p>
+<h2 id="6-bootstrap中container-fluid类–第2个类"><a href="#6-bootstrap中container-fluid类–第2个类" class="headerlink" title="6.bootstrap中container-fluid类–第2个类"></a>6.bootstrap中container-fluid类–第2个类</h2><p><i>fluid</i>意思是液体的，流动的，那么在bootstrap里面。如果说<i>container</i>是一个响应式容器的话，那么<i>container-fluid</i>是一个流式容器(ps:流式布局也是移动端常用的一种适配方式，这里不做解释)。它与container类的直观区别可以从下图看出：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/10%20container%E7%B1%BB%E4%B8%8Econtainer-fluid%E7%B1%BB%E7%9B%B4%E8%A7%82%E7%9A%84%E5%8C%BA%E5%88%AB.jpg?raw=true" class="lazyload"><br>可以看出container容器是居中显示的，而container-fluid容器是布满了屏幕的宽度，我们再来看container-fluid的代码：</p>
 <pre><code>.container-fluid {
 padding-right: 15px;
 padding-left: 15px;
 margin-right: auto;
 margin-left: auto;
 }
-</code></pre><p>当然这一点也可以从图上直观的看出<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/11%20container-fluid%E7%B1%BB.jpg?raw=true" alt=""><br><strong>总结一下，<i>container</i>类和<i>container-fluid</i>类是利用bootstrap时候必须为页面内容和栅格系统包裹的两个容器，其中，因为<i>container</i>类在不同的屏宽下设置了不同的宽度，所以<i>container</i>类用于固定宽度并支持响应式布局的容器。而<i>container-fluid</i>类因为没有设置宽度，但默认为100%，所以说其用于100% 宽度，占据全部视口（viewport）的流式容器。</strong><br><a name="link7"></a></p>
+</code></pre><p>当然这一点也可以从图上直观的看出<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/11%20container-fluid%E7%B1%BB.jpg?raw=true" class="lazyload"><br><strong>总结一下，<i>container</i>类和<i>container-fluid</i>类是利用bootstrap时候必须为页面内容和栅格系统包裹的两个容器，其中，因为<i>container</i>类在不同的屏宽下设置了不同的宽度，所以<i>container</i>类用于固定宽度并支持响应式布局的容器。而<i>container-fluid</i>类因为没有设置宽度，但默认为100%，所以说其用于100% 宽度，占据全部视口（viewport）的流式容器。</strong><br><a name="link7"></a></p>
 <h2 id="7-bootstrap的栅格系统"><a href="#7-bootstrap的栅格系统" class="headerlink" title="7.bootstrap的栅格系统"></a>7.bootstrap的栅格系统</h2><h3 id="前言-2"><a href="#前言-2" class="headerlink" title="前言"></a>前言</h3><p>从这节开始进入到bootstrap的学习当中比较重要的一个环节，毕竟bootstrap的一个亮点就在于它的栅格系统布局方式非常灵活。学会使用bootstrap的栅格系统以后，利用其便能快速的达到一些常见的布局。</p>
 <h3 id="正文-1"><a href="#正文-1" class="headerlink" title="正文"></a>正文</h3><p>bootstrap的栅格系统本质上是通过浮动(float属性)与宽度百分比来实现的，同时也能通过调用不同的类来针对不同的屏幕尺寸达到适配，前面也提到过，bootstrap将屏幕尺寸分为四类，分别是超小屏幕&lt;768px，小屏幕 平板&gt;=768px，中等屏幕 桌面显示器&gt;=992px以及大屏幕 大桌面显示器&gt;=1200px(当然如果你对媒体查询以及min-width,max-width等属性非常熟悉的话，也可以定制自己的响应式网站，bootstrap在这方面也能让你自定义 Bootstrap 组件、Less 变量和 jQuery 插件，从而定制一份属于自己的bootstrap版本)，在bootstrap里面，大屏设备简写为<i>lg</i>，中屏设备为<i>md</i>，小屏设备为<i>sm</i>，超小屏设备也就是移动端设备为<i>xs</i>。<br>我们首先来介绍一个类–<i>.row</i>，row是行的意思，先来看一下它的源代码：</p>
 <pre><code>.row {
@@ -578,7 +539,7 @@ margin-left: -15px;
 &lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>效果：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/12%20row%E7%B1%BB%E6%B8%85%E9%99%A4%E5%86%85%E8%BE%B9%E8%B7%9D%E7%9A%84%E4%BD%9C%E7%94%A8.jpg?raw=true" alt=""><br>在栅格系统中，所有的内容都放在列(column)中，注意，<strong>只有列(column)可以作为行(row)的直接子元素</strong><br>下面我们来介绍栅格系统中列的使用，即<i>.col-xx-xx</i>类(“xx”表示参数)<br><strong>bootstrap</strong><i>.col-xx-xx</i><strong>类：</strong><br><strong>第一个参数（第一个“xx”）</strong></p>
+</code></pre><p>效果：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/12%20row%E7%B1%BB%E6%B8%85%E9%99%A4%E5%86%85%E8%BE%B9%E8%B7%9D%E7%9A%84%E4%BD%9C%E7%94%A8.jpg?raw=true" class="lazyload"><br>在栅格系统中，所有的内容都放在列(column)中，注意，<strong>只有列(column)可以作为行(row)的直接子元素</strong><br>下面我们来介绍栅格系统中列的使用，即<i>.col-xx-xx</i>类(“xx”表示参数)<br><strong>bootstrap</strong><i>.col-xx-xx</i><strong>类：</strong><br><strong>第一个参数（第一个“xx”）</strong></p>
 <table>
 <thead>
 <tr>
@@ -664,7 +625,7 @@ margin-left: -15px;
 &lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>效果如下：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/13%20%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F.jpg?raw=true" alt=""><br>可以很清楚的看到一行被分成为12份。且2+6+1+3 == 12，当然，如果和大于12，那么多余的列便会被挤下来，到下面一行</p>
+</code></pre><p>效果如下：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/13%20%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F.jpg?raw=true" class="lazyload"><br>可以很清楚的看到一行被分成为12份。且2+6+1+3 == 12，当然，如果和大于12，那么多余的列便会被挤下来，到下面一行</p>
 <pre><code>&lt;div class=&quot;container&quot;&gt;
     &lt;div class=&quot;row&quot;&gt;
         &lt;div class=&quot;first-row&quot;&gt;
@@ -677,7 +638,7 @@ margin-left: -15px;
         &lt;div class=&quot;third-row&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><p><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/14%20%E8%B6%85%E5%87%BA12.jpg?raw=true" alt=""><br>上面只是在调用了<i>.col-lg-xx</i>相关类，也就是说上面的示例代码只能在大屏下才有效果，放到其余三类尺寸的屏幕下只会默认占满整行，就像下面这样<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/15%20%E8%B6%85%E5%87%BA%E9%80%82%E9%85%8D%E8%8C%83%E5%9B%B4.jpg?raw=true" alt=""><br>当我们进行完上面的简单的使用栅格系统布局之后，bootstrap还为我们提供了其他的辅助布局的类操作，具体见下表(引自bootstrap官方文档)：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/16%20%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F%E5%85%B6%E4%BB%96%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0.jpg?raw=true" alt=""><br><strong>槽宽(gutter)即为列与列之间的间隔，通过为列设置<i>padding</i>属性来实现。</strong><br>从表中我们看到，bootstrap还为我们提供了几种实现更为复杂的布局的方式：<br><strong>(1)列嵌套</strong><br><strong>(2)列偏移(offsets)</strong><br><strong>(3)列排序</strong><br>下面来逐条介绍:<br><strong>(1)列嵌套</strong><br>顾名思义，列嵌套就是列与列之间的嵌套，也就是我们可以在一列中再放置12份内容，具体做法：<br>可以通过添加一个新的<i>.row</i>元素和一系列<i>.col-xx-xx</i>元素到已经存在的<i>.col-xx-xx</i>元素内。<br>我们拿实例来说话，代码如下：</p>
+</code></pre><p><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/14%20%E8%B6%85%E5%87%BA12.jpg?raw=true" class="lazyload"><br>上面只是在调用了<i>.col-lg-xx</i>相关类，也就是说上面的示例代码只能在大屏下才有效果，放到其余三类尺寸的屏幕下只会默认占满整行，就像下面这样<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/15%20%E8%B6%85%E5%87%BA%E9%80%82%E9%85%8D%E8%8C%83%E5%9B%B4.jpg?raw=true" class="lazyload"><br>当我们进行完上面的简单的使用栅格系统布局之后，bootstrap还为我们提供了其他的辅助布局的类操作，具体见下表(引自bootstrap官方文档)：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/16%20%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F%E5%85%B6%E4%BB%96%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0.jpg?raw=true" class="lazyload"><br><strong>槽宽(gutter)即为列与列之间的间隔，通过为列设置<i>padding</i>属性来实现。</strong><br>从表中我们看到，bootstrap还为我们提供了几种实现更为复杂的布局的方式：<br><strong>(1)列嵌套</strong><br><strong>(2)列偏移(offsets)</strong><br><strong>(3)列排序</strong><br>下面来逐条介绍:<br><strong>(1)列嵌套</strong><br>顾名思义，列嵌套就是列与列之间的嵌套，也就是我们可以在一列中再放置12份内容，具体做法：<br>可以通过添加一个新的<i>.row</i>元素和一系列<i>.col-xx-xx</i>元素到已经存在的<i>.col-xx-xx</i>元素内。<br>我们拿实例来说话，代码如下：</p>
 <pre><code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;zh-CN&quot;&gt;
@@ -750,7 +711,7 @@ margin-left: -15px;
 &lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>实现的效果如下：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/17%20%E5%88%97%E5%B5%8C%E5%A5%97.jpg?raw=true" alt=""><br>同样，我们还可以再在里面嵌套列，但是要注意一点：<strong>列必须基于行，所以必须将列元素作为<i>.row</i>类直接子元素才会有作用</strong><br><strong>(2)列偏移(offsets)</strong><br>列偏移的意思是，我们可以通过对特定的类的调用，来达到对某一列在其原来位置的基础上向右偏移特定的距离(注意这里距离只能为整数，范围为1~12)，下面请看例子</p>
+</code></pre><p>实现的效果如下：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/17%20%E5%88%97%E5%B5%8C%E5%A5%97.jpg?raw=true" class="lazyload"><br>同样，我们还可以再在里面嵌套列，但是要注意一点：<strong>列必须基于行，所以必须将列元素作为<i>.row</i>类直接子元素才会有作用</strong><br><strong>(2)列偏移(offsets)</strong><br>列偏移的意思是，我们可以通过对特定的类的调用，来达到对某一列在其原来位置的基础上向右偏移特定的距离(注意这里距离只能为整数，范围为1~12)，下面请看例子</p>
 <pre><code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;zh-CN&quot;&gt;
@@ -816,7 +777,7 @@ margin-left: -15px;
 &lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>效果如下图：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/18%20%E5%88%97%E5%81%8F%E7%A7%BB.jpg?raw=true" alt=""><br>我们从代码里可以看出，<i>.row</i>类下面的两个div的样式几乎一样，所不同的是，第二个div中填加了<i>.col-lg-offset-4</i>类，致使第二个div下面id=”lg-offset-6”的块元素向右平移了4份的距离，直接与右边对齐。<br>本质上，<i>.col-xx-offset-4</i>(“xx”表示屏幕尺寸)是添加了左边距才使得元素能向右偏移，我们从bootstrap的代码中能很清晰的看出这一点</p>
+</code></pre><p>效果如下图：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/18%20%E5%88%97%E5%81%8F%E7%A7%BB.jpg?raw=true" class="lazyload"><br>我们从代码里可以看出，<i>.row</i>类下面的两个div的样式几乎一样，所不同的是，第二个div中填加了<i>.col-lg-offset-4</i>类，致使第二个div下面id=”lg-offset-6”的块元素向右平移了4份的距离，直接与右边对齐。<br>本质上，<i>.col-xx-offset-4</i>(“xx”表示屏幕尺寸)是添加了左边距才使得元素能向右偏移，我们从bootstrap的代码中能很清晰的看出这一点</p>
 <pre><code>.col-xs-offset-12 {
 margin-left: 100%;
 }
@@ -842,7 +803,7 @@ margin-left: 75%;
         &lt;div class=&quot;third-row&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><p><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/14%20%E8%B6%85%E5%87%BA12.jpg?raw=true" alt=""><br>如图和代码所示，列从左到有的顺序默认按照2，6，1，4，这样进行排序，而bootstrap给我们提供了相关类可以改变列与列之间默认的排序方式，即<i>.col-xx-xx-xx</i>类。<br><i>.col-xx-xx-xx</i>类，第一个参数表示屏幕尺寸，老规矩，有<i>lg</i>，<i>md</i>，<i>sm</i>，<i>xs</i>四种取值，第二个参数代表方向，有<i>push</i>与<i>pull</i>两个取值，其中push(推)，方向向右，pull(拉)，方向为左，第三个参数表示向左拉或者向右推的列数，取值为1~12，下面来举例描述<br>首先代码如下:</p>
+</code></pre><p><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/14%20%E8%B6%85%E5%87%BA12.jpg?raw=true" class="lazyload"><br>如图和代码所示，列从左到有的顺序默认按照2，6，1，4，这样进行排序，而bootstrap给我们提供了相关类可以改变列与列之间默认的排序方式，即<i>.col-xx-xx-xx</i>类。<br><i>.col-xx-xx-xx</i>类，第一个参数表示屏幕尺寸，老规矩，有<i>lg</i>，<i>md</i>，<i>sm</i>，<i>xs</i>四种取值，第二个参数代表方向，有<i>push</i>与<i>pull</i>两个取值，其中push(推)，方向向右，pull(拉)，方向为左，第三个参数表示向左拉或者向右推的列数，取值为1~12，下面来举例描述<br>首先代码如下:</p>
 <pre><code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;zh-CN&quot;&gt;
@@ -920,7 +881,7 @@ left: 100%;
 }
 </code></pre><p>可以看出，实现列排序的本质也是通过对左右边距的距离进行定位，从而达到列向左或者向右平移指定距离的效果，在上面的例子中，3份的div向右平移5个单位，4份的div向右平移4个单位，5份的div向左平移了7个单位，且因为使用了<i>xs</i>，所以在超小屏及以上屏幕尺寸均可以适配这种做法。<br><a name="link8"></a></p>
 <h2 id="8-bootstrap响应式工具-响应式工具类"><a href="#8-bootstrap响应式工具-响应式工具类" class="headerlink" title="8.bootstrap响应式工具(响应式工具类)"></a>8.bootstrap响应式工具(响应式工具类)</h2><h2 id="前言-3"><a href="#前言-3" class="headerlink" title="前言"></a>前言</h2><p>利用bootstrap进行响应式开发是非常方便的，只需要用<i>.container</i>类作为第一级父容器，将其余的北荣均放在<i>.container</i>下面作为其子元素就能达到适配不同终端的要求，当然，想要达到在不同终端下面显示的效果不一样，上面写的内容还并不能做到如此多元化的效果，所以在这节我们将会介绍其他的bootstrap提供的响应式工具(类)，通过调用不同的类来达到在不同终端有不同效果的要求。</p>
-<h2 id="正文-2"><a href="#正文-2" class="headerlink" title="正文"></a>正文</h2><p>关于bootstrap响应式工具(类)，我主要记录了两种<br><strong>(1)<i>.visible-xx-xx</i>类</strong><br><strong>(2)<i>.hidden-xx</i>类</strong><br>分别控制了在不同的屏幕尺寸下的显示和隐藏<br><strong>(1)<i>.visible-xx-xx</i>类</strong><br><i>.visible-xx-xx</i>类，第一个参数同样代表了屏幕的尺寸，有四种取值，<i>lg</i>，<i>md</i>，<i>sm</i>与<i>xs</i>，分别代表了在大屏可见，中等屏幕可见，小屏幕可见以及超小屏幕可见<strong>(注意此时每一种尺寸只代表了当前屏幕的尺寸，在其之上的尺寸范围并不适用，也就是说，<i>.visible-xs-xx</i>只代表了能在超小屏幕可见，而不是超小屏幕即以上均可见)</strong><br><i>.visible-xx-xx</i>类，第二个参数有三种取值，分别为<i>block</i>，<i>inline</i>，<i>inline-block</i>，与CSS中的<i>display:block</i>，<i>display:inline</i>，<i>display:inline-block</i>相对应，bootstrap中也给我们列出了<i>.visible-xx-xx</i>类的相关取值，如下图:<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/19%20visible%E7%9B%B8%E5%85%B3%E7%B1%BB%E9%80%82%E9%85%8D%E4%B8%8D%E5%90%8C%E7%BB%88%E7%AB%AF.jpg?raw=true" alt=""><br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/20%20visible%E7%9B%B8%E5%85%B3%E7%B1%BB%E7%9A%84%E5%8F%96%E5%80%BC%E5%AF%B9%E5%BA%94css.jpg?raw=true" alt=""><br>至于单独的使用<i>.visible-xs</i>、<i>.visible-sm</i>、<i>.visible-md</i>、<i>.visible-lg</i>类也不是不可以，但是<strong>从v3.2.0版本开始不建议使用</strong>，控制元素的隐藏与显示更加常用<i>.hidden-xx</i>相关类。<br>当然<i>visible</i>x相关类的取值不止上面这些，有兴趣可以去读一读bootstrap的源码，里面有详细的代码说明。<br><strong>(2)<i>.hidden-xx</i>类</strong><br>相对于<i>.visible-xx-xx</i>相关类，<i>.hidden-xx</i>相关类相对来说更加常用而且比较好理解，它一共只用四种取值，分别是<i>.hidden-xs</i>，<i>.hidden-sm</i>，<i>.hidden-md</i>，<i>.hidden-lg</i>，分别代表了在超小屏，小屏，中屏以及大屏隐藏，关于这个我们可以参考bootstrap给出的官方文档<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/21%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E7%9A%84%E5%8F%96%E5%80%BC.jpg?raw=true" alt=""><br>OK，介绍完了相关类的取值以及他们的含义，我们来看一下下面这个代码</p>
+<h2 id="正文-2"><a href="#正文-2" class="headerlink" title="正文"></a>正文</h2><p>关于bootstrap响应式工具(类)，我主要记录了两种<br><strong>(1)<i>.visible-xx-xx</i>类</strong><br><strong>(2)<i>.hidden-xx</i>类</strong><br>分别控制了在不同的屏幕尺寸下的显示和隐藏<br><strong>(1)<i>.visible-xx-xx</i>类</strong><br><i>.visible-xx-xx</i>类，第一个参数同样代表了屏幕的尺寸，有四种取值，<i>lg</i>，<i>md</i>，<i>sm</i>与<i>xs</i>，分别代表了在大屏可见，中等屏幕可见，小屏幕可见以及超小屏幕可见<strong>(注意此时每一种尺寸只代表了当前屏幕的尺寸，在其之上的尺寸范围并不适用，也就是说，<i>.visible-xs-xx</i>只代表了能在超小屏幕可见，而不是超小屏幕即以上均可见)</strong><br><i>.visible-xx-xx</i>类，第二个参数有三种取值，分别为<i>block</i>，<i>inline</i>，<i>inline-block</i>，与CSS中的<i>display:block</i>，<i>display:inline</i>，<i>display:inline-block</i>相对应，bootstrap中也给我们列出了<i>.visible-xx-xx</i>类的相关取值，如下图:<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/19%20visible%E7%9B%B8%E5%85%B3%E7%B1%BB%E9%80%82%E9%85%8D%E4%B8%8D%E5%90%8C%E7%BB%88%E7%AB%AF.jpg?raw=true" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/20%20visible%E7%9B%B8%E5%85%B3%E7%B1%BB%E7%9A%84%E5%8F%96%E5%80%BC%E5%AF%B9%E5%BA%94css.jpg?raw=true" class="lazyload"><br>至于单独的使用<i>.visible-xs</i>、<i>.visible-sm</i>、<i>.visible-md</i>、<i>.visible-lg</i>类也不是不可以，但是<strong>从v3.2.0版本开始不建议使用</strong>，控制元素的隐藏与显示更加常用<i>.hidden-xx</i>相关类。<br>当然<i>visible</i>x相关类的取值不止上面这些，有兴趣可以去读一读bootstrap的源码，里面有详细的代码说明。<br><strong>(2)<i>.hidden-xx</i>类</strong><br>相对于<i>.visible-xx-xx</i>相关类，<i>.hidden-xx</i>相关类相对来说更加常用而且比较好理解，它一共只用四种取值，分别是<i>.hidden-xs</i>，<i>.hidden-sm</i>，<i>.hidden-md</i>，<i>.hidden-lg</i>，分别代表了在超小屏，小屏，中屏以及大屏隐藏，关于这个我们可以参考bootstrap给出的官方文档<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/21%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E7%9A%84%E5%8F%96%E5%80%BC.jpg?raw=true" class="lazyload"><br>OK，介绍完了相关类的取值以及他们的含义，我们来看一下下面这个代码</p>
 <pre><code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;zh-CN&quot;&gt;
@@ -987,7 +948,7 @@ left: 100%;
 &lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>对应不同屏幕尺寸显示的效果如图:<br>大屏：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/22%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%A4%A7%E5%B1%8F%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>中屏：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/23%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E4%B8%AD%E5%B1%8F%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>小屏：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/24%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%B0%8F%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>超小屏：<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/25%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E8%B6%85%E5%B0%8F%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.jpg?raw=true" alt=""><br>同时贴出相关<i>.hidden-xx</i>类代码以供理解</p>
+</code></pre><p>对应不同屏幕尺寸显示的效果如图:<br>大屏：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/22%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%A4%A7%E5%B1%8F%E6%95%88%E6%9E%9C.jpg?raw=true" class="lazyload"><br>中屏：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/23%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E4%B8%AD%E5%B1%8F%E6%95%88%E6%9E%9C.jpg?raw=true" class="lazyload"><br>小屏：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/24%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%B0%8F%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.jpg?raw=true" class="lazyload"><br>超小屏：<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/25%20hidden%E7%9B%B8%E5%85%B3%E7%B1%BB%E8%B6%85%E5%B0%8F%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.jpg?raw=true" class="lazyload"><br>同时贴出相关<i>.hidden-xx</i>类代码以供理解</p>
 <pre><code>@media (max-width: 767px) {
     .hidden-xs {
     display: none !important;
@@ -1100,7 +1061,7 @@ left: 100%;
 &lt;script src=&quot;../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>导航条的样子是这样的<br><img src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/26%20%E5%AF%BC%E8%88%AA%E6%9D%A1%E6%A0%B7%E5%AD%90.jpg?raw=true" alt=""><br>首先，<i>nav</i>标签作为最上一级父容器，内包含<i>.navbar</i>，<i>.navbar-default</i>两个类，下面是这两个类的代码:</p>
+</code></pre><p>导航条的样子是这样的<br><img src="/images/placeholder.png" alt="" data-src="https://github.com/BinghuiXie/binghuixie.github.io/blob/master/2018/08/29/bootstrap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/26%20%E5%AF%BC%E8%88%AA%E6%9D%A1%E6%A0%B7%E5%AD%90.jpg?raw=true" class="lazyload"><br>首先，<i>nav</i>标签作为最上一级父容器，内包含<i>.navbar</i>，<i>.navbar-default</i>两个类，下面是这两个类的代码:</p>
 <hr>
 <pre><code>.navbar {
 position: relative;
@@ -1132,7 +1093,7 @@ border-color: #e7e7e7;
   border-radius: 1px;
 }
 </code></pre><p>下面的代码与上面的较为类似就不再详述，可以自行去读一读代码并自己去理解。<br>到这里戒指bootstrap的组件就先告一段落，因为bootstrap组件太多，所以只能选择一两个进行详细的解释，其余的我会后期慢慢补充，或者有兴趣的可以自己去<strong><a href="http://www.bootcss.com/" target="_blank" rel="noopener">bootstrap官网</a></strong>去看文档。<br><a name="link10"></a></p>
-<h2 id="10-bootstrap的collapse-折叠-组件"><a href="#10-bootstrap的collapse-折叠-组件" class="headerlink" title="10.bootstrap的collapse(折叠)组件"></a>10.bootstrap的collapse(折叠)组件</h2><p>下面我们来介绍bootstrap的一些JavaScript组件，首先是collapse（折叠）组件。<br>collapse插件作用：类似下拉菜单，点击显示，失焦的时候隐藏，可以节省空间的同时起到一定的美观效果<br>下面可以看几个类似的效果：<br><img src="" alt=""><br><img src="" alt=""><br><img src="" alt=""><br>(更多的实例请到bootstrap官方文档中去寻找或者在自己浏览网页的过程中可以注意观察一下)<br>实例代码如下：</p>
+<h2 id="10-bootstrap的collapse-折叠-组件"><a href="#10-bootstrap的collapse-折叠-组件" class="headerlink" title="10.bootstrap的collapse(折叠)组件"></a>10.bootstrap的collapse(折叠)组件</h2><p>下面我们来介绍bootstrap的一些JavaScript组件，首先是collapse（折叠）组件。<br>collapse插件作用：类似下拉菜单，点击显示，失焦的时候隐藏，可以节省空间的同时起到一定的美观效果<br>下面可以看几个类似的效果：<br><img src="" alt="" class="lazyload"><br><img src="" alt="" class="lazyload"><br><img src="" alt="" class="lazyload"><br>(更多的实例请到bootstrap官方文档中去寻找或者在自己浏览网页的过程中可以注意观察一下)<br>实例代码如下：</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;zh-CN&quot;&gt;
 &lt;head&gt;
@@ -1277,1024 +1238,166 @@ border-color: #e7e7e7;
 &lt;/div&gt;
 </code></pre><p>在<strong><div class="carousel-inner"></div></strong>下面一共有4个<i>div</i>也就是一共有4张图片进行轮播，与这个<i>div</i>同级的两个<i>a</i>标签是定义了往左滑和往右滑的两个箭头，注意<i>a</i>标签里面的<i>href=”#carousel-example-generic”</i>同样声明了需要去控制的轮播图容器，然后<i>data-slide</i>属性规定了滑动的方向，有<i>prev</i>与<i>next</i>两个取值，分别代表了前一张与后一张。<br><i>a</i>标签里面的<i>span</i>里面的<i>lyphicon-chevron-right</i>和<i>lyphicon-chevron-left</i>是用了bootstrap自己规定的图标，类似于fontawesome。<br>以上就是整个轮播图的结构。<br><a name="link12"></a></p>
 <h2 id="12-bootstrap中的Affix-吸顶-组件"><a href="#12-bootstrap中的Affix-吸顶-组件" class="headerlink" title="12.bootstrap中的Affix(吸顶)组件"></a>12.bootstrap中的Affix(吸顶)组件</h2><p><a name="link13"></a></p>
-<h2 id="13-总结-bootstrap常用类"><a href="#13-总结-bootstrap常用类" class="headerlink" title="13.总结:bootstrap常用类"></a>13.总结:bootstrap常用类</h2>
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/bootstrap/">bootstrap</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
+<h2 id="13-总结-bootstrap常用类"><a href="#13-总结-bootstrap常用类" class="headerlink" title="13.总结:bootstrap常用类"></a>13.总结:bootstrap常用类</h2>  	
+					
+	  </div>     
+	  
+
+	<div class="bottom">
+  <div class="other">
+    <div class="meta">
+      
+
+      
+      <i class="iconfont icon-tag"></i>
+      <a class="tag-link" href="/tags/bootstrap/">bootstrap</a>
+      
     </div>
-</div>
 
+    <div class="operate">
+      
+      <span class="text">Share</span>
+      <ul class="share">
+	   
+</ul>	
 
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+      
     </div>
-</div>
+  </div>
 
 
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
+  
+  <nav class="nav">
+    <div class="link">
+      
+      <a href="/2018/08/29/关于删除节点幕后的事情/" class="link-wrap">
+        <strong class="caption">older</strong>
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/10/13/CSS-flex布局学习/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">CSS flex布局学习</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/08/29/关于删除节点幕后的事情/">
-                <span class="level-item">关于删除节点幕后的事情</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
+        <span class="title">
+          关于删除节点幕后的事情
+        </span>
+      </a>
+      
     </div>
-</div>
-
-
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
-    
+    <div class="link">
+      
+      <a href="/2018/10/13/CSS-flex布局学习/" class="link-wrap">
+        <strong class="caption">newer</strong>
         
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    
-                        <figure class="image is-128x128 has-mb-6" style="display: flex;align-items: center;justify-content: center;overflow: hidden;margin: 0 auto;width: 155px">
-                            <style>
-                                .img-is-rounded:hover{
-                                    animation: imgBounce .5s ease-in-out;
-                                    cursor: pointer;
-                                }
-                                @keyframes imgBounce {
-                                    0%{transform: scale(1, 1)}
-                                    50%{transform: scale(1.2, 0.8)}
-                                    100%{transform: scale(1, 1)}
-                                }
-                            </style>
-                            <img class="is-rounded img-is-rounded" style="border-radius: 50%;max-width: 80%;" src="/./images/avatar.jpg" alt="不会拉小提琴的左脚">
-                        </figure>
-                    
-                    
-                    <p class="is-size-4 is-block">
-                        不会拉小提琴的左脚
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        前端打字员
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>南京</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Posts
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        21
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Categories
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        0
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Tags
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        11
-                    </p>
-                </div>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/BinghuiXie" target="_blank">
-                Follow</a>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Github" href="http://i.shangc.net/article/20190114/94e666609ffb0263c5e69db8d5282082.jpg">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Twitter" href="https://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
-        </div>
-        
+        <span class="title">
+          CSS flex布局学习
+        </span>
+      </a>
+      
     </div>
-</div>
+  </nav>
+  
+</div> 
+	
+<div class="comment">
+
     
-        
-    
-        
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
-        </div>
+
+    <div id="comment">
     </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <style>
-            .card-content > a{
-                display: block;
-                font-size: 16px !important;
-            }
-        </style>
-        <h3 class="menu-label">
-            Tag Cloud
-        </h3>
-        <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Mic-theme-hexo-blog/" style="font-size: 10px;">Mic_theme hexo blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/html-css/" style="font-size: 10px;">html css</a> <a href="/tags/jQuery-mouse/" style="font-size: 10px;">jQuery mouse</a> <a href="/tags/mpvue，-小程序/" style="font-size: 10px;">mpvue， 小程序</a> <a href="/tags/server，-node/" style="font-size: 10px;">server， node</a> <a href="/tags/那些你不得不知道的前端常识/" style="font-size: 10px;">那些你不得不知道的前端常识</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
-    </div>
-</div>
 
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html css 使用小技巧（持续更新中）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-07T10:29:04.000Z">2019-08-07</time></div>
-                    <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="has-link-black-ter is-size-6">html css 使用小技巧（持续更新中）</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/05/部署vue项目到服务器上/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="部署vue项目到服务器上">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-05T14:25:07.000Z">2019-08-05</time></div>
-                    <a href="/2019/08/05/部署vue项目到服务器上/" class="has-link-black-ter is-size-6">部署vue项目到服务器上</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/06/第一次面试总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第一次面试总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T05:21:12.000Z">2019-06-06</time></div>
-                    <a href="/2019/06/06/第一次面试总结/" class="has-link-black-ter is-size-6">第一次面试总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CSS几种常见的居中方法以及他们的优缺点">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T06:51:33.000Z">2019-05-03</time></div>
-                    <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="has-link-black-ter is-size-6">CSS几种常见的居中方法以及他们的优缺点</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/28/第二次小程序项目报错总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第二次小程序项目报错总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T12:32:51.000Z">2019-04-28</time></div>
-                    <a href="/2019/04/28/第二次小程序项目报错总结/" class="has-link-black-ter is-size-6">第二次小程序项目报错总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/CSS/">
-                        <span class="tag">CSS</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JavaScript/">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Mic-theme-hexo-blog/">
-                        <span class="tag">Mic_theme hexo blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/bootstrap/">
-                        <span class="tag">bootstrap</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css/">
-                        <span class="tag">css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/html-css/">
-                        <span class="tag">html css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery-mouse/">
-                        <span class="tag">jQuery mouse</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mpvue，-小程序/">
-                        <span class="tag">mpvue， 小程序</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/server，-node/">
-                        <span class="tag">server， node</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/那些你不得不知道的前端常识/">
-                        <span class="tag">那些你不得不知道的前端常识</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/面试/">
-                        <span class="tag">面试</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
-        </div>
-    
-</div>
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
 
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html css 使用小技巧（持续更新中）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-07T10:29:04.000Z">2019-08-07</time></div>
-                    <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="has-link-black-ter is-size-6">html css 使用小技巧（持续更新中）</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/05/部署vue项目到服务器上/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="部署vue项目到服务器上">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-05T14:25:07.000Z">2019-08-05</time></div>
-                    <a href="/2019/08/05/部署vue项目到服务器上/" class="has-link-black-ter is-size-6">部署vue项目到服务器上</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/06/第一次面试总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第一次面试总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T05:21:12.000Z">2019-06-06</time></div>
-                    <a href="/2019/06/06/第一次面试总结/" class="has-link-black-ter is-size-6">第一次面试总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CSS几种常见的居中方法以及他们的优缺点">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T06:51:33.000Z">2019-05-03</time></div>
-                    <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="has-link-black-ter is-size-6">CSS几种常见的居中方法以及他们的优缺点</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/28/第二次小程序项目报错总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第二次小程序项目报错总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T12:32:51.000Z">2019-04-28</time></div>
-                    <a href="/2019/04/28/第二次小程序项目报错总结/" class="has-link-black-ter is-size-6">第二次小程序项目报错总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/CSS/">
-                        <span class="tag">CSS</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JavaScript/">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Mic-theme-hexo-blog/">
-                        <span class="tag">Mic_theme hexo blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/bootstrap/">
-                        <span class="tag">bootstrap</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css/">
-                        <span class="tag">css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/html-css/">
-                        <span class="tag">html css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery-mouse/">
-                        <span class="tag">jQuery mouse</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mpvue，-小程序/">
-                        <span class="tag">mpvue， 小程序</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/server，-node/">
-                        <span class="tag">server， node</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/那些你不得不知道的前端常识/">
-                        <span class="tag">那些你不得不知道的前端常识</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/面试/">
-                        <span class="tag">面试</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/logo.svg" alt="bootstrap学习笔记" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2019 不会拉小提琴的左脚&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/BinghuiXie/binghuixie.github.io.git">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
-        </div>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-Hans");</script>
-
-
-    
-    
-    
-    <script src="/js/animation.js"></script>
-    
-
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-    <script src="/js/gallery.js" defer></script>
-    
-
-    
-    
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
+    <script>
+        new Valine({
+            el: '#comment',
+            notify: false,
+            verify: false,
+            app_id: 'cFM0eCo0CQ9xmBXmHi1eltol-gzGzoHsz',
+            app_key: 'oh9tizsnvV2vNvWgqEvoNtQO',
+            path: window.location.pathname,
+            avatar: 'mm',
+            guest_info: ['nick', 'mail']
         });
-    });
-</script>
+    </script>
+    
+</div>	
+</article>
 
+          </div> 
+      </div>            
+    
+        <i id="toTop" class="iconfont icon-backtotop"></i>
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-    
-    
-
-<a id="back-to-top" title="Back to Top" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-    <script src="/js/clipboard.js" defer></script>
-    
-
-    
-    
-    
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
+  
+    <div class="none" id="search">
+    <div class="header">
+        <input type="text" placeholder="Typing Something here." id="search-input" class="input">
+        
+        <i id="search-cancel" class="iconfont icon-cancel"></i>
     </div>
+
+    <div id="search-result" class="result"></div>
 </div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">  
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">Home
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">Archives
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">Tags
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">About
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
+            
+         
+      
+</div>
+        
     
-</body>
+
+
+
+     
+    
+
+
+<footer class="footer">
+	<div class="inner">
+		<div class="copyright">
+			&copy;
+			
+			2019
+			不会拉小提琴的左脚
+
+			<br>
+			By <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>
+		</div>
+	</div>
+</footer>   
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
 </html>

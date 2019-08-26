@@ -1,176 +1,137 @@
 <!DOCTYPE html>
-<html  lang="zh">
-<head>
-    <meta charset="utf-8">
-<title>CSS flex布局学习 - 不会拉小提琴的左脚</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  CSS Flex布局学习 |   Lemon </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
 
 
-
-    <meta name="description" content="前言flex的出现使css的布局大大简化，例如两栏自适应等常见CSS布局通过使用flex布局能非常方便的达到，然而在网上常见的flex布局的教程中，许多属性的深层意思都没有提及，例如flex-grow与flex-shrink属性，正好这段时间我也开始在学flex布局，而且我这个人一向的习惯就是新学的东西一定要有笔记，以前用那些办公软件记笔记，结果有一次都丢了，自那以后搭建起了博客，一些笔记就都放在">
-<meta name="keywords" content="CSS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CSS flex布局学习">
-<meta property="og:url" content="http://yoursite.com/2018/10/13/CSS-flex布局学习/index.html">
-<meta property="og:site_name" content="不会拉小提琴的左脚">
-<meta property="og:description" content="前言flex的出现使css的布局大大简化，例如两栏自适应等常见CSS布局通过使用flex布局能非常方便的达到，然而在网上常见的flex布局的教程中，许多属性的深层意思都没有提及，例如flex-grow与flex-shrink属性，正好这段时间我也开始在学flex布局，而且我这个人一向的习惯就是新学的东西一定要有笔记，以前用那些办公软件记笔记，结果有一次都丢了，自那以后搭建起了博客，一些笔记就都放在">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-06T08:51:10.123Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS flex布局学习">
-<meta name="twitter:description" content="前言flex的出现使css的布局大大简化，例如两栏自适应等常见CSS布局通过使用flex布局能非常方便的达到，然而在网上常见的flex布局的教程中，许多属性的深层意思都没有提及，例如flex-grow与flex-shrink属性，正好这段时间我也开始在学flex布局，而且我这个人一向的习惯就是新学的东西一定要有笔记，以前用那些办公软件记笔记，结果有一次都丢了，自那以后搭建起了博客，一些笔记就都放在">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
-
-
-
-
-
-
-
-<link rel="icon" href="/images/favicon.svg">
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
+  <link rel="stylesheet" href="/nayo.min.css"> 
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>  
+  <body>   
     
-    
-    
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-    
+      <header class="header-wrapper">
 
-    
-    
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-    
-
-    
-    
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-
-    
-    
-    
-    
-
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-<link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-    
-    
-    
-
-    
-    
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.svg" alt="CSS flex布局学习" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">Home</a>
-                
-                <a class="navbar-item"
-                href="/archives">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories">Categories</a>
-                
-                <a class="navbar-item"
-                href="/tags">Tags</a>
-                
-                <a class="navbar-item"
-                href="/about">About</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                
-                <a class="navbar-item search" title="Search" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+  <nav class="inner">
+    <div class="title">
+      <a href="/">
+        <img class="logo" src="/images/logo.png">
+      </a>
     </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-content article ">
+
+    <ul class="menu">
+      
+      
+      <li class="item">
+        <a class="link" id="menu-home" href="/">
+          <i class="iconfont icon-home">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-archives" href="/archives">
+          <i class="iconfont icon-archives">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-tags" href="/tags">
+          <i class="iconfont icon-tags">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-about" href="/about">
+          <i class="iconfont icon-about">
+        </i></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-search">
+          <i class="iconfont icon-search">
+        </i></a>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-10-13T09:17:39.000Z">2018-10-13</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    38 minutes read (About 5688 words)
-                </span>
-                
-                
-            </div>
-        </div>
+
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                CSS flex布局学习
-            
-        </h1>
-        <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>flex的出现使css的布局大大简化，例如两栏自适应等常见CSS布局通过使用flex布局能非常方便的达到，然而在网上常见的flex布局的教程中，许多属性的深层意思都没有提及，例如<i>flex-grow</i>与<i>flex-shrink</i>属性，正好这段时间我也开始在学flex布局，而且我这个人一向的习惯就是新学的东西一定要有笔记，以前用那些办公软件记笔记，结果有一次都丢了，自那以后搭建起了博客，一些笔记就都放在了博客上面，所以今天传上来这个flex布局的笔记，希望大家看过后能有所收货。<br><a id="more"></a><br>ps：以下所有内容是我在看完<strong><a href="https://www.runoob.com/w3cnote/flex-grammar.html" target="_blank" rel="noopener">菜鸟教程</a></strong>以及<strong><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">阮一峰老师的博客</a></strong>后所写，链接给大家。</p>
+      
+    </li></ul>
+  </nav>
+</header>
+
+<header class="mobile-header-wrapper">
+  <i id="mobile-toggle" class="iconfont icon-menu mobile-toggle"></i>
+</header>   
+
+      <div class="container">       
+          
+          
+            <div class="container-inner">  
+          
+
+          <article class="post slideDownMin">
+  
+	
+<div class="header">
+		<p class="title">	
+			CSS flex布局学习
+		</p>
+		<div class="info">	
+			<time>
+				Oct 13, 2018
+			</time>
+
+			
+			
+				<i class="iconfont icon-words"></i>
+				<span class="words">9182
+				</span>
+			
+		</div>
+</div> 
+	
+
+    <script type="text/x-mathjax-config">
+        var post = document.getElementsByClassName("post")[0];  
+        MathJax.Hub.Config({
+            showProcessingMessages: false,
+            messageStyle: "none",    
+            tex2jax: {
+                inlineMath:  [ ["$", "$"] , ["\\(","\\)"]],
+                displayMath: [ ["$$","$$"] , ["\\[","\\]"]],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+            },
+            "HTML-CSS": {            
+                showMathMenu: false
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,post]);
+    </script>
+    <style>.MathJax{outline:0;}</style>
+
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.2/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+ 
+
+	  <div class="typo post-content ">
+
+		
+
+			
+					<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>flex的出现使css的布局大大简化，例如两栏自适应等常见CSS布局通过使用flex布局能非常方便的达到，然而在网上常见的flex布局的教程中，许多属性的深层意思都没有提及，例如<i>flex-grow</i>与<i>flex-shrink</i>属性，正好这段时间我也开始在学flex布局，而且我这个人一向的习惯就是新学的东西一定要有笔记，以前用那些办公软件记笔记，结果有一次都丢了，自那以后搭建起了博客，一些笔记就都放在了博客上面，所以今天传上来这个flex布局的笔记，希望大家看过后能有所收货。<br><a id="more"></a><br>ps：以下所有内容是我在看完<strong><a href="https://www.runoob.com/w3cnote/flex-grammar.html" target="_blank" rel="noopener">菜鸟教程</a></strong>以及<strong><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">阮一峰老师的博客</a></strong>后所写，链接给大家。</p>
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>1.<a href="#link1">什么是flex布局</a><br>2.<a href="#link2">flex布局中一些相关的概念</a><br>3.<a href="#link3">指定flex布局</a><br>4.<a href="#link4">容器属性：flex-direction</a><br>5.<a href="#link5">容器属性：flex-wrap</a><br>6.<a href="#link6">容器属性：flex-flow</a><br>7.<a href="#link7">容器属性：justify-content</a><br>8.<a href="#link8">容器属性：align-items</a><br>9.<a href="#link9">容器属性：align-content</a><br>10.<a href="#link10">项目属性：order</a><br>11.<a href="#link10">项目属性：flex-grow</a><br>12.<a href="#link10">项目属性：flex-shrink</a><br>13.<a href="#link10">项目属性：flex-basis</a><br>14.<a href="#link10">项目属性：flex</a><br>15.<a href="#link10">项目属性：align-self</a><br>内容比较多，我自己一次也写不完，慢慢来吧~</p>
 <p><a name="link1"></a></p>
 <h2 id="1-什么是flex布局"><a href="#1-什么是flex布局" class="headerlink" title="1.什么是flex布局"></a>1.什么是flex布局</h2><p>我们都知道，CSS的布局是一个难点，先不说flex，常见的CSS布局比如说有两栏自适应，两翼齐飞布局什么的，其实说白了只要涉及到元素的位置的安排，都算是布局，那在flex之前我们常用的手段有float，position，table等，但是这些属性本身不是为布局而生的，就比如说float，它本质就是实现一个文字环绕效果，但是用这些属性吧，你要是理解的不够深入，还会出现各种各样的坑，比如说一会脱离文档流啦（float，position的absolute和fixed），position的定位原点什么的，会导致网页布局乱七八糟。<br>那么flex布局，flex是flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。目前，flex布局已经得到所有浏览器的支持，这意味着，现在可以放心的使用这项技术<br><img src="https://i.imgur.com/fCVIH8a.jpg" alt=""><br><a name="link2"></a></p>
@@ -184,21 +145,21 @@
     display:inline-flex;
 }
 </code></pre><p>注意一个问题，容器设置为flex布局以后，其子元素的float，clear以及vertical-align都会失效<br><a name="link4"></a></p>
-<h2 id="4-容器属性：flex-direction"><a href="#4-容器属性：flex-direction" class="headerlink" title="4.容器属性：flex-direction"></a>4.容器属性：flex-direction</h2><p><strong>注：从下面开始，凡是标注了“容器属性”后面的所有属性都是设置在容器也就是父元素身上的。标注了“项目属性”的所有属性都是设置在子元素上面的</strong><br>flex-direction决定主轴（水平）的方向（即<strong>项目(子元素)</strong>的排列方向）<br>flex-direction有四种取值<br><strong>(1)row（默认值）：主轴在水平方向，起点在左端</strong><br><strong>(2)row-reverse：主轴在水平方向，起点在右端</strong><br><strong>(3)column：主轴在垂直方向，起点在上端</strong><br><strong>(4)column-reverse：主轴在垂直方向，起点在下端</strong><br><img src="https://i.imgur.com/zdaTK7Y.jpg" alt=""><br>从例子中能更好的学习理解，所以我做了下面的demo<br>效果如下：<br><img src="https://i.imgur.com/xSnBp0U.jpg" alt=""><br><img src="https://i.imgur.com/MFpXFVo.jpg" alt=""><br><img src="https://i.imgur.com/Qw1Kb4b.jpg" alt=""><br><img src="https://i.imgur.com/2iNEUdj.jpg" alt=""><br><a name="link5"></a></p>
-<h2 id="5-容器属性：flex-wrap"><a href="#5-容器属性：flex-wrap" class="headerlink" title="5.容器属性：flex-wrap"></a>5.容器属性：flex-wrap</h2><p>默认情况下，项目都排在一条线（又称”轴线”）上。<i>flex-wrap</i>属性定义，如果一条轴线排不下，如何换行。<br>分情况讨论，当flex-direction的值为row时，如果不设置flex-wrap属性，即取默认值的时候，所有项目会默认从左到右排列在一行，如果所有项目的宽度加起来超过父容器的宽度，则会压缩项目的宽度。如图所示<br><img src="https://i.imgur.com/fE3q6Fi.jpg" alt=""><br>在代码中我默认设置了每一个项目的宽度都是150px，然而可以发现，12个150px加起来12×150=1800px已经超过了父容器的宽度，然而此时并没有换行，而是压缩了子元素的宽度，使其不足150px<br><img src="https://i.imgur.com/mTBY0oV.jpg" alt=""><br>设置flex-wrap:wrap时，在父容器放不下所有项目时，会换到下一行排列，多余的不足一个项目宽度的地方会空出来，不会填满<br><img src="https://i.imgur.com/DN9xRM4.jpg" alt=""><br>设置flex-wrap:wrap-reverse的时候，会从最下面开始排列，排列不下了在往上一行放，以此类推<br><img src="https://i.imgur.com/c5zf2uB.jpg" alt=""><br>当flex-direction的值设置为column时，如果flex-wrap取默认值也就是no-wrap，则会按顺序以一列的形式从上到下排列，如果flex-wrap设置了wrap，则会现在一列里面排列，如果高度超出父容器的高度，则会换到第二列，以此类推，直到排列完（不会被父容器宽度所限制）<br>例如：</p>
-<h2 id="flex-direcrtion-column-flex-wrap-wrap"><a href="#flex-direcrtion-column-flex-wrap-wrap" class="headerlink" title="flex-direcrtion:column,flex-wrap:wrap"></a>flex-direcrtion:column,flex-wrap:wrap</h2><p><img src="https://i.imgur.com/f6MopMx.jpg" alt=""></p>
-<h2 id="flex-direcrtion-column-flex-wrap-wrap-reverse"><a href="#flex-direcrtion-column-flex-wrap-wrap-reverse" class="headerlink" title="flex-direcrtion:column,flex-wrap:wrap-reverse"></a>flex-direcrtion:column,flex-wrap:wrap-reverse</h2><p><img src="https://i.imgur.com/SZBaIr3.jpg" alt=""><br>其余flex-direction的值与此相似<br><a name="link6"></a></p>
+<h2 id="4-容器属性：flex-direction"><a href="#4-容器属性：flex-direction" class="headerlink" title="4.容器属性：flex-direction"></a>4.容器属性：flex-direction</h2><p><strong>注：从下面开始，凡是标注了“容器属性”后面的所有属性都是设置在容器也就是父元素身上的。标注了“项目属性”的所有属性都是设置在子元素上面的</strong><br>flex-direction决定主轴（水平）的方向（即<strong>项目(子元素)</strong>的排列方向）<br>flex-direction有四种取值<br><strong>(1)row（默认值）：主轴在水平方向，起点在左端</strong><br><strong>(2)row-reverse：主轴在水平方向，起点在右端</strong><br><strong>(3)column：主轴在垂直方向，起点在上端</strong><br><strong>(4)column-reverse：主轴在垂直方向，起点在下端</strong><br><img src="https://i.imgur.com/zdaTK7Y.jpg" alt=""><br>从例子中能更好的学习理解，所以我做了下面的demo<br>效果如下：<br><img src="https://i.imgur.com/xSnBp0U.jpg" alt=""><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/MFpXFVo.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/Qw1Kb4b.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/2iNEUdj.jpg" class="lazyload"><br><a name="link5"></a></p>
+<h2 id="5-容器属性：flex-wrap"><a href="#5-容器属性：flex-wrap" class="headerlink" title="5.容器属性：flex-wrap"></a>5.容器属性：flex-wrap</h2><p>默认情况下，项目都排在一条线（又称”轴线”）上。<i>flex-wrap</i>属性定义，如果一条轴线排不下，如何换行。<br>分情况讨论，当flex-direction的值为row时，如果不设置flex-wrap属性，即取默认值的时候，所有项目会默认从左到右排列在一行，如果所有项目的宽度加起来超过父容器的宽度，则会压缩项目的宽度。如图所示<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/fE3q6Fi.jpg" class="lazyload"><br>在代码中我默认设置了每一个项目的宽度都是150px，然而可以发现，12个150px加起来12×150=1800px已经超过了父容器的宽度，然而此时并没有换行，而是压缩了子元素的宽度，使其不足150px<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/mTBY0oV.jpg" class="lazyload"><br>设置flex-wrap:wrap时，在父容器放不下所有项目时，会换到下一行排列，多余的不足一个项目宽度的地方会空出来，不会填满<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/DN9xRM4.jpg" class="lazyload"><br>设置flex-wrap:wrap-reverse的时候，会从最下面开始排列，排列不下了在往上一行放，以此类推<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/c5zf2uB.jpg" class="lazyload"><br>当flex-direction的值设置为column时，如果flex-wrap取默认值也就是no-wrap，则会按顺序以一列的形式从上到下排列，如果flex-wrap设置了wrap，则会现在一列里面排列，如果高度超出父容器的高度，则会换到第二列，以此类推，直到排列完（不会被父容器宽度所限制）<br>例如：</p>
+<h2 id="flex-direcrtion-column-flex-wrap-wrap"><a href="#flex-direcrtion-column-flex-wrap-wrap" class="headerlink" title="flex-direcrtion:column,flex-wrap:wrap"></a>flex-direcrtion:column,flex-wrap:wrap</h2><p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/f6MopMx.jpg" class="lazyload"></p>
+<h2 id="flex-direcrtion-column-flex-wrap-wrap-reverse"><a href="#flex-direcrtion-column-flex-wrap-wrap-reverse" class="headerlink" title="flex-direcrtion:column,flex-wrap:wrap-reverse"></a>flex-direcrtion:column,flex-wrap:wrap-reverse</h2><p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/SZBaIr3.jpg" class="lazyload"><br>其余flex-direction的值与此相似<br><a name="link6"></a></p>
 <h2 id="6-容器属性：flex-flow"><a href="#6-容器属性：flex-flow" class="headerlink" title="6.容器属性：flex-flow"></a>6.容器属性：flex-flow</h2><p>flex-flow是flex-direction属性和flex-wrap属性的简写，格式如下：<br>flex-flow: <flex-direction>||<flex-wrap><br>具体内容见上面，这里不详细介绍<br><a name="link7"></a></flex-wrap></flex-direction></p>
-<h2 id="7-容器属性：justify-content"><a href="#7-容器属性：justify-content" class="headerlink" title="7.容器属性：justify-content"></a>7.容器属性：justify-content</h2><p>justify-content属性定义了项目在主轴上的对齐方式。<br>justify-content有六种取值<br><strong>(1)justify-content:flex-start(左对齐)</strong><br><img src="https://i.imgur.com/1haOOyP.jpg" alt=""><br><strong>(2)justify-content:flex-end(右对齐)</strong><br><img src="https://i.imgur.com/5dMzn4E.jpg" alt=""><br><strong>(3)justify-content:center(水平居中)</strong><br><img src="https://i.imgur.com/JU4latF.jpg" alt=""><br><strong>(4)justify-content:space-around（每个项目两侧的间隔相等，这样项目之间的间隔比项目与边框的间隔大一倍)</strong><br><img src="https://i.imgur.com/ahKWx7w.jpg" alt=""><br><strong>(5)justify-content:space-between(两端对齐)</strong><br><img src="https://i.imgur.com/dHcH9hA.jpg" alt=""><br><strong>(6)justify-content:space-evenly（项目与项目，项目与边界的间隔都相等 ）</strong><br><img src="https://i.imgur.com/Yz2LN7Z.jpg" alt=""><br><strong>注：以上所有排列都是在父容器设置了flex-direction:row的前提下，其余的自己可以动手试一下</strong><br><a name="link8"></a></p>
-<h2 id="8-容器属性：align-items"><a href="#8-容器属性：align-items" class="headerlink" title="8.容器属性：align-items"></a>8.容器属性：align-items</h2><p>align-items属性定义项目在交叉轴（竖直方向）上如何对齐。<br>align-items有5种取值<br><strong>(1)align-items:flex-start</strong><br>align-items:flex-start定义项目从交叉轴的起点开始对齐<br><img src="https://i.imgur.com/hf5Pmhd.jpg" alt=""><br><strong>(2)align-items:flex-end</strong><br>align-items:flex-end定义项目从交叉轴的末端开始对齐<br><img src="https://i.imgur.com/3cBWEvY.jpg" alt=""><br><strong>(3)align-items:center</strong><br>align-items:center定义从交叉线的中点开始对齐（垂直居中）<br><img src="https://i.imgur.com/dH8QdZG.jpg" alt=""><br><strong>(4)align-items:baseline</strong><br>align-items:baseline定义从<strong>第一行文字</strong>的基线开始对齐<br><img src="https://i.imgur.com/IlZksI0.jpg" alt=""><br><strong>(5)align-items:stretch</strong><br>align-items:stretch定义：如果项目未设置高度或设为auto，将占满整个容器的高度<br><img src="https://i.imgur.com/8OA95RI.jpg" alt=""><br><a name="link9"></a></p>
-<h2 id="9-容器属性：align-content"><a href="#9-容器属性：align-content" class="headerlink" title="9.容器属性：align-content"></a>9.容器属性：align-content</h2><p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。<br>那怎么样才能有多个轴线呢？其实，只需要让项目换行显示就可以，所以我们需要设置flex-direction属性的值为wrap或者wrap-reverse（例子中使用的是wrap），也就是当所有项目一行放不下的时候，项目会换行显示，这样子就会有多个轴线了。<br>该属性有7个取值<br><strong>(1)align-content:flex-start</strong><br>align-content:flex-start定义项目与交叉轴的起点对齐<br><img src="https://i.imgur.com/gvqpe0F.jpg" alt=""><br><strong>(2)align-content:flex-end</strong><br>align-content:flex-end定义项目与交叉轴的终点对齐<br><img src="https://i.imgur.com/SCqMEQD.jpg" alt=""><br><strong>(3)align-content:center</strong><br>align-content:center定义项目与交叉轴的中点对齐<br><img src="https://i.imgur.com/FrSVpTl.jpg" alt=""><br><strong>(4)align-content:space-between</strong><br>align-content:space-between定义项目与交叉轴两端对齐，轴线之间的间隔平均分布。<br><img src="https://i.imgur.com/lEjdiTP.jpg" alt=""><br><strong>(5)align-content:space-around</strong><br>align-content:space-around定义项目之间每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。<br><img src="https://i.imgur.com/elF28M3.jpg" alt=""><br><strong>(6)align-content:space-evenly</strong><br>align-content:space-evenly定义所有间距都相等<br><img src="https://i.imgur.com/oep0day.jpg" alt=""><br><strong>(7)align-content:stretch</strong><br>align-content:stretch定义轴线占满整个交叉轴，项目不设置高度或者高度为auto<br><img src="https://i.imgur.com/oxsHNf3.jpg" alt=""><br><a name="link10"></a></p>
-<h2 id="10-项目属性：order"><a href="#10-项目属性：order" class="headerlink" title="10.项目属性：order"></a>10.项目属性：order</h2><p><strong>注：以下所有属性都是设置在子元素上面的</strong><br>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。<br><img src="https://i.imgur.com/QFnwzMx.jpg" alt=""><br><a name="link11"></a></p>
-<h2 id="11-项目属性：flex-grow"><a href="#11-项目属性：flex-grow" class="headerlink" title="11.项目属性：flex-grow"></a>11.项目属性：flex-grow</h2><p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大<br>关于这个属性以及下面的flex-shrink属性，在菜鸟教程和阮一峰老师的博客中并没有详细的对此进行解释，只是有上面的一句话，所以我把我自己的理解以及计算方式整理在下面，以供参考<br>首先，<i>flex-grow</i>属性决定了在所有项目的排列方向上还有剩余的空间时，如何分配这些<strong>剩余的</strong>空间，其值为一个权重，默认是0，也就是不扩张，父元素剩余的空间会按照这个权重来进行分配。<br>先来看一个demo<br><img src="https://i.imgur.com/jA6qnzR.jpg" alt=""><br>父容器的宽度设置为1000px，5个项目（子元素）的宽高均为40px。现在是我们没有设置flex-grow熟悉的时候，也就是该属性的值默认为0的时候，此时所有项目默认不扩张，按照自身的宽高进行排列，可以看出，父元素上还有如下几个属性，使项目能垂直居中排列</p>
+<h2 id="7-容器属性：justify-content"><a href="#7-容器属性：justify-content" class="headerlink" title="7.容器属性：justify-content"></a>7.容器属性：justify-content</h2><p>justify-content属性定义了项目在主轴上的对齐方式。<br>justify-content有六种取值<br><strong>(1)justify-content:flex-start(左对齐)</strong><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/1haOOyP.jpg" class="lazyload"><br><strong>(2)justify-content:flex-end(右对齐)</strong><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/5dMzn4E.jpg" class="lazyload"><br><strong>(3)justify-content:center(水平居中)</strong><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/JU4latF.jpg" class="lazyload"><br><strong>(4)justify-content:space-around（每个项目两侧的间隔相等，这样项目之间的间隔比项目与边框的间隔大一倍)</strong><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/ahKWx7w.jpg" class="lazyload"><br><strong>(5)justify-content:space-between(两端对齐)</strong><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/dHcH9hA.jpg" class="lazyload"><br><strong>(6)justify-content:space-evenly（项目与项目，项目与边界的间隔都相等 ）</strong><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/Yz2LN7Z.jpg" class="lazyload"><br><strong>注：以上所有排列都是在父容器设置了flex-direction:row的前提下，其余的自己可以动手试一下</strong><br><a name="link8"></a></p>
+<h2 id="8-容器属性：align-items"><a href="#8-容器属性：align-items" class="headerlink" title="8.容器属性：align-items"></a>8.容器属性：align-items</h2><p>align-items属性定义项目在交叉轴（竖直方向）上如何对齐。<br>align-items有5种取值<br><strong>(1)align-items:flex-start</strong><br>align-items:flex-start定义项目从交叉轴的起点开始对齐<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/hf5Pmhd.jpg" class="lazyload"><br><strong>(2)align-items:flex-end</strong><br>align-items:flex-end定义项目从交叉轴的末端开始对齐<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/3cBWEvY.jpg" class="lazyload"><br><strong>(3)align-items:center</strong><br>align-items:center定义从交叉线的中点开始对齐（垂直居中）<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/dH8QdZG.jpg" class="lazyload"><br><strong>(4)align-items:baseline</strong><br>align-items:baseline定义从<strong>第一行文字</strong>的基线开始对齐<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/IlZksI0.jpg" class="lazyload"><br><strong>(5)align-items:stretch</strong><br>align-items:stretch定义：如果项目未设置高度或设为auto，将占满整个容器的高度<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/8OA95RI.jpg" class="lazyload"><br><a name="link9"></a></p>
+<h2 id="9-容器属性：align-content"><a href="#9-容器属性：align-content" class="headerlink" title="9.容器属性：align-content"></a>9.容器属性：align-content</h2><p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。<br>那怎么样才能有多个轴线呢？其实，只需要让项目换行显示就可以，所以我们需要设置flex-direction属性的值为wrap或者wrap-reverse（例子中使用的是wrap），也就是当所有项目一行放不下的时候，项目会换行显示，这样子就会有多个轴线了。<br>该属性有7个取值<br><strong>(1)align-content:flex-start</strong><br>align-content:flex-start定义项目与交叉轴的起点对齐<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/gvqpe0F.jpg" class="lazyload"><br><strong>(2)align-content:flex-end</strong><br>align-content:flex-end定义项目与交叉轴的终点对齐<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/SCqMEQD.jpg" class="lazyload"><br><strong>(3)align-content:center</strong><br>align-content:center定义项目与交叉轴的中点对齐<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/FrSVpTl.jpg" class="lazyload"><br><strong>(4)align-content:space-between</strong><br>align-content:space-between定义项目与交叉轴两端对齐，轴线之间的间隔平均分布。<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/lEjdiTP.jpg" class="lazyload"><br><strong>(5)align-content:space-around</strong><br>align-content:space-around定义项目之间每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/elF28M3.jpg" class="lazyload"><br><strong>(6)align-content:space-evenly</strong><br>align-content:space-evenly定义所有间距都相等<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/oep0day.jpg" class="lazyload"><br><strong>(7)align-content:stretch</strong><br>align-content:stretch定义轴线占满整个交叉轴，项目不设置高度或者高度为auto<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/oxsHNf3.jpg" class="lazyload"><br><a name="link10"></a></p>
+<h2 id="10-项目属性：order"><a href="#10-项目属性：order" class="headerlink" title="10.项目属性：order"></a>10.项目属性：order</h2><p><strong>注：以下所有属性都是设置在子元素上面的</strong><br>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/QFnwzMx.jpg" class="lazyload"><br><a name="link11"></a></p>
+<h2 id="11-项目属性：flex-grow"><a href="#11-项目属性：flex-grow" class="headerlink" title="11.项目属性：flex-grow"></a>11.项目属性：flex-grow</h2><p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大<br>关于这个属性以及下面的flex-shrink属性，在菜鸟教程和阮一峰老师的博客中并没有详细的对此进行解释，只是有上面的一句话，所以我把我自己的理解以及计算方式整理在下面，以供参考<br>首先，<i>flex-grow</i>属性决定了在所有项目的排列方向上还有剩余的空间时，如何分配这些<strong>剩余的</strong>空间，其值为一个权重，默认是0，也就是不扩张，父元素剩余的空间会按照这个权重来进行分配。<br>先来看一个demo<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/jA6qnzR.jpg" class="lazyload"><br>父容器的宽度设置为1000px，5个项目（子元素）的宽高均为40px。现在是我们没有设置flex-grow熟悉的时候，也就是该属性的值默认为0的时候，此时所有项目默认不扩张，按照自身的宽高进行排列，可以看出，父元素上还有如下几个属性，使项目能垂直居中排列</p>
 <pre><code>    display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-</code></pre><p>我们现在给标号为1的项目加上属性<i>flex-grow:1</i>，先看看是什么效果<br><img src="https://i.imgur.com/4ny8LPl.jpg" alt=""><br>可以看出，标号为1的项目占满了剩下的所有宽度，把其余几个项目都挤到了右边<br>再来看几个例子<br><strong>①</strong>给标号为1的项目设置<i>flex-grow:1</i>，给标号为2的项目设置<i>flex-grow:2</i><br><img src="https://i.imgur.com/mLLDYt3.jpg" alt=""><br>可以看出，2项目的宽度<strong>接近</strong>1项目宽度的两倍，父元素排列方向上的宽度被占满<br><strong>②</strong>给5个项目的<i>flex-grow</i>属性分别设置为1到5</p>
+</code></pre><p>我们现在给标号为1的项目加上属性<i>flex-grow:1</i>，先看看是什么效果<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/4ny8LPl.jpg" class="lazyload"><br>可以看出，标号为1的项目占满了剩下的所有宽度，把其余几个项目都挤到了右边<br>再来看几个例子<br><strong>①</strong>给标号为1的项目设置<i>flex-grow:1</i>，给标号为2的项目设置<i>flex-grow:2</i><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/mLLDYt3.jpg" class="lazyload"><br>可以看出，2项目的宽度<strong>接近</strong>1项目宽度的两倍，父元素排列方向上的宽度被占满<br><strong>②</strong>给5个项目的<i>flex-grow</i>属性分别设置为1到5</p>
 <pre><code>    .items1{
         flex-grow: 1;
     }
@@ -214,7 +175,7 @@
     .items5{
         flex-grow: 5;
     }
-</code></pre><p><img src="https://i.imgur.com/QUdy4RC.jpg" alt=""><br>可以看出，5个项目的宽度相对于第一个项目的宽度依次扩大了其序号所对应的倍数<br>上面两个例子对应的所有项目的<i>flex-grow</i>属性之和都大于1，我们来看一个不大于1的例子<br><strong>③</strong>所有项目的<i>flex-grow</i>属性对应的值之和小于1</p>
+</code></pre><p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/QUdy4RC.jpg" class="lazyload"><br>可以看出，5个项目的宽度相对于第一个项目的宽度依次扩大了其序号所对应的倍数<br>上面两个例子对应的所有项目的<i>flex-grow</i>属性之和都大于1，我们来看一个不大于1的例子<br><strong>③</strong>所有项目的<i>flex-grow</i>属性对应的值之和小于1</p>
 <pre><code>    .items1{
         flex-grow: 0.1;
     }
@@ -230,7 +191,7 @@
     .items5{
         flex-grow: .15;
     }
-</code></pre><p><img src="https://i.imgur.com/m8xDqUV.jpg" alt=""><br>可以看出，扩大后他们并没有占满父元素所有的剩余空间</p>
+</code></pre><p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/m8xDqUV.jpg" class="lazyload"><br>可以看出，扩大后他们并没有占满父元素所有的剩余空间</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从上面的例子中，我们可以看出，<i>flex-grow</i>属性之和大于1和小于1显示的效果是不一样的，那么我们分开来讨论一下他的计算方式<br><strong>Ⅰ.</strong>当<i>flex-grow</i>属性之和大于1时，五个项目的宽度都是40px，那么剩余空间为1000-5*40 = 800px。<br>五个项目的<i>flex-grow</i>属性为1,2,3,4,5，合起来是<i>sum</i> = 15，所以5个项目分配到的多余的空间为</p>
 <ul>
 <li>800 * 1 / 15 = 53.3333333px</li>
@@ -239,7 +200,7 @@
 <li>800 * 4 / 15 = 213.333333px</li>
 <li>800 * 5 / 15 = 266.666667px</li>
 </ul>
-<p><strong>那么这5个项目最终扩张以后的宽度为93.33333333px，146.6666667px，200px，253.333333px，306.6666667px（在40px的基础上加上扩展的宽度）</strong><br>看一下项目的宽度<br><img src="https://i.imgur.com/9zCf1ii.jpg" alt=""><br><img src="https://i.imgur.com/GFW0f7v.jpg" alt=""><br><img src="https://i.imgur.com/TrrMk84.jpg" alt=""><br><img src="https://i.imgur.com/LDZfJdn.jpg" alt=""><br><img src="https://i.imgur.com/MQdICKO.jpg" alt=""><br>和我们计算的所差无几，说明这样算是正确的<br><strong>我们还可以发现一点，<i>flex-grow</i>属性值为2的项目最终的宽度并不是<i>flex-grow</i>属性值为1的项目的最终宽度的2倍，而是扩展的（变化的）宽度为2倍！！！！！！</strong><br><strong>Ⅱ.</strong>当<i>flex-grow</i>属性之和小于1时，五个项目的宽度都是40px，同样剩余空间为1000-5*40 = 800px。<br>五个项目的<i>flex-grow</i>属性值为0.1，0.05,0.2，0.15,0.3，合起来是<i>sum</i> = 0.8 &lt; 1。同样，剩余800px的空间<br>当所有元素的<i>flex-grow</i>属性之和小于1的时候，上面式子中的<i>sum</i>将会使用 1 来参与计算，而不论它们的和是多少，也就是说，这个 0.8 没有什么作用，此时的<i>sum</i>默认按照 1 来计算。<br>那么五个项目扩展的宽度为</p>
+<p><strong>那么这5个项目最终扩张以后的宽度为93.33333333px，146.6666667px，200px，253.333333px，306.6666667px（在40px的基础上加上扩展的宽度）</strong><br>看一下项目的宽度<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/9zCf1ii.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/GFW0f7v.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/TrrMk84.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/LDZfJdn.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/MQdICKO.jpg" class="lazyload"><br>和我们计算的所差无几，说明这样算是正确的<br><strong>我们还可以发现一点，<i>flex-grow</i>属性值为2的项目最终的宽度并不是<i>flex-grow</i>属性值为1的项目的最终宽度的2倍，而是扩展的（变化的）宽度为2倍！！！！！！</strong><br><strong>Ⅱ.</strong>当<i>flex-grow</i>属性之和小于1时，五个项目的宽度都是40px，同样剩余空间为1000-5*40 = 800px。<br>五个项目的<i>flex-grow</i>属性值为0.1，0.05,0.2，0.15,0.3，合起来是<i>sum</i> = 0.8 &lt; 1。同样，剩余800px的空间<br>当所有元素的<i>flex-grow</i>属性之和小于1的时候，上面式子中的<i>sum</i>将会使用 1 来参与计算，而不论它们的和是多少，也就是说，这个 0.8 没有什么作用，此时的<i>sum</i>默认按照 1 来计算。<br>那么五个项目扩展的宽度为</p>
 <ul>
 <li>800 * 0.1 / 1 = 80px</li>
 <li>800 * 0.05 / 1 = 40px</li>
@@ -247,7 +208,7 @@
 <li>800 * 0.15 / 1 = 120px</li>
 <li>800 * 0.3 / 1 = 240px</li>
 </ul>
-<p>所以最终 5 个项目的宽度分别为 120px，80px，200px，160px，280px<br>可以发现，800px - 80px - 40px - 160px - 120px - 240px = 160px，也就是说，还剩下160px的宽度没有被占满<br>同样我们可以在浏览器里面查看各个项目的宽度<br><img src="https://i.imgur.com/NoyJvDd.jpg" alt=""><br><img src="https://i.imgur.com/o8HL4Xo.jpg" alt=""><br><img src="https://i.imgur.com/pkhTsCk.jpg" alt=""><br><img src="https://i.imgur.com/XvxyJ55.jpg" alt=""><br><img src="https://i.imgur.com/JcAvuxU.jpg" alt=""><br>与我们计算的一毛一样，完美~<br><a name="link12"></a></p>
+<p>所以最终 5 个项目的宽度分别为 120px，80px，200px，160px，280px<br>可以发现，800px - 80px - 40px - 160px - 120px - 240px = 160px，也就是说，还剩下160px的宽度没有被占满<br>同样我们可以在浏览器里面查看各个项目的宽度<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/NoyJvDd.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/o8HL4Xo.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/pkhTsCk.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/XvxyJ55.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/JcAvuxU.jpg" class="lazyload"><br>与我们计算的一毛一样，完美~<br><a name="link12"></a></p>
 <h2 id="12-项目属性：flex-shrink"><a href="#12-项目属性：flex-shrink" class="headerlink" title="12.项目属性：flex-shrink"></a>12.项目属性：flex-shrink</h2><p>上面的<i>flex-grow</i>属性会在父元素有多余的空间的使用通过子元素的扩张来占满这些剩余空间，那么同样就会有在父容器空间不够时将子元素收缩以来适应父元素的空间的属性了，也就是<i>flex-shrink</i>属性<br><i>flex-shrink</i>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。<br>那么就像上面<i>flex-grow</i>属性一样，<i>flex-shrink</i>属性也有自己的计算方式，以此来计算子元素该如何收缩。<br>同样，我们先来看<i>flex-grow</i>属性值适合大于1的情况<br><strong>①</strong><i>flex-grow</i>属性值之和大于1<br>我们设父容器的宽度为1000px，5个项目的宽度均为300px，这样多出来的宽度就是300 <em> 5 - 1000 = 500px,5个项目<i>flex-shrink</i>属性的值依次为1,2,3,4,5。<br>那么这多出的500px将会由5个项目分别收缩一定的比例来消化。<br>项目收缩的计算公式：超出的总宽度 </em> 收缩因子 / 收缩权重 <em> 项目宽度<br>收缩因子即为<i>flex-shrink</i>属性的值<br>收缩权重的计算公式：项目宽度 </em> 对应的收缩因子<br>所以本例中的权重为：300 <em> 1 + 300 </em> 2 + 300 <em> 3 + 300 </em> 4 + 300 * 5 = 4500px<br>所以我们计算每个项目的收缩量如下：</p>
 <ul>
 <li>500 <em> 1 / 4500 </em> 300 = 33.3333333px</li>
@@ -256,7 +217,7 @@
 <li>500 <em> 4 / 4500 </em> 300 = 133.333333px</li>
 <li>500 <em> 5 / 4500 </em> 300 = 166.666667px</li>
 </ul>
-<p>收缩后每个项目的宽度为 266.66667px，233.33333px，200px，166.666667px，133.333333px<br>我们看一下浏览器显示的宽度以验证我们的结果<br><img src="https://i.imgur.com/Mcovpx5.jpg" alt=""><br><img src="https://i.imgur.com/wK0eZxg.jpg" alt=""><br><img src="https://i.imgur.com/57XIhcI.jpg" alt=""><br><img src="https://i.imgur.com/VmAHZSd.jpg" alt=""><br><img src="https://i.imgur.com/dfs3EF7.jpg" alt=""><br><strong>②</strong><i>flex-grow</i>属性值之和小于1<br>当<i>flex-grow</i>属性值之和小于1时，并不会完美的收缩到正好占满所有的空间而没有溢出，就像<i>flex-grow</i>属性的所有值之和小于1一样，也会按照和<i>sum</i>为1来进行收缩<br>现在设<i>flex-grow</i>属性值分别为0.05,0.1,0.15,0.2,0.25,<br>权重为：300 <em> (0.05 + 0.1 + 0.15 + 0.2 + 0.25) = 225px<br>那么 5 个项目收缩的总和是(0.05 + 0.1 + 0.15 + 0.2 + 0.25) </em> 500px 也就是375px，也就是说，最终收缩完，项目综合还是会超出父容器125px的宽度<br>每个项目收缩的空间为</p>
+<p>收缩后每个项目的宽度为 266.66667px，233.33333px，200px，166.666667px，133.333333px<br>我们看一下浏览器显示的宽度以验证我们的结果<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/Mcovpx5.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/wK0eZxg.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/57XIhcI.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/VmAHZSd.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/dfs3EF7.jpg" class="lazyload"><br><strong>②</strong><i>flex-grow</i>属性值之和小于1<br>当<i>flex-grow</i>属性值之和小于1时，并不会完美的收缩到正好占满所有的空间而没有溢出，就像<i>flex-grow</i>属性的所有值之和小于1一样，也会按照和<i>sum</i>为1来进行收缩<br>现在设<i>flex-grow</i>属性值分别为0.05,0.1,0.15,0.2,0.25,<br>权重为：300 <em> (0.05 + 0.1 + 0.15 + 0.2 + 0.25) = 225px<br>那么 5 个项目收缩的总和是(0.05 + 0.1 + 0.15 + 0.2 + 0.25) </em> 500px 也就是375px，也就是说，最终收缩完，项目综合还是会超出父容器125px的宽度<br>每个项目收缩的空间为</p>
 <ul>
 <li>300 <em> 0.05 </em> 375 / 225 = 25px</li>
 <li>300 <em> 0.1 </em> 375 / 225 = 50px</li>
@@ -264,7 +225,7 @@
 <li>300 <em> 0.2 </em> 375 / 225 = 100px</li>
 <li>300 <em> 0.25 </em> 375 / 225 = 125px</li>
 </ul>
-<p>所以收缩后的每个项目的宽度为 275px，250px，225px，200px，175px<br>收缩后的宽度之和为：275 + 250 + 225 + 200 + 175 = 1125px，正好多出125px。<br>浏览器里面显示如下：<br><img src="https://i.imgur.com/Yy4b3c0.jpg" alt=""><br><img src="https://i.imgur.com/bTEP3t9.jpg" alt=""><br><img src="https://i.imgur.com/csxVTK4.jpg" alt=""><br><img src="https://i.imgur.com/B2dWCxi.jpg" alt=""><br><img src="https://i.imgur.com/Ofi329B.jpg" alt=""><br>可以看出，最终所有项目的和的宽度还是超过父元素的宽度的<br><a name="link13"></a></p>
+<p>所以收缩后的每个项目的宽度为 275px，250px，225px，200px，175px<br>收缩后的宽度之和为：275 + 250 + 225 + 200 + 175 = 1125px，正好多出125px。<br>浏览器里面显示如下：<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/Yy4b3c0.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/bTEP3t9.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/csxVTK4.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/B2dWCxi.jpg" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/Ofi329B.jpg" class="lazyload"><br>可以看出，最终所有项目的和的宽度还是超过父元素的宽度的<br><a name="link13"></a></p>
 <h2 id="13-项目属性：flex-basis"><a href="#13-项目属性：flex-basis" class="headerlink" title="13.项目属性：flex-basis"></a>13.项目属性：flex-basis</h2><p><i>flex-basis</i>属性用于设置或检索弹性盒伸缩基准值。<br>什么意思，就是说<i>flex-basis</i>属性用于设置项目的基准宽度（width），与<i>width</i>属性有异曲同工之妙，但是与<i>width</i>属性又有很大不同。<br>我们都知道，如果没有给一个容器设置宽度的话，那么容器的宽度就是内容（content）的宽度，而<i>flex-basis</i>属性设置后的宽度会覆盖<i>width</i>属性所设置的宽度，也就是说，三者的优先级是这样的</p>
 <blockquote>
 <p><strong>content &lt; width &lt; flex-basis</strong></p>
@@ -288,7 +249,7 @@
         flex-direction: row;
         flex-wrap: nowrap;
     }
-</code></pre><p>给容器下面的每一个项目都设置宽度(width)为100px，<i>flex-basis</i>的值为150px，然后查看浏览器<br><img src="https://i.imgur.com/uTSg2ha.jpg" alt=""><br>宽度为150px，<strong>①说明<i>flex-basis</i>属性会覆盖<i>width</i>属性的取值</strong><br><i>flex-basis</i>属性也会被<i>max-width</i>属性与<i>min-width</i>属性所限制，我们看例子</p>
+</code></pre><p>给容器下面的每一个项目都设置宽度(width)为100px，<i>flex-basis</i>的值为150px，然后查看浏览器<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/uTSg2ha.jpg" class="lazyload"><br>宽度为150px，<strong>①说明<i>flex-basis</i>属性会覆盖<i>width</i>属性的取值</strong><br><i>flex-basis</i>属性也会被<i>max-width</i>属性与<i>min-width</i>属性所限制，我们看例子</p>
 <pre><code>    .items{
         width: 100px;
         flex-basis: 150px;
@@ -299,1027 +260,169 @@
         border: 1px solid #000000;
         box-sizing: border-box;
     }
-</code></pre><p>在上面的代码中，设置了项目的<i>flex-basis</i>属性值为150px，然而设置了<i>min-width</i>属性的值为250px，也就是说，如果<i>min-width</i>属性占了上风，四个项目会正好填满父容器，那是不是这样子呢？<br><img src="https://i.imgur.com/foJTT0N.jpg" alt=""><br>很明显，这次是<i>min-width</i>属性占了上风，那么同样，我们在设置了<i>max-width</i>属性后，同样会限制<i>flex-basis</i>属性，如果<i>flex-basis</i>属性的值超过了设定的<i>max-width</i>属性的之后，那么最终显示的会使<i>max-width</i>属性所设定的值。<br>那么当我们设置的所有项目的<i>flex-basis</i>属性值之和大于父容器的宽度后，那么此时起作用的将会是<i>flex-shrink</i>属性了，同样，当项目<i>flex-basis</i>属性值之和达不到父容器的宽度时，我们也可以使用<i>flex-grow</i>属性使其扩展到占满父元素，有关这两个属性已经在上面有详解，这里就不再细说了。<br><a name="link14"></a></p>
+</code></pre><p>在上面的代码中，设置了项目的<i>flex-basis</i>属性值为150px，然而设置了<i>min-width</i>属性的值为250px，也就是说，如果<i>min-width</i>属性占了上风，四个项目会正好填满父容器，那是不是这样子呢？<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/foJTT0N.jpg" class="lazyload"><br>很明显，这次是<i>min-width</i>属性占了上风，那么同样，我们在设置了<i>max-width</i>属性后，同样会限制<i>flex-basis</i>属性，如果<i>flex-basis</i>属性的值超过了设定的<i>max-width</i>属性的之后，那么最终显示的会使<i>max-width</i>属性所设定的值。<br>那么当我们设置的所有项目的<i>flex-basis</i>属性值之和大于父容器的宽度后，那么此时起作用的将会是<i>flex-shrink</i>属性了，同样，当项目<i>flex-basis</i>属性值之和达不到父容器的宽度时，我们也可以使用<i>flex-grow</i>属性使其扩展到占满父元素，有关这两个属性已经在上面有详解，这里就不再细说了。<br><a name="link14"></a></p>
 <h2 id="14-项目属性：flex"><a href="#14-项目属性：flex" class="headerlink" title="14.项目属性：flex"></a>14.项目属性：flex</h2><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。<br>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br><i>flex</i>属性因为是三种属性的简写，而<i>flex-grow</i>与<i>flex-shrink</i>是起完全相反的作用的两个属性，所以当然要分情况讨论当这两个属性在不同的项目与容器宽度之比下起到的作用，举个栗子<br>如果父容器的宽度小于项目宽度（此时的宽度使用到的flex-basis属性设置的）之和，那么<i>flex-shrink</i>属性就会起作用，具体计算方式见上<br>如果父容器的宽度大于项目宽度（此时的宽度使用到的flex-basis属性设置的）之和，那么<i>flex-grow</i>属性就会起作用，具体计算方式见上<br><a name="link15"></a></p>
-<h2 id="15-项目属性：align-self"><a href="#15-项目属性：align-self" class="headerlink" title="15.项目属性：align-self"></a>15.项目属性：align-self</h2><p><i>align-self</i>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<i>align-items</i>属性。默认值为<i>auto</i>，表示继承父元素的<i>align-items</i>属性，如果没有父元素，则等同于<i>stretch</i><br><i>align-self</i>属性的取值有<i>auto</i>，<i>flex-start</i>，<i>flex-end</i>，<i>center</i>，<i>baseline</i>，<i>stretch</i>，每一个值的意思就是上面所说到的意思<br>我们可以通过看一个例子演示来形象的理解该属性的效果<br><img src="https://i.imgur.com/TAhGoN7.jpg" alt=""><br>其中，在父容器中设置了<i>justify-content:center</i>与<i>align-items:center</i>使所有项目居中显示，然后给第二个项目设置了<i>align-self:flex-start</i>使其从顶端开始排列，给第三个项目设置了<i>align-self:flex-end</i>使其从底端开始排列，同时覆盖了原来的<i>align-items</i>的效果。</p>
+<h2 id="15-项目属性：align-self"><a href="#15-项目属性：align-self" class="headerlink" title="15.项目属性：align-self"></a>15.项目属性：align-self</h2><p><i>align-self</i>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<i>align-items</i>属性。默认值为<i>auto</i>，表示继承父元素的<i>align-items</i>属性，如果没有父元素，则等同于<i>stretch</i><br><i>align-self</i>属性的取值有<i>auto</i>，<i>flex-start</i>，<i>flex-end</i>，<i>center</i>，<i>baseline</i>，<i>stretch</i>，每一个值的意思就是上面所说到的意思<br>我们可以通过看一个例子演示来形象的理解该属性的效果<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/TAhGoN7.jpg" class="lazyload"><br>其中，在父容器中设置了<i>justify-content:center</i>与<i>align-items:center</i>使所有项目居中显示，然后给第二个项目设置了<i>align-self:flex-start</i>使其从顶端开始排列，给第三个项目设置了<i>align-self:flex-end</i>使其从底端开始排列，同时覆盖了原来的<i>align-items</i>的效果。</p>
+  	
+					
+	  </div>     
+	  
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/CSS/">CSS</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
+	<div class="bottom">
+  <div class="other">
+    <div class="meta">
+      
+
+      
+      <i class="iconfont icon-tag"></i>
+      <a class="tag-link" href="/tags/CSS/">CSS</a>
+      
     </div>
-</div>
 
+    <div class="operate">
+      
+      <span class="text">Share</span>
+      <ul class="share">
+	   
+</ul>	
 
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+      
     </div>
-</div>
+  </div>
 
 
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
+  
+  <nav class="nav">
+    <div class="link">
+      
+      <a href="/2018/08/29/bootstrap学习笔记/" class="link-wrap">
+        <strong class="caption">older</strong>
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/10/27/CSS布局-float篇/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">CSS布局--float篇</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/08/29/bootstrap学习笔记/">
-                <span class="level-item">bootstrap学习笔记</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
+        <span class="title">
+          bootstrap学习笔记
+        </span>
+      </a>
+      
     </div>
-</div>
-
-
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
-    
+    <div class="link">
+      
+      <a href="/2018/10/27/CSS布局-float篇/" class="link-wrap">
+        <strong class="caption">newer</strong>
         
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    
-                        <figure class="image is-128x128 has-mb-6" style="display: flex;align-items: center;justify-content: center;overflow: hidden;margin: 0 auto;width: 155px">
-                            <style>
-                                .img-is-rounded:hover{
-                                    animation: imgBounce .5s ease-in-out;
-                                    cursor: pointer;
-                                }
-                                @keyframes imgBounce {
-                                    0%{transform: scale(1, 1)}
-                                    50%{transform: scale(1.2, 0.8)}
-                                    100%{transform: scale(1, 1)}
-                                }
-                            </style>
-                            <img class="is-rounded img-is-rounded" style="border-radius: 50%;max-width: 80%;" src="/./images/avatar.jpg" alt="不会拉小提琴的左脚">
-                        </figure>
-                    
-                    
-                    <p class="is-size-4 is-block">
-                        不会拉小提琴的左脚
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        前端打字员
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>南京</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Posts
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        21
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Categories
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        0
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Tags
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        11
-                    </p>
-                </div>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/BinghuiXie" target="_blank">
-                Follow</a>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Github" href="http://i.shangc.net/article/20190114/94e666609ffb0263c5e69db8d5282082.jpg">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Twitter" href="https://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
-        </div>
-        
+        <span class="title">
+          CSS布局--float篇
+        </span>
+      </a>
+      
     </div>
-</div>
+  </nav>
+  
+</div> 
+	
+<div class="comment">
+
     
-        
-    
-        
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
-        </div>
+
+    <div id="comment">
     </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <style>
-            .card-content > a{
-                display: block;
-                font-size: 16px !important;
-            }
-        </style>
-        <h3 class="menu-label">
-            Tag Cloud
-        </h3>
-        <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Mic-theme-hexo-blog/" style="font-size: 10px;">Mic_theme hexo blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/html-css/" style="font-size: 10px;">html css</a> <a href="/tags/jQuery-mouse/" style="font-size: 10px;">jQuery mouse</a> <a href="/tags/mpvue，-小程序/" style="font-size: 10px;">mpvue， 小程序</a> <a href="/tags/server，-node/" style="font-size: 10px;">server， node</a> <a href="/tags/那些你不得不知道的前端常识/" style="font-size: 10px;">那些你不得不知道的前端常识</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
-    </div>
-</div>
 
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html css 使用小技巧（持续更新中）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-07T10:29:04.000Z">2019-08-07</time></div>
-                    <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="has-link-black-ter is-size-6">html css 使用小技巧（持续更新中）</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/05/部署vue项目到服务器上/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="部署vue项目到服务器上">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-05T14:25:07.000Z">2019-08-05</time></div>
-                    <a href="/2019/08/05/部署vue项目到服务器上/" class="has-link-black-ter is-size-6">部署vue项目到服务器上</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/06/第一次面试总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第一次面试总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T05:21:12.000Z">2019-06-06</time></div>
-                    <a href="/2019/06/06/第一次面试总结/" class="has-link-black-ter is-size-6">第一次面试总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CSS几种常见的居中方法以及他们的优缺点">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T06:51:33.000Z">2019-05-03</time></div>
-                    <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="has-link-black-ter is-size-6">CSS几种常见的居中方法以及他们的优缺点</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/28/第二次小程序项目报错总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第二次小程序项目报错总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T12:32:51.000Z">2019-04-28</time></div>
-                    <a href="/2019/04/28/第二次小程序项目报错总结/" class="has-link-black-ter is-size-6">第二次小程序项目报错总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/CSS/">
-                        <span class="tag">CSS</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JavaScript/">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Mic-theme-hexo-blog/">
-                        <span class="tag">Mic_theme hexo blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/bootstrap/">
-                        <span class="tag">bootstrap</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css/">
-                        <span class="tag">css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/html-css/">
-                        <span class="tag">html css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery-mouse/">
-                        <span class="tag">jQuery mouse</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mpvue，-小程序/">
-                        <span class="tag">mpvue， 小程序</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/server，-node/">
-                        <span class="tag">server， node</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/那些你不得不知道的前端常识/">
-                        <span class="tag">那些你不得不知道的前端常识</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/面试/">
-                        <span class="tag">面试</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
-        </div>
-    
-</div>
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
 
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html css 使用小技巧（持续更新中）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-07T10:29:04.000Z">2019-08-07</time></div>
-                    <a href="/2019/08/07/html-css-使用小技巧（持续更新中）/" class="has-link-black-ter is-size-6">html css 使用小技巧（持续更新中）</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/05/部署vue项目到服务器上/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="部署vue项目到服务器上">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-05T14:25:07.000Z">2019-08-05</time></div>
-                    <a href="/2019/08/05/部署vue项目到服务器上/" class="has-link-black-ter is-size-6">部署vue项目到服务器上</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/06/06/第一次面试总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第一次面试总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T05:21:12.000Z">2019-06-06</time></div>
-                    <a href="/2019/06/06/第一次面试总结/" class="has-link-black-ter is-size-6">第一次面试总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CSS几种常见的居中方法以及他们的优缺点">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T06:51:33.000Z">2019-05-03</time></div>
-                    <a href="/2019/05/03/CSS几种常见的居中方法以及他们的优缺点/" class="has-link-black-ter is-size-6">CSS几种常见的居中方法以及他们的优缺点</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/28/第二次小程序项目报错总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="第二次小程序项目报错总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T12:32:51.000Z">2019-04-28</time></div>
-                    <a href="/2019/04/28/第二次小程序项目报错总结/" class="has-link-black-ter is-size-6">第二次小程序项目报错总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/CSS/">
-                        <span class="tag">CSS</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JavaScript/">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Mic-theme-hexo-blog/">
-                        <span class="tag">Mic_theme hexo blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/bootstrap/">
-                        <span class="tag">bootstrap</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css/">
-                        <span class="tag">css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/html-css/">
-                        <span class="tag">html css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery-mouse/">
-                        <span class="tag">jQuery mouse</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mpvue，-小程序/">
-                        <span class="tag">mpvue， 小程序</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/server，-node/">
-                        <span class="tag">server， node</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/那些你不得不知道的前端常识/">
-                        <span class="tag">那些你不得不知道的前端常识</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/面试/">
-                        <span class="tag">面试</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/logo.svg" alt="CSS flex布局学习" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2019 不会拉小提琴的左脚&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/BinghuiXie/binghuixie.github.io.git">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
-        </div>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-Hans");</script>
-
-
-    
-    
-    
-    <script src="/js/animation.js"></script>
-    
-
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-    <script src="/js/gallery.js" defer></script>
-    
-
-    
-    
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
+    <script>
+        new Valine({
+            el: '#comment',
+            notify: false,
+            verify: false,
+            app_id: 'cFM0eCo0CQ9xmBXmHi1eltol-gzGzoHsz',
+            app_key: 'oh9tizsnvV2vNvWgqEvoNtQO',
+            path: window.location.pathname,
+            avatar: 'mm',
+            guest_info: ['nick', 'mail']
         });
-    });
-</script>
+    </script>
+    
+</div>	
+</article>
 
+          </div> 
+      </div>            
+    
+        <i id="toTop" class="iconfont icon-backtotop"></i>
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-    
-    
-
-<a id="back-to-top" title="Back to Top" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-    <script src="/js/clipboard.js" defer></script>
-    
-
-    
-    
-    
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
+  
+    <div class="none" id="search">
+    <div class="header">
+        <input type="text" placeholder="Typing Something here." id="search-input" class="input">
+        
+        <i id="search-cancel" class="iconfont icon-cancel"></i>
     </div>
+
+    <div id="search-result" class="result"></div>
 </div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">  
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">Home
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">Archives
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">Tags
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">About
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
+            
+         
+      
+</div>
+        
     
-</body>
+
+
+
+     
+    
+
+
+<footer class="footer">
+	<div class="inner">
+		<div class="copyright">
+			&copy;
+			
+			2019
+			不会拉小提琴的左脚
+
+			<br>
+			By <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>
+		</div>
+	</div>
+</footer>   
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
 </html>
