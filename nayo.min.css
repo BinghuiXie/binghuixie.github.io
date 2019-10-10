@@ -44,6 +44,14 @@ img {
     -o-border-radius: 4px
 }
 
+
+i {
+    font-style: normal;
+    padding: 2px 4px;
+    border-radius: 3px;
+    background-color: rgba(232, 62, 140, .5);
+}
+
 .article .article-categories .link, .article .article-tags .link, .footer .inner .copyright a, .hover, .post .bottom .other .meta .category-link, .post .bottom .other .meta .tag-link, .typo a {
     color: #e26d6d;
     transition: color .2s ease-in-out
