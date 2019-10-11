@@ -98,7 +98,7 @@
 			
 			
 				<span class="iconfont icon-words"></span>
-				<span class="words">3702
+				<span class="words">4368
 				</span>
 			
 		</div>
@@ -292,6 +292,35 @@
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>count<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>在上面这个例子中，只有 count 变化了才会去重新执行 effect，一般来说建议把 effect 里面涉及到的变量都加到参数列表里面，如果数组中有多个变量，React将重新运行该 effect，即使其中只有一个与之前的不同。<br>如果想只运行和清除这个 effect 一次，可以传入一个空数组：<i>[]</i></p>
+<h3 id="custom-hooks"><a href="#custom-hooks" class="headerlink" title="custom hooks"></a>custom hooks</h3><p>除了 React 官方提供的几个 Hooks 之外，还可以制定自己的 Hooks，制定自己的 Hooks 可以将组件的逻辑提取出来，变成可以复用的函数。<br><i>Custom Hooks</i>其实就是一个函数，它以 <i>use</i>开头，在其内部可以使用官方的 Hooks：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">useProgress</span><span class="token punctuation">(</span>animate<span class="token punctuation">,</span> time<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span> progress<span class="token punctuation">,</span> setProgress <span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">useEffect</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>animate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> animateTemp <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> start <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> step <span class="token operator">=</span> timestamp <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>start<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            start <span class="token operator">=</span> timestamp<span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token keyword">let</span> progress <span class="token operator">=</span> timestamp <span class="token operator">-</span> start<span class="token punctuation">;</span>
+          <span class="token function">setProgress</span><span class="token punctuation">(</span>progress<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>progress <span class="token operator">&lt;</span> time<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            animateTemp <span class="token operator">=</span> <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>step<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        animateTemp <span class="token operator">=</span> <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>step<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">cancelAnimationFrame</span><span class="token punctuation">(</span>animateTemp<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span>animate<span class="token punctuation">,</span> time<span class="token punctuation">]</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> animate <span class="token operator">?</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>progress <span class="token operator">/</span> time<span class="token punctuation">,</span> time<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><i>useProgress</i>这个函数就是一个<i>Custom Hook</i>，这个 Hooks 的作用是根据传入的时间(time)返回一个进度条的宽度比例。</p>
   	
 					
 	  </div>     
