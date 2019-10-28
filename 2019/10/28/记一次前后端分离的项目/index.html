@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  记一次前后端分离的项目 |   不会拉小提琴的左脚 </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>  
+  <body>   
+    
+      <header class="header-wrapper">
+
+  <nav class="inner">
+    <div class="title">
+      <a href="/">
+        <img class="logo" src="/images/logo.png">
+      </a>
+    </div>
+
+    <ul class="menu">
+      
+      
+      <li class="item">
+        <a class="link" id="menu-home" href="/">
+          <span class="iconfont icon-home">
+        </span></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-archives" href="/archives">
+          <span class="iconfont icon-archives">
+        </span></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-tags" href="/tags">
+          <span class="iconfont icon-tags">
+        </span></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-about" href="/about">
+          <span class="iconfont icon-about">
+        </span></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-search">
+          <span class="iconfont icon-search">
+        </span></a>
+        
+
+        
+      
+    </li></ul>
+  </nav>
+</header>
+
+<header class="mobile-header-wrapper">
+  <span id="mobile-toggle" class="iconfont icon-menu mobile-toggle"></span>
+</header>   
+
+      <div class="container">       
+          
+          
+            <div class="container-inner">  
+          
+
+          <article class="post slideDownMin">
+  
+	
+<div class="header">
+		<p class="title">	
+			记一次前后端分离的项目
+		</p>
+		<div class="info">	
+			<time>
+				Oct 28, 2019
+			</time>
+
+			
+			
+				<span class="iconfont icon-words"></span>
+				<span class="words">1484
+				</span>
+			
+		</div>
+</div> 
+	
+
+    <script type="text/x-mathjax-config">
+        var post = document.getElementsByClassName("post")[0];  
+        MathJax.Hub.Config({
+            showProcessingMessages: false,
+            messageStyle: "none",    
+            tex2jax: {
+                inlineMath:  [ ["$", "$"] , ["\\(","\\)"]],
+                displayMath: [ ["$$","$$"] , ["\\[","\\]"]],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+            },
+            "HTML-CSS": {            
+                showMathMenu: false
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,post]);
+    </script>
+    <style>.MathJax{outline:0;}</style>
+
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.2/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+ 
+
+	  <div class="typo post-content ">
+
+		
+
+			
+					<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近第一次上手做了一个公司的人事管理系统，前后端分离，都是自己写的，前端用了<i>react</i>和<i>Hooks</i>，后端用的<i>express</i>，因为是第一次真正意义上的写一个前后端分离的项目，所以还是总结了一些心得，觉得有必要总结一下。<br>项目地址：<a href="https://github.com/BinghuiXie/enterprise-personal-manage" target="_blank" rel="noopener">基于角色管理的简易企业人事管理系统</a><br><a id="more"></a></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>因为最近半年多都在使用<i>react</i>写项目，然后前端时间看了 <a href="https://www.youtube.com/watch?v=V-QO-KO90iQ&amp;list=PLPxbbTqCLbGE5AihOSExAa4wUM-P42EIJ" target="_blank" rel="noopener">React 2018 Conf</a>，发布会上介绍了React的新特性：<strong>Hooks</strong>。自己也用Hooks写了一个简单的Demo，正好借这次项目的机会，所以决定使用Hooks来写这次的前端代码。<br>后端直接使用<a href="https://expressjs.com/" target="_blank" rel="noopener">express</a>，项目结构使用<i>express-generator</i>搭的，就没啥特别的。</p>
+<ul>
+<li>项目要求大概有以下几点：  <ol>
+<li>需要设置普通用户、超级管理员不同角色，不同角色登录后的权限各不相同。普通用户可以查询自己个人信息及修改个人基本资料；超级管理员有对所有成员有查询、增加、删除和修改的权限。  </li>
+<li>成员的信息中均应包含姓名、入职日期、婚否、地址、职位信息、是否离职等，也可附加其它信息，并存储于文本文件中。 </li>
+<li>查询功能。可按照姓名查询，输出成员信息（包括其本人、上司、下属信息、职位）；按照入职日期查询成员名单。</li>
+<li>按入职日期对企业中所有人排序。</li>
+<li>以图形方式显示企业职工分布。</li>
+</ol>
+</li>
+</ul>
+<p>其实这个是学校的大作业，我为了方便存用户数据使用了<i>mysql</i>，没用文件。。。<br>下边一个功能一个功能的大概说一下，包括实现和我觉得比较有价值的报错解决方案。</p>
+<h3 id="1-登录"><a href="#1-登录" class="headerlink" title="1. 登录"></a>1. 登录</h3><p>我是通过<i>Authkey</i>来判断用户是否登录的，传数据接受数据这里都比较简单，主要说一个当时困扰了我比较久的一个问题：<br><i>Authkey</i>我当时是想的后端把它放到 cookie 里面，然后传回给前端，这个后端那边肯定不难写，但是我设置了以后却发现前端的cookie里根本没有<i>Authkey</i>，但是后端是明明设置了的。查了很多资料，最终发现问题在于：<strong>CORS请求默认不发送Cookie和HTTP认证信息</strong>，我的前端项目是在 localhost:8080 启动的，后端是在 localhost:3000 启动的，不在一个端口下面，难怪前端接受不到 cookie，对此，解决办法是：<br>首先后端<i>app.js</i>中，之前解决跨域问题用了一个<i>cors</i>包，默认我是这样使用的：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> cors <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'cors'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">cors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>如果需要 cookie 能传过去，需要进行一些配置：<br>首先，如果我们按照默认的方法使用<i>cors</i>，<i>Access-Control-Allow-Origin</i>这个头的值是<i><em> </em></i>，如果要发送 Cookie，这个字段不能是<i></i>，而必须必须指定明确的、与请求网页一致的域名。在 Cors 中，<i>origin</i>属性是设置这个头的，所以我们将其改成前端项目的地址，同时，还需要设置<i>withCredentials </i>属性，否则还是没办法发送的：  </p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> corsConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  origin<span class="token punctuation">:</span> <span class="token string">"http://localhost:3000"</span><span class="token punctuation">,</span>
+  credentials<span class="token punctuation">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">cors</span><span class="token punctuation">(</span>corsConfig<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>同时，前端也需要对<i>withCredentials </i>属性进行修改，因为我用的是<i>axios</i>，所以在引入<i>axios</i>的文件下加一行：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>withCredentials <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这样设置以后，就可以访问到后端传来的Cookie啦！</p>
+  	
+					
+	  </div>     
+	  
+
+	<div class="bottom">
+  <div class="other">
+    <div class="meta">
+      
+
+      
+      <span class="iconfont icon-tag"></span>
+      <a class="tag-link" href="/tags/react-react-hooks-nodejs-express，mysql/">react,react-hooks,nodejs,express，mysql</a>
+      
+    </div>
+
+    <div class="operate">
+      
+      <span class="text">Share</span>
+      <ul class="share">
+	   
+</ul>	
+
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+      
+    </div>
+  </div>
+
+
+  
+  <nav class="nav">
+    <div class="link">
+      
+      <a href="/2019/10/10/React-Hooks/" class="link-wrap">
+        <strong class="caption">older</strong>
+        
+        <span class="title">
+          React Hooks
+        </span>
+      </a>
+      
+    </div>
+    <div class="link">
+      
+    </div>
+  </nav>
+  
+</div> 
+	
+<div class="comment">
+
+    
+
+    <div id="comment">
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({
+            el: '#comment',
+            notify: false,
+            verify: false,
+            app_id: 'cFM0eCo0CQ9xmBXmHi1eltol-gzGzoHsz',
+            app_key: 'oh9tizsnvV2vNvWgqEvoNtQO',
+            path: window.location.pathname,
+            avatar: 'mm',
+            guest_info: ['nick', 'mail']
+        });
+    </script>
+    
+</div>	
+</article>
+
+          </div> 
+      </div>            
+    
+        <span id="toTop" class="iconfont icon-backtotop"></span>
+
+  
+    <div class="none" id="search">
+    <div class="header">
+        <input type="text" placeholder="输入你想搜索的" id="search-input" class="input">
+        
+        <span id="search-cancel" class="iconfont icon-cancel"></span>
+    </div>
+
+    <div id="search-result" class="result"></div>
+</div>
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon" src="/images/favicon.png">  
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>
+        
+    
+
+
+
+     
+    
+
+
+<footer class="footer">
+	<div class="inner">
+		<div class="copyright">
+			&copy;
+			
+			2019
+			不会拉小提琴的左脚
+
+			<br>
+			By <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>
+		</div>
+	</div>
+</footer>   
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
