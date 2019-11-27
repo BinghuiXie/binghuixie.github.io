@@ -98,7 +98,7 @@
 			
 			
 				<span class="iconfont icon-words"></span>
-				<span class="words">1884
+				<span class="words">2177
 				</span>
 			
 		</div>
@@ -165,7 +165,9 @@
 <p>看到这里可以先暂停一下，想一想上面的问题，如果都能完美的打出来那就没什么问题了，如果有的会有卡壳，就再往下看。</p>
 <h3 id="Q-个人所理解的前端"><a href="#Q-个人所理解的前端" class="headerlink" title="Q: 个人所理解的前端"></a>Q: 个人所理解的前端</h3><p>我认为的前端就是和用户浏览，参观相关的所有东西都可以被放进前端的范畴，包括页面的展示，和用户的交互行为，以及用户体验等等</p>
 <h3 id="Q-vue，react，jQuery的区别"><a href="#Q-vue，react，jQuery的区别" class="headerlink" title="Q: vue，react，jQuery的区别"></a>Q: vue，react，jQuery的区别</h3><p>我的回答主要是从设计模式提的区别，jQuery是一种MVC设计模式的框架，与vue和react相比，jQuery还是需要大量的操作DOM来达到改变视图的目的，而vue和react是面向视图层的框架，注重的是数据，只要数据发生了变化，页面就会响应式的变化。vue和react的区别临时答了一个数据绑定方式，vue是双向绑定，react是单项绑定数据流。<br>查了一下，补充一下回答：<br>vue和react都支持服务端优化（SSR），都利用了虚拟DOM，都是组件化开发的思想</p>
-<h3 id="Q-谈一下MVC与MVVM的区别"><a href="#Q-谈一下MVC与MVVM的区别" class="headerlink" title="Q: 谈一下MVC与MVVM的区别"></a>Q: 谈一下MVC与MVVM的区别</h3><h3 id="Q-vue底层是如何实现数据的双向绑定的"><a href="#Q-vue底层是如何实现数据的双向绑定的" class="headerlink" title="Q: vue底层是如何实现数据的双向绑定的"></a>Q: vue底层是如何实现数据的双向绑定的</h3><h3 id="Q-在vue中，兄弟组件，父子组件之间如何传值"><a href="#Q-在vue中，兄弟组件，父子组件之间如何传值" class="headerlink" title="Q: 在vue中，兄弟组件，父子组件之间如何传值"></a>Q: 在vue中，兄弟组件，父子组件之间如何传值</h3><h3 id="Q-谈一下vuex"><a href="#Q-谈一下vuex" class="headerlink" title="Q: 谈一下vuex"></a>Q: 谈一下vuex</h3><p>A: vuex是vue是的一个状态管理的框架，vuex的出现使组件之间的通信变得非常方便，vuex形象的可以理解为在所有组件的最上层一个公共区域用于存储数据，同时该数据被几个组件所共有，当一个组件中修改了这个数据，通过派发action再commit mutations就可以更新state里面的数据，从而实现对所有依赖这个数据的页面的视图更新。</p>
+<h3 id="Q-谈一下MVC与MVVM的区别"><a href="#Q-谈一下MVC与MVVM的区别" class="headerlink" title="Q: 谈一下MVC与MVVM的区别"></a>Q: 谈一下MVC与MVVM的区别</h3><p>MVC：将一个应用分割成了三个部分：模型层，视图层与控制器层。<br>M(Model) 模型层：负责数据的获取，更新等操作，例如从线上或者本地数据库取得页面所依赖的数据，只与数据有关<br>V(View) 视图层：只与 UI 显示有关，也就是说根据 model 层拿到的数据呈现对那个的页面给用户<br>C(Controller) 控制器层：负责 M 与 V 之间的交互，比如说数据的更新需要在页面上体现变化，就需要 Controller 来实现，比如说用户在页面上点击 “下一页” 的操作，此时页面需要展示下一页的内容给用户，那么这个从 Model 层拿到下一页的数据在给 View 层中间的操作就是由 Controller 来完成的。</p>
+<p>MVVM：</p>
+<h3 id="Q-vue底层是如何实现数据的双向绑定的"><a href="#Q-vue底层是如何实现数据的双向绑定的" class="headerlink" title="Q: vue底层是如何实现数据的双向绑定的"></a>Q: vue底层是如何实现数据的双向绑定的</h3><h3 id="Q-在vue中，兄弟组件，父子组件之间如何传值"><a href="#Q-在vue中，兄弟组件，父子组件之间如何传值" class="headerlink" title="Q: 在vue中，兄弟组件，父子组件之间如何传值"></a>Q: 在vue中，兄弟组件，父子组件之间如何传值</h3><h3 id="Q-谈一下vuex"><a href="#Q-谈一下vuex" class="headerlink" title="Q: 谈一下vuex"></a>Q: 谈一下vuex</h3><p>A: vuex是vue是的一个状态管理的框架，vuex的出现使组件之间的通信变得非常方便，vuex形象的可以理解为在所有组件的最上层一个公共区域用于存储数据，同时该数据被几个组件所共有，当一个组件中修改了这个数据，通过派发action再commit mutations就可以更新state里面的数据，从而实现对所有依赖这个数据的页面的视图更新。</p>
 <h3 id="Q-说一下vue有哪些生命周期函数，如果要进行ajax请求，那么该放在哪一个钩子里"><a href="#Q-说一下vue有哪些生命周期函数，如果要进行ajax请求，那么该放在哪一个钩子里" class="headerlink" title="Q: 说一下vue有哪些生命周期函数，如果要进行ajax请求，那么该放在哪一个钩子里"></a>Q: 说一下vue有哪些生命周期函数，如果要进行ajax请求，那么该放在哪一个钩子里</h3><p>创建阶段：beforeCreate / Create<br>挂载阶段：beforeMount / Mounted<br>数据更新时会触发这两个钩子函数：beforeUpdate / updated<br>组件销毁时会触发：beforeDestroy / destroyed</p>
 <p>ajax</p>
 <h3 id="Q-setState"><a href="#Q-setState" class="headerlink" title="Q: setState"></a>Q: setState</h3><h3 id="Q-css-中的display-none与visibility-hidden-的区别"><a href="#Q-css-中的display-none与visibility-hidden-的区别" class="headerlink" title="Q: css 中的display: none与visibility: hidden 的区别"></a>Q: css 中的display: none与visibility: hidden 的区别</h3><h3 id="Q-简单的谈一下css的动画-transition与animation"><a href="#Q-简单的谈一下css的动画-transition与animation" class="headerlink" title="Q: 简单的谈一下css的动画(transition与animation)"></a>Q: 简单的谈一下css的动画(transition与animation)</h3><h3 id="Q-了解过meta标签吗？有什么用处"><a href="#Q-了解过meta标签吗？有什么用处" class="headerlink" title="Q: 了解过meta标签吗？有什么用处"></a>Q: 了解过meta标签吗？有什么用处</h3><h3 id="Q-rem和px的区别"><a href="#Q-rem和px的区别" class="headerlink" title="Q: rem和px的区别"></a>Q: rem和px的区别</h3><h3 id="Q-针对iPhone-4-5-6三种设备，如何利用一套布局方案做到适配"><a href="#Q-针对iPhone-4-5-6三种设备，如何利用一套布局方案做到适配" class="headerlink" title="Q: 针对iPhone 4/5/6三种设备，如何利用一套布局方案做到适配"></a>Q: 针对iPhone 4/5/6三种设备，如何利用一套布局方案做到适配</h3><h3 id="Q-如果用px实现移动端布局该怎么做"><a href="#Q-如果用px实现移动端布局该怎么做" class="headerlink" title="Q: 如果用px实现移动端布局该怎么做"></a>Q: 如果用px实现移动端布局该怎么做</h3><h3 id="Q-说一下你所理解的用户体验"><a href="#Q-说一下你所理解的用户体验" class="headerlink" title="Q: 说一下你所理解的用户体验"></a>Q: 说一下你所理解的用户体验</h3><h3 id="Q-如何减少首页白屏的时间"><a href="#Q-如何减少首页白屏的时间" class="headerlink" title="Q: 如何减少首页白屏的时间"></a>Q: 如何减少首页白屏的时间</h3><h3 id="Q-为什么script引入的js文件是一个加载完并且解析完才执行下一个而css文件是同时加载，加载完再解析"><a href="#Q-为什么script引入的js文件是一个加载完并且解析完才执行下一个而css文件是同时加载，加载完再解析" class="headerlink" title="Q: 为什么script引入的js文件是一个加载完并且解析完才执行下一个而css文件是同时加载，加载完再解析"></a>Q: 为什么script引入的js文件是一个加载完并且解析完才执行下一个而css文件是同时加载，加载完再解析</h3><h3 id="Q-ES6-let，const，-var-的区别"><a href="#Q-ES6-let，const，-var-的区别" class="headerlink" title="Q: ES6 let，const， var 的区别"></a>Q: ES6 let，const， var 的区别</h3><h3 id="Q-ES6-箭头函数"><a href="#Q-ES6-箭头函数" class="headerlink" title="Q: ES6 箭头函数"></a>Q: ES6 箭头函数</h3><h3 id="Q-ES6的模块化"><a href="#Q-ES6的模块化" class="headerlink" title="Q: ES6的模块化"></a>Q: ES6的模块化</h3><h3 id="Q-jQuery中的ajax的参数有哪些"><a href="#Q-jQuery中的ajax的参数有哪些" class="headerlink" title="Q: jQuery中的ajax的参数有哪些"></a>Q: jQuery中的ajax的参数有哪些</h3><h3 id="Q-什么是回调地狱？如何解决？如何解决Promise调用链过长的问题"><a href="#Q-什么是回调地狱？如何解决？如何解决Promise调用链过长的问题" class="headerlink" title="Q: 什么是回调地狱？如何解决？如何解决Promise调用链过长的问题"></a>Q: 什么是回调地狱？如何解决？如何解决Promise调用链过长的问题</h3><h3 id="Q-GET-和-POST-的区别"><a href="#Q-GET-和-POST-的区别" class="headerlink" title="Q: GET 和 POST 的区别"></a>Q: GET 和 POST 的区别</h3><h3 id="Q-说出你知道的几种跨域方式"><a href="#Q-说出你知道的几种跨域方式" class="headerlink" title="Q: 说出你知道的几种跨域方式"></a>Q: 说出你知道的几种跨域方式</h3><h3 id="Q-jsonp-有什么缺点"><a href="#Q-jsonp-有什么缺点" class="headerlink" title="Q: jsonp 有什么缺点"></a>Q: jsonp 有什么缺点</h3><h3 id="Q-有没有自己启动过一个服务"><a href="#Q-有没有自己启动过一个服务" class="headerlink" title="Q: 有没有自己启动过一个服务"></a>Q: 有没有自己启动过一个服务</h3><h3 id="Q-有没有用过gulp"><a href="#Q-有没有用过gulp" class="headerlink" title="Q: 有没有用过gulp"></a>Q: 有没有用过gulp</h3>  	
@@ -260,7 +262,7 @@
   
     <div class="none" id="search">
     <div class="header">
-        <input type="text" placeholder="输入你想搜索的" id="search-input" class="input">
+        <input type="text" placeholder="Typing Something here." id="search-input" class="input">
         
         <span id="search-cancel" class="iconfont icon-cancel"></span>
     </div>
@@ -276,31 +278,31 @@
          
             
 
-            <a class="mobile-menu-link" href="/">首页
+            <a class="mobile-menu-link" href="/">Home
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/archives">归档
+            <a class="mobile-menu-link" href="/archives">Archives
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/tags">标签
+            <a class="mobile-menu-link" href="/tags">Tags
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/about">关于
+            <a class="mobile-menu-link" href="/about">About
             </a>
             
          
                           
 
-            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
             
          
       

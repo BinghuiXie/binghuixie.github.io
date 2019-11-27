@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  JavaScript参数传递(按值还是按引用) |   不会拉小提琴的左脚 </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+<link rel="stylesheet" href="/css/prism-twilight.css" type="text/css"></head>  
+  <body>   
+    
+      <header class="header-wrapper">
+
+  <nav class="inner">
+    <div class="title">
+      <a href="/">
+        <img class="logo" src="/images/logo.png">
+      </a>
+    </div>
+
+    <ul class="menu">
+      
+      
+      <li class="item">
+        <a class="link" id="menu-home" href="/">
+          <span class="iconfont icon-home">
+        </span></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-archives" href="/archives">
+          <span class="iconfont icon-archives">
+        </span></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-tags" href="/tags">
+          <span class="iconfont icon-tags">
+        </span></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-about" href="/about">
+          <span class="iconfont icon-about">
+        </span></a>
+      </li>
+      
+      
+      
+      <li class="item">
+        <a class="link" id="menu-search">
+          <span class="iconfont icon-search">
+        </span></a>
+        
+
+        
+      
+    </li></ul>
+  </nav>
+</header>
+
+<header class="mobile-header-wrapper">
+  <span id="mobile-toggle" class="iconfont icon-menu mobile-toggle"></span>
+</header>   
+
+      <div class="container">       
+          
+          
+            <div class="container-inner">  
+          
+
+          <article class="post slideDownMin">
+  
+	
+<div class="header">
+		<p class="title">	
+			JavaScript参数传递(按值还是按引用)
+		</p>
+		<div class="info">	
+			<time>
+				Nov 27, 2019
+			</time>
+
+			
+			
+				<span class="iconfont icon-words"></span>
+				<span class="words">2475
+				</span>
+			
+		</div>
+</div> 
+	
+
+    <script type="text/x-mathjax-config">
+        var post = document.getElementsByClassName("post")[0];  
+        MathJax.Hub.Config({
+            showProcessingMessages: false,
+            messageStyle: "none",    
+            tex2jax: {
+                inlineMath:  [ ["$", "$"] , ["\\(","\\)"]],
+                displayMath: [ ["$$","$$"] , ["\\[","\\]"]],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+            },
+            "HTML-CSS": {            
+                showMathMenu: false
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,post]);
+    </script>
+    <style>.MathJax{outline:0;}</style>
+
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.2/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+ 
+
+	  <div class="typo post-content ">
+
+		
+
+			
+					<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近在重温高程，看的比以前仔细了很多，也发现了很多之前没有注意到的点，这次在看到基本类型和引用类型的值这一节的时候，对于赋值和传参传递不同类型的数据是使用的不同的方法有了疑问，也就是说，在 JS 中，到底是按值传递？按引用传递？还是根据变量类型来决定按值还是按引用？在查阅了不少资料后，大概有了一些自己的理解，也分享在这里，有问题的话，欢迎指正。<br><a id="more"></a></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p><strong>先说结论，JS 中总是按值传递的。</strong>   </p>
+<p>JS中的变量有两种类型：基本类型和引用类型。<br>其中，基本类型包括<i>Undefined</i>, <i>Null</i>, <i>String</i>, <i>Number</i>, <i>Boolean</i>以及 ES6 的<i>Symbol</i>。<br>引用类型即为对象<i>Object</i>，也包括了数组<i>Array</i>。   </p>
+<p>先来看两个例子：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> hobby <span class="token operator">=</span> <span class="token string">"reading"</span><span class="token punctuation">,</span> age <span class="token operator">=</span> <span class="token number">21</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> newHobby <span class="token operator">=</span> hobby<span class="token punctuation">,</span> newAge <span class="token operator">=</span> age<span class="token punctuation">;</span>
+<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">"不会拉小提琴的左脚"</span><span class="token punctuation">,</span>
+  hobbies<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Reading"</span><span class="token punctuation">,</span> <span class="token string">"Cooking"</span><span class="token punctuation">,</span> <span class="token string">"Playing"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> newPerson <span class="token operator">=</span> person<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 函数用于修改基本类型的值</span>
+<span class="token keyword">function</span> <span class="token function">changePrimitive</span><span class="token punctuation">(</span>hobby<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  hobby <span class="token operator">=</span> <span class="token string">"Sleeping"</span><span class="token punctuation">;</span>
+  age <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">changePrimitive</span><span class="token punctuation">(</span>hobby<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>hobby<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// reading</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newHobby<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// reading</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 21   </span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newAge<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 21</span>
+
+<span class="token comment" spellcheck="true">// 函数用于修改引用类型的值</span>
+<span class="token keyword">function</span> <span class="token function">changeReference</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  obj<span class="token punctuation">.</span>hobbies<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'Sleeping'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// { name: "不会拉小提琴的左脚", hobbies: Array(4) } 数组长度原来都是 3 ，现在都变成 4 了</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newPerson<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// { name: "不会拉小提琴的左脚", hobbies: Array(4) }</span>
+</code></pre>
+<p>这个例子应该算是最常见的关于引用类型和基本类型的了，那么为什么会出来这种情况呢？   </p>
+<p>基本类型和引用类型存储的地方是不一样的，基本类型存储在 <strong>栈(Stack)</strong> 中，而引用类型存储在 <strong>堆(Heap)</strong> 中，这是因为，<br>基本类型无非就是数字，字符串，布尔值这些，他们不会占用很大的地方，相对来说也比较简单，所以是存在栈内存当中，而对于对象，数组来说，会存储很大，很复杂的数据，<br>所以是存储在堆内存当中的，这也就造成了为什么 <strong>修改(mutate)</strong> 函数内部基本类型变量的值不会反映到外部而修改引用类型的值会影响了。这么说可能不是很明白，借助图来理解会更好一点：<br><img src="https://i.imgur.com/VZv0ldX.png" alt=""><br><img src="https://i.imgur.com/SYcAEYs.png" alt=""></p>
+<p>上面两张图中，因为基本类型的值是存储在栈内存当中的，里面存储的就是这个变量的值(在例子中就是 reading )，而对于引用类型，栈内存当中存储的<strong>值</strong>其实是实际的对象在堆内存中的地址，或者又说，叫存储了这个对象的引用。<br>所以说，当给一个新的变量赋值一个引用类型的值的时候，实际上是把栈内存当中的这个地址值给了新的变量，所以说他是按值传递，只不过这个值其实是实际变量的引用(地址)，所以，这就是为什么修改一个会影响多个了：<br><img src="https://i.imgur.com/dtp42KD.png" alt=""><br>就是因为他们指向的值同一个对象，修改(mutate)的其实也是同一个对象。</p>
+<p>然而再深究下去，会发现其实和按值传递或者按引用传递没有什么关系，而是在于修改(mutate)(这里面 mutate 我是理解为修改)和重新赋值(reassign)。<br>为什么这么说呢，先来看一个例子引出一下问题：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">"不会拉小提琴的左脚"</span><span class="token punctuation">,</span>
+  hobbies<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Reading"</span><span class="token punctuation">,</span> <span class="token string">"Cooking"</span><span class="token punctuation">,</span> <span class="token string">"Playing"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> newPerson <span class="token operator">=</span> person<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 函数用于重新赋值引用类型的值</span>
+<span class="token keyword">function</span> <span class="token function">changeReference</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// { name: "不会拉小提琴的左脚", hobbies: Array(3) }</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newPerson<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// { name: "不会拉小提琴的左脚", hobbies: Array(3) }</span>
+</code></pre>
+<p>可以发现的是，在函数内部<strong>重新赋值</strong>了这个对象，但是对函数外部的原对象没有任何影响，这就是<strong>重新赋值(reassign)</strong>和<strong>修改(mutate)</strong>的区别了。<br><strong>那么因为 ECMASCript 的 6 中基本类型( 包括 Symbol )是不能修改(mutate)的，换句话说，他们都是 immutable 的</strong>，在日常的操作中，我们也是很简单的对其进行 <strong>重新赋值</strong>，可以看一个例子：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">"apple"</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// APPLE</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// apple</span>
+</code></pre>
+<p>那么对于基本类型来说，重新赋值实际上是在栈内存中重新开辟了一块空间用于存储这个新的值，同样，对于引用类型来说，当给它重新赋值的时候，就相当于重新开辟了一块内存，和原来的没有任何关系，<br>在上面的例子中，函数内部的 obj 本来是与 person 和 newPerson 指向同一块内存的，但是此时给 obj 重新赋值了，那么 obj 就指向了另一块地方，它的任何修改都是不会影响外面的 peron 和 newPerson 的：<br><img src="https://i.imgur.com/dyocAA9.png" alt=""></p>
+<p>所以说，到底为什么修改函数内部的对象会影响外部的对象而对函数内部的数字这些重新给值就不会影响外面的，其实是因为 mutate 和 reassign 的区别，当然我个人的理解是这样的。如果有问题的话欢迎找我讨论！<br>联系方式：QQ:1479085300     </p>
+<p>相关链接：<br><a href="https://stackoverflow.com/questions/518000/is-javascript-a-pass-by-reference-or-pass-by-value-language/25117245#25117245" target="_blank" rel="noopener">JS 到底是按值传递还是按引用传递呢？</a><br><a href="https://www.youtube.com/watch?v=e-_mDyqm2oU" target="_blank" rel="noopener">Youtube: Value Types and Reference Types in JavaScript</a><br><a href="https://www.youtube.com/watch?v=E-dAnFdq8k8" target="_blank" rel="noopener">Youtube: Javascript pass by Value vs pass by Reference tutorial</a>    </p>
+  	
+					
+	  </div>     
+	  
+
+	<div class="bottom">
+  <div class="other">
+    <div class="meta">
+      
+
+      
+      <span class="iconfont icon-tag"></span>
+      <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+      
+    </div>
+
+    <div class="operate">
+      
+      <span class="text">Share</span>
+      <ul class="share">
+	   
+</ul>	
+
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+      
+    </div>
+  </div>
+
+
+  
+  <nav class="nav">
+    <div class="link">
+      
+      <a href="/2019/10/28/记一次前后端分离的项目/" class="link-wrap">
+        <strong class="caption">older</strong>
+        
+        <span class="title">
+          记一次前后端分离的项目
+        </span>
+      </a>
+      
+    </div>
+    <div class="link">
+      
+    </div>
+  </nav>
+  
+</div> 
+	
+<div class="comment">
+
+    
+
+    <div id="comment">
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
+
+    <script>
+        new Valine({
+            el: '#comment',
+            notify: false,
+            verify: false,
+            app_id: 'cFM0eCo0CQ9xmBXmHi1eltol-gzGzoHsz',
+            app_key: 'oh9tizsnvV2vNvWgqEvoNtQO',
+            path: window.location.pathname,
+            avatar: 'mm',
+            guest_info: ['nick', 'mail']
+        });
+    </script>
+    
+</div>	
+</article>
+
+          </div> 
+      </div>            
+    
+        <span id="toTop" class="iconfont icon-backtotop"></span>
+
+  
+    <div class="none" id="search">
+    <div class="header">
+        <input type="text" placeholder="Typing Something here." id="search-input" class="input">
+        
+        <span id="search-cancel" class="iconfont icon-cancel"></span>
+    </div>
+
+    <div id="search-result" class="result"></div>
+</div>
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">  
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">Home
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">Archives
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">Tags
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">About
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
+            
+         
+      
+</div>
+        
+    
+
+
+
+     
+    
+
+
+<footer class="footer">
+	<div class="inner">
+		<div class="copyright">
+			&copy;
+			
+			2019
+			不会拉小提琴的左脚
+
+			<br>
+			By <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>
+		</div>
+	</div>
+</footer>   
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
